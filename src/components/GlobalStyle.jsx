@@ -2,15 +2,40 @@ import 'modern-normalize';
 import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
+
+:root {
+  --primary-black-color: #040404;
+  --orange-color: #E6533C;
+  --orange_1-color: #EF8964;
+  --beige-color: #EFA082;
+  --white-color: #EFEDE8;
+  --primary-text-color: #EFEDE8;
+   --border-static-color: rgba(239, 237, 232, 0.2);
+  --text-info-color: rgba(239, 237, 232, 0.3);
+  --text-categories-color:rgba(239, 237, 232, 0.4);
+  
+}
+
   body {
     margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    font-family: -apple-system, BlinkMacSystemFont, 'Roboto',
+      
       sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    background-color: var( --primary-black-color);
   }
 
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  color: var(--white-color);
+}
 
 ul {
   list-style: none;
@@ -23,4 +48,16 @@ ul {
     max-width: 100%;
     object-fit: cover;
   }
+
+a {
+   color: var(--white-color);
+}
+
+button {
+  cursor: pointer;
+}
+
+div {
+     color: var(--white-color);
+}
 `;
