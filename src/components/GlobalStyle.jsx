@@ -60,4 +60,9 @@ button {
 div {
      color: var(--white-color);
 }
+
+.container {
+  
+}
+
 `;
