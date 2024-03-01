@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 const Container = styled.div`
 margin-top: 40px;
+margin-bottom: 40px;
 padding: 0px 20px;
 @media (min-width: 768px) {
     margin-top: 72px;
