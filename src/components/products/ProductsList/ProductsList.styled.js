@@ -5,7 +5,7 @@ padding: 0px 20px;
 display: flex;
 flex-direction: column;
 gap: 20px;
-@media (min-width: 768px) {
+@media screen and (min-width: 768px) {
     flex-direction: row;
     flex-wrap: wrap;
     gap: 32px 16px;
@@ -13,7 +13,7 @@ gap: 20px;
     max-height: 500px;
     padding: 0px 32px;
   }  
-@media (min-width: 1440px) {
+@media screen and (min-width: 1440px) {
     max-width: 1042px;
     padding: 0px 96px;
   } 
@@ -29,7 +29,7 @@ border-radius: 12px;
 padding: 16px;
 width: 335px;
 background-color: rgba(239, 237, 232, 0.05);
-@media (min-width: 1440px) {
+@media screen and (min-width: 1440px) {
     min-width: 405px;
 }   
 `;

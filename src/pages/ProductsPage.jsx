@@ -1,6 +1,6 @@
 import { Title } from 'components/Title/Title';
 import { ProductsFilters } from 'components/products/ProductsFilters/ProductsFilters';
-import { Container } from 'components/products/ProductsFilters/ProductsFilters.styled';
+import { Container, PageContainer } from 'components/products/ProductsFilters/ProductsFilters.styled';
 import { ProductsList } from 'components/products/ProductsList/ProductsList';
 import React from 'react';
 
@@ -163,13 +163,13 @@ const products = [
 ]
 
 function ProductPage() {
-  return <div>
+  return <PageContainer>
     <Container>
     <Title title='Products' />
     <ProductsFilters />
     </Container>
     <ProductsList products={products} />
-  </div>;
+  </PageContainer>;
 }
 
 export default ProductPage;

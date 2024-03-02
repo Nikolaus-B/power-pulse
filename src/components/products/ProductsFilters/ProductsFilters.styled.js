@@ -1,14 +1,37 @@
 import styled from 'styled-components';
+import BgImg1x from '../../../img/products-1x.jpg'
+import BgImg2x from '../../../img/products-2x.jpg'
+
+const PageContainer = styled.div`
+@media screen and (min-width: 1440px) {
+  max-width: 1632px;
+  background-image: url(${BgImg1x});
+  background-repeat: no-repeat;
+  background-position: right;
+  background-size: contain;
+  height: 716px;
+
+  @media (min-device-pixel-ratio: 2),
+  (-webkit-min-device-pixel-ratio: 2),
+  (min-resolution: 192dpi),
+  (min-resolution: 2dppx) {
+    background-image: url(${BgImg2x});
+}
+}   
+
+
+
+`;
 
 const Container = styled.div`
 margin-top: 40px;
 margin-bottom: 40px;
 padding: 0px 20px;
-@media (min-width: 768px) {
+@media screen and (min-width: 768px) {
     margin-top: 72px;
     padding: 0px 32px;
   }  
-@media (min-width: 1440px) {
+@media screen and (min-width: 1440px) {
     max-width: 100%;
     display: flex;
     justify-content: space-between;
@@ -23,7 +46,7 @@ flex-wrap: wrap;
 gap: 16px;
 max-width: 375px;
 margin-top: 40px;
-@media (min-width: 768px) {
+@media screen and (min-width: 768px) {
     max-width: 664px;
     margin: 32px 0px;
     justify-content: flex-start;
@@ -38,7 +61,7 @@ const Input = styled.input`
   width: 335px;
   background-color: inherit;
   color: white;
-  @media (min-width: 768px) {
+  @media screen and (min-width: 768px) {
     max-width: 236px;
   }    
 `;
@@ -69,4 +92,4 @@ padding: 14px 32px 14px 14px;
 max-height: 228px;
 `;
 
-export { Container, Form, Input, SelectCategory, SelectLevel, Option };
+export { PageContainer, Container, Form, Input, SelectCategory, SelectLevel, Option };

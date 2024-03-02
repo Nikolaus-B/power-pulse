@@ -18,6 +18,7 @@ import {
   RecommendedWrapper,
   Button,
 } from './ProductsList.styled';
+import img from '../../../img/products-1x.jpg'
 
 export const ProductsList = ({ products }) => {
   return (
@@ -35,7 +36,7 @@ export const ProductsList = ({ products }) => {
                     <ColorRound></ColorRound>
                     <Text>Recommended</Text>
                   </RecommendedWrapper>
-                  <Button type="button"> Add
+                  <Button type="button"> Add 
                     <svg
                       width="16"
                       height="16"
