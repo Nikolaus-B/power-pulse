@@ -162,11 +162,33 @@ const products = [
   }
 ]
 
+const categories = [
+  "alcoholic drinks",
+  "berries",
+  "cereals",
+  "dairy",
+  "dried fruits",
+  "eggs",
+  "fish",
+  "flour",
+  "fruits",
+  "meat",
+  "mushrooms",
+  "nuts",
+  "oils and fats",
+  "poppy",
+  "sausage",
+  "seeds",
+  "sesame",
+  "soft drinks",
+  "vegetables and herbs"
+]
+
 function ProductPage() {
   return <PageContainer>
     <Container>
     <Title title='Products' />
-    <ProductsFilters />
+    <ProductsFilters categories={categories} />
     </Container>
     <ProductsList products={products} />
   </PageContainer>;
