@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 const List = styled.ul`
-  padding: 0px 20px;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -10,7 +9,6 @@ const List = styled.ul`
     flex-wrap: wrap;
     gap: 32px 16px;
     max-width: calc(335px * 2 + 16px + 12px + 32px + 8px);
-    padding: 0px 0px 0px 32px;
     max-height: 660px;
     overflow-y: scroll;
     scrollbar-color: var(--orange_1-color);
@@ -27,8 +25,7 @@ const List = styled.ul`
   }
   @media screen and (min-width: 1440px) {
     max-height: 487px;
-    max-width: calc(405px * 2 + 16px * 2 + 96px + 8px);
-    padding: 0px 0px 0px 96px;
+    max-width: calc(405px * 2 + 16px * 2 + 8px);
   }
 `;
 

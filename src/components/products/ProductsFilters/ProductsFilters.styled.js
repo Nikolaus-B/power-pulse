@@ -23,18 +23,11 @@ const PageContainer = styled.div`
 `;
 
 const Container = styled.div`
-  margin-top: 40px;
-  padding: 0px 20px;
-  @media screen and (min-width: 768px) {
-    margin-top: 72px;
-    padding: 0px 32px;
-  }
   @media screen and (min-width: 1440px) {
     max-width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0px 96px;
   }
 `;
 
