@@ -2,9 +2,9 @@ import { Title } from 'components/Title/Title';
 import { ExercisesCategories } from "components/Exercises/ExercisesCategories"
 import {ExercisesSubcategoriesList} from "components/Exercises/ExercisesSubcategoriesList"
 import React, { useState } from 'react';
-import {data} from 'components/Exercises/data'
+import {filters} from 'components/Exercises/filters'
 function ExercisesPage() {
-  const [selectedCategory, setSelectedCategory] = useState(null);
+  const [selectedCategory, setSelectedCategory] = useState("Body parts");
   
   const handleCategorySelect = (category) => {
     setSelectedCategory(category);
@@ -13,8 +13,8 @@ function ExercisesPage() {
     <>
       <Title title={"Exercises"} />
       <ExercisesCategories onSelect={handleCategorySelect}/>
-      <ExercisesSubcategoriesList category={selectedCategory} data={data} />
-      {/* (selectedcategory && «ExercisesList category-(selectedCategory) data-{data)/›} */}
+      <ExercisesSubcategoriesList category={selectedCategory} filters={filters} />
+      {selectedCategory && <ExercisesList category={selectedCategory} data={data} />}
     </>
       
     )

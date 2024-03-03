@@ -1,4 +1,5 @@
 import React from 'react';
+import { Ul} from "./ExercisesCategories.styled"
 
 export const ExercisesCategories = ({onSelect }) => {
     const categories = ["Body parts", "Muscles", "Equipment"]
@@ -7,12 +8,12 @@ export const ExercisesCategories = ({onSelect }) => {
     };
 
     return (
-            <ul>
+            <Ul>
                 {categories.map((category, index) => (
-                    <li key={index} onClick={() => handleClick(category)}>
-                        {category}
-                    </li>
+                        <li position="relative" variant="unstyled" key={index} onClick={() => handleClick(category)}>
+                            {category}
+                        </li>
                 ))}
-            </ul>
+            </Ul>
     )
 };

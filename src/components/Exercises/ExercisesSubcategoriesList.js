@@ -1,18 +1,25 @@
 import { ExercisesSubcategoriesItem } from './ExercisesSubcategoriesItem'
 import React from 'react'
+import { Ul } from './ExercisesSubcatigoriesList.styled';
 
-export const ExercisesSubcategoriesList = ({ category, data }) => {
-    const uniqueBodyParts = [...new Set(data.map(item => item.bodyPart))];
-    // const uniqueEquipment = [...new Set(data.map(item => item.equipment))];
-    // const uniqueTargets = [...new Set(data.map(item => item.target))];
-    // const { target, equipment, bodyPart, _id , gifUrl} = data.item;
+export const ExercisesSubcategoriesList = ({ category, filters }) => {
+    const filterItemsByCategory = (filters, category) => {
+    return filters.filter(item => item.filter === category);
+    };
+    const muscles = filterItemsByCategory(filters, "Muscles");
+    const subMuscles= muscles.map(item => item._id.$oid)
+    const equipment = filterItemsByCategory(filters, "Equipment");
+    const subEquiment = equipment.map(item => item._id.$oid);
+    const bodyParts = filterItemsByCategory(filters, "Body parts");
+    const subBodyParts = bodyParts.map(item => item._id.$oid);
     return (
-        <ul > 
-            {/* {category === "Muscles" ? <ExercisesSubcategoriesItem url={gifUrl} category={category} subcategory={target}  />
-        : category === 'Equipment' ? <ExercisesSubcategoriesItem url={gifUrl} category={category} subcategory={equipment}  />
-                    : <ExercisesSubcategoriesItem url={gifUrl} category={category} subcategory={bodyPart} />} */}
-            <ExercisesSubcategoriesItem category={category} subcategory={uniqueBodyParts} />
-        </ul>
+        <Ul> 
+            {category === "Muscles" ? <ExercisesSubcategoriesItem filters={filters} subcategory={subMuscles}/>
+            : category === 'Equipment' ? <ExercisesSubcategoriesItem filters={filters} subcategory={subEquiment} />
+                    : <ExercisesSubcategoriesItem filters={filters} subcategory={subBodyParts} />}
+        </Ul>
     )
 }
-// key={_id.$oid}
+// const uniqueBodyParts = [...new Set(filters.map(item => item.bodyPart))];
+//     const uniqueEquipment = [...new Set(filters.map(item => item.equipment))];
+//     const uniqueTargets = [...new Set(filters.map(item => item.target))];
