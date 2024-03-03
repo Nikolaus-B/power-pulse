@@ -42,6 +42,7 @@ const Form = styled.form`
   gap: 16px;
   max-width: 375px;
   margin-top: 40px;
+  margin-bottom: 40px;
   @media screen and (min-width: 768px) {
     max-width: 664px;
     margin: 32px 0px;
