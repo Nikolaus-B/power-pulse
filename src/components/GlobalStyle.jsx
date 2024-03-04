@@ -62,11 +62,10 @@ div {
 }
 
 .container {
-    @media screen and (max-width: 375px) {
-      max-width: 375px;
-      padding: 40px 20px 80px 20px;
-    
-  }
+  margin: 0 auto;
+  max-width: 375px;
+  padding: 40px 20px 80px 20px;
+
 
     @media screen and (min-width: 768px) and (max-width: 1439px) {
     max-width: 768px;
