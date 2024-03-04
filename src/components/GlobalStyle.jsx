@@ -13,6 +13,7 @@ export const GlobalStyle = createGlobalStyle`
    --border-static-color: rgba(239, 237, 232, 0.2);
   --text-info-color: rgba(239, 237, 232, 0.3);
   --text-categories-color:rgba(239, 237, 232, 0.4);
+  --diary-active-color:rgba(239, 237, 232, 0.8);
   
 }
 
