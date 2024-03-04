@@ -20,7 +20,8 @@ export const data = [{
   "target": "triceps",
   "burnedCalories": 233,
   "time": 3
-},{
+  },
+  {
   "_id": {
     "$oid": "64f2458d6f67bc34bae4f813"
   },
