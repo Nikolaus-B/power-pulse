@@ -10,12 +10,17 @@ import {
   CaloriesTrackerSection, 
   CaloriesInfo, 
   CaloriesIcon, 
-  CaloriesText, 
+  CaloriesText,
+  Text,
   Section, 
   VideoIcon, 
-  UserImage, 
-  SignInButton // Додайте імпорт для SignInButton
+  Video,
+  // UserImage, 
+  SectionVideo,
+  SignInButton,
+  FotoSection
 } from '../components/HomePage/HomePage.styled'; 
+import img from '../img/hero-mobile-1x.jpg';
 
 const HomePage = () => {
   return (
@@ -29,25 +34,34 @@ const HomePage = () => {
             <NavLink to="/login"><SignInButton>Sign In</SignInButton></NavLink>
           </div>
         </Section>
-
         
-      <UserImage>
-        <VideoTutorialSection>
-          <VideoTutorialButton>
-            <VideoIcon src="play-button.png" alt="Play Video Tutorial" />
-            350+ Video tutorial
-          </VideoTutorialButton>
-        </VideoTutorialSection>
+        <FotoSection>
+          <img src={img} alt="Woman exercising" />
 
-        <CaloriesTrackerSection>
-          <CaloriesInfo>
-            <CaloriesIcon src="fire-icon.png" alt="Calories Burned" />
-            <CaloriesText>500 cal</CaloriesText>
-          </CaloriesInfo>
-        </CaloriesTrackerSection>
+          <VideoTutorialSection>
+            <VideoIcon>
+              <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="15" cy="15" r="15" fill="#EF8964" />
+              </svg>
+            </ VideoIcon >
+            <SectionVideo>
+              <Video>350+</Video>
+              <VideoTutorialButton>Video tutorial</VideoTutorialButton>
+            </SectionVideo>
+          </VideoTutorialSection>
 
-         <img src="../img/hero-mobile-1x.jpg" alt="Woman exercising" />
-      </UserImage>
+          <CaloriesTrackerSection>
+            <CaloriesIcon>
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="10" cy="10" r="10" fill="#EFA082" />
+              </svg>
+            </CaloriesIcon>
+            <CaloriesInfo>
+              <CaloriesText>500</CaloriesText>
+              <Text>cal</Text>
+           </CaloriesInfo>
+         </CaloriesTrackerSection>
+      </FotoSection>
         
       </Container>
     </>

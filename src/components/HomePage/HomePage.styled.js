@@ -52,38 +52,57 @@ line-height: 112%;
 `;
 
 // Стилі для блоку з відео туторіалом
-export const VideoTutorialButton = styled.button`
-  border-radius: 12px;
-width: 146px;
-height: 66px;
-background: #303030;
-`;
+
 
 // Стилі для блоку трекера спалених калорій
 export const CaloriesInfo = styled.div`
-  border-radius: 12px;
-width: 119px;
-height: 76px;
 background: var(--orange_1-color);
+
 `;
 
 // Стилі для зображення калорійного вогнику
-export const CaloriesIcon = styled.img`
-  width: 30px;
-  height: auto;
-  margin-right: 10px;
+export const CaloriesIcon = styled.svg`
+  border-radius: 100%;
+color: var(--beige-color);
+width: 12px;
+height: 12px;
+margin-top: 18px;
+margin-left: 22px;
+margin-bottom: 8px;
 `;
 
 // Стилі для кількості спалених калорій
 export const CaloriesText = styled.span`
-  font-size: 16px;
-  font-weight: bold;
+margin-right: 8px;
+font-weight: 700;
+font-size: 24px;
+line-height: 100%;
+letter-spacing: -0.04em;
+text-transform: uppercase;
+color: var(--white-color);
+`;
+
+export const Text = styled.span`
+  font-family: var(--font-family);
+font-weight: 700;
+font-size: 12px;
+line-height: 133%;
+color: rgba(239, 237, 232, 0.65);
 `;
 
 // Основний контейнер сторінки
 export const Container = styled.div`
-  /* padding-top: 90px;
-  padding: 20px; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  /*   */
+`;
+
+// Стилі для компоненту UserImage
+export const UserImage = styled.img`
+  width: 100%; /* Або встановіть бажаний розмір */
+  height: auto;
 `;
 
 // Стилі для секцій сторінки
@@ -95,31 +114,62 @@ export const Section = styled.section`
 
 `;
 
-// Стилі для блоку зображення відео
-export const VideoIcon = styled.img`
-  width: 40px;
-  height: auto;
-  margin-right: 10px;
-`;
-
 // Стилі для секції з відео туторіалом
-export const VideoTutorialSection = styled(Section)`
-  width: 146px;
+export const VideoTutorialSection = styled.div`
+border-radius: 12px;
+width: 146px;
 height: 66px;
+background: #303030;
+display: flex;
+/* margin-bottom: 284px; */
+/* margin-left: 44px; */
 `;
 
-// Стилі для секції з калоріями
-export const CaloriesTrackerSection = styled(Section)`
-  background-color: #f8f9fa;
-  width: 119px;
+export const SectionVideo = styled.div`
+  padding-top: 14px;
+  padding-bottom: 14px;
+  /* padding-right: 18px; */
+`;
+export const VideoIcon = styled.svg`
+  border-radius: 100%;
+color: var(--orange_1-color);
+  width: 30px;
+  height: 30px;
+  margin-top: 18px;
+  margin-bottom: 18px;
+  margin-left: 18px;
+  margin-right: 4px;
+`;
+
+export const Video = styled.p`
+font-weight: 700;
+font-size: 16px;
+line-height: 112%;
+color: var(--white-color);
+`;
+
+export const VideoTutorialButton = styled.p`
+font-weight: 400;
+font-size: 12px;
+line-height: 133%;
+color: rgba(239, 237, 232, 0.65);
+`;
+
+export const CaloriesTrackerSection = styled.div`
+  border-radius: 12px;
+ width: 119px;
 height: 76px;
+background: var(--orange_1-color);
+/* display: flex; */
+
 `;
 
 // Стилі для компоненту UserImage
-export const UserImage = styled.div`
-  width: 446px;
-height: 669px;
-`;
+// export const UserImage = styled.img`
+//   width: 100%; /* Або встановіть бажаний розмір */
+//   height: auto;
+// `;
+
 
 // ............................................
 
@@ -184,5 +234,17 @@ export const PromoTitle = styled.h2`
   color: var(--white);
 `;
 export const MainContent = styled.div`
-  /* Ваші стилі для компоненту MainContent */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+`;
+
+export const FotoSection = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* gap: 20px; */
+  background-image : url('../../../img/hero-mobile-1x.jpg');
+  padding-left: 77px;
 `;
