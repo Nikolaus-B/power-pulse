@@ -85,7 +85,6 @@ const InputButton = styled.button`
 
 const CustomSelect = styled.div`
 
-
 `;
 
 const SelectCategory = styled.select`

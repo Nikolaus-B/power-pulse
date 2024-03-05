@@ -69,23 +69,36 @@ const RightSideWrapper = styled.div`
   gap: 16px;
 `;
 
-const RecommendedWrapper = styled.div`
+const RecommendedContainer = styled.div`
   display: flex;
   gap: 8px;
   align-items: center;
 `;
 
-const ColorRound = styled.div`
+const RecommendedWrapper = styled.div`
+display: flex;
+gap: 8px;`;
+
+const NotRecommendedWrapper = styled.div`
+display: none`;
+
+const GreenRound = styled.div`
   border-radius: 10px;
   width: 14px;
   height: 14px;
   background-color: #419b09;
 `;
 
+const RedRound = styled.div`
+  border-radius: 10px;
+  width: 14px;
+  height: 14px;
+  background-color: E9101D;
+`;
+
 const Text = styled.p`
   font-size: 12px;
   color: var(--white-color);
-  text-transform: capitalize;
   max-width: 122px;
   white-space: nowrap;
   overflow: hidden;
@@ -119,7 +132,6 @@ const TitleText = styled.p`
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  text-transform: capitalize;
 `;
 
 const InfoWrapper = styled.div`
@@ -135,7 +147,8 @@ export {
   List,
   ListItem,
   Container,
-  ColorRound,
+  GreenRound,
+  RedRound,
   DietContainer,
   MainContainer,
   Text,
@@ -147,5 +160,7 @@ export {
   HeaderWrapper,
   RightSideWrapper,
   RecommendedWrapper,
+  NotRecommendedWrapper,
+  RecommendedContainer,
   Button,
 };

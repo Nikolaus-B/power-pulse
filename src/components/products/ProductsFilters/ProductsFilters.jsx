@@ -1,4 +1,5 @@
 import React from 'react';
+import Select from 'react-select';
 import {
   Form,
   InputWrapper,
@@ -11,9 +12,36 @@ import {
   CustomSelect,
   ChakraSelect
 } from './ProductsFilters.styled';
-import { Select } from '@chakra-ui/react'
 
 export const ProductsFilters = ({ categories }) => {
+
+  const customStyles = {
+    control: (provided) => ({
+      ...provided,
+      fontSize: '14px',
+      border: '1px solid var(--text-info-color)',
+      borderRadius: '12px',
+      padding: '14px',
+      width: '146px',
+      backgroundColor: 'transparent',
+      color: 'var(--white-color)',
+      WebkitAppearance: 'none',
+      MozAppearance: 'none',
+      appearance: 'none',
+      backgroundImage: 'url("data:image/svg+xml,...")',
+      backgroundRepeat: 'no-repeat',
+      backgroundPosition: 'right 14px center',
+      '@media screen and (min-width: 768px)': {
+        fontSize: '16px',
+        width: '192px',
+      },
+    }),
+    menu: (provided) => ({
+      ...provided,
+      maxHeight: '200px', // Set the maximum height for the dropdown
+    }),
+  };
+
   return (
     <Form>
       <InputWrapper>
@@ -69,7 +97,12 @@ export const ProductsFilters = ({ categories }) => {
           </InputButton>
         </ButtonWrapper>
       </InputWrapper>
-      <CustomSelect>
+      <Select
+      options={categories.map((category) => ({ value: category, label: category }))}
+      styles={customStyles} // Apply custom styles
+      placeholder="Select a category"
+    />
+      {/* <CustomSelect>
       <SelectCategory defaultValue="placeholder">
         <Option value="placeholder" disabled hidden>Categories</Option>
         {categories.map(category => {
@@ -79,7 +112,7 @@ export const ProductsFilters = ({ categories }) => {
         })}
         
       </SelectCategory> 
-      </CustomSelect>
+      </CustomSelect> */}
 
       {/* <Select variant="outline" placeholder="Categories">
       {categories.map(category => {

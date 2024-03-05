@@ -4,9 +4,11 @@ import {
   List,
   ListItem,
   Container,
-  ColorRound,
+  GreenRound,
+  RedRound,
   DietContainer,
   MainContainer,
+  RecommendedContainer,
   Text,
   TitleText,
   TitleWrapper,
@@ -16,11 +18,17 @@ import {
   HeaderWrapper,
   RightSideWrapper,
   RecommendedWrapper,
+  NotRecommendedWrapper,
   Button,
 } from './ProductsList.styled';
 import img from '../../../img/products-1x.jpg'
 
 export const ProductsList = ({ products }) => {
+
+  const capitalizeFirstLetter = (text) => {
+    return text.charAt(0).toUpperCase() + text.slice(1);
+  };
+
   return (
     <List>
       {products.map(product => {
@@ -32,10 +40,16 @@ export const ProductsList = ({ products }) => {
                   <DietText>DIET</DietText>
                 </DietContainer>
                 <RightSideWrapper>
-                  <RecommendedWrapper>
-                    <ColorRound></ColorRound>
+                  <RecommendedContainer>
+                    <RecommendedWrapper>
+                    <GreenRound></GreenRound>
                     <Text>Recommended</Text>
-                  </RecommendedWrapper>
+                    </RecommendedWrapper>
+                    <NotRecommendedWrapper>
+                    <RedRound></RedRound>
+                    <Text>Not recommended</Text>
+                    </NotRecommendedWrapper>
+                  </RecommendedContainer>
                   <Button type="button"> Add 
                     <svg
                       width="16"
@@ -75,7 +89,7 @@ export const ProductsList = ({ products }) => {
                       fill="#EFEDE8"
                     />
                   </svg>
-                  <TitleText>{product.title}</TitleText>
+                  <TitleText>{capitalizeFirstLetter(product.title)}</TitleText>
                 </TitleWrapper>
                 <InfoWrapper>
                   <Text>
@@ -84,7 +98,7 @@ export const ProductsList = ({ products }) => {
                   </Text>
                   <Text>
                     <DarkText>Category: </DarkText>
-                    {product.category}
+                    {capitalizeFirstLetter(product.category)}
                   </Text>
                   <Text>
                     <DarkText>Weight: </DarkText>
