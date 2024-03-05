@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Icon } from '@iconify-icon/react';
 
 const getColor = props =>
   props.$isOrange ? '--orange-color' : '--primary-black-color';
@@ -26,6 +27,10 @@ export const Dashboard = styled.div`
 export const IconAndTitleContainer = styled.div`
   display: flex;
   gap: 8px;
+`;
+
+export const DashboardIcon = styled(Icon)`
+  color: var(--orange_1-color);
 `;
 
 export const DashboardTitle = styled.p`

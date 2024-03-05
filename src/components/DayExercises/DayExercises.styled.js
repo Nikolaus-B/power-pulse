@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { Icon } from '@iconify-icon/react';
 
 export const ExercisesContainer = styled.div`
   position: relative;
@@ -28,8 +29,17 @@ export const DayExercisesTitle = styled.p`
 
 export const ExercisesLink = styled(Link)`
   text-decoration: none;
-
+  text-align: center;
   color: var(--orange-color);
+  transition: color var(--transition-dur-and-func);
+  &:hover,
+  &:focus {
+    color: var(--orange_1-color);
+  }
+`;
+
+export const ExercisesIcon = styled(Icon)`
+  margin-bottom: -2px;
 `;
 
 export const Exerciseslist = styled.div`

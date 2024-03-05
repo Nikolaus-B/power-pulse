@@ -14,6 +14,7 @@ export const GlobalStyle = createGlobalStyle`
   --text-info-color: rgba(239, 237, 232, 0.3);
   --text-categories-color:rgba(239, 237, 232, 0.4);
   --diary-active-color:rgba(239, 237, 232, 0.8);
+    --transition-dur-and-func: 250ms cubic-bezier(0.4, 0, 0.2, 1);
   
 }
 

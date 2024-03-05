@@ -1,3 +1,4 @@
+import { Icon } from '@iconify-icon/react';
 import styled from 'styled-components';
 
 export const DayDashboardContainer = styled.div``;
@@ -25,6 +26,16 @@ export const DashboardList = styled.div`
 
 export const NotificationContainer = styled.div`
   display: flex;
+`;
+
+export const NotificationIcon = styled(Icon)`
+  width: 24px;
+  height: 24px;
+  margin-right: 8px;
+  font-size: 24px;
+  background-color: var(--orange_1-color);
+  border-radius: 50px;
+  color: var(--white-color);
 `;
 
 export const Notification = styled.p`

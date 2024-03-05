@@ -3,6 +3,7 @@ import {
   DayExercisesTitle,
   ExercisesContainer,
   ExercisesHeader,
+  ExercisesIcon,
   ExercisesLink,
   Exerciseslist,
   NotFoundExercises,
@@ -13,7 +14,10 @@ export const DayExercises = () => {
     <ExercisesContainer>
       <ExercisesHeader>
         <DayExercisesTitle>Exercises</DayExercisesTitle>
-        <ExercisesLink to="/product">Add Exercise</ExercisesLink>
+        <ExercisesLink to="/product">
+          Add Exercise{' '}
+          <ExercisesIcon icon="ri:arrow-right-line" height={16} width={16} />
+        </ExercisesLink>
       </ExercisesHeader>
       <Exerciseslist>
         <NotFoundExercises>Not found exercises</NotFoundExercises>

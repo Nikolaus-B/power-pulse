@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { Icon } from '@iconify-icon/react';
 
 export const ProductsContainer = styled.div`
   position: relative;
@@ -28,8 +29,17 @@ export const DayProductTitle = styled.p`
 
 export const ProductsLink = styled(Link)`
   text-decoration: none;
-
   color: var(--orange-color);
+
+  transition: color var(--transition-dur-and-func);
+  &:hover,
+  &:focus {
+    color: var(--orange_1-color);
+  }
+`;
+
+export const ProductsIcon = styled(Icon)`
+  margin-bottom: -2px;
 `;
 
 export const Productslist = styled.div`
