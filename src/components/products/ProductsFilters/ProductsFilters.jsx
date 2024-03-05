@@ -12,14 +12,16 @@ import {
 
 export const ProductsFilters = ({ categories }) => {
 
+  const recommendedFilters = ['All', 'Recommended', 'Not recommended']
+
   const customStyles = {
     control: (base, state) => ({
       ...base,
       backgroundColor: 'inherit',
       borderRadius: '12px',
       border: '1px solid var(--text-info-color)',
-      width: '146px',
-      padding: '6px 0px 6px 6px',
+      width: '100%',
+      padding: '6px',
       fontSize: '14px',
       height: '50px',
       '@media screen and (min-width: 768px)': {
@@ -125,18 +127,27 @@ export const ProductsFilters = ({ categories }) => {
       </InputWrapper>
       <Select
       options={categories.map((category) => ({ value: category, label: capitalizeFirstLetter(category) }))}
-      styles={customStyles} // Apply custom styles
-      placeholder="Select a category"
+      name="Categories"
+      placeholder="Categories"
+      styles={customStyles} 
+      minWidth="146px"
       theme={(theme) => ({
         ...theme,
         borderRadius: '12px',
       })}
     />
-      <SelectLevel defaultValue="all">
-        <Option value="all">All</Option>
-        <Option value="recommended">Recommended</Option>
-        <Option value="notRecommended">Not recommended</Option>
-      </SelectLevel>
+    <Select
+          placeholder="All"
+          styles={customStyles} 
+          minWidth="173px"
+          maxWidth="204px"
+          options={recommendedFilters.map((el) => ({ value: el, label: capitalizeFirstLetter(el) }))}
+          theme={(theme) => ({
+            ...theme,
+            borderRadius: '12px',
+          })}
+          name="Recommendations"
+        />
     </Form>
   );
 };
