@@ -8,7 +8,7 @@ export const Li = styled.li`
     object-fit: cover;
     border: 1px solid rgba(239, 237, 232, 0.2);
     border-radius: 12px;
-    padding: 81px 100px;
+    padding: 81px 0;
 `;
 
 export const SubTitle = styled.h1`

@@ -7,23 +7,20 @@ export const Ul = styled.ul`
     margin-top: 20px;
 `;
 
-export const Category = styled.li`
+export const Category = styled.p`
+    position: relative;
+    color: ${props => props.selected ? 'var(--white-color)' : 'var(--text-categories-color)'};
     font-weight: 400;
     font-size: 14px;
     line-height: 18px;
-    color: rgba(239, 237, 232, 0.4);
+    &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+    width: 100%;
+    height: ${(props) => (props.selected ? '4px' : '0')};
+    background-color: ${(props) => (props.selected ? 'var(--orange_1-color)' : 'transparent')};
+    border-radius: 2px;
+    }
 `;
-
-
-// .categories__link {
-//   color: var(--categories-link-color);
-//   font-size: 16px;
-//   line-height: 1.125; /* 112.5% */
-//   letter-spacing: -0.32px;
-// }
-
-// .current-category {
-//   color: var(--violet-text-color);
-//   font-weight: 700;
-//   text-transform: uppercase;
-// }

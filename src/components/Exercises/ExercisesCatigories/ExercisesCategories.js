@@ -1,18 +1,22 @@
 import React from 'react';
 import { Ul, Category} from "./ExercisesCategories.styled"
 
-export const ExercisesCategories = ({onSelect }) => {
+export const ExercisesCategories = ({onSelect, selectedCategory }) => {
     const categories = ["Body parts", "Muscles", "Equipment"]
     const handleClick = (category) => {
         onSelect(category);
     };
 
     return (
-            <Ul position="relative" variant="unstyled">
+            <Ul>
                 {categories.map((category, index) => (
-                        <Category position="relative" variant="unstyled" key={index} onClick={() => handleClick(category)}>
-                            {category}
+                    <li key={index}
+                            onClick={() => handleClick(category)}
+                            >
+                        <Category selected={category === selectedCategory}>
+                                {category}
                         </Category>
+                    </li>
                 ))}
             </Ul>
     )

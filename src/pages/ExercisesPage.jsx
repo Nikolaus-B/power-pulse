@@ -37,7 +37,7 @@ function ExercisesPage() {
         <ExercisesList exercises={selectedSubcategory} />
         ) : (
             <>
-              <ExercisesCategories onSelect={handleCategorySelect} />
+              <ExercisesCategories onSelect={handleCategorySelect} selectedCategory={selectedCategory}/>
               <ExercisesSubcategoriesList
                 category={selectedCategory}
                 subcategories={filters}

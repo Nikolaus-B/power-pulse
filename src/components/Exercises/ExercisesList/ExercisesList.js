@@ -12,10 +12,5 @@ export const ExercisesList = () => {
         ))}
       </ul>
     </div>
-    // <div>
-    //   {data.map((exercise) => (
-    //     <ExercisesItem key={exercise._id.$oid} exercise={exercise} />
-    //   ))}
-    // </div>
     )
 }
