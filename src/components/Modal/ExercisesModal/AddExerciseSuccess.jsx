@@ -6,12 +6,14 @@ import {
   Heading,
   Calories,
   ProductButton,
-  customStyles
+  customStyles,
+  WrapperDiaryLink,
+  ExerciseTime,
+  WrapperCloseIcon,
 } from './ExerciseSuccess.styled';
 
+import { CloseIcon, ArrowForwardIcon } from '@chakra-ui/icons';
 import img from './img/Thumb_up.png';
-
-
 
 export const AddExerciseSuccess = ({
   isSuccessOpen,
@@ -26,23 +28,27 @@ export const AddExerciseSuccess = ({
         style={customStyles}
         contentLabel="Add Product Modal"
       >
+        <WrapperCloseIcon onClick={onClose}>
+          <CloseIcon w={11} h={11} />
+        </WrapperCloseIcon>
+
         <Wrapper>
           <ImageEl src={img} alt="Success" style={{ marginBottom: '1rem' }} />
           <Heading>Well done</Heading>
 
+          <ExerciseTime>
+            Your time:<span>3 minutes</span>
+          </ExerciseTime>
           <Calories>
-            Your time:<span> 3 minutes</span>
-          </Calories>
-          <Calories>
-            Burned calories: <span>{caloriesAdded}</span>
+            Burned calories:<span>{caloriesAdded}</span>
           </Calories>
           <ProductButton onClick={onClose}>Next product</ProductButton>
-          <div>
-            <DiaryLink to="/diary">To the diary </DiaryLink>
-            <svg>
-              <use href='./img/IconArrow.svg'></use>
-          </svg>
-          </div>
+          <WrapperDiaryLink to="/diary">
+            <DiaryLink>To the diary </DiaryLink>
+            <div>
+              <ArrowForwardIcon boxSize={24} color="rgba(239, 237, 232, 0.3)" />
+            </div>
+          </WrapperDiaryLink>
         </Wrapper>
       </Modal>
     </>

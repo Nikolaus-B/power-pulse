@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { CloseIcon } from '@chakra-ui/icons';
 
 import {
   CancelButton,
@@ -8,6 +9,7 @@ import {
   GrammInput,
   Text,
   Span,
+  WrapperCloseIcon,
 } from './AddProductForm.styled';
 
 export const AddProductForm = ({ product, onClose, onSuccess, onError }) => {
@@ -38,26 +40,36 @@ export const AddProductForm = ({ product, onClose, onSuccess, onError }) => {
   };
 
   return (
-    <ModalForm onSubmit={handleSubmit}>
-      <ProductInput type="text" value={title} readOnly />
-      <div>
-        <GrammInput type="number" value={grams} onChange={handleGramsChange} />
-        <Span>grams</Span>
-      </div>
+    <>
+      <WrapperCloseIcon onClick={onClose}>
+        <CloseIcon w={11} h={11} />
+      </WrapperCloseIcon>
+      <ModalForm onSubmit={handleSubmit}>
+        <ProductInput type="text" value={title} readOnly />
+        <div>
+          <GrammInput
+            type="number"
+            inputMode="numeric"
+            value={grams}
+            onChange={handleGramsChange}
+          />
+          <Span>grams</Span>
+        </div>
 
-      <Text>
-        Calories:
-        <span style={{ color: 'white', marginLeft: '4px' }}>{call}</span>
-      </Text>
+        <Text>
+          Calories:
+          <span style={{ color: 'white', marginLeft: '4px' }}>{call}</span>
+        </Text>
 
-      <div>
-        <AddToDiaryButton type="submit" onClick={() => onSuccess(call)}>
-          Add to diary
-        </AddToDiaryButton>
-        <CancelButton type="button" onClick={onClose}>
-          Cancel
-        </CancelButton>
-      </div>
-    </ModalForm>
+        <div>
+          <AddToDiaryButton type="submit" onClick={() => onSuccess(call)}>
+            Add to diary
+          </AddToDiaryButton>
+          <CancelButton type="button" onClick={onClose}>
+            Cancel
+          </CancelButton>
+        </div>
+      </ModalForm>
+    </>
   );
 };

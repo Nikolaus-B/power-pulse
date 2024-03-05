@@ -101,6 +101,7 @@ color: rgba(239, 237, 232, 0.4);
     font-size: 14px;
     color: #EFEDE8;
     line-height: 1.28;
+    margin-top: 4px;
 
   }
 
@@ -110,7 +111,7 @@ color: rgba(239, 237, 232, 0.4);
 `;
 
 const AddToDiaryButton = styled.button`
-  width: 151px;
+  /* width: 151px;3 */
   height: 42px;
   box-sizing: border-box;
   font-size: 16px;
@@ -118,6 +119,7 @@ const AddToDiaryButton = styled.button`
   border-radius: 12px;
   background-color: rgba(230, 83, 60, 1);
   padding: 12px 32px;
+  color: #EFEDE8;
 `;
 
 export {

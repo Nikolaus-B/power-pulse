@@ -51,8 +51,7 @@ export const BasicModalWindow = () => {
         style={customStyles}
         contentLabel="Add Product Modal"
       >
-
-{/* {isSuccess ?(
+        {/* {isSuccess ?(
         <AddProductSuccess
           isSuccessOpen={true}
           onClose={() => setIsSuccess(false)}
@@ -90,5 +89,3 @@ export const BasicModalWindow = () => {
     </>
   );
 };
-
-

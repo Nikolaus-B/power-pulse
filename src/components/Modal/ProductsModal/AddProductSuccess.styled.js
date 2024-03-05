@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
+
+
 const Wrapper = styled.div`
   padding: 48px 89px;
   display: flex;
@@ -9,8 +11,17 @@ const Wrapper = styled.div`
   align-items: center;
 `;
 
+const WrapperCloseIcon  = styled.div`
+position: fixed;
+top: 18px;
+right: 18px;
+cursor: pointer;
+`
+
 const ImageEl = styled.img`
   margin-bottom: 16px;
+  width: 123px;
+  height: 84px;
 `;
 const Heading = styled.h3`
   font-size: 24px;
@@ -23,13 +34,14 @@ const Calories = styled.p`
   margin-bottom: 24px;
 
   span {
-    color: white;
+    color: rgba(230, 83, 60, 1);
   }
 `;
 
 const ProductButton = styled.button`
   display: block;
   box-sizing: border-box;
+  color: #EFEDE8;
   font-size: 16px;
   line-height: 1.12;
   border-radius: 12px;
@@ -38,11 +50,20 @@ const ProductButton = styled.button`
   margin-bottom: 16px;
 `;
 
-const DiaryLink = styled(Link)`
-  color: #fff;
+const WrapperDiaryLink = styled(Link)`
+display: flex;
+align-items : center ;
+text-decoration: none;
+cursor: pointer;
+`
+
+const DiaryLink = styled.div`
+  color: rgba(239, 237, 232, 0.3);
   text-decoration: none;
-  border-radius: 4px;
-  cursor: pointer;
-  margin-right: 8px;
+  /* margin-right: 8px; */
+  font-size: 14px;
+  line-height: 1.28;
 `;
-export { Wrapper, DiaryLink, ImageEl, Heading, Calories, ProductButton };
+
+
+export { Wrapper, DiaryLink, ImageEl, Heading, Calories, ProductButton , WrapperCloseIcon , WrapperDiaryLink };

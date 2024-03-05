@@ -23,7 +23,16 @@ const customStyles = {
 const ModalForm = styled.form`
   padding: 48px 24px;
   box-sizing: border-box;
+  color: #EFEDE8;
 `;
+
+const WrapperCloseIcon = styled.div`
+position: fixed;
+top: 18px;
+right: 18px;
+cursor: pointer;
+
+`
 
 const AddToDiaryButton = styled.button`
   /* width: 151px; */
@@ -32,6 +41,7 @@ const AddToDiaryButton = styled.button`
   border-radius: 12px;
   background-color: rgba(230, 83, 60, 1);
   padding: 12px 32px;
+  color: #EFEDE8;
 `;
 
 const CancelButton = styled.button`
@@ -43,6 +53,8 @@ const CancelButton = styled.button`
   padding: 12px 36px;
   font-size: 16px;
   line-height: 18px;
+  color: #EFEDE8;
+  background-color: transparent;
 `;
 
 const ProductInput = styled.input`
@@ -52,6 +64,7 @@ const ProductInput = styled.input`
   border: 1px solid;
   border-color: rgba(230, 83, 60, 1);
   font-size: 14px;
+  line-height: 1.28;
   color: rgba(239, 237, 232, 0.3);
   padding: 8px 14px 8px 14px;
   margin-bottom: 16px;
@@ -65,7 +78,9 @@ const GrammInput = styled.input`
   border-radius: 12px;
   border: 1px solid;
   border-color: rgba(230, 83, 60, 1);
+  color: #EFEDE8 ;
   font-size: 14px;
+  line-height: 1.28;
   padding: 8px 60px 8px 14px;
   margin-bottom: 16px;
   background-color: transparent;
@@ -81,6 +96,7 @@ const Text = styled.p`
 
 const Span = styled.span`
   font-size: 12px;
+  line-height : 1.5;
   color: rgba(239, 237, 232, 0.4);
   position: fixed;
   right: 42px;
@@ -97,4 +113,5 @@ export {
   GrammInput,
   Text,
   Span,
+  WrapperCloseIcon
 };
