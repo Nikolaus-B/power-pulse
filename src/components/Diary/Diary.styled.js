@@ -4,14 +4,22 @@ export const DiaryContainer = styled.div``;
 
 export const TitleContainer = styled.div`
   display: flex;
-  gap: 96px;
+  justify-content: space-between;
   margin-bottom: 40px;
+
+  @media screen and (min-width: 768px) {
+    margin-bottom: 32px;
+  }
 `;
 
 export const ProductAndExercises = styled.div`
   display: flex;
   flex-direction: column;
   gap: 40px;
+
+  @media screen and (min-width: 1440px) {
+    gap: 32px;
+  }
 `;
 
 export const DashboardContainer = styled.div`
@@ -25,5 +33,6 @@ export const DashboardContainer = styled.div`
 
   @media screen and (min-width: 1440px) {
     flex-direction: row;
+    gap: 32px;
   }
 `;

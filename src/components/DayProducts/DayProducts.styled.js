@@ -3,10 +3,15 @@ import { Link } from 'react-router-dom';
 
 export const ProductsContainer = styled.div`
   position: relative;
-  min-height: 335px;
+  height: 335px;
   padding: 16px;
   border: 1px solid var(--border-static-color);
   border-radius: 12px;
+
+  @media screen and (min-width: 1440px) {
+    width: 826px;
+    height: 234px;
+  }
 `;
 
 export const ProductHeader = styled.div`

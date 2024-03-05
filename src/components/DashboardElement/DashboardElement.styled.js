@@ -16,6 +16,11 @@ export const Dashboard = styled.div`
   background-color: var(${getColor});
   border: 1px solid var(--border-static-color);
   border-radius: 12px;
+
+  @media screen and (min-width: 768px) {
+    width: 187px;
+    height: 116px;
+  }
 `;
 
 export const IconAndTitleContainer = styled.div`
