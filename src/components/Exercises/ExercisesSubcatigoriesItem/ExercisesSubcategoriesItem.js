@@ -1,5 +1,5 @@
 import React from "react";
-import { Li, SubTitle } from "./ExercisesSubcatigoriesItem.styled";
+import { Li, SubTitle, CategoryTitle } from "./ExercisesSubcatigoriesItem.styled";
 
 export const ExercisesSubcategoriesItem = ({ subcategory, filters, onSelect }) => {
     
@@ -13,16 +13,14 @@ export const ExercisesSubcategoriesItem = ({ subcategory, filters, onSelect }) =
                     return (
                         <Li key={item._id.$oid}
                             style={{
-                                backgroundImage: `url(${item.imgURL})`,
-                                backgroundColor: `rgba(4, 4, 4, 0.5)`,
+                                backgroundImage: `linear-gradient(rgba(4, 4, 4, 0.5), rgba(4, 4, 4, 0.5)), url(${item.imgURL})`,
                                 backgroundSize: 'cover', 
                                 backgroundPosition: 'center', 
                                 backgroundRepeat: 'no-repeat'
                             }}
-                            // onClick={() => onSelect(subcategory.name)}
                             onClick={handleClick}>
                             <SubTitle>{item.name}</SubTitle>
-                            {item.filter}
+                            <CategoryTitle>{item.filter}</CategoryTitle>
                         </Li>
                     );
             })}

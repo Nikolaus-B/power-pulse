@@ -8,14 +8,23 @@ export const Li = styled.li`
     object-fit: cover;
     border: 1px solid rgba(239, 237, 232, 0.2);
     border-radius: 12px;
-    padding: 45px 105px;
+    padding: 81px 100px;
 `;
 
 export const SubTitle = styled.h1`
-    font-family: var(--font-family);
     font-weight: 400;
     font-size: 20px;
-    line-height: 120%;
+    line-height: 24px;
     text-align: center;
-    color: var(--white);
+    text-transform: capitalize;
+    color: var(--white-color);
+    margin-bottom: 2px;
+`;
+
+export const CategoryTitle = styled.p`
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 18px;
+    text-align: center;
+    color: rgba(239, 237, 232, 0.4);
 `;
