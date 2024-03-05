@@ -19,7 +19,7 @@ export const ProductsFilters = ({ categories }) => {
       <InputWrapper>
         <Input placeholder="Search" />
         <ButtonWrapper>
-          <InputButton type="button">
+          <InputButton type="button" style={{display: 'none'}}>
             <svg
               width="18"
               height="18"
@@ -69,7 +69,7 @@ export const ProductsFilters = ({ categories }) => {
           </InputButton>
         </ButtonWrapper>
       </InputWrapper>
-      {/* <CustomSelect> */}
+      <CustomSelect>
       <SelectCategory defaultValue="placeholder">
         <Option value="placeholder" disabled hidden>Categories</Option>
         {categories.map(category => {
@@ -79,7 +79,15 @@ export const ProductsFilters = ({ categories }) => {
         })}
         
       </SelectCategory> 
-      {/* </CustomSelect> */}
+      </CustomSelect>
+
+      {/* <Select variant="outline" placeholder="Categories">
+      {categories.map(category => {
+          return <option value={category} name="category" key={category}>
+          {category}
+        </option>
+        })}
+      </Select> */}
       <SelectLevel defaultValue="all">
         <Option value="all">All</Option>
         <Option value="recommended">Recommended</Option>
