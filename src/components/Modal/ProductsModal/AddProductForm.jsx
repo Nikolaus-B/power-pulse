@@ -10,6 +10,7 @@ import {
   Text,
   Span,
   WrapperCloseIcon,
+  WrapperInputForm
 } from './AddProductForm.styled';
 
 export const AddProductForm = ({ product, onClose, onSuccess, onError }) => {
@@ -45,16 +46,18 @@ export const AddProductForm = ({ product, onClose, onSuccess, onError }) => {
         <CloseIcon w={11} h={11} />
       </WrapperCloseIcon>
       <ModalForm onSubmit={handleSubmit}>
-        <ProductInput type="text" value={title} readOnly />
-        <div>
-          <GrammInput
-            type="number"
-            inputMode="numeric"
-            value={grams}
-            onChange={handleGramsChange}
-          />
-          <Span>grams</Span>
-        </div>
+        <WrapperInputForm>
+          <ProductInput type="text" value={title} readOnly />
+          <div>
+            <GrammInput
+              type="number"
+              inputMode="numeric"
+              value={grams}
+              onChange={handleGramsChange}
+            />
+            <Span>grams</Span>
+          </div>
+        </WrapperInputForm>
 
         <Text>
           Calories:

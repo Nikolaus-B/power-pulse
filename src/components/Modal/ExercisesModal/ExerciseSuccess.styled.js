@@ -86,7 +86,7 @@ align-items : center ;
 text-decoration: none;
 cursor: pointer;
 `
-const DiaryLink = styled(Link)`
+const DiaryLink = styled.p`
   color: rgba(239, 237, 232, 0.3);
   font-size: 14px;
   text-decoration: none;

@@ -48,6 +48,10 @@ export const BasicModalWindow = () => {
     // setError(errorMessage);
   };
 
+  const handleAddCalories = (calories) => {
+    setCaloriesAdded(calories)
+  }
+
   return (
     <>
       <button onClick={handleOpenModal}>Start</button>
@@ -62,6 +66,7 @@ export const BasicModalWindow = () => {
           onClose={handleCloseModal}
           onSuccess={handleAddProductSuccess}
           onError={handleAddProductError}
+          caloriesAdded={handleAddCalories}
         />
       </Modal>
       {isSuccess && (
