@@ -7,40 +7,66 @@ import {
   ButtonWrapper,
   InputButton,
   Option,
-  SelectCategory,
   SelectLevel,
-  CustomSelect,
-  ChakraSelect
 } from './ProductsFilters.styled';
 
 export const ProductsFilters = ({ categories }) => {
 
   const customStyles = {
-    control: (provided) => ({
-      ...provided,
-      fontSize: '14px',
-      border: '1px solid var(--text-info-color)',
+    control: (base, state) => ({
+      ...base,
+      backgroundColor: 'inherit',
       borderRadius: '12px',
-      padding: '14px',
+      border: '1px solid var(--text-info-color)',
       width: '146px',
-      backgroundColor: 'transparent',
-      color: 'var(--white-color)',
-      WebkitAppearance: 'none',
-      MozAppearance: 'none',
-      appearance: 'none',
-      backgroundImage: 'url("data:image/svg+xml,...")',
-      backgroundRepeat: 'no-repeat',
-      backgroundPosition: 'right 14px center',
+      padding: '6px 0px 6px 6px',
+      fontSize: '14px',
+      height: '50px',
       '@media screen and (min-width: 768px)': {
         fontSize: '16px',
         width: '192px',
       },
     }),
-    menu: (provided) => ({
-      ...provided,
-      maxHeight: '200px', // Set the maximum height for the dropdown
+    menu: (base) => ({
+      ...base,
+      color: 'var(--white-color)',
     }),
+    menuList: (base) => ({
+      ...base,
+      backgroundColor: '#1c1c1c',
+      borderRadius: '12px',
+      padding: '14px 32px 14px 14px',
+      gap: '8px',
+      maxHeight: '228px',
+      overflowY: 'auto',
+      '&::-webkit-scrollbar': {
+        width: '6px',
+      },
+      '&::-webkit-scrollbar-thumb': {
+        backgroundColor: 'rgba(239, 237, 232, 0.1)',
+        borderRadius: '12px',
+      },
+      color: 'var(--white-color)',
+    }),
+    indicatorSeparator: (base) => ({
+      ...base,
+      display: 'none',
+    }),
+    placeholder: (base) => ({
+      ...base,
+      color: 'var(--white-color)',
+    }),
+    singleValue: (base) => ({
+      ...base,
+      color: 'var(--white-color)',
+    }),
+    
   };
+
+  const capitalizeFirstLetter = (text) => {
+    return text.charAt(0).toUpperCase() + text.slice(1);
+  };
+
 
   return (
     <Form>
@@ -98,29 +124,14 @@ export const ProductsFilters = ({ categories }) => {
         </ButtonWrapper>
       </InputWrapper>
       <Select
-      options={categories.map((category) => ({ value: category, label: category }))}
+      options={categories.map((category) => ({ value: category, label: capitalizeFirstLetter(category) }))}
       styles={customStyles} // Apply custom styles
       placeholder="Select a category"
+      theme={(theme) => ({
+        ...theme,
+        borderRadius: '12px',
+      })}
     />
-      {/* <CustomSelect>
-      <SelectCategory defaultValue="placeholder">
-        <Option value="placeholder" disabled hidden>Categories</Option>
-        {categories.map(category => {
-          return <Option value={category} name="category" key={category} width='100%'>
-          {category}
-        </Option>
-        })}
-        
-      </SelectCategory> 
-      </CustomSelect> */}
-
-      {/* <Select variant="outline" placeholder="Categories">
-      {categories.map(category => {
-          return <option value={category} name="category" key={category}>
-          {category}
-        </option>
-        })}
-      </Select> */}
       <SelectLevel defaultValue="all">
         <Option value="all">All</Option>
         <Option value="recommended">Recommended</Option>

@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import BgImg1x from '../../../img/products-1x.jpg';
 import BgImg2x from '../../../img/products-2x.jpg';
-import { Select } from '@chakra-ui/react'
 
 
 const PageContainer = styled.div`
@@ -83,36 +82,6 @@ const InputButton = styled.button`
   border: none;
 `;
 
-const CustomSelect = styled.div`
-
-`;
-
-const SelectCategory = styled.select`
-overflow: scroll;
-text-transform:capitalize;
-  font-size: 14px;
-  border: 1px solid var(--text-info-color);
-  border-radius: 12px;
-  padding: 14px;
-  width: 146px;
-  background-color: inherit;
-  color: var(--white-color);
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  background-image: url('data:image/svg+xml,%3Csvg%20width%3D%2218%22%20height%3D%2218%22%20viewBox%3D%220%200%2018%2018%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%20%20%3Cpath%20d%3D%22M4.5%206.75L9%2011.25L13.5%206.75%22%20stroke%3D%22%23EFEDE8%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20%2F%3E%0A%3C%2Fsvg%3E');
-  background-repeat: no-repeat;
-  background-position: right 14px center;
-  @media screen and (min-width: 768px) {
-    font-size: 16px;
-    width: 192px;
-  }
-`;
-
-const ChakraSelect = styled(Select)`
-
-`;
-
 const SelectLevel = styled.select`
   font-size: 14px;
   border: 1px solid var(--text-info-color);
@@ -151,9 +120,6 @@ export {
   Input,
   ButtonWrapper,
   InputButton,
-  SelectCategory,
   SelectLevel,
   Option,
-  CustomSelect,
-  ChakraSelect
 };
