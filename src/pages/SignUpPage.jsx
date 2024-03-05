@@ -1,16 +1,24 @@
+import { useDispatch } from 'react-redux';
 import React from 'react';
-import { Formik } from 'formik';
+import { fetchUserRegister } from '../redux/user/operations';
+import { Formik, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
+import { useState } from 'react';
 
 import {
   StyledForm,
   Input,
   Button,
+  Message,
+  ErrorText,
 } from '../components/AuthLayout/StyledForm.styled';
 
 import AuthLayout from '../components/AuthLayout/AuthLayout';
 
 function SignInPage() {
+  const dispatch = useDispatch();
+  const [showPassword, hidePassword] = useState(false);
+
   const SignUp = Yup.object().shape({
     name: Yup.string().min(2).max(20).required('Required'),
     email: Yup.string()
@@ -39,9 +47,8 @@ function SignInPage() {
           password: '',
         }}
         validationSchema={SignUp}
-        onSubmit={async values => {
-          await new Promise(r => setTimeout(r, 500));
-          alert(JSON.stringify(values, null, 2));
+        onSubmit={values => {
+          dispatch(fetchUserRegister(values));
         }}
       >
         {({ errors, touched }) => (
@@ -70,14 +77,26 @@ function SignInPage() {
             </label>
             <label htmlFor="password">
               <Input
+                type={showPassword ? 'text' : 'password'}
                 id="password"
                 name="password"
                 placeholder="Password"
-                type="text"
                 className={`${'defoult'}
                     ${touched.password && !errors.password && 'success'}
                     ${touched.password && errors.password && 'error'}`}
               />
+              {errors.password && touched.password && (
+                <Message>
+                  <ErrorText>
+                    <ErrorMessage component="p" name="password" />
+                  </ErrorText>
+                </Message>
+              )}
+              {!errors.password && touched.password && (
+                <Message>
+                  <ErrorText>Success password</ErrorText>
+                </Message>
+              )}
             </label>
             <Button type="submit">Sign Up</Button>
           </StyledForm>

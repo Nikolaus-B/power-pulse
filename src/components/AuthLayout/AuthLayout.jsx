@@ -1,5 +1,5 @@
 import {
-  ContainerDiv,
+  Container,
   ContainerForm,
   Title,
   Text,
@@ -15,6 +15,9 @@ import {
   SectionMan,
   TitleMan,
   SpanMan,
+  Icon,
+  Block,
+  IconManSvg,
 } from './AuthLayout.styled';
 import sprite from '../../img/sprite.svg';
 
@@ -27,7 +30,7 @@ const AuthLayout = ({
   children,
 }) => {
   return (
-    <ContainerDiv>
+    <Container className="container">
       <ContainerForm>
         <Title>{title}</Title>
         <Text>{paragraph}</Text>
@@ -41,25 +44,31 @@ const AuthLayout = ({
 
       <Material>
         <IconPlay>
-          <SvgPlay>
-            <use href={`${sprite}#icon-Polygon-1`}></use>
-          </SvgPlay>
+          <Icon>
+            <SvgPlay>
+              <use href={`${sprite}#icon-Polygon-1`}></use>
+            </SvgPlay>
+          </Icon>
 
-          <Tutorial>
-            350+<TextTutorial>Video tutorial</TextTutorial>
-          </Tutorial>
+          <Block>
+            <Tutorial>
+              350+<TextTutorial>Video tutorial</TextTutorial>
+            </Tutorial>
+          </Block>
         </IconPlay>
         <Calories>
           <IconMan>
-            <use href={`${sprite}#icon-Group`}></use>
+            <IconManSvg>
+              <use href={`${sprite}#icon-Group`}></use>
+            </IconManSvg>
           </IconMan>
-          <SectionMan></SectionMan>
-          <TitleMan>
-            500 <SpanMan>cal</SpanMan>
-          </TitleMan>
+          <SectionMan>
+            <TitleMan>500</TitleMan>
+            <SpanMan>cal</SpanMan>
+          </SectionMan>
         </Calories>
       </Material>
-    </ContainerDiv>
+    </Container>
   );
 };
 

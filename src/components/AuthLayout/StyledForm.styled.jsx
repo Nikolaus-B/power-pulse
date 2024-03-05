@@ -2,18 +2,24 @@ import styled from 'styled-components';
 import { Form, Field } from 'formik';
 
 export const StyledForm = styled(Form)`
-   display: flex;
-    flex-direction: column;
-    gap: 18px;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  justify-content: center;
+
+  @media screen and (min-width: 768px) {
+    width: 364px;
+    gap: 20px;
   }
+}
 `;
+
 export const StyledFormIn = styled(Form)`
    display: flex;
     flex-direction: column;
     gap: 14px;
     justify-content: center;
-  }
+}
 `;
 
 export const Input = styled(Field)`
@@ -22,8 +28,7 @@ export const Input = styled(Field)`
   background-color: inherit;
   border: 1px solid rgba(239, 237, 232, 0.3);
   color: #efede8;
-  width: 93%;
-  max-width: 335px;
+  width: 100%;
   height: 46px;
   border-radius: 12px;
   padding-left: 14px;
@@ -70,8 +75,7 @@ export const Button = styled.button`
   line-height: 18px;
   letter-spacing: 0em;
   text-align: left;
-  margin-top: 19px;
-  margin-bottom: 12px;
+  margin-top: 28px;
   cursor: pointer;
 
   &:hover,
@@ -85,5 +89,26 @@ export const Button = styled.button`
     margin-top: 64px;
     font-size: 20px;
     line-height: 24px;
+  }
+`;
+export const Message = styled.div`
+    position: absolute;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+`;
+
+export const ErrorText = styled.p`
+  font-size: 12px;
+    font-weight: 400;
+    line-height: 18px;
+    letter-spacing: 0.01em;
+    text-align: left;
+    color: var(--error-color);
   }
 `;

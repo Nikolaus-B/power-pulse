@@ -8,34 +8,31 @@ import { Link } from 'react-router-dom';
 // import Mob1x from '../../img/hero-mobile-1x.jpg';
 // import Mob2x from '../../img/hero-mobile-2x.jpg';
 
-export const ContainerDiv = styled.div`
-  padding-left: 20px;
-  padding-right: 20px;
-
-  @media screen and (min-width: 768px) {
-    padding-left: 32px;
+export const Container = styled.div`
+  padding-top: 66px;
+  padding-bottom: 0px;
+  @media screen and (min-width: 1440px) {
+    display: flex;
+    flex-direction: row;
+    gap: 178px;
     padding-right: 32px;
   }
-
-  @media screen and (min-width: 1440px) {
-    padding: 0;
-    padding-left: 96px;
-  }
+}
 `;
 
 export const ContainerForm = styled.div`
   width: 100%;
   max-width: 335px;
   margin: 0;
-  padding-top: 90px;
+  margin-bottom: 35px;
 
   @media screen and (min-width: 768px) {
     max-width: 496px;
-    padding-top: 140px;
+    padding-top: 105px;
   }
 
   @media screen and (min-width: 1440px) {
-    padding-top: 151px;
+    padding-top: 116px;
   }
 `;
 
@@ -50,7 +47,7 @@ export const Title = styled.h2`
 
   @media screen and (min-width: 768px) {
     font-size: 32px;
-    line-height: 44px;
+    line-height: 1.38;
     margin-bottom: 16px;
   }
 `;
@@ -67,13 +64,14 @@ export const Text = styled.p`
   @media screen and (min-width: 768px) {
     font-size: 16px;
     line-height: 1.5;
-    margin-bottom: 23px;
+    margin-bottom: 32px;
   }
 `;
 
 export const TextLinkIn = styled.p`
   font-size: 12px;
   line-height: 1.33;
+  padding-top: 12px;
 
   color: rgba(239, 237, 232, 0.3);
 
@@ -91,8 +89,6 @@ export const StyledLink = styled(Link)`
 `;
 
 export const Material = styled.div`
-  position: absolute;
-  bottom: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -100,21 +96,21 @@ export const Material = styled.div`
   width: 100%;
 
   @media screen and (min-width: 768px) {
-    max-width: 420px;
-    bottom: 48px;
-    right: 0;
+    max-width: 405px;
+    margin-left: auto;
   }
 
   @media screen and (min-width: 1440px) {
-    max-width: 690px;
-    bottom: 171px;
-    right: 0;
+    max-width: 638px;
+    padding-top: 300px;
+    justify-content: normal;
   }
 `;
 
 export const IconPlay = styled.div`
   display: flex;
   align-items: center;
+  justify-content: center;
   width: 146px;
   height: 66px;
   background-color: #303030;
@@ -126,43 +122,55 @@ export const IconPlay = styled.div`
     height: 96px;
     margin-bottom: 56px;
     margin-right: auto;
+    padding: 20px 23px;
+  }
+  @media screen and (min-width: 1440px) {
+    margin-bottom:39px;
+  }
   }
 `;
-export const SvgPlay = styled.svg`
-   fill: #EFEDE8;
-    background-color: #EF8964;
-    border-radius: 50%;
-    width: 30px;
-    height: 30px;
-    margin-left: 18px;
-    margin-right: 8px;
 
-    @media screen and (min-width: 768px) {
-        width: 40px;
-        height: 40px;
-        margin-left: 23px;
+export const SvgPlay = styled.svg`
+  width:12px;
+  height:12px;
+  color: #EFEDE8;
+  @media screen and (min-width: 768px) {
+    width:20px;
+    height:20px;
+        
     }
-  }
-  }
+}
 `;
+
 export const Tutorial = styled.h3`
   display: flex;
   flex-direction: column;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.12;
+   @media screen and (min-width: 768px) {
+        font-size: 24px;
+        line-height: 1;
+        
+    }
   }
 `;
 
 export const TextTutorial = styled.p`
     font-size: 12px;
     font-weight: 400;
-    line-height: 16px;
+    line-height: 1.33;
     letter-spacing: 0px;
     text-align: left;
+    padding-top: 4px;
+
     color: rgba(239, 237, 232, 0.65);
 
     @media screen and (min-width: 768px) {
         font-size: 16px;
-        line-height: 24px;
-        margin-bottom: 8px;
+        line-height: 1.5;
+        padding-top: 8px;
+        
     }
   }
 `;
@@ -170,62 +178,75 @@ export const TextTutorial = styled.p`
 export const Calories = styled.div`
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    gap:4px;
     width: 119px;
     height: 76px;
     background-color: #EF8964;
     border-radius: 12px;
     margin-left: auto;
-    margin-right: 20px;
+    
+    padding: 14px 18px;
 
     @media screen and (min-width: 768px) {
       width: 180px;
       height: 110px;
-      margin-right: 32px;
+      
     }
  }
 `;
 
 export const IconMan = styled.div`
-    fill: #EFEDE8;
+    
     background-color: #EFA082;
     border-radius: 50%;
-    width: 12px;
-    height: 12px;
-    top: 18px;
-    left: 22px;
-    padding: 5px;
-    margin: 0px 0px 0px 22px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20px;
+    height: 20px;
+    
    
 
     @media screen and (min-width: 768px) {
-        width: 20px;
-        height: 20px;
+        width: 24px;
+        height: 24px;
+        
+    }
+ }
+`;
+export const IconManSvg = styled.svg`
+    width:12px;
+    height:12px;
+     @media screen and (min-width: 768px) {
+        width: 16px;
+        height: 16px;
     }
  }
 `;
 
 export const SectionMan = styled.div`
-    margin-left: 18px;
+    
     display: flex;
-    flex-direction: row;
     align-items: flex-end;
+    justify-content: space-between;
+    @media screen and (min-width: 768px) {
+      justify-content: normal;
+      gap: 11px;
+    }
  }
 `;
 export const TitleMan = styled.p`
      color: #EFEDE8;
     font-size: 24px;
     font-weight: 700;
-    line-height: 24px;
+    line-height: 1;
     letter-spacing: -1px;
-    text-align: left;
-    margin-top: 4px;
-    margin-right: 8px;
+    
 
      @media screen and (min-width: 768px) {
         font-size: 48px;
-        line-height: 50px;
-        margin-right: 11px;
+        line-height: 1.04;
+        
     }
   }
 `;
@@ -233,5 +254,39 @@ export const TitleMan = styled.p`
 export const SpanMan = styled.p`
     font-weight: 700;
     font-size: 12px;
+    line-height: 1.3;
+    color: rgba(239, 237, 232, 0.65);
+  
+  @media screen and (min-width: 768px) {
+        font-size: 16px;
+        line-height: 1.5;
+        }
+      }
+  
+`;
+
+export const Icon = styled.div`
+   fill: #EFEDE8;
+    background-color: #EF8964;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    margin-right: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @media screen and (min-width: 768px) {
+        width: 40px;
+        height: 40px;
+        margin-right: 12px;
+        
+        
+    }
+  }
+  }
+`;
+export const Block = styled.div`
+   
   }
 `;

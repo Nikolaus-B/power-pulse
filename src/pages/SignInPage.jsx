@@ -1,16 +1,24 @@
 import React from 'react';
-import { Formik } from 'formik';
+import { Formik, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
+import { useDispatch } from 'react-redux';
+import { useState } from 'react';
+import { fetchUserLogIn } from '../redux/user/operations';
 
 import {
   StyledFormIn,
   Input,
   Button,
+  Message,
+  ErrorText,
 } from '../components/AuthLayout/StyledForm.styled';
 
 import AuthLayout from 'components/AuthLayout/AuthLayout';
 
 function SignInPage() {
+  const [showPassword, setShowPassword] = useState(false);
+  const dispatch = useDispatch();
+
   const SignIn = Yup.object().shape({
     email: Yup.string()
       .min(3, 'The email address must be at least 3 characters long!')
@@ -34,9 +42,8 @@ function SignInPage() {
           password: '',
         }}
         validation={SignIn}
-        onSubmit={async values => {
-          await new Promise(r => setTimeout(r, 500));
-          alert(JSON.stringify(values, null, 2));
+        onSubmit={values => {
+          dispatch(fetchUserLogIn(values));
         }}
       >
         {({ errors, touched }) => (
@@ -57,11 +64,23 @@ function SignInPage() {
                 id="password"
                 name="password"
                 placeholder="Password"
-                type="text"
+                type={showPassword ? 'text' : 'password'}
                 className={`${'defoult'}
                     ${touched.password && !errors.password && 'success'}
                     ${touched.password && errors.password && 'error'}`}
               />
+              {errors.password && touched.password && (
+                <Message>
+                  <ErrorText>
+                    <ErrorMessage component="p" name="password" />
+                  </ErrorText>
+                </Message>
+              )}
+              {!errors.password && touched.password && (
+                <Message>
+                  <ErrorText>Success password</ErrorText>
+                </Message>
+              )}
             </label>
             <Button type="submit">Sign In</Button>
           </StyledFormIn>
