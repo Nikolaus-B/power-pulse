@@ -2,6 +2,10 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { Icon } from '@iconify-icon/react';
 
+const getText = props => {
+  return `'${props.$keyOfProduct}'`;
+};
+
 export const ProductsContainer = styled.div`
   position: relative;
   height: 335px;
@@ -44,6 +48,54 @@ export const ProductsIcon = styled(Icon)`
 
 export const Productslist = styled.div`
   display: block;
+`;
+
+export const Productsli = styled.li`
+  display: block;
+
+  /* @media screen and (max-width: 376px) {
+    &::before {
+      content: 'Title';
+    }
+  } */
+
+  /* @media screen and (min-width: 768px) {
+    &:first-child {
+      &::before {
+        content: 'Title';
+      }
+    }
+  } */
+`;
+
+export const Productstext = styled.li`
+  display: block;
+
+  @media screen and (max-width: 767px) {
+    &::before {
+      content: ${getText};
+    }
+
+    &.big {
+      color: red;
+    }
+
+    &.medium {
+      color: aquamarine;
+    }
+
+    &.small {
+      color: blue;
+    }
+  }
+
+  @media screen and (min-width: 768px) {
+    &.firstEl {
+      &::before {
+        content: ${getText};
+      }
+    }
+  }
 `;
 
 export const NotFoundProducts = styled.p`

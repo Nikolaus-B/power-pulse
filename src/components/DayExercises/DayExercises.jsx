@@ -14,7 +14,7 @@ export const DayExercises = () => {
     <ExercisesContainer>
       <ExercisesHeader>
         <DayExercisesTitle>Exercises</DayExercisesTitle>
-        <ExercisesLink to="/product">
+        <ExercisesLink to="/exercises">
           Add Exercise{' '}
           <ExercisesIcon icon="ri:arrow-right-line" height={16} width={16} />
         </ExercisesLink>
