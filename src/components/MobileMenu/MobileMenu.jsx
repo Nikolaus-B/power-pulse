@@ -10,9 +10,10 @@ import {
   NavMenuLink,
   LogoutSvg,
 } from './MobileMenu.styled';
-import sprite from '../../img/pulse-icons.svg';
+
 import { useDispatch } from 'react-redux';
 import { fetchUserLogout } from '../../redux/user/operations';
+import { Icon } from 'components/Icon/Icon';
 
 const MobileMenu = ({ isOpen }) => {
   const [menuIsOpen, setMenuIsOpen] = useState(isOpen);
@@ -61,7 +62,7 @@ const MobileMenu = ({ isOpen }) => {
       >
         <CloseButton onClick={closeMenu}>
           <Svg>
-            <use href={`${sprite}#close`} />
+            <Icon iconid={'close'} />
           </Svg>
         </CloseButton>
         <NavMenu>
@@ -78,7 +79,7 @@ const MobileMenu = ({ isOpen }) => {
         <Logout type="button" onClick={handleLogOut}>
           <span>Logout</span>
           <LogoutSvg>
-            <use href={`${sprite}#icon-log-out-white`} />
+            <Icon iconid={'log-out'} />
           </LogoutSvg>
         </Logout>
       </MenuWrapper>
