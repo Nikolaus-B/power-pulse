@@ -7,7 +7,7 @@ import heroTablet2 from '../../img/hero-tablet-2x.jpg';
 import hero1 from '../../img/hero-1x.jpg';
 import hero2 from '../../img/hero-2x.jpg';
 
-export const Container = styled.div`
+export const Section = styled.div`
  position: relative;
  background-color: black;
   background-image: url(${heroMobile1});
@@ -15,7 +15,7 @@ export const Container = styled.div`
     url(${heroMobile1}); 1x,
     url(${heroMobile2}); 2x
   );
-  color: var(--color2, #e6533c);
+  color: #e6533c;
   background-repeat: no-repeat;
   background-position: bottom 0 right -40%;
   margin: 0 auto;
@@ -74,7 +74,7 @@ export const BoxContent = styled.div`
 export const Title404 = styled.h1`
   font-size: 66px;
   line-height: 66px;
-  color: var(--color1, #efede8);
+  color: #efede8;
 
   @media screen and (min-width: 768px) {
     font-size: 160px;
@@ -84,7 +84,7 @@ export const Title404 = styled.h1`
 
 export const Text404 = styled.p`
   width: 200px;
-  color: var(--color1, #efede8);
+  color: #efede8;
   font-size: 14px;
   margin-top: 14px;
   font-weight: 400;
@@ -150,4 +150,7 @@ export const Button = styled.button`
     font-size: 20px;
     line-height: 24px;
   }
+`;
+export const Body = styled.div`
+  background-color: black;
 `;
