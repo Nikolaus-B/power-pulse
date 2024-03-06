@@ -3,10 +3,10 @@ import { NotFoundProduct } from 'components/products/NotFoundProduct/NotFoundPro
 import { ProductsFilters } from 'components/products/ProductsFilters/ProductsFilters';
 import { Container, PageContainer } from 'components/products/ProductsFilters/ProductsFilters.styled';
 import { ProductsList } from 'components/products/ProductsList/ProductsList';
-import React, { useEffect, useState } from 'react';
+//import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchCategories } from '../redux/products/operations';
-import { selectCategories } from '../redux/products/productsSelectors';
+//import { fetchCategories } from '../redux/products/operations';
+//import { selectCategories } from '../redux/products/productsSelectors';
 
 const products = [
   {
@@ -196,6 +196,7 @@ function ProductPage() {
   //   dispatch(fetchCategories());
   // }, [dispatch]);
   // const categories = useSelector(selectCategories);
+
 
   return <PageContainer className='container'>
     <Container>

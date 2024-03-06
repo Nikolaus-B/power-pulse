@@ -28,6 +28,10 @@ export const ProductsList = ({ products }) => {
     return text.charAt(0).toUpperCase() + text.slice(1);
   };
 
+  // const visibleProducts = (products) => {
+    
+  // }
+
   return (
     <List>
       {products.map(product => {

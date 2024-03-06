@@ -55,7 +55,7 @@ const DietContainer = styled.div`
   padding: 5px 7px;
   width: 41px;
   height: 24px;
-  background-color: var(--border-static-color);
+  background-color: rgba(239, 237, 232, 0.05);
 `;
 
 const DietText = styled.p`

@@ -8,14 +8,14 @@ import {
   InputButton,
 } from './ProductsFilters.styled';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  selectCategories,
-  selectCategory,
-  selectIsRecommended,
-  selectQuery,
-} from '../../../redux/products/productsSelectors';
+// import {
+//   selectCategories,
+//   selectCategory,
+//   selectIsRecommended,
+//   selectQuery,
+// } from '../../../redux/products/productsSelectors';
 import { setFilterQuery, setFilterCategory, setFilterRecommended } from '../../../redux/products/productsSlice';
-import { fetchCategories } from '../../../redux/products/operations';
+//import { fetchCategories } from '../../../redux/products/operations';
 
 export const ProductsFilters = ({ categories }) => {
   const recommendedFilters = ['all', 'recommended', 'not recommended'];
@@ -80,10 +80,9 @@ export const ProductsFilters = ({ categories }) => {
   }
   const dispatch = useDispatch();
   const [hiddenBtn, setHiddenBtn] = useState(false);
-  //const query = useSelector(selectQuery);
   const [query, setQuery] = useState('');
-  const category = useSelector(selectCategory);
-  const recommended = useSelector(selectIsRecommended);
+  //const category = useSelector(selectCategory);
+  //const recommended = useSelector(selectIsRecommended);
 
   const handleChange = (e) => {
     const { value } = e.target;
