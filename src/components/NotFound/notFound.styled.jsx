@@ -123,6 +123,7 @@ export const Svg = styled.svg`
 `;
 
 export const Button = styled.button`
+  font-family: 'Roboto', sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
