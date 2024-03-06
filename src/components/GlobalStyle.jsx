@@ -62,7 +62,22 @@ div {
 }
 
 .container {
-  
+  margin: 0 auto;
+  max-width: 375px;
+  padding: 40px 20px 80px 20px;
+
+
+    @media screen and (min-width: 768px) and (max-width: 1439px) {
+    max-width: 768px;
+    padding: 72px 32px 78px 32px;
+
+  }
+
+  @media screen and (min-width: 1440px) {
+    max-width: 1440px;
+    padding: 72px 96px 68px 96px;
+
+}
 }
 
 `;
