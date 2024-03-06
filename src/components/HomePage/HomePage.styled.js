@@ -1,5 +1,10 @@
 import styled from 'styled-components';
-import img from '../../img/hero-mobile-1x.jpg'
+// import Desk1x from '../../img/hero-1x.jpg';
+// import Desk2x from '../../img/hero-2x.jpg';
+// import Tab1x from '../../img/hero-tablet-1x.jpg';
+// import Tab2x from '../../img/hero-tablet-2x.jpg';
+// import Mob1x from '../../img/hero-mobile-1x.jpg';
+// import Mob2x from '../../img/hero-mobile-2x.jpg';
 
 export const HeroTitle = styled.h1`
   width: 335px;
@@ -13,9 +18,9 @@ export const HeroTitle = styled.h1`
 
   @media screen and (min-width: 768px) {
     width: 598px;
-  height: 234px;
+    height: 234px;
     font-size: 70px;
-line-height: 111%;
+    line-height: 111%;
   }
 
   @media screen and (min-width: 1440px) {
@@ -116,7 +121,6 @@ export const Text = styled.p`
 `;
 
 export const Container = styled.div`
-  /* background-image: url(${img}); */
 
 `;
 
@@ -339,7 +343,7 @@ export const MainContent = styled.div`
 `;
 
 export const FotoSection = styled.div`
-  background-image: url(${img});
+  
 `;
 
 export const SectionMan = styled.div`
@@ -347,4 +351,13 @@ export const SectionMan = styled.div`
   display: flex;
   flex-direction: row;
   align-items: flex-end;
+`;
+
+export const FotoContainer = styled.picture`
+  width: 446px;
+  height: 669px;
+`;
+export const Foto = styled.img`
+  width: 446px;
+  height: 669px;
 `;
