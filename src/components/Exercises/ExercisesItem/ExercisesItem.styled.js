@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  border: 1px solid rgba(239, 237, 232, 0.2);
+  border: 1px solid var(--border-static-color);
   border-radius: 12px;
   padding: 16px;
   width: 335px;
@@ -25,7 +25,7 @@ export const WorkoutContainer = styled.div`
   padding: 5px 7.5px;
   width: 73px;
   height: 24px;
-  background-color: var(--border-static-color);
+  background-color: rgba(239, 237, 232, 0.05);
 `;
 
 export const Workout = styled.p`
