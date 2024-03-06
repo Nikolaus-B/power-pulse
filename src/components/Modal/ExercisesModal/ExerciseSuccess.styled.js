@@ -92,6 +92,6 @@ const DiaryLink = styled.p`
   text-decoration: none;
   border-radius: 4px;
   cursor: pointer;
-  /* margin-right: 8px; */
+
 `;
 export { Wrapper, DiaryLink, ImageEl, Heading, Calories, ProductButton  ,customStyles , WrapperDiaryLink ,ExerciseTime , WrapperCloseIcon };

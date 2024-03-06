@@ -23,7 +23,6 @@ const customStyles = {
 const Wrapper = styled.div`
   padding: 48px 17px 48px 16px;
   max-width: 335px;
-  /* height: 788px; */
 `;
 
 const ImageExercise = styled.img`
@@ -112,7 +111,6 @@ color: rgba(239, 237, 232, 0.4);
 `;
 
 const AddToDiaryButton = styled.button`
-  /* width: 151px;3 */
   height: 42px;
   box-sizing: border-box;
   font-size: 16px;

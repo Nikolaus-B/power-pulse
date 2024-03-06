@@ -27,9 +27,9 @@ export const BasicModalWindow = () => {
   const [caloriesAdded, setCaloriesAdded] = useState(0);
   // const [error, setError] = useState(null);
 
-  const handleOpenModal = () => {
-    setIsOpen(true);
-  };
+  // const handleOpenModal = () => {
+  //   setIsOpen(true);
+  // };
 
   const handleCloseModal = () => {
     setIsOpen(false);
@@ -54,7 +54,6 @@ export const BasicModalWindow = () => {
 
   return (
     <>
-      <button onClick={handleOpenModal}>Start</button>
       <Modal
         isOpen={isOpen}
         onRequestClose={handleCloseModal}
