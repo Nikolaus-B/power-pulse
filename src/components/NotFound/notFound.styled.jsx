@@ -15,7 +15,7 @@ export const Container = styled.div`
     url(${heroMobile1}); 1x,
     url(${heroMobile2}); 2x
   );
-  color: #E6533C;
+  color: var(--color2, #e6533c);
   background-repeat: no-repeat;
   background-position: bottom 0 right -40%;
   margin: 0 auto;
@@ -74,7 +74,7 @@ export const BoxContent = styled.div`
 export const Title404 = styled.h1`
   font-size: 66px;
   line-height: 66px;
-  color: #efede8;
+  color: var(--color1, #efede8);
 
   @media screen and (min-width: 768px) {
     font-size: 160px;
@@ -84,7 +84,7 @@ export const Title404 = styled.h1`
 
 export const Text404 = styled.p`
   width: 200px;
-  color: #efede8;
+  color: var(--color1, #efede8);
   font-size: 14px;
   margin-top: 14px;
   font-weight: 400;
@@ -126,17 +126,16 @@ export const Button = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #e6533c;
+  background-color: var(--color2, #e6533c);
   width: 147px;
   height: 42px;
   border-radius: 12px;
   border: 1px solid rgba(239, 237, 232, 0.3);
-  color: #efede8;
+  color: var(--color1, #efede8);
   font-size: 16px;
   font-weight: 500;
   line-height: 18px;
   text-align: left;
-  padding: 12px, 40px;
   cursor: pointer;
 
   &:hover,
@@ -147,7 +146,6 @@ export const Button = styled.button`
   @media screen and (min-width: 768px) {
     width: 204px;
     height: 56px;
-    padding: 12px, 60px;
     font-size: 20px;
     line-height: 24px;
   }

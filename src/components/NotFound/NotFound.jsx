@@ -10,7 +10,7 @@ import {
   Button,
   Container,
 } from '../../components/NotFound/notFound.styled';
-import sprite from '../../img/pulse-icons.svg';
+import { Icon } from 'components/Icon/Icon';
 
 const NotFound = () => {
   const navigate = useNavigate();
@@ -23,7 +23,7 @@ const NotFound = () => {
     <Container className="container">
       <StyledLink to="/">
         <Svg>
-          <use href={`${sprite}#icon-logo-white`} />
+          <Icon iconid={'white-logo'} />
         </Svg>
       </StyledLink>
       <ErrorBox>
