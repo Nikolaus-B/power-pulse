@@ -89,6 +89,7 @@ const InfoItem = styled.li`
   border: 1px solid;
   border-radius: 12px;
   border-color: rgba(239, 237, 232, 0.2);
+  overflow-x: hidden;
 
   p{
     font-size: 12px;

@@ -1,5 +1,7 @@
+
 import React, { useState } from 'react';
 import { CloseIcon } from '@chakra-ui/icons';
+import axios from 'axios';
 
 import {
   CancelButton,
@@ -15,29 +17,43 @@ import {
 
 export const AddProductForm = ({ product, onClose, onSuccess, onError }) => {
   const [grams, setGrams] = useState('');
-  const [call, setCalor] = useState(0);
-  // const { calories: productCalories } = product;
+  const [calories, setCalories] = useState(0);
 
-  const { calories, title } = product;
+  const { title, calories: productCalories } = product;
 
   const handleGramsChange = e => {
     const gramsValue = e.target.value;
 
     setGrams(gramsValue.trim());
-    if (gramsValue === '' || gramsValue)
-      setCalor((gramsValue * calories) / 100);
-
     if (!isNaN(gramsValue)) {
-      setCalor((gramsValue * calories) / 100);
+      const calculatedCalories = (gramsValue * productCalories) / 100;
+      setCalories(calculatedCalories);
     } else {
-      setCalor(0);
+      setCalories(0);
     }
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault();
-    // отправка запроса
-    // onClose();
+    // try {
+    //   const response = await axios.post('/api/addProductToDiary', {
+    //     productID: product.id,
+    //     date: new Date().toISOString(),
+    //     amount: grams,
+    //     calories,
+    //   });
+
+      // if (response.status === 200) {
+        // Закриття модального вікна додавання продукту і відкриття вікна успішного додавання
+        onClose();
+        onSuccess(calories);
+  //     } else {
+  //       onError('Помилка під час додавання продукту');
+  //     }
+  //   } catch (error) {
+  //     console.error('Помилка під час відправки запиту:', error);
+  //     onError('Помилка під час відправки запиту');
+  //   }
   };
 
   return (
@@ -61,17 +77,14 @@ export const AddProductForm = ({ product, onClose, onSuccess, onError }) => {
 
         <Text>
           Calories:
-          <span style={{ color: 'white', marginLeft: '4px' }}>{call}</span>
+          <span style={{ color: 'white', marginLeft: '4px' }}>{calories}</span>
         </Text>
-
-        <div>
-          <AddToDiaryButton type="submit" onClick={() => onSuccess(call)}>
+          <AddToDiaryButton type="submit">
             Add to diary
           </AddToDiaryButton>
           <CancelButton type="button" onClick={onClose}>
             Cancel
           </CancelButton>
-        </div>
       </ModalForm>
     </>
   );

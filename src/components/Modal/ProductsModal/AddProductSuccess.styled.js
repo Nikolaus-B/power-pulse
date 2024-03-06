@@ -9,6 +9,10 @@ const Wrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  @media screen and (min-width: 768px) and (max-width: 1439px)  {
+padding: 64px 136px 64px 137px;
+  }
 `;
 
 const WrapperCloseIcon  = styled.div`
@@ -22,25 +26,38 @@ const ImageEl = styled.img`
   margin-bottom: 16px;
   width: 123px;
   height: 84px;
+
+  @media screen and (min-width: 768px) and (max-width: 1439px)  {
+margin-bottom: 32px;
+  }
 `;
 const Heading = styled.h3`
   font-size: 24px;
+  line-height: 1.33;
   margin-bottom: 16px;
 `;
 
 const Calories = styled.p`
   font-size: 14px;
+  line-height: 1.28;
   color: rgba(239, 237, 232, 0.3);
   margin-bottom: 24px;
 
   span {
     color: rgba(230, 83, 60, 1);
   }
+
+  @media screen and (min-width: 768px) and (max-width: 1439px)  {
+margin-bottom: 32px;
+  }
 `;
 
 const ProductButton = styled.button`
   display: block;
-  box-sizing: border-box;
+  border: none;
+  width: 157px;
+  height: 42px;
+
   color: #EFEDE8;
   font-size: 16px;
   line-height: 1.12;
@@ -48,6 +65,11 @@ const ProductButton = styled.button`
   background-color: rgba(230, 83, 60, 1);
   padding: 12px 32px;
   margin-bottom: 16px;
+
+  @media screen and (min-width: 768px) and (max-width: 1439px)  {
+width: 157px;
+height: 52px;
+  }
 `;
 
 const WrapperDiaryLink = styled(Link)`

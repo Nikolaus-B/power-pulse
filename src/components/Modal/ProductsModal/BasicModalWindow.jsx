@@ -51,18 +51,6 @@ export const BasicModalWindow = () => {
         style={customStyles}
         contentLabel="Add Product Modal"
       >
-        {/* {isSuccess ?(
-        <AddProductSuccess
-          isSuccessOpen={true}
-          onClose={() => setIsSuccess(false)}
-          caloriesAdded={caloriesAdded}
-        />
-      ) : (<AddProductForm
-        product={productData}
-        onClose={handleCloseModal}
-        onSuccess={handleAddProductSuccess}
-        onError={handleAddProductError}
-      />)} */}
 
         <AddProductForm
           product={productData}
@@ -70,14 +58,6 @@ export const BasicModalWindow = () => {
           onSuccess={handleAddProductSuccess}
           onError={handleAddProductError}
         />
-
-        {/* {isSuccess && (
-        <AddProductSuccess
-          isSuccessOpen={true}
-          onClose={() => setIsSuccess(false)}
-          caloriesAdded={caloriesAdded}
-        />
-      )} */}
       </Modal>
       {isSuccess && (
         <AddProductSuccess

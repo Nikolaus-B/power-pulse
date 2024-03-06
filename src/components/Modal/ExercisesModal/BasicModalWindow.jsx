@@ -10,8 +10,8 @@ const exerciseData = {
   _id: {
     $oid: '64f2458d6f67bc34bae4f801',
   },
-  bodyPart: 'upper arms',
-  equipment: 'leverage machine',
+  bodyPart: 'upper ',
+  equipment: 'leverage ',
   gifUrl: 'https://ftp.goit.study/img/power-pulse/gifs/0019.gif',
   name: 'air bike',
   target: 'triceps',
