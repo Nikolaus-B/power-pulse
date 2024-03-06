@@ -18,7 +18,6 @@ export const Container = styled.div`
   background-repeat: no-repeat;
   background-position: bottom 0 right -40%;
   margin: 0 auto;
-  position: relative;
   height: 100vh;
 
   @media screen and (min-width: 375px) {

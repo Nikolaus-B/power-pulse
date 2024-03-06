@@ -21,7 +21,9 @@ const NotFound = () => {
   return (
     <Container className="container">
       <StyledLink to="/">
-        <Svg>{/* < /> */}</Svg>
+        <Svg>
+          <use href="../../img/pulse-icons.svg#icon-logo-white"></use>
+        </Svg>
       </StyledLink>
       <Left>
         <Content>
