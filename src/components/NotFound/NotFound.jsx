@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
   ErrorBox,
-  Content,
+  BoxContent,
   Title404,
   Text404,
   Svg,
@@ -10,6 +10,7 @@ import {
   Button,
   Container,
 } from '../../components/NotFound/notFound.styled';
+import sprite from '../../img/pulse-icons.svg';
 
 const NotFound = () => {
   const navigate = useNavigate();
@@ -22,11 +23,11 @@ const NotFound = () => {
     <Container className="container">
       <StyledLink to="/">
         <Svg>
-          <use href="../../img/pulse-icons.svg#white-logo" />
+          <use href={`${sprite}#icon-logo-white`} />
         </Svg>
       </StyledLink>
       <ErrorBox>
-        <Content>
+        <BoxContent>
           <Title404>404</Title404>
           <Text404>
             Sorry, you have reached a page that we could not find. It seems that
@@ -37,7 +38,7 @@ const NotFound = () => {
           <Button className="Button" type="button" onClick={handleClick}>
             Go Home
           </Button>
-        </Content>
+        </BoxContent>
       </ErrorBox>
     </Container>
   );
