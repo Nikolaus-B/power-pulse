@@ -1,4 +1,12 @@
 import {
+  AvatarIcon,
+  AddAvatarIcon,
+  FoodIcon,
+  DumbBellIcon,
+  LogOut,
+  ExclamationMarkIcon,
+} from './styles/Icon.styled.js';
+import {
   Avatar,
   Badge,
   Button,
@@ -6,15 +14,29 @@ import {
   CardFooter,
   CardHeader,
   HStack,
-  Icon,
-  Image,
   Stack,
   Text,
   VStack,
 } from '@chakra-ui/react';
-import sprite from '../../../img/pulse-icons.svg';
+
+//------------------------------------------------
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+
+import {
+  fetchUserCurrent,
+  fetchUserLogout,
+} from '../../redux/user/operations.js';
+import { selectToken } from '../../redux/user/userSelectors.js';
 
 export const UserCard = () => {
+  const dispatch = useDispatch();
+  const user = useSelector(selectToken);
+
+  useEffect(() => {
+    dispatch(fetchUserCurrent({}));
+  });
+
   return (
     <Stack>
       <VStack spacing={{ base: '40px', md: '32px' }}>
@@ -22,11 +44,7 @@ export const UserCard = () => {
           <VStack>
             <Avatar
               icon={
-                <Icon
-                  icon={`${sprite}$#{avatar}`}
-                  color="rgba(239, 237, 232, 0.1)"
-                  fontSize="61px"
-                />
+                <AvatarIcon iconid={'avatar'} width={'68px'} height={'68px'} />
               }
               pos="relative"
               w={{ base: '90px', md: '150px' }}
@@ -40,9 +58,10 @@ export const UserCard = () => {
                 p="0"
                 variant="unstyled"
               >
-                <Image
-                  icon={`${sprite}$#{add-avatar}`}
-                  boxSize={{ base: '24px', md: '32px' }}
+                <AddAvatarIcon
+                  iconid={'add-avatar'}
+                  width={'32px'}
+                  height={'32px'}
                 />
               </Button>
             </Avatar>
@@ -72,11 +91,7 @@ export const UserCard = () => {
           >
             <CardHeader>
               <HStack>
-                <Icon
-                  icon={`${sprite}$#{food}`}
-                  color="#ef8964"
-                  fontSize="20px"
-                />
+                <FoodIcon iconid={'food'} width={'20px'} height={'20px'} />
                 <Text
                   color="rgba(239, 237, 232, 0.8)"
                   lineHeight={{ base: '133%', md: '150%' }}
@@ -98,12 +113,11 @@ export const UserCard = () => {
           >
             <CardHeader>
               <HStack>
-                <Icon
-                  icon={`${sprite}$#{dumbbell}`}
-                  color="#ef8964"
-                  fontSize="20px"
+                <DumbBellIcon
+                  iconid={'dumbbell'}
+                  width={'20px'}
+                  height={'20px'}
                 />
-
                 <Text
                   color="rgba(239, 237, 232, 0.8)"
                   line-height={{ base: '133%', md: '150%' }}
@@ -126,11 +140,10 @@ export const UserCard = () => {
             boxSize="24px"
             bgColor="#efa082"
           >
-            <Icon
-              icon={`${sprite}$#{exclamation-mark}`}
-              color="#efede8"
-              w="2px"
-              h="16px"
+            <ExclamationMarkIcon
+              iconid={'exclamation-mark'}
+              width={'2px'}
+              height={'16px'}
             />
           </Stack>
           <Text
@@ -145,8 +158,10 @@ export const UserCard = () => {
         </HStack>
 
         <Button
+          type="button"
+          onClick={() => dispatch(fetchUserLogout())}
           rightIcon={
-            <Icon icon="mynaui:logout" fontSize="20px" color="#e6533c" />
+            <LogOut iconid={'log-out'} width={'20px'} height={'20px'} />
           }
           display="inline-flex"
           alignContent="center"

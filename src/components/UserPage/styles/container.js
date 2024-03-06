@@ -9,8 +9,6 @@ const baseStyle = defineStyle({
   // minH: '100vh',
   px: '5',
   py: '10',
-
-  bgColor: '#040404',
 });
 
 export const containerStyle = defineStyleConfig({

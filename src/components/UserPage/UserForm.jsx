@@ -1,6 +1,7 @@
 import { Formik } from 'formik';
 import * as Yup from 'yup';
-// import { useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
+
 import {
   Input,
   FormControl,
@@ -14,9 +15,12 @@ import {
   Text,
   Button,
 } from '@chakra-ui/react';
-import { CheckCircleIcon } from '@chakra-ui/icons';
 
-//-----------------------------------------------------------
+//----------------------------------------------------
+import { CheckCircleIcon } from '@chakra-ui/icons';
+import { fetchUserCurrent } from '../../redux/user/operations';
+
+//----------------------------------------------------
 
 const validation = Yup.object({
   name: Yup.string()
@@ -26,12 +30,15 @@ const validation = Yup.object({
   email: Yup.string().email('Invalid email').required('Required'),
 });
 
-//------------------------------------------------------------
+//----------------------------------------------------
 
 export const UserForm = () => {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-  const handleSubmit = values => {};
+  const handleSubmit = values => {
+    const { name, email } = values;
+    dispatch(fetchUserCurrent({ name, email }));
+  };
 
   return (
     <Formik
@@ -314,6 +321,7 @@ export const UserForm = () => {
             </RadioGroup>
           </Stack>
           <Button
+            type="submit"
             w={{ base: '115px', md: '144px' }}
             mt={{ base: '40px', md: '38px', xl: '48px' }}
             size={{ base: 'base', md: 'md' }}

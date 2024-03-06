@@ -1,22 +1,21 @@
 import { extendTheme } from '@chakra-ui/react';
-import { headingStyles } from '../components/styles/heading';
-import { containerStyle } from '../components/styles/container';
-import { avatarStyles } from '../components/styles/avatar';
-import { textStyles } from '../components/styles/text';
-import { badgeStyles } from '../components/styles/badge';
-import { boxStyle } from '../components/styles/box';
-import { cardStyles } from '../components/styles/card';
-import { formLabelStyles } from '../components/styles/formlabel';
-import { inputStyles } from '../components/styles/input';
-import { formErrorStyles } from '../components/styles/formerror';
-import { radioStyles } from '../components/styles/radio';
-import { buttonStyles } from '../components/styles/button';
+import { containerStyle } from '../styles/container';
+import { avatarStyles } from '../styles/avatar';
+import { textStyles } from '../styles/text';
+import { badgeStyles } from '../styles/badge';
+import { boxStyle } from '../styles/box';
+import { cardStyles } from '../styles/card';
+import { formLabelStyles } from '../styles/formlabel';
+import { inputStyles } from '../styles/input';
+import { radioStyles } from '../styles/radio';
+import { buttonStyles } from '../styles/button';
 
 export const theme = extendTheme({
   styles: {
     global: {
       'html, body': {
         fontFamily: 'Roboto, sans-serif',
+        bgColor: '#040404',
       },
       'h1, p': {
         m: 0,
@@ -43,7 +42,6 @@ export const theme = extendTheme({
   },
   components: {
     Container: containerStyle,
-    Heading: headingStyles,
     Avatar: avatarStyles,
     Text: textStyles,
     Badge: badgeStyles,
@@ -51,7 +49,6 @@ export const theme = extendTheme({
     Card: cardStyles,
     FormLabel: formLabelStyles,
     Input: inputStyles,
-    FormErrorMessage: formErrorStyles,
     Radio: radioStyles,
     Button: buttonStyles,
   },

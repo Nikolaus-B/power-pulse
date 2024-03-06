@@ -1,10 +1,9 @@
 import React from 'react';
 import { ChakraProvider, Container, Stack, VStack } from '@chakra-ui/react';
 import { theme } from './mods/Theme';
-// import { TitlePage } from './components/TitlePage';
 import { Title } from 'components/Title/Title';
-import { UserCard } from './components/UserCard';
-import { UserForm } from './components/UserForm';
+import { UserCard } from './UserCard';
+import { UserForm } from './UserForm';
 
 export const ProfilePage = () => {
   return (
