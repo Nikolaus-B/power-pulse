@@ -7,7 +7,7 @@ import {
   fetchUserParams,
   fetchUserRegister,
 } from './operations';
-
+import toast from 'react-hot-toast';
 // const handlePending = state => {
 //   state.isLoading = true;
 // };
@@ -22,6 +22,8 @@ const initialState = {
   token: null,
   isLoggedIn: false,
   isRefreshing: false,
+  isLoading: false,
+  error: null,
 };
 
 const userSlice = createSlice({
@@ -31,16 +33,44 @@ const userSlice = createSlice({
   extraReducers: builder => {
     builder
 
+      .addCase(fetchUserRegister.pending, (state, action) => {
+        state.isLoading = true;
+        state.error = null;
+      })
+
       .addCase(fetchUserRegister.fulfilled, (state, action) => {
         state.user = action.payload.user;
-        state.token = action.payload.token;
         state.isLoggedIn = true;
+        state.goToParams = true;
+        state.isLoading = false;
+        toast.success('Registration successful');
+      })
+
+      .addCase(fetchUserRegister.rejected, (state, action) => {
+        state.isLoading = false;
+        toast.error(
+          'This email address is already registered. Please enter another email address to proceed.'
+        );
+      })
+
+      .addCase(fetchUserLogIn.pending, (state, action) => {
+        state.isLoading = true;
+        state.error = null;
       })
 
       .addCase(fetchUserLogIn.fulfilled, (state, action) => {
         state.user = action.payload.user;
         state.token = action.payload.token;
         state.isLoggedIn = true;
+        state.isLoading = false;
+        toast.loading('Successful login.');
+      })
+
+      .addCase(fetchUserLogIn.rejected, (state, action) => {
+        state.isLoading = false;
+        toast.error(
+          'Unable to sign in. Please check your email and password. Please try again!'
+        );
       })
 
       .addCase(fetchUserCurrent.fulfilled, (state, action) => {
