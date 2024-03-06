@@ -19,7 +19,7 @@ import {
 
 const initialState = {
   user: { name: null, email: null },
-  token: null,
+  token: '',
   isLoggedIn: false,
   isRefreshing: false,
 };

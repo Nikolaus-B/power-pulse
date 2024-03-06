@@ -1,5 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchProducts } from './operations';
+import {
+  fetchAllProducts,
+  fetchCategories,
+  fetchRecommended,
+} from './operations';
 
 // const handlePending = state => {
 //   state.isLoading = true;
@@ -12,19 +16,50 @@ import { fetchProducts } from './operations';
 
 const initialState = {
   products: [],
+  categories: [],
+  recommended: [],
+  notRecommended: [],
+  filter: {
+    query: '',
+    category: '',
+    recommended: '',
+  },
 };
 
 const productsSlice = createSlice({
   name: 'products',
   initialState,
-  reducers: {},
+  reducers: {
+    setFilterQuery: (state, action) => {
+      state.filter.query = action.payload;
+    },
+    setFilterCategory: (state, action) => {
+      state.filter.category = action.payload;
+    },
+    setFilterRecommended: (state, action) => {
+      state.filter.recommended = action.payload;
+    },
+  },
   extraReducers: builder => {
-    builder.addCase(fetchProducts.fulfilled, (state, action) => {
-      state.user = action.payload.user;
-      state.token = action.payload.token;
-      state.isLoggedIn = true;
-    });
+    builder
+      .addCase(fetchAllProducts.fulfilled, (state, action) => {
+        state.products.products = action.payload;
+        // state.token = action.payload.token;
+        // state.isLoggedIn = true;
+      })
+      .addCase(fetchRecommended.fulfilled, (state, action) => {
+        state.products.recommended = action.payload[0];
+        state.products.notRecommended = action.payload[1];
+        // state.token = action.payload.token;
+        // state.isLoggedIn = true;
+      })
+      .addCase(fetchCategories.fulfilled, (state, action) => {
+        state.products.categories = action.payload;
+        // state.token = action.payload.token;
+        // state.isLoggedIn = true;
+      });
   },
 });
 
 export const productsReducer = productsSlice.reducer;
+export const { setFilterQuery, setFilterCategory, setFilterRecommended } = productsSlice.actions;

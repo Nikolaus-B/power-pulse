@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Select from 'react-select';
 import {
   Form,
@@ -6,13 +6,19 @@ import {
   Input,
   ButtonWrapper,
   InputButton,
-  Option,
-  SelectLevel,
 } from './ProductsFilters.styled';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  selectCategories,
+  selectCategory,
+  selectIsRecommended,
+  selectQuery,
+} from '../../../redux/products/productsSelectors';
+import { setFilterQuery, setFilterCategory, setFilterRecommended } from '../../../redux/products/productsSlice';
+import { fetchCategories } from '../../../redux/products/operations';
 
 export const ProductsFilters = ({ categories }) => {
-
-  const recommendedFilters = ['All', 'Recommended', 'Not recommended']
+  const recommendedFilters = ['all', 'recommended', 'not recommended'];
 
   const customStyles = {
     control: (base, state) => ({
@@ -29,11 +35,11 @@ export const ProductsFilters = ({ categories }) => {
         width: '192px',
       },
     }),
-    menu: (base) => ({
+    menu: base => ({
       ...base,
       color: 'var(--white-color)',
     }),
-    menuList: (base) => ({
+    menuList: base => ({
       ...base,
       backgroundColor: '#1c1c1c',
       borderRadius: '12px',
@@ -50,32 +56,61 @@ export const ProductsFilters = ({ categories }) => {
       },
       color: 'var(--white-color)',
     }),
-    indicatorSeparator: (base) => ({
+    indicatorSeparator: base => ({
       ...base,
       display: 'none',
     }),
-    placeholder: (base) => ({
+    placeholder: base => ({
       ...base,
       color: 'var(--white-color)',
     }),
-    singleValue: (base) => ({
+    singleValue: base => ({
       ...base,
       color: 'var(--white-color)',
     }),
-    
   };
 
-  const capitalizeFirstLetter = (text) => {
+  const capitalizeFirstLetter = text => {
     return text.charAt(0).toUpperCase() + text.slice(1);
   };
 
+  const clearQuery = () => {
+    setQuery('')
+    dispatch(setFilterQuery(''))
+  }
+  const dispatch = useDispatch();
+  const [hiddenBtn, setHiddenBtn] = useState(false);
+  //const query = useSelector(selectQuery);
+  const [query, setQuery] = useState('');
+  const category = useSelector(selectCategory);
+  const recommended = useSelector(selectIsRecommended);
+
+  const handleChange = (e) => {
+    const { value } = e.target;
+    setHiddenBtn(value.length > 0);
+    setQuery(value);
+    dispatch(setFilterQuery(value));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setQuery('')
+    setHiddenBtn(false)
+  }; 
+
 
   return (
-    <Form>
+    <Form onSubmit={handleSubmit}>
       <InputWrapper>
-        <Input placeholder="Search" />
+        <Input
+        name='query'
+          type="text"
+          placeholder="Search"
+          value={query}
+          onChange={handleChange}
+        />
         <ButtonWrapper>
-          <InputButton type="button" style={{display: 'none'}}>
+          {hiddenBtn && <InputButton type="button" onClick={clearQuery}>
             <svg
               width="18"
               height="18"
@@ -98,8 +133,8 @@ export const ProductsFilters = ({ categories }) => {
                 strokeLinejoin="round"
               />
             </svg>
-          </InputButton>
-          <InputButton type="button">
+          </InputButton>}
+          <InputButton type="submit">
             <svg
               width="18"
               height="18"
@@ -126,28 +161,36 @@ export const ProductsFilters = ({ categories }) => {
         </ButtonWrapper>
       </InputWrapper>
       <Select
-      options={categories.map((category) => ({ value: category, label: capitalizeFirstLetter(category) }))}
-      name="Categories"
-      placeholder="Categories"
-      styles={customStyles} 
-      minWidth="146px"
-      theme={(theme) => ({
-        ...theme,
-        borderRadius: '12px',
-      })}
-    />
-    <Select
-          placeholder="All"
-          styles={customStyles} 
-          minWidth="173px"
-          maxWidth="204px"
-          options={recommendedFilters.map((el) => ({ value: el, label: capitalizeFirstLetter(el) }))}
-          theme={(theme) => ({
-            ...theme,
-            borderRadius: '12px',
-          })}
-          name="Recommendations"
-        />
+      onChange={evt => dispatch(setFilterCategory(evt.value))}
+        options={categories.map(category => ({
+          value: category,
+          label: capitalizeFirstLetter(category),
+        }))}
+        name="Categories"
+        placeholder="Categories"
+        styles={customStyles}
+        minWidth="146px"
+        theme={theme => ({
+          ...theme,
+          borderRadius: '12px',
+        })}
+      />
+      <Select
+      onChange={evt => dispatch(setFilterRecommended(evt.value))}
+        placeholder="All"
+        styles={customStyles}
+        minWidth="173px"
+        maxWidth="204px"
+        options={recommendedFilters.map(el => ({
+          value: el,
+          label: capitalizeFirstLetter(el),
+        }))}
+        theme={theme => ({
+          ...theme,
+          borderRadius: '12px',
+        })}
+        name='recommended'
+      />
     </Form>
   );
 };

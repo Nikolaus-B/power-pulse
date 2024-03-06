@@ -21,7 +21,6 @@ import {
   NotRecommendedWrapper,
   Button,
 } from './ProductsList.styled';
-import img from '../../../img/products-1x.jpg'
 
 export const ProductsList = ({ products }) => {
 
