@@ -1,0 +1,1 @@
+{"version":3,"file":"static/js/317.6ec4fd3e.chunk.js","mappings":"mKAMA,UAJA,WACE,OAAOA,EAAAA,EAAAA,KAAA,OAAAC,SAAK,aACd,C","sources":["pages/TitlePage.jsx"],"sourcesContent":["import React from 'react';\n\nfunction TitlePage() {\n  return <div>TitlePage</div>;\n}\n\nexport default TitlePage;\n"],"names":["_jsx","children"],"sourceRoot":""}

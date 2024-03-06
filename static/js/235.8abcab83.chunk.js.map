@@ -1,1 +1,0 @@
-{"version":3,"file":"static/js/235.8abcab83.chunk.js","mappings":"iKAMA,UAJA,WACE,OAAOA,EAAAA,EAAAA,KAAA,OAAAC,SAAK,cACd,C","sources":["pages/SignUpPage.jsx"],"sourcesContent":["import React from 'react';\n\nfunction SingUpPage() {\n  return <div>SingUpPage</div>;\n}\n\nexport default SingUpPage;\n"],"names":["_jsx","children"],"sourceRoot":""}
