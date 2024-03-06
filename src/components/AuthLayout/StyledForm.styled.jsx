@@ -4,13 +4,21 @@ import { Form, Field } from 'formik';
 export const StyledForm = styled(Form)`
   display: flex;
   flex-direction: column;
-  gap: 18px;
-  justify-content: center;
+  // gap:18px;
+  
 
-  @media screen and (min-width: 768px) {
-    width: 364px;
-    gap: 20px;
+    @media screen and (min-width: 768px) {
+      width: 364px;
+      // gap: 20px;
+    }
   }
+`;
+
+export const Test = styled.div`
+   display: flex;
+    flex-direction: column;
+    gap: 14px;
+    justify-content: center;
 }
 `;
 
@@ -37,9 +45,8 @@ export const Input = styled(Field)`
   &::placeholder {
     font-size: 14px;
     font-weight: 400;
-    line-height: 18px;
-    letter-spacing: 0em;
-    text-align: left;
+    line-height: 1.28;
+
     color: rgba(239, 237, 232, 0.6);
   }
 
@@ -50,7 +57,7 @@ export const Input = styled(Field)`
     border: 1px solid #e6533c;
   }
   &.default {
-    outline: 1px solid rgba(239, 237, 232, 0.3);
+    outline: 1px solid rgba(239, 237, 232, 0.6);
   }
   &.error {
     border: 1px solid #d80027;
@@ -58,9 +65,14 @@ export const Input = styled(Field)`
   &.success {
     border: 1px solid #3cbf61;
   }
+  @media screen and (min-width: 768px) {
+    font-size: 16px;
+    line-height: 1.5;
+  }
 `;
 
 export const Button = styled.button`
+  font-family: 'Roboto', sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -72,9 +84,7 @@ export const Button = styled.button`
   color: #efede8;
   font-size: 16px;
   font-weight: 500;
-  line-height: 18px;
-  letter-spacing: 0em;
-  text-align: left;
+  line-height: 1.25;
   margin-top: 28px;
   cursor: pointer;
 
@@ -88,7 +98,7 @@ export const Button = styled.button`
     height: 56px;
     margin-top: 64px;
     font-size: 20px;
-    line-height: 24px;
+    line-height: 1.2;
   }
 `;
 export const Message = styled.div`

@@ -5,7 +5,6 @@ import {
   Text,
   TextLinkIn,
   StyledLink,
-  Material,
   IconPlay,
   SvgPlay,
   Tutorial,
@@ -42,32 +41,30 @@ const AuthLayout = ({
         </TextLinkIn>
       </ContainerForm>
 
-      <Material>
-        <IconPlay>
-          <Icon>
-            <SvgPlay>
-              <use href={`${sprite}#icon-Polygon-1`}></use>
-            </SvgPlay>
-          </Icon>
+      <IconPlay>
+        <Icon>
+          <SvgPlay>
+            <use href={`${sprite}#icon-Polygon-1`}></use>
+          </SvgPlay>
+        </Icon>
 
-          <Block>
-            <Tutorial>
-              350+<TextTutorial>Video tutorial</TextTutorial>
-            </Tutorial>
-          </Block>
-        </IconPlay>
-        <Calories>
-          <IconMan>
-            <IconManSvg>
-              <use href={`${sprite}#icon-Group`}></use>
-            </IconManSvg>
-          </IconMan>
-          <SectionMan>
-            <TitleMan>500</TitleMan>
-            <SpanMan>cal</SpanMan>
-          </SectionMan>
-        </Calories>
-      </Material>
+        <Block>
+          <Tutorial>
+            350+<TextTutorial>Video tutorial</TextTutorial>
+          </Tutorial>
+        </Block>
+      </IconPlay>
+      <Calories>
+        <IconMan>
+          <IconManSvg>
+            <use href={`${sprite}#icon-Group`}></use>
+          </IconManSvg>
+        </IconMan>
+        <SectionMan>
+          <TitleMan>500</TitleMan>
+          <SpanMan>cal</SpanMan>
+        </SectionMan>
+      </Calories>
     </Container>
   );
 };

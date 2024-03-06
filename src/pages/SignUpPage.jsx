@@ -11,6 +11,7 @@ import {
   Button,
   Message,
   ErrorText,
+  Test,
 } from '../components/AuthLayout/StyledForm.styled';
 
 import AuthLayout from '../components/AuthLayout/AuthLayout';
@@ -53,51 +54,53 @@ function SignInPage() {
       >
         {({ errors, touched }) => (
           <StyledForm>
-            <label htmlFor="name">
-              <Input
-                id="name"
-                name="name"
-                placeholder="Name"
-                type="text"
-                className={`${'defoult'}
+            <Test>
+              <label htmlFor="name">
+                <Input
+                  id="name"
+                  name="name"
+                  placeholder="Name"
+                  type="text"
+                  className={`${'defoult'}
                 ${touched.name && !errors.name && 'success'}
                 ${touched.name && errors.name && 'error'}`}
-              />
-            </label>
-            <label htmlFor="email">
-              <Input
-                id="email"
-                name="email"
-                placeholder="Email"
-                type="email"
-                className={`${'defoult'}
+                />
+              </label>
+              <label htmlFor="email">
+                <Input
+                  id="email"
+                  name="email"
+                  placeholder="Email"
+                  type="email"
+                  className={`${'defoult'}
                     ${touched.email && !errors.email && 'success'}
                     ${touched.email && errors.email && 'error'}`}
-              />
-            </label>
-            <label htmlFor="password">
-              <Input
-                type={showPassword ? 'text' : 'password'}
-                id="password"
-                name="password"
-                placeholder="Password"
-                className={`${'defoult'}
+                />
+              </label>
+              <label htmlFor="password">
+                <Input
+                  type={showPassword ? 'text' : 'password'}
+                  id="password"
+                  name="password"
+                  placeholder="Password"
+                  className={`${'defoult'}
                     ${touched.password && !errors.password && 'success'}
                     ${touched.password && errors.password && 'error'}`}
-              />
-              {errors.password && touched.password && (
-                <Message>
-                  <ErrorText>
-                    <ErrorMessage component="p" name="password" />
-                  </ErrorText>
-                </Message>
-              )}
-              {!errors.password && touched.password && (
-                <Message>
-                  <ErrorText>Success password</ErrorText>
-                </Message>
-              )}
-            </label>
+                />
+                {errors.password && touched.password && (
+                  <Message>
+                    <ErrorText>
+                      <ErrorMessage component="p" name="password" />
+                    </ErrorText>
+                  </Message>
+                )}
+                {!errors.password && touched.password && (
+                  <Message>
+                    <ErrorText>Success password</ErrorText>
+                  </Message>
+                )}
+              </label>
+            </Test>
             <Button type="submit">Sign Up</Button>
           </StyledForm>
         )}
