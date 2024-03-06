@@ -4,11 +4,16 @@ import axios from 'axios';
 axios.defaults.baseURL = `
  https://power-pulse-back.onrender.com/`;
 
+const setAuthHeader = token => {
+  axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+};
+
 export const fetchUserRegister = createAsyncThunk(
   'user/userRegister',
-  async (_, thunkAPI) => {
+  async (PersonalData, thunkAPI) => {
     try {
-      const response = await axios.post(`users/register`);
+      const response = await axios.post(`users/register`, PersonalData);
+      setAuthHeader(response.data.token);
       return response.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
@@ -18,9 +23,10 @@ export const fetchUserRegister = createAsyncThunk(
 
 export const fetchUserLogIn = createAsyncThunk(
   'user/userLogIn',
-  async (_, thunkAPI) => {
+  async (PersonalData, thunkAPI) => {
     try {
-      const response = await axios.post(`user/login`);
+      const response = await axios.post(`users/login`, PersonalData);
+      setAuthHeader(response.data.token);
       return response.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
