@@ -8,22 +8,21 @@ import hero1 from '../../img/hero-1x.jpg';
 import hero2 from '../../img/hero-2x.jpg';
 
 export const Container = styled.div`
-  position: relative;
+ position: relative;
   background-image: url(${heroMobile1});
   background-image: -webkit-image-set(
-    url(${heroMobile1}) ; 1x,
-    url(${heroMobile2}) ; 2x
+    url(${heroMobile1}); 1x,
+    url(${heroMobile2}); 2x
   );
   color: #efede8;
   background-repeat: no-repeat;
-  background-position: bottom 0 right 0;
+  background-position: bottom 0 right -40%;
   margin: 0 auto;
   position: relative;
-  height: 100%;
-  width: 100%;
+  height: 100vh;
 
   @media screen and (min-width: 375px) {
-    max-width: 765px;
+    max-width: 375px;
   }
 
   @media screen and (min-width: 768px) {
@@ -33,8 +32,8 @@ export const Container = styled.div`
 
     background-image: url(${heroTablet1});
     background-image: -webkit-image-set(
-      url(${heroTablet1}) ; 1x,
-      url(${heroTablet2}) ; 2x
+     url(${heroTablet1}); 1x,
+     url(${heroTablet2}); 2x
     );
     background-position: bottom 0 right 0%;
   }
@@ -43,8 +42,11 @@ export const Container = styled.div`
     width: 1440px;
     height: 800px;
 
-    background-image: url(${hero1});
-    background-image: -webkit-image-set(url(${hero1}) ; 1x, url(${hero2}) ; 2x);
+    background-image: url(${hero1}); 771px;
+    background-image: -webkit-image-set(
+      url(${hero1}); 1x,
+      url(${hero2}); 2x
+    );
   }
 `;
 
