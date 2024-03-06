@@ -4,10 +4,10 @@ import {
   MenuWrapper,
   Overlay,
   CloseButton,
-  Svg,
   Logout,
   NavMenu,
   NavMenuLink,
+  Svg,
   LogoutSvg,
 } from './MobileMenu.styled';
 
@@ -62,9 +62,10 @@ const MobileMenu = ({ isOpen }) => {
       >
         <CloseButton onClick={closeMenu}>
           <Svg>
-            <Icon iconid={'close'} />
+            <Icon iconid={'x-white'} />
           </Svg>
         </CloseButton>
+
         <NavMenu>
           <NavMenuLink to="/diary" onClick={closeMenu}>
             Diary
@@ -79,7 +80,7 @@ const MobileMenu = ({ isOpen }) => {
         <Logout type="button" onClick={handleLogOut}>
           <span>Logout</span>
           <LogoutSvg>
-            <Icon iconid={'log-out'} />
+            <Icon iconid={'log-out-white'} />
           </LogoutSvg>
         </Logout>
       </MenuWrapper>
