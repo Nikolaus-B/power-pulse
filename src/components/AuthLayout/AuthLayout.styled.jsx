@@ -255,7 +255,4 @@ export const Icon = styled.div`
     margin-right: 12px;
   }
 `;
-export const Block = styled.div`
-   
-  }
-`;
+export const Block = styled.div``;

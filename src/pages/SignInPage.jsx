@@ -16,7 +16,7 @@ import {
 import AuthLayout from 'components/AuthLayout/AuthLayout';
 
 function SignInPage() {
-  const [showPassword, setShowPassword] = useState(false);
+  const [showPassword] = useState(false);
   const dispatch = useDispatch();
 
   const SignIn = Yup.object().shape({

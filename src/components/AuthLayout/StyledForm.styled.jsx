@@ -5,29 +5,25 @@ export const StyledForm = styled(Form)`
   display: flex;
   flex-direction: column;
   // gap:18px;
-  
 
-    @media screen and (min-width: 768px) {
-      width: 364px;
-      // gap: 20px;
-    }
+  @media screen and (min-width: 768px) {
+    width: 364px;
+    // gap: 20px;
   }
 `;
 
 export const Test = styled.div`
-   display: flex;
-    flex-direction: column;
-    gap: 14px;
-    justify-content: center;
-}
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  justify-content: center;
 `;
 
 export const StyledFormIn = styled(Form)`
-   display: flex;
-    flex-direction: column;
-    gap: 14px;
-    justify-content: center;
-}
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  justify-content: center;
 `;
 
 export const Input = styled(Field)`
@@ -102,23 +98,21 @@ export const Button = styled.button`
   }
 `;
 export const Message = styled.div`
-    position: absolute;
-    padding: 0;
-    margin: 0;
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: flex-start;
-  }
+  position: absolute;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
 `;
 
 export const ErrorText = styled.p`
   font-size: 12px;
-    font-weight: 400;
-    line-height: 18px;
-    letter-spacing: 0.01em;
-    text-align: left;
-    color: var(--error-color);
-  }
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: 0.01em;
+  text-align: left;
+  color: var(--error-color);
 `;
