@@ -18,14 +18,25 @@ import {
   // UserImage, 
   SectionVideo,
   SignInButton,
-  FotoSection
+  FotoSection,
+  // SectionMan
+  IconSVG,
+  IconsSVG,
+  // Foto
 } from '../components/HomePage/HomePage.styled'; 
-import img from '../img/hero-mobile-1x.jpg';
+// import img from '../img/hero-mobile-1x.jpg';
+import sprite from '../img/sprite.svg';
 
-const HomePage = () => {
+const HomePage = ({
+  title,
+  paragraph,
+  bottomText,
+  linkName,
+  linkUrl,
+  children,
+}) => {
   return (
     <>
-      
       <Container>
         <Section>
           <HeroTitle>Transforming your body shape with Power Pulse</HeroTitle>
@@ -35,33 +46,36 @@ const HomePage = () => {
           </div>
         </Section>
         
+
+         
+        {/* <img src={img} alt="Woman exercising" />  */}
         <FotoSection>
-          <img src={img} alt="Woman exercising" />
+        <VideoTutorialSection>
+        <VideoIcon>
+          <IconsSVG>
+            <use href={`${sprite}#icon-Polygon-1`}></use>
+          </IconsSVG>
+        </VideoIcon>
 
-          <VideoTutorialSection>
-            <VideoIcon>
-              <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="15" cy="15" r="15" fill="#EF8964" />
-              </svg>
-            </ VideoIcon >
-            <SectionVideo>
-              <Video>350+</Video>
-              <VideoTutorialButton>Video tutorial</VideoTutorialButton>
-            </SectionVideo>
-          </VideoTutorialSection>
+        <SectionVideo>
+          <Video>
+            350+<VideoTutorialButton>Video tutorial</VideoTutorialButton>
+          </Video>
+        </SectionVideo>
+      </VideoTutorialSection>
 
-          <CaloriesTrackerSection>
-            <CaloriesIcon>
-              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="10" cy="10" r="10" fill="#EFA082" />
-              </svg>
-            </CaloriesIcon>
-            <CaloriesInfo>
-              <CaloriesText>500</CaloriesText>
-              <Text>cal</Text>
-           </CaloriesInfo>
-         </CaloriesTrackerSection>
-      </FotoSection>
+        <CaloriesTrackerSection>
+        <CaloriesIcon>
+          <IconSVG>
+            <use href={`${sprite}#icon-Group`}></use>
+          </IconSVG>
+        </CaloriesIcon>
+        <CaloriesInfo>
+          <CaloriesText>500</CaloriesText>
+          <Text>cal</Text>
+        </CaloriesInfo>
+      </CaloriesTrackerSection>
+        </FotoSection>
         
       </Container>
     </>
