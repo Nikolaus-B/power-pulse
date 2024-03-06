@@ -23,7 +23,6 @@ export const HeaderWrapper = styled.div`
 export const WorkoutContainer = styled.div`
   border-radius: 4px;
   padding: 5px 7.5px;
-  width: 73px;
   height: 24px;
   background-color: rgba(239, 237, 232, 0.05);
 `;

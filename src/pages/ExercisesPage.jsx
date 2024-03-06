@@ -33,7 +33,7 @@ function ExercisesPage() {
     <>
       <div className='container'>
         {showBackButton && <Button onClick={handleBackButtonClick}><Svg>
-          <Icon width={16} height={16} iconid={'arrow'} />
+          <Icon width={16} height={16} iconid={'arrow-back'} />
         </Svg>Back</Button>}
       <Title title={title} />
       <ExercisesCategories onSelect={handleCategorySelect} selectedCategory={selectedCategory}/>
