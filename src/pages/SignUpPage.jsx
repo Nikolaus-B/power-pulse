@@ -18,7 +18,7 @@ import AuthLayout from '../components/AuthLayout/AuthLayout';
 
 function SignInPage() {
   const dispatch = useDispatch();
-  const [showPassword, hidePassword] = useState(false);
+  const [showPassword] = useState(false);
 
   const SignUp = Yup.object().shape({
     name: Yup.string().min(2).max(20).required('Required'),
