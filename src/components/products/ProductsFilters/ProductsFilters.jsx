@@ -15,6 +15,7 @@ import { useDispatch, useSelector } from 'react-redux';
 //   selectQuery,
 // } from '../../../redux/products/productsSelectors';
 import { setFilterQuery, setFilterCategory, setFilterRecommended } from '../../../redux/products/productsSlice';
+import { Icon } from 'components/Icon/Icon';
 //import { fetchCategories } from '../../../redux/products/operations';
 
 export const ProductsFilters = ({ categories }) => {
@@ -110,52 +111,10 @@ export const ProductsFilters = ({ categories }) => {
         />
         <ButtonWrapper>
           {hiddenBtn && <InputButton type="button" onClick={clearQuery}>
-            <svg
-              width="18"
-              height="18"
-              viewBox="0 0 18 18"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M13.5 4.5L4.5 13.5"
-                stroke="#E6533C"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-              <path
-                d="M4.5 4.5L13.5 13.5"
-                stroke="#E6533C"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
+            <Icon iconid={'x-red'} width={18} height={18} />
           </InputButton>}
           <InputButton type="submit">
-            <svg
-              width="18"
-              height="18"
-              viewBox="0 0 18 18"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M8.25 14.25C11.5637 14.25 14.25 11.5637 14.25 8.25C14.25 4.93629 11.5637 2.25 8.25 2.25C4.93629 2.25 2.25 4.93629 2.25 8.25C2.25 11.5637 4.93629 14.25 8.25 14.25Z"
-                stroke="#EFEDE8"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-              <path
-                d="M15.7498 15.75L12.4873 12.4875"
-                stroke="#EFEDE8"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
+          <Icon iconid={'search'} width={18} height={18} />
           </InputButton>
         </ButtonWrapper>
       </InputWrapper>
