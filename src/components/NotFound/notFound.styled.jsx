@@ -9,6 +9,7 @@ import hero2 from '../../img/hero-2x.jpg';
 
 export const Container = styled.div`
  position: relative;
+//  background-color: black;
   background-image: url(${heroMobile1});
   background-image: -webkit-image-set(
     url(${heroMobile1}); 1x,
@@ -20,9 +21,7 @@ export const Container = styled.div`
   margin: 0 auto;
   height: 100vh;
 
-  @media screen and (min-width: 375px) {
-    max-width: 375px;
-  }
+
 
   @media screen and (min-width: 768px) {
     max-width: none;
@@ -49,7 +48,7 @@ export const Container = styled.div`
   }
 `;
 
-export const Left = styled.div`
+export const ErrorBox = styled.div`
   background: #e6533c;
   max-width: calc(64%);
   height: 100%;
@@ -64,7 +63,7 @@ export const Left = styled.div`
   }
 
   @media screen and (min-width: 1440px) {
-    width: 669px;
+    max-width: 669px;
     padding: 32px 96px;
   }
 `;

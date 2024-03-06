@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
-  Left,
+  ErrorBox,
   Content,
   Title404,
   Text404,
@@ -22,10 +22,10 @@ const NotFound = () => {
     <Container className="container">
       <StyledLink to="/">
         <Svg>
-          <use href="../../img/pulse-icons.svg#icon-logo-white"></use>
+          <use href="../../img/pulse-icons.svg#white-logo" />
         </Svg>
       </StyledLink>
-      <Left>
+      <ErrorBox>
         <Content>
           <Title404>404</Title404>
           <Text404>
@@ -38,7 +38,7 @@ const NotFound = () => {
             Go Home
           </Button>
         </Content>
-      </Left>
+      </ErrorBox>
     </Container>
   );
 };
