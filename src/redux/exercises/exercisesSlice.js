@@ -12,6 +12,7 @@ import { fetchExercises } from './operations';
 
 const initialState = {
   exercises: [],
+  filters: []
 };
 
 const exercisesSlice = createSlice({
@@ -26,3 +27,4 @@ const exercisesSlice = createSlice({
 });
 
 export const exercisesReducer = exercisesSlice.reducer;
+
