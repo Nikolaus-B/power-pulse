@@ -5,6 +5,9 @@ import React, { useState } from 'react';
 import {filters} from 'components/Exercises/filters'
 import { ExercisesList } from 'components/Exercises/ExercisesList/ExercisesList';
 import {GlobalStyle} from "../components/GlobalStyle"
+import { Icon } from 'components/Icon/Icon';
+import { Button, Svg } from 'components/Exercises/ExercisesPage.styled'
+
 
 function ExercisesPage() {
   const [selectedCategory, setSelectedCategory] = useState("Body parts");
@@ -29,22 +32,21 @@ function ExercisesPage() {
   return (
     <>
       <div className='container'>
+        {showBackButton && <Button onClick={handleBackButtonClick}><Svg>
+          <Icon width={16} height={16} iconid={'arrow'} />
+        </Svg>Back</Button>}
       <Title title={title} />
-      {showBackButton && <button onClick={handleBackButtonClick}>Back</button>}
-        
+      <ExercisesCategories onSelect={handleCategorySelect} selectedCategory={selectedCategory}/>
 
       {selectedSubcategory ? (
-        <ExercisesList exercises={selectedSubcategory} />
+        <ExercisesList subCategory={selectedSubcategory} />
         ) : (
-            <>
-              <ExercisesCategories onSelect={handleCategorySelect} selectedCategory={selectedCategory}/>
               <ExercisesSubcategoriesList
                 category={selectedCategory}
                 subcategories={filters}
                 onSelect={handleSubcategorySelect}
                 filters={filters}
                 />
-            </>
       )}
       </div>
       <GlobalStyle/>
