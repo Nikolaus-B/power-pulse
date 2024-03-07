@@ -1,5 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import Select from 'react-select';
+
 import {
   Form,
   InputWrapper,
@@ -7,16 +9,12 @@ import {
   ButtonWrapper,
   InputButton,
 } from './ProductsFilters.styled';
-import { useDispatch, useSelector } from 'react-redux';
 import {
-  selectCategories,
-  selectCategory,
-  selectIsRecommended,
-  selectQuery,
-} from '../../../redux/products/productsSelectors';
-import { setFilterQuery, setFilterCategory, setFilterRecommended } from '../../../redux/products/productsSlice';
+  setFilterQuery,
+  setFilterCategory,
+  setFilterRecommended,
+} from '../../../redux/products/productsSlice';
 import { Icon } from 'components/Icon/Icon';
-//import { fetchCategories } from '../../../redux/products/operations';
 
 export const ProductsFilters = ({ categories }) => {
   const recommendedFilters = ['all', 'recommended', 'not recommended'];
@@ -76,50 +74,49 @@ export const ProductsFilters = ({ categories }) => {
   };
 
   const clearQuery = () => {
-    setQuery('')
-    dispatch(setFilterQuery(''))
-  }
+    setQuery('');
+    dispatch(setFilterQuery(''));
+  };
   const dispatch = useDispatch();
   const [hiddenBtn, setHiddenBtn] = useState(false);
   const [query, setQuery] = useState('');
-  //const category = useSelector(selectCategory);
-  //const recommended = useSelector(selectIsRecommended);
 
-  const handleChange = (e) => {
+  const handleChange = e => {
     const { value } = e.target;
     setHiddenBtn(value.length > 0);
     setQuery(value);
     dispatch(setFilterQuery(value));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = e => {
     e.preventDefault();
-    setQuery('')
-    setHiddenBtn(false)
-  }; 
-
+    setQuery('');
+    setHiddenBtn(false);
+  };
 
   return (
     <Form onSubmit={handleSubmit}>
       <InputWrapper>
         <Input
-        name='query'
+          name="query"
           type="text"
           placeholder="Search"
           value={query}
           onChange={handleChange}
         />
         <ButtonWrapper>
-          {hiddenBtn && <InputButton type="button" onClick={clearQuery}>
-            <Icon iconid={'x-red'} width={18} height={18} />
-          </InputButton>}
+          {hiddenBtn && (
+            <InputButton type="button" onClick={clearQuery}>
+              <Icon iconid={'x-red'} width={18} height={18} />
+            </InputButton>
+          )}
           <InputButton type="submit">
-          <Icon iconid={'search'} width={18} height={18} />
+            <Icon iconid={'search'} width={18} height={18} />
           </InputButton>
         </ButtonWrapper>
       </InputWrapper>
       <Select
-      onChange={evt => dispatch(setFilterCategory(evt.value))}
+        onChange={evt => dispatch(setFilterCategory(evt.value))}
         options={categories.map(category => ({
           value: category,
           label: capitalizeFirstLetter(category),
@@ -134,7 +131,7 @@ export const ProductsFilters = ({ categories }) => {
         })}
       />
       <Select
-      onChange={evt => dispatch(setFilterRecommended(evt.value))}
+        onChange={evt => dispatch(setFilterRecommended(evt.value))}
         placeholder="All"
         styles={customStyles}
         minWidth="173px"
@@ -147,7 +144,7 @@ export const ProductsFilters = ({ categories }) => {
           ...theme,
           borderRadius: '12px',
         })}
-        name='recommended'
+        name="recommended"
       />
     </Form>
   );

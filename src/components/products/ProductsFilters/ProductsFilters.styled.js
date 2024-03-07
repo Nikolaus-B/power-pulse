@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import BgImg1x from '../../../img/products-1x.jpg';
 import BgImg2x from '../../../img/products-2x.jpg';
 
-
 const PageContainer = styled.div`
   @media screen and (min-width: 1440px) {
     max-width: 1440px;

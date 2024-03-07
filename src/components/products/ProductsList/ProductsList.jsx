@@ -1,5 +1,3 @@
-import React, { useEffect } from 'react';
-
 import {
   List,
   ListItem,
@@ -33,8 +31,9 @@ export const ProductsList = ({ products }) => {
   const recommended = useSelector(selectIsRecommended);
   const recommendedList = recommended.recommendedProducts;
   const isRecommended = products.map((product, index) => {
-   if (recommendedList) {
-    return recommendedList.some(item => item._id === product._id);}
+    if (recommendedList) {
+      return recommendedList.some(item => item._id === product._id);
+    }
   });
 
   return (

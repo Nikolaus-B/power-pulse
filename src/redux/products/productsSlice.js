@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+
 import {
   fetchAllProducts,
   fetchCategories,
@@ -43,19 +44,12 @@ const productsSlice = createSlice({
     builder
       .addCase(fetchAllProducts.fulfilled, (state, action) => {
         state.products = action.payload;
-        // state.token = action.payload.token;
-        // state.isLoggedIn = true;
       })
       .addCase(fetchIsRecommended.fulfilled, (state, action) => {
         state.isRecommended = action.payload;
-        //state.notRecommended = action.payload[1];
-        // state.token = action.payload.token;
-        // state.isLoggedIn = true;
       })
       .addCase(fetchCategories.fulfilled, (state, action) => {
         state.categories = action.payload;
-        // state.token = action.payload.token;
-        // state.isLoggedIn = true;
       });
   },
 });

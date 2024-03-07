@@ -76,12 +76,14 @@ const RecommendedContainer = styled.div`
 `;
 
 const RecommendedWrapper = styled.div`
-display: flex;
-gap: 8px;`;
+  display: flex;
+  gap: 8px;
+`;
 
 const NotRecommendedWrapper = styled.div`
-display: flex;
-gap: 8px;`;
+  display: flex;
+  gap: 8px;
+`;
 
 const GreenRound = styled.div`
   border-radius: 10px;
@@ -94,7 +96,7 @@ const RedRound = styled.div`
   border-radius: 10px;
   width: 14px;
   height: 14px;
-  background-color: #E9101D;
+  background-color: #e9101d;
 `;
 
 const Text = styled.p`
