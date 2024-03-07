@@ -43,18 +43,18 @@ const productsSlice = createSlice({
   extraReducers: builder => {
     builder
       .addCase(fetchAllProducts.fulfilled, (state, action) => {
-        state.products.products = action.payload;
+        state.products = action.payload;
         // state.token = action.payload.token;
         // state.isLoggedIn = true;
       })
       .addCase(fetchRecommended.fulfilled, (state, action) => {
-        state.products.recommended = action.payload[0];
-        state.products.notRecommended = action.payload[1];
+        state.recommended = action.payload[0];
+        state.notRecommended = action.payload[1];
         // state.token = action.payload.token;
         // state.isLoggedIn = true;
       })
       .addCase(fetchCategories.fulfilled, (state, action) => {
-        state.products.categories = action.payload;
+        state.categories = action.payload;
         // state.token = action.payload.token;
         // state.isLoggedIn = true;
       });

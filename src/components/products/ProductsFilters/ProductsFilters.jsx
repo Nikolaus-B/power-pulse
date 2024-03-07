@@ -8,12 +8,12 @@ import {
   InputButton,
 } from './ProductsFilters.styled';
 import { useDispatch, useSelector } from 'react-redux';
-// import {
-//   selectCategories,
-//   selectCategory,
-//   selectIsRecommended,
-//   selectQuery,
-// } from '../../../redux/products/productsSelectors';
+import {
+  selectCategories,
+  selectCategory,
+  selectIsRecommended,
+  selectQuery,
+} from '../../../redux/products/productsSelectors';
 import { setFilterQuery, setFilterCategory, setFilterRecommended } from '../../../redux/products/productsSlice';
 import { Icon } from 'components/Icon/Icon';
 //import { fetchCategories } from '../../../redux/products/operations';
