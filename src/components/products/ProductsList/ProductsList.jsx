@@ -34,6 +34,7 @@ export const ProductsList = ({ products }) => {
     if (recommendedList) {
       return recommendedList.some(item => item._id === product._id);
     }
+    return [];
   });
 
   return (
