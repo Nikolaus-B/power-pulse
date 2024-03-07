@@ -22,22 +22,24 @@ import {
   Button,
 } from './ProductsList.styled';
 import { Icon } from 'components/Icon/Icon';
-import { useDispatch } from 'react-redux';
-import { fetchRecommended } from '../../../redux/products/operations';
+import { useSelector } from 'react-redux';
+import { selectIsRecommended } from '../../../redux/products/productsSelectors';
 
 export const ProductsList = ({ products }) => {
-
-  const capitalizeFirstLetter = (text) => {
+  const capitalizeFirstLetter = text => {
     return text.charAt(0).toUpperCase() + text.slice(1);
   };
 
-  // const visibleProducts = (products) => {
-    
-  // }
+  const recommended = useSelector(selectIsRecommended);
+  const recommendedList = recommended.recommendedProducts;
+  const isRecommended = products.map((product, index) => {
+   if (recommendedList) {
+    return recommendedList.some(item => item._id === product._id);}
+  });
 
   return (
     <List>
-      {products.map(product => {
+      {products.map((product, index) => {
         return (
           <ListItem key={product._id}>
             <Container>
@@ -47,19 +49,24 @@ export const ProductsList = ({ products }) => {
                 </DietContainer>
                 <RightSideWrapper>
                   <RecommendedContainer>
-                    <RecommendedWrapper>
-                    <GreenRound></GreenRound>
-                    <Text>Recommended</Text>
-                    </RecommendedWrapper>
-                    <NotRecommendedWrapper>
-                    <RedRound></RedRound>
-                    <Text>Not recommended</Text>
-                    </NotRecommendedWrapper>
+                    {isRecommended[index] ? (
+                      <RecommendedWrapper>
+                        <GreenRound></GreenRound>
+                        <Text>Recommended</Text>
+                      </RecommendedWrapper>
+                    ) : (
+                      <NotRecommendedWrapper>
+                        <RedRound></RedRound>
+                        <Text>Not recommended</Text>
+                      </NotRecommendedWrapper>
+                    )}
                   </RecommendedContainer>
-                  <Button type="button"> Add 
-                  <div style={{paddingTop: '4px', marginLeft: '8px'}}>
-                  <Icon iconid={'arrow'} width={16} height={16} />
-                  </div>
+                  <Button type="button">
+                    {' '}
+                    Add
+                    <div style={{ paddingTop: '4px', marginLeft: '8px' }}>
+                      <Icon iconid={'arrow'} width={16} height={16} />
+                    </div>
                   </Button>
                 </RightSideWrapper>
               </HeaderWrapper>

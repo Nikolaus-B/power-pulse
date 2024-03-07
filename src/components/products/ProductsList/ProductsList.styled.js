@@ -80,7 +80,8 @@ display: flex;
 gap: 8px;`;
 
 const NotRecommendedWrapper = styled.div`
-display: none`;
+display: flex;
+gap: 8px;`;
 
 const GreenRound = styled.div`
   border-radius: 10px;
@@ -93,7 +94,7 @@ const RedRound = styled.div`
   border-radius: 10px;
   width: 14px;
   height: 14px;
-  background-color: E9101D;
+  background-color: #E9101D;
 `;
 
 const Text = styled.p`

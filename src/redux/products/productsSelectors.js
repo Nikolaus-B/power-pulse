@@ -6,8 +6,6 @@ export const selectCategories = state => state.products.categories;
 
 export const selectIsRecommended = state => state.products.isRecommended;
 
-export const selectNotRecommended = state => state.products.notRecommended;
-
 export const selectFilter = state => state.products.filter;
 
 export const selectQuery = state => state.products.filter.query;
