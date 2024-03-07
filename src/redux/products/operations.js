@@ -16,7 +16,7 @@ export const fetchAllProducts = createAsyncThunk(
   }
 );
 
-export const fetchRecommended = createAsyncThunk(
+export const fetchIsRecommended = createAsyncThunk(
   'products/getFiltred',
   async (_, thunkAPI) => {
     try {

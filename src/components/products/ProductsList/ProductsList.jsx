@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import {
   List,
@@ -22,6 +22,8 @@ import {
   Button,
 } from './ProductsList.styled';
 import { Icon } from 'components/Icon/Icon';
+import { useDispatch } from 'react-redux';
+import { fetchRecommended } from '../../../redux/products/operations';
 
 export const ProductsList = ({ products }) => {
 
@@ -37,7 +39,7 @@ export const ProductsList = ({ products }) => {
     <List>
       {products.map(product => {
         return (
-          <ListItem key={product._id.$oid}>
+          <ListItem key={product._id}>
             <Container>
               <HeaderWrapper>
                 <DietContainer>

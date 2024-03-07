@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import {
   fetchAllProducts,
   fetchCategories,
-  fetchRecommended,
+  fetchIsRecommended,
 } from './operations';
 
 // const handlePending = state => {
@@ -17,8 +17,7 @@ import {
 const initialState = {
   products: [],
   categories: [],
-  recommended: [],
-  notRecommended: [],
+  isRecommended: [],
   filter: {
     query: '',
     category: '',
@@ -47,9 +46,9 @@ const productsSlice = createSlice({
         // state.token = action.payload.token;
         // state.isLoggedIn = true;
       })
-      .addCase(fetchRecommended.fulfilled, (state, action) => {
-        state.recommended = action.payload[0];
-        state.notRecommended = action.payload[1];
+      .addCase(fetchIsRecommended.fulfilled, (state, action) => {
+        state.isRecommended = action.payload;
+        //state.notRecommended = action.payload[1];
         // state.token = action.payload.token;
         // state.isLoggedIn = true;
       })

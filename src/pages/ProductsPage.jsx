@@ -5,27 +5,27 @@ import { Container, PageContainer } from 'components/products/ProductsFilters/Pr
 import { ProductsList } from 'components/products/ProductsList/ProductsList';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchAllProducts, fetchCategories } from '../redux/products/operations';
-import { selectCategories, selectProducts } from '../redux/products/productsSelectors';
+import { fetchAllProducts, fetchCategories, fetchIsRecommended } from '../redux/products/operations';
+import { selectCategories, selectProducts, selectVisibleProducts } from '../redux/products/productsSelectors';
 
 function ProductPage() {
-  
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchCategories());
     dispatch(fetchAllProducts());
+    dispatch(fetchIsRecommended())
   }, [dispatch]);
 
   const categories = useSelector(selectCategories);
-  const products = useSelector(selectProducts);
+  const filteredProducts = useSelector(selectVisibleProducts);
 
   return <PageContainer className='container'>
     <Container>
     <Title title='Products' />
     <ProductsFilters categories={categories} />
     </Container>
-    {products.length !== 0 ? <ProductsList products={products} /> : <NotFoundProduct />}
+    {filteredProducts.length !== 0 ? <ProductsList products={filteredProducts} /> : <NotFoundProduct />}
   </PageContainer>;
 }
 
