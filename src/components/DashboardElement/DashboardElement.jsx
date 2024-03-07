@@ -1,17 +1,18 @@
 import React from 'react';
 import {
   Dashboard,
-  DashboardIcon,
   DashboardTitle,
   IconAndTitleContainer,
   Indicator,
 } from './DashboardElement.styled';
+import { Icon } from 'components/Icon/Icon';
 
 export const DashboardElement = ({ name, icon, text, isOrange }) => {
   return (
     <Dashboard $isOrange={isOrange}>
       <IconAndTitleContainer>
-        <DashboardIcon icon={icon} height={20} width={20} />
+        <Icon height={20} width={20} />
+
         <DashboardTitle $isOrange={isOrange}>{name}</DashboardTitle>
       </IconAndTitleContainer>
       <Indicator>{text}</Indicator>

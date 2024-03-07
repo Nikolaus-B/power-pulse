@@ -3,11 +3,11 @@ import {
   DayExercisesTitle,
   ExercisesContainer,
   ExercisesHeader,
-  ExercisesIcon,
   ExercisesLink,
   Exerciseslist,
   NotFoundExercises,
 } from './DayExercises.styled';
+import { Icon } from 'components/Icon/Icon';
 
 export const DayExercises = () => {
   return (
@@ -15,8 +15,7 @@ export const DayExercises = () => {
       <ExercisesHeader>
         <DayExercisesTitle>Exercises</DayExercisesTitle>
         <ExercisesLink to="/exercises">
-          Add Exercise{' '}
-          <ExercisesIcon icon="ri:arrow-right-line" height={16} width={16} />
+          Add Exercise <Icon height={16} width={16} />
         </ExercisesLink>
       </ExercisesHeader>
       <Exerciseslist>

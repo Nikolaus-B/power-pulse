@@ -6,13 +6,13 @@ import {
   ProductsLink,
   ProductHeader,
   DayProductTitle,
-  ProductsIcon,
   Productsli,
   ProductsItem,
   ProductsText,
   ProductsTextContainer,
   ProductsItemsList,
 } from './DayProducts.styled';
+import { Icon } from 'components/Icon/Icon';
 
 // const products = [];
 const products = [
@@ -72,8 +72,7 @@ export const DayProducts = () => {
       <ProductHeader>
         <DayProductTitle>Products</DayProductTitle>
         <ProductsLink to="/product">
-          Add Product{' '}
-          <ProductsIcon icon="ri:arrow-right-line" height={16} width={16} />
+          Add Product <Icon height={16} width={16} />
         </ProductsLink>
       </ProductHeader>
       {products.length ? (

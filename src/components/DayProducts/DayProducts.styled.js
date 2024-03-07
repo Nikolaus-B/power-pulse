@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { Icon } from '@iconify-icon/react';
 
 const getText = props => {
   return `'${props.$keyOfProduct}'`;
@@ -46,10 +45,6 @@ export const ProductsLink = styled(Link)`
   &:focus {
     color: var(--orange_1-color);
   }
-`;
-
-export const ProductsIcon = styled(Icon)`
-  margin-bottom: -2px;
 `;
 
 export const Productslist = styled.ul`
