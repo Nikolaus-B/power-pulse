@@ -15,6 +15,8 @@ export const HeroTitle = styled.h1`
   line-height: 105%;
   letter-spacing: 0.01em;
   color: var(--white);
+  position: relative; 
+  z-index: 1;
 
   @media screen and (min-width: 768px) {
     width: 598px;
@@ -27,9 +29,25 @@ export const HeroTitle = styled.h1`
     width: 598px;
   height: 234px;
   }
-
+ 
 `;
 
+
+// Стилі для лінії
+export const Line = styled.svg`
+  position: absolute; 
+  top: 50%; 
+  left: 0; 
+  transform: translateY(-50%); 
+  z-index: 0; 
+  width: 98px; 
+  height: 35px; 
+
+  @media screen and (min-width: 768px) {
+    width: 185px;
+    height: 67px; 
+  }
+`;
 export const CTAButton = styled.button`
   border: 1px solid var(--orange-color);
   border-radius: 12px;
@@ -193,6 +211,7 @@ fill: #efede8;
     margin-right: 12px;
   }
 `;
+
 
 export const IconsSVG = styled.svg`
 width: 12px;
@@ -361,3 +380,4 @@ export const Foto = styled.img`
   width: 446px;
   height: 669px;
 `;
+

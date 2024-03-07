@@ -16,22 +16,23 @@ import {
   SectionVideo,
   SignInButton,
   FotoSection,
+  IconsSVG,
+  Line
 } from '../components/HomePage/HomePage.styled'; 
 import { Icon } from '../components/Icon/Icon';
-const HomePage = ({
-  title,
-  paragraph,
-  bottomText,
-  linkName,
-  linkUrl,
-  children,
-}) => {
+import sprite from '../img/pulse-icons.svg';
+const HomePage = () => {
   return (
     <>
       
       <Container>
         <Section>
-          <HeroTitle>Transforming your body shape with Power Pulse</HeroTitle>
+          <HeroTitle>Transforming your body shape with Power Pulse
+            <Line stroke="#EF8964">
+            <use href={`${sprite}#line`}></use>
+          </Line>
+          </HeroTitle>
+          
           <div className="cta-buttons">
             <NavLink to="/register"><CTAButton>Sign Up</CTAButton></NavLink>
             <NavLink to="/login"><SignInButton>Sign In</SignInButton></NavLink>
@@ -43,10 +44,12 @@ const HomePage = ({
         {/* <img src={img} alt="Woman exercising" />  */}
         <FotoSection>
         <IconPlay>
-        <VideoIcon>
-          <Icon width={12} height={12} iconid={'play-log'}/>
+            <VideoIcon>
+          <IconsSVG>
+            <use href={`${sprite}#play-log`}></use>
+          </IconsSVG>
         </VideoIcon>
-
+            
         <SectionVideo>
           <Video>
             350+<VideoTutorialButton>Video tutorial</VideoTutorialButton>
@@ -85,5 +88,6 @@ const HomePage = ({
     </>
   );
 }
+
 
 export default HomePage;
