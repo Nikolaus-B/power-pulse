@@ -11,7 +11,7 @@ export const DashboardElement = ({ name, icon, text, isOrange }) => {
   return (
     <Dashboard $isOrange={isOrange}>
       <IconAndTitleContainer>
-        <Icon height={20} width={20} />
+        <Icon height={20} width={20} iconid={icon} />
 
         <DashboardTitle $isOrange={isOrange}>{name}</DashboardTitle>
       </IconAndTitleContainer>

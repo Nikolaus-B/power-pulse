@@ -1,5 +1,6 @@
 import React from 'react';
 import {
+  DayExercisesIcon,
   DayExercisesTitle,
   ExercisesContainer,
   ExercisesHeader,
@@ -7,7 +8,6 @@ import {
   Exerciseslist,
   NotFoundExercises,
 } from './DayExercises.styled';
-import { Icon } from 'components/Icon/Icon';
 
 export const DayExercises = () => {
   return (
@@ -15,7 +15,8 @@ export const DayExercises = () => {
       <ExercisesHeader>
         <DayExercisesTitle>Exercises</DayExercisesTitle>
         <ExercisesLink to="/exercises">
-          Add Exercise <Icon height={16} width={16} />
+          Add Exercise{' '}
+          <DayExercisesIcon height={15} width={15} iconid={'arrow'} />
         </ExercisesLink>
       </ExercisesHeader>
       <Exerciseslist>

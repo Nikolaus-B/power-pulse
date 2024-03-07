@@ -17,6 +17,7 @@ import { Icon } from 'components/Icon/Icon';
 // const products = [];
 const products = [
   {
+    id: 'ewfwfdsds',
     title: 'rise',
     category: 'flour',
     calories: '200',
@@ -24,6 +25,7 @@ const products = [
     recomended: true,
   },
   {
+    id: 'ewfwfds',
     title: 'mear',
     category: 'flour',
     calories: '400',
@@ -31,6 +33,7 @@ const products = [
     recomended: false,
   },
   {
+    id: 'ewfwfds',
     title: 'milk',
     category: 'flour',
     calories: '100',
@@ -38,6 +41,7 @@ const products = [
     recomended: true,
   },
   {
+    id: 'ewfwf',
     title: 'milk',
     category: 'flour',
     calories: '100',
@@ -45,6 +49,7 @@ const products = [
     recomended: false,
   },
   {
+    id: 'ewfwff',
     title: 'milk',
     category: 'flour',
     calories: '100',
@@ -67,12 +72,19 @@ export const DayProducts = () => {
     return value ? 'Yes' : 'No';
   };
 
+  const returnId = id => {
+    if (id === 'id') {
+      console.log(id);
+      return id;
+    }
+  };
+
   return (
     <ProductsContainer>
       <ProductHeader>
         <DayProductTitle>Products</DayProductTitle>
         <ProductsLink to="/product">
-          Add Product <Icon height={16} width={16} />
+          Add Product <Icon height={15} width={15} iconid={'arrow'} />
         </ProductsLink>
       </ProductHeader>
       {products.length ? (
@@ -80,11 +92,12 @@ export const DayProducts = () => {
           {products.map((el, i) => {
             return (
               <>
-                <Productsli>
+                <Productsli key={el.id}>
                   <ProductsItemsList>
                     {Object.entries(el).map(([key, value]) => {
                       return (
                         <ProductsItem
+                          key={returnId(key)}
                           $keyOfProduct={key}
                           className={defineClassNames(key, i)}
                         >
@@ -100,6 +113,9 @@ export const DayProducts = () => {
                         </ProductsItem>
                       );
                     })}
+                    <button>
+                      <Icon iconid={'trash-icon'} />
+                    </button>
                   </ProductsItemsList>
                 </Productsli>
               </>

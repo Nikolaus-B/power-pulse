@@ -16,35 +16,31 @@ export const DayDashboard = () => {
           isOrange={true}
           name={'Daily calorie intake'}
           text={'2200'}
-          icon={'fluent:food-24-filled'}
+          icon={'food'}
         />
 
         <DashboardElement
           isOrange={true}
           name={'Daily physical activity'}
           text={'110 min'}
-          icon={'fa-solid:dumbbell'}
+          icon={'dumbbell'}
         />
         <DashboardElement
           name={'Сalories consumed'}
           text={'707'}
-          icon={'fluent:food-apple-20-filled'}
+          icon={'apple'}
         />
 
-        <DashboardElement
-          name={'Сalories burned'}
-          text={'855'}
-          icon={'material-symbols-light:local-fire-department'}
-        />
+        <DashboardElement name={'Сalories burned'} text={'855'} icon={'fire'} />
         <DashboardElement
           name={'Calories remaining'}
           text={'1443'}
-          icon={'tabler:chart-bubble-filled'}
+          icon={'bubble'}
         />
         <DashboardElement
           name={'Sports remaining'}
           text={'85 min'}
-          icon={'fa-solid:running'}
+          icon={'running-man'}
         />
       </DashboardList>
       <NotificationContainer>

@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { Icon } from 'components/Icon/Icon';
 
 export const ExercisesContainer = styled.div`
   position: relative;
@@ -23,7 +24,12 @@ export const ExercisesHeader = styled.div`
 export const DayExercisesTitle = styled.p`
   font-size: 14px;
   line-height: 18px;
+  margin-left: 8px;
   color: var(--text-categories-color);
+`;
+
+export const DayExercisesIcon = styled(Icon)`
+  margin-bottom: -5px;
 `;
 
 export const ExercisesLink = styled(Link)`
