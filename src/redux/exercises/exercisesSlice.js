@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchExercises } from './operations';
+import { fetchExercises, fetchFilters } from './operations';
 
 // const handlePending = state => {
 //   state.isLoading = true;
@@ -20,9 +20,13 @@ const exercisesSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: builder => {
-    builder.addCase(fetchExercises.fulfilled, (state, action) => {
+    builder
+      .addCase(fetchExercises.fulfilled, (state, action) => {
       state.exercises = [...action.payload];
-    });
+      })
+      .addCase(fetchFilters.fulfilled, (state, action) => {
+      state.filters = [...action.payload];
+      });
   },
 });
 
