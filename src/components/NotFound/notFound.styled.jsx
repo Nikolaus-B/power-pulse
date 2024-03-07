@@ -1,63 +1,99 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import heroMobile1 from '../../img/hero-mobile-1x.jpg';
-import heroMobile2 from '../../img/hero-mobile-2x.jpg';
-import heroTablet1 from '../../img/hero-tablet-1x.jpg';
-import heroTablet2 from '../../img/hero-tablet-2x.jpg';
-import hero1 from '../../img/hero-1x.jpg';
-import hero2 from '../../img/hero-2x.jpg';
+import hero1x from '../../img/hero-404-1x.jpg';
+import hero2x from '../../img/hero-404-2x.jpg';
+import heromob1 from '../../img/hero-mob404-1x.jpg';
+import heromob2 from '../../img/hero-mob404-2x.jpg';
+import herotab1 from '../../img/hero-tablet404-1x.jpg';
+import herotab2 from '../../img/hero-tablet-2x.jpg';
 
-export const Section = styled.div`
- position: relative;
- background-color: black;
-  background-image: url(${heroMobile1});
-  background-image: -webkit-image-set(
-    url(${heroMobile1}); 1x,
-    url(${heroMobile2}); 2x
-  );
-  color: #e6533c;
+export const Photo = styled.img`
+  background-image: url(${heromob1});
+  position: absolute;
   background-repeat: no-repeat;
-  background-position: bottom 0 right -40%;
-  margin: 0 auto;
+  background-position: center;
+  background-size: contain;
+
+  width: 135px;
+  height: 560px;
+  top: 189px;
+  left: 250px;
+  z-index: 1;
+
+  @media (min-device-pixel-ratio: 2),
+    (-webkit-min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+    background-image: linear-gradient(
+        168deg,
+        #040404 14.75%,
+        rgba(4, 4, 4, 0) 52.97%
+      ),
+      linear-gradient(73deg, #040404 6.11%, rgba(4, 4, 4, 0) 66.68%),
+      url(${heromob2});
+  }
+  @media screen and (min-width: 768px) {
+    position: absolute;
+    width: 423px;
+    height: 893px;
+    top: 47px;
+    left: 345px;
+
+    background-image: url(${herotab1});
+    @media (min-device-pixel-ratio: 2),
+      (-webkit-min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+      background-image: url(${herotab2});
+    }
+  }
+  @media screen and (min-width: 1440px) {
+    position: absolute;
+    width: 670px;
+    height: 800px;
+    top: -84px;
+    left: 770px;
+    background-image: url(${hero1x});
+
+    @media (min-device-pixel-ratio: 2),
+      (-webkit-min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+      background-image: url(${hero2x});
+    }
+  }
+`;
+export const Section = styled.div`
+  position: relative;
+  color: #e6533c;
   height: 100vh;
+  background-color: black;
 
   @media screen and (min-width: 768px) {
     max-width: none;
     width: 768px;
-    background-color: black;
-
-    background-image: url(${heroTablet1});
-    background-image: -webkit-image-set(
-     url(${heroTablet1}); 1x,
-     url(${heroTablet2}); 2x
-    );
-    background-position: bottom 0 right 0%;
   }
 
   @media screen and (min-width: 1440px) {
     width: 1440px;
     height: 800px;
-    background-image: url(${hero1}); 771px;
-    background-image: url(${hero1}); 771px;
-    background-image: -webkit-image-set(
-      url(${hero1}); 1x,
-      url(${hero2}); 2x
-    );
   }
 `;
 
 export const ErrorBox = styled.div`
+  position: absolute;
+  width: 240px;
+  max-height: 812px;
   background: #e6533c;
-  max-width: calc(64%);
-  height: 100%;
   box-sizing: border-box;
   padding: 24px 20px;
   display: flex;
+  z-index: 1;
 
   @media screen and (min-width: 768px) {
-    max-width: none;
-    width: 420px;
     padding: 32px 32px;
+    max-height: 1024px;
+    width: 420px;
   }
 
   @media screen and (min-width: 1440px) {
@@ -106,6 +142,7 @@ export const StyledLink = styled(Link)`
   position: absolute;
   left: 32px;
   top: 32px;
+  z-index: 2;
 
   @media screen and (min-width: 1440px) {
     left: 96px;
@@ -150,7 +187,4 @@ export const Button = styled.button`
     font-size: 20px;
     line-height: 24px;
   }
-`;
-export const Body = styled.div`
-  background-color: black;
 `;
