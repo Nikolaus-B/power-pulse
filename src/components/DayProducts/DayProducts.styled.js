@@ -8,11 +8,16 @@ const getText = props => {
 
 export const ProductsContainer = styled.div`
   position: relative;
+
   min-height: 335px;
   max-height: 824px;
-  padding: 16px;
+  padding: 16px 22px 16px 16px;
   border: 1px solid var(--border-static-color);
   border-radius: 12px;
+
+  @media screen and (max-width: 767px) {
+    width: 335px;
+  }
 
   @media screen and (min-width: 1440px) {
     width: 826px;
@@ -47,13 +52,11 @@ export const ProductsIcon = styled(Icon)`
   margin-bottom: -2px;
 `;
 
-export const ProductsListContainer = styled.div``;
-
 export const Productslist = styled.ul`
   display: flex;
   flex-direction: column;
-  gap: 40px;
-  height: 768px;
+  gap: 39px;
+  height: 752px;
   overflow-y: scroll;
 `;
 
@@ -67,10 +70,29 @@ export const ProductsItemsList = styled.ul`
 
 export const ProductsItem = styled.li`
   display: block;
+  height: 64px;
+  &.big {
+    width: 295px;
+    color: red;
+  }
+
+  &.medium {
+    width: 295px;
+    color: aquamarine;
+  }
+
+  &.small {
+    width: 81px;
+    color: blue;
+  }
 
   @media screen and (max-width: 767px) {
     &::before {
       content: ${getText};
+      font-size: 12px;
+      line-height: 18px;
+      text-transform: capitalize;
+
       color: var(--orange_1-color);
     }
   }
@@ -78,27 +100,37 @@ export const ProductsItem = styled.li`
   @media screen and (min-width: 768px) {
     &.firstEl {
       &::before {
+        font-size: 12px;
+        line-height: 18px;
         content: ${getText};
+        text-transform: capitalize;
         color: var(--orange_1-color);
       }
     }
   }
 `;
 
-export const ProductsTextContainer = styled.div``;
+export const ProductsTextContainer = styled.div`
+  margin-top: 8px;
+  height: 38px;
+  border: 1px solid var(--text-info-color);
+  border-radius: 12px;
+  padding: 10px 14px;
 
-export const ProductsText = styled.p`
   &.big {
-    color: red;
   }
 
   &.medium {
-    color: aquamarine;
   }
 
   &.small {
-    color: blue;
   }
+`;
+
+export const ProductsText = styled.p`
+  text-transform: capitalize;
+  font-size: 14px;
+  line-height: 18px;
 `;
 
 export const NotFoundProducts = styled.p`

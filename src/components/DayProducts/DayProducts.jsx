@@ -8,7 +8,6 @@ import {
   DayProductTitle,
   ProductsIcon,
   Productsli,
-  ProductsListContainer,
   ProductsItem,
   ProductsText,
   ProductsTextContainer,
@@ -58,6 +57,7 @@ export const DayProducts = () => {
   const defineClassNames = (key, index) => {
     const size =
       key === 'title' ? 'big' : key === 'category' ? 'medium' : 'small';
+
     const firstEl = index === 0 ? 'firstEl' : '';
 
     return `${size} ${firstEl}`;
@@ -76,42 +76,40 @@ export const DayProducts = () => {
           <ProductsIcon icon="ri:arrow-right-line" height={16} width={16} />
         </ProductsLink>
       </ProductHeader>
-      <ProductsListContainer>
-        {products.length ? (
-          <Productslist>
-            {products.map((el, i) => {
-              return (
-                <>
-                  <Productsli>
-                    <ProductsItemsList>
-                      {Object.entries(el).map(([key, value]) => {
-                        return (
-                          <ProductsItem
-                            $keyOfProduct={key}
+      {products.length ? (
+        <Productslist>
+          {products.map((el, i) => {
+            return (
+              <>
+                <Productsli>
+                  <ProductsItemsList>
+                    {Object.entries(el).map(([key, value]) => {
+                      return (
+                        <ProductsItem
+                          $keyOfProduct={key}
+                          className={defineClassNames(key, i)}
+                        >
+                          <ProductsTextContainer
                             className={defineClassNames(key, i)}
                           >
-                            <ProductsTextContainer>
-                              <ProductsText
-                                className={defineClassNames(key, i)}
-                              >
-                                {key === 'recomended'
-                                  ? convertValue(value)
-                                  : value}
-                              </ProductsText>
-                            </ProductsTextContainer>
-                          </ProductsItem>
-                        );
-                      })}
-                    </ProductsItemsList>
-                  </Productsli>
-                </>
-              );
-            })}
-          </Productslist>
-        ) : (
-          <NotFoundProducts>Not found products</NotFoundProducts>
-        )}
-      </ProductsListContainer>
+                            <ProductsText className={defineClassNames(key, i)}>
+                              {key === 'recomended'
+                                ? convertValue(value)
+                                : value}
+                            </ProductsText>
+                          </ProductsTextContainer>
+                        </ProductsItem>
+                      );
+                    })}
+                  </ProductsItemsList>
+                </Productsli>
+              </>
+            );
+          })}
+        </Productslist>
+      ) : (
+        <NotFoundProducts>Not found products</NotFoundProducts>
+      )}
     </ProductsContainer>
   );
 };
