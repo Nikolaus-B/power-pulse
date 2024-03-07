@@ -21,10 +21,10 @@ import {
 
 //------------------------------------------------
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
+// import { useEffect } from 'react';
 
 import {
-  fetchUserCurrent,
+  // fetchUserCurrent,
   fetchUserLogout,
 } from '../../redux/user/operations.js';
 import { selectToken } from '../../redux/user/userSelectors.js';
@@ -33,9 +33,9 @@ export const UserCard = () => {
   const dispatch = useDispatch();
   const user = useSelector(selectToken);
 
-  useEffect(() => {
-    dispatch(fetchUserCurrent({}));
-  });
+  // useEffect(() => {
+  //   dispatch(fetchUserCurrent({}));
+  // });
 
   return (
     <Stack>
