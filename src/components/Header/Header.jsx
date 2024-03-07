@@ -12,9 +12,11 @@ import {
   NavBtn,
   NavContainer,
   customStyles,
+  LogOutBtn,
+  AvatarLink,
+  LogoImage
 } from './Header.styled';
 import { useMediaQuery } from 'react-responsive';
-import { css } from '@emotion/react';
 import Modal from 'react-modal';
 import { Icon } from 'components/Icon/Icon';
 
@@ -33,95 +35,96 @@ export const Header = () => {
   const isLoginPage = location.pathname === '/login';
   const isRegisterPage = location.pathname === '/register';
 
-  const isTabletOrMobile = useMediaQuery({ minWidth: 1024 });
-  const isMobile = useMediaQuery({ minWidth: 320 });
+  const isTablet = useMediaQuery({ minWidth: 768 });
+  const isMobile = useMediaQuery({ maxWidth: 768 });
   const isDesktop = useMediaQuery({ minWidth: 1440 });
 
   const navRef = useRef();
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  // const [userAvatar, setUserAvatar] = useState(null);
+
+  // const getUserAvatar = () => {
+  //   const currentUser = firebase.auth().currentUser;
+  //   const avatarURL = currentUser.photoURL;
+  //   setUserAvatar(avatarURL);
+  // };
+
+  // useEffect(() => {
+  //   getUserAvatar();
+  // }, []);
+
   const showNavbar = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  const showBottomBorder = isLoginPage || isRegisterPage;
+
   return (
     <header>
-      <HeaderContainer>
+      <HeaderContainer showBottomBorder={showBottomBorder}>
         <LogoContainer>
-          <a href='/HomePage'>
-          <img
-            src={LogoSvg}
-            alt="Logo"
-            width="151"
-            // css={css`
-            //   @media (max-width: 768px) {
-            //     width: 100px;
-            //   }
-            // `}
-          />
+          <a href="#">
+            <LogoImage src={LogoSvg} alt="Logo" />
           </a>
         </LogoContainer>
+
         {/* {isAuthenticated && ( */}
+
         <NavContainer>
-          {/* <nav ref={navRef}> */}
-            <NavList>
-              <li>
-                <StyledNavLink to="/diary">Diary</StyledNavLink>
-              </li>
-              <li>
-                <StyledNavLink to="/product">Product</StyledNavLink>
-              </li>
-              <li>
-                <StyledNavLink to="/exercises">Exercises</StyledNavLink>
-              </li>
-            </NavList>
 
-            <div>
-              <NavLink to="/">
-                <svg>
-                  <Icon iconid={'settings'} width="28" />
-                </svg>
-              </NavLink>
+        {isDesktop && (
 
-              <CloseBtn onClick={showNavbar}>
-                <Icon
-                  icon="maki:cross"
-                  width="32"
-                  height="32"
-                  style={{ color: 'white' }}
-                />
-              </CloseBtn>
-            </div>
-          {/* </nav> */}
-        </NavContainer>
+          <NavList>
+            <li>
+              <StyledNavLink to="/diary">Diary</StyledNavLink>
+            </li>
+            <li>
+              <StyledNavLink to="/product">Product</StyledNavLink>
+            </li>
+            <li>
+              <StyledNavLink to="/exercises">Exercises</StyledNavLink>
+            </li>
+          </NavList>
+        )}
+          
+          <NavLink to="/">
+            <Icon iconid={"settings"} width="28" height="28" />
+          </NavLink>
 
-        <div className="outer-nav-buttons">
-          {/* {isAuthenticated && ( */}
-          <>
-            {/* {!isTabletOrMobile && ( */}
-            <NavLinkLogout>
-              <p onClick={logout}>Logout</p>
-              <svg>
-                <Icon iconid={'log-out'} width="20" />
-              </svg>
-            </NavLinkLogout>
-            {/* )} */}
-          </>
-          {/* )} */}
-        </div>
-        {/* {(isTabletOrMobile || isMobile) && ( */}
+
+        {/* {isAuthenticated && ( */}
         <>
-          <NavBtn onClick={showNavbar} />
-          <svg>
-            <Icon iconid={'burger-menu'} />
-          </svg>
+          {/* {!isTablet && !isMobile( */}
+
+          <AvatarLink to="#">
+            {/* {userAvatar && ( */}
+            <img src="" alt="Avatar" style={{ width: isMobile ? '37px' : '46px', height: 'auto' }} />
+          </AvatarLink>
+
+          {isDesktop && (
+            <NavLinkLogout>
+              <LogOutBtn>Logout</LogOutBtn>
+              <Icon iconid={'log-out'} width="20" />
+            </NavLinkLogout>
+          )}
+
+          {!isDesktop && (
+            <>
+              <NavBtn onClick={showNavbar}>
+              <svg>
+                <Icon iconid={'burger-menu'} width="32" />
+              </svg>
+              </NavBtn>
+            </>
+          )}
         </>
         {/* )} */}
-
+        </NavContainer>
+        {/* )} */}
         <Modal
           isOpen={isMenuOpen}
-          // onRequestClose={handleCloseModal}
           style={customStyles}
           contentLabel="Add Product Modal"
         ></Modal>
