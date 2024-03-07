@@ -5,8 +5,8 @@ import {
   DayDashboardContainer,
   Notification,
   NotificationContainer,
-  NotificationIcon,
 } from './DayDashboard.styled';
+import { Icon } from 'components/Icon/Icon';
 
 export const DayDashboard = () => {
   return (
@@ -48,7 +48,7 @@ export const DayDashboard = () => {
         />
       </DashboardList>
       <NotificationContainer>
-        <NotificationIcon icon="arcticons:symbol-exclamation-mark" />
+        <Icon width={24} height={24} iconid={'warning'} />
         <Notification>
           Record all your meals in the calorie diary every day. This will help
           you be aware of your nutrition and make informed choices

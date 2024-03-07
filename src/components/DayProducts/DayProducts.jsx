@@ -8,9 +8,14 @@ import {
   DayProductTitle,
   ProductsIcon,
   Productsli,
-  Productstext,
+  ProductsListContainer,
+  ProductsItem,
+  ProductsText,
+  ProductsTextContainer,
+  ProductsItemsList,
 } from './DayProducts.styled';
 
+// const products = [];
 const products = [
   {
     title: 'rise',
@@ -24,6 +29,20 @@ const products = [
     category: 'flour',
     calories: '400',
     weith: '300',
+    recomended: false,
+  },
+  {
+    title: 'milk',
+    category: 'flour',
+    calories: '100',
+    weith: '50',
+    recomended: true,
+  },
+  {
+    title: 'milk',
+    category: 'flour',
+    calories: '100',
+    weith: '50',
     recomended: false,
   },
   {
@@ -57,38 +76,42 @@ export const DayProducts = () => {
           <ProductsIcon icon="ri:arrow-right-line" height={16} width={16} />
         </ProductsLink>
       </ProductHeader>
-      <Productslist>
+      <ProductsListContainer>
         {products.length ? (
-          <ul>
+          <Productslist>
             {products.map((el, i) => {
               return (
                 <>
                   <Productsli>
-                    <ul>
+                    <ProductsItemsList>
                       {Object.entries(el).map(([key, value]) => {
                         return (
-                          <Productstext
+                          <ProductsItem
                             $keyOfProduct={key}
                             className={defineClassNames(key, i)}
                           >
-                            <p>
-                              {key === 'recomended'
-                                ? convertValue(value)
-                                : value}
-                            </p>
-                          </Productstext>
+                            <ProductsTextContainer>
+                              <ProductsText
+                                className={defineClassNames(key, i)}
+                              >
+                                {key === 'recomended'
+                                  ? convertValue(value)
+                                  : value}
+                              </ProductsText>
+                            </ProductsTextContainer>
+                          </ProductsItem>
                         );
                       })}
-                    </ul>
+                    </ProductsItemsList>
                   </Productsli>
                 </>
               );
             })}
-          </ul>
+          </Productslist>
         ) : (
           <NotFoundProducts>Not found products</NotFoundProducts>
         )}
-      </Productslist>
+      </ProductsListContainer>
     </ProductsContainer>
   );
 };

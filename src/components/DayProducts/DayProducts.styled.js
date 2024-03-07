@@ -8,7 +8,8 @@ const getText = props => {
 
 export const ProductsContainer = styled.div`
   position: relative;
-  height: 335px;
+  min-height: 335px;
+  max-height: 824px;
   padding: 16px;
   border: 1px solid var(--border-static-color);
   border-radius: 12px;
@@ -46,46 +47,31 @@ export const ProductsIcon = styled(Icon)`
   margin-bottom: -2px;
 `;
 
-export const Productslist = styled.div`
-  display: block;
+export const ProductsListContainer = styled.div``;
+
+export const Productslist = styled.ul`
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  height: 768px;
+  overflow-y: scroll;
 `;
 
-export const Productsli = styled.li`
-  display: block;
+export const Productsli = styled.li``;
 
-  /* @media screen and (max-width: 376px) {
-    &::before {
-      content: 'Title';
-    }
-  } */
-
-  /* @media screen and (min-width: 768px) {
-    &:first-child {
-      &::before {
-        content: 'Title';
-      }
-    }
-  } */
+export const ProductsItemsList = styled.ul`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
 `;
 
-export const Productstext = styled.li`
+export const ProductsItem = styled.li`
   display: block;
 
   @media screen and (max-width: 767px) {
     &::before {
       content: ${getText};
-    }
-
-    &.big {
-      color: red;
-    }
-
-    &.medium {
-      color: aquamarine;
-    }
-
-    &.small {
-      color: blue;
+      color: var(--orange_1-color);
     }
   }
 
@@ -93,8 +79,25 @@ export const Productstext = styled.li`
     &.firstEl {
       &::before {
         content: ${getText};
+        color: var(--orange_1-color);
       }
     }
+  }
+`;
+
+export const ProductsTextContainer = styled.div``;
+
+export const ProductsText = styled.p`
+  &.big {
+    color: red;
+  }
+
+  &.medium {
+    color: aquamarine;
+  }
+
+  &.small {
+    color: blue;
   }
 `;
 

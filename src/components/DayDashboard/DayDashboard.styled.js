@@ -25,7 +25,20 @@ export const DashboardList = styled.div`
 `;
 
 export const NotificationContainer = styled.div`
+  width: 335px;
   display: flex;
+  gap: 8px;
+  flex-wrap: nowrap;
+
+  @media screen and (min-width: 768px) and (max-width: 1439px) {
+    width: 593px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    width: 390px;
+    font-size: 16px;
+    line-height: 24px;
+  }
 `;
 
 export const NotificationIcon = styled(Icon)`
@@ -39,8 +52,19 @@ export const NotificationIcon = styled(Icon)`
 `;
 
 export const Notification = styled.p`
+  max-width: 303px;
   font-weight: 400;
-  font-size: 16px;
-  line-height: 24px;
+  font-size: 14px;
+  line-height: 18px;
   color: var(--text-info-color);
+
+  @media screen and (min-width: 768px) and (max-width: 1439px) {
+    max-width: 561px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    max-width: 358px;
+    font-size: 16px;
+    line-height: 24px;
+  }
 `;
