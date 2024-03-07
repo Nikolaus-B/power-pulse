@@ -25,6 +25,7 @@ const initialState = {
   isRefreshing: false,
   isLoading: false,
   error: null,
+  bmr: 0,
 };
 
 const userSlice = createSlice({
@@ -75,9 +76,11 @@ const userSlice = createSlice({
       })
 
       .addCase(fetchUserCurrent.fulfilled, (state, action) => {
-        state.user = action.payload.user;
+        state.user = { ...action.payload.user };
+        console.log(action.payload.user);
         state.token = action.payload.token;
         state.isLoggedIn = true;
+        state.bmr = action.payload.bmr;
       })
 
       .addCase(fetchUserParams.fulfilled, (state, action) => {

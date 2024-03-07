@@ -17,7 +17,7 @@ import { exercisesReducer } from './exercises/exercisesSlice';
 import { diaryReducer } from './diary/diarySlice';
 
 const authPersistConfig = {
-  key: 'auth',
+  key: 'user',
   storage,
   whitelist: ['token'],
   blacklist: ['chakra'],
@@ -25,7 +25,7 @@ const authPersistConfig = {
 
 export const store = configureStore({
   reducer: {
-    auth: persistReducer(authPersistConfig, userReducer),
+    user: persistReducer(authPersistConfig, userReducer),
     products: productsReducer,
     exercises: exercisesReducer,
     diary: diaryReducer,
