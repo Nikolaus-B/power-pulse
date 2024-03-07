@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import Modal from 'react-modal';
-import { customStyles } from './AddProductForm.styled';
-import { AddProductForm } from './AddProductForm';
-import { AddProductSuccess } from './AddProductSuccess';
+import { customStyles } from '../../AddProductForm/AddProductForm.styled';
+import { AddProductForm } from '../../AddProductForm/AddProductForm';
+import { AddProductSuccess } from '../../AddProductSuccess/AddProductSuccess';
 
 const productData = {
   _id: { $oid: '5d51694902b2373622ff5773' },

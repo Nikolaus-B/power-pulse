@@ -1,8 +1,8 @@
 import Modal from 'react-modal';
-import img from './img/112121.png';
+// import img from './img/112121.png';
 import { CloseIcon, ArrowForwardIcon } from '@chakra-ui/icons';
 
-import { customStyles } from './AddProductForm.styled';
+import { customStyles } from '../AddProductForm/AddProductForm.styled';
 import {
   Wrapper,
   ImageEl,
@@ -31,7 +31,7 @@ export const AddProductSuccess = ({
           <CloseIcon w={11} h={11} />
         </WrapperCloseIcon>
         <Wrapper>
-          <ImageEl src={img} alt="Success" />
+          {/* <ImageEl src={img} alt="Success" /> */}
           <Heading>Well done</Heading>
 
           <Calories>

@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import Modal from 'react-modal';
 
-import { customStyles } from './ExerciseModal.styled';
+import { customStyles } from '../../AddExerciseForm/ExerciseModal.styled';
 
-import { AddExerciseForm } from './AddExerciseForm';
-import { AddExerciseSuccess } from './AddExerciseSuccess';
+import { AddExerciseForm } from '../../AddExerciseForm/AddExerciseForm';
+import { AddExerciseSuccess } from '../../AddExerciseSuccess/AddExerciseSuccess';
 
 const exerciseData = {
   _id: {
@@ -25,7 +25,7 @@ export const BasicModalWindow = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [caloriesAdded, setCaloriesAdded] = useState(0);
-  // const [error, setError] = useState(null);
+  const [error, setError] = useState(null);
 
   // const handleOpenModal = () => {
   //   setIsOpen(true);
@@ -54,12 +54,12 @@ export const BasicModalWindow = () => {
 
   return (
     <>
-      <Modal
+      {/* <Modal
         isOpen={isOpen}
         onRequestClose={handleCloseModal}
         style={customStyles}
         contentLabel="Add Product Modal"
-      >
+      > */}
         <AddExerciseForm
           exerciseData={exerciseData}
           onClose={handleCloseModal}
@@ -67,14 +67,14 @@ export const BasicModalWindow = () => {
           onError={handleAddProductError}
           caloriesAdded={handleAddCalories}
         />
-      </Modal>
+      {/* </Modal>
       {isSuccess && (
         <AddExerciseSuccess
           isSuccessOpen={true}
           onClose={() => setIsSuccess(false)}
           caloriesAdded={caloriesAdded}
         />
-      )}
+      )} */}
     </>
   );
 };

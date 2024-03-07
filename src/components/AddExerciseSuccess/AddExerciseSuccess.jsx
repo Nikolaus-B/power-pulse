@@ -10,16 +10,30 @@ import {
   WrapperDiaryLink,
   ExerciseTime,
   WrapperCloseIcon,
+  Span
 } from './ExerciseSuccess.styled';
 
 import { CloseIcon, ArrowForwardIcon } from '@chakra-ui/icons';
-import img from './img/Thumb_up.png';
+// import img from './img/Thumb_up.png';
 
 export const AddExerciseSuccess = ({
   isSuccessOpen,
   onClose,
   caloriesAdded,
+  remainingTime
 }) => {
+
+  // const formatTime = (time) => {
+  //   return time < 10 ? `${time}` : 0`${time}`;
+  // };
+
+  // const children = () => {
+  //   const minutes = Math.floor(remainingTime / 60);
+  //   const seconds = remainingTime % 60;
+  //   return `${formatTime(minutes)} minutes ${formatTime(seconds)} second`;
+  // };
+  
+
   return (
     <>
       <Modal
@@ -33,11 +47,11 @@ export const AddExerciseSuccess = ({
         </WrapperCloseIcon>
 
         <Wrapper>
-          <ImageEl src={img} alt="Success" style={{ marginBottom: '1rem' }} />
+          {/* <ImageEl src={img} alt="Success" style={{ marginBottom: '1rem' }} /> */}
           <Heading>Well done</Heading>
 
           <ExerciseTime>
-            Your time:<span>3 minutes</span>
+          Your time:<Span>{remainingTime}</Span>
           </ExerciseTime>
           <Calories>
             Burned calories:<span>{caloriesAdded}</span>

@@ -50,11 +50,17 @@ const ExerciseTime = styled.div`
   color: rgba(239, 237, 232, 0.3);
   margin-bottom: 4px;
 
-  span{
+  /* span{
     color: #E6533C;
     margin-left: 8px;
     line-height: 1.28;
-  }
+  } */
+`
+
+const Span = styled.span`
+    color: #E6533C;
+    margin-left: 8px;
+    line-height: 1.28;
 `
 
 
@@ -94,4 +100,4 @@ const DiaryLink = styled.p`
   cursor: pointer;
 
 `;
-export { Wrapper, DiaryLink, ImageEl, Heading, Calories, ProductButton  ,customStyles , WrapperDiaryLink ,ExerciseTime , WrapperCloseIcon };
+export { Wrapper, DiaryLink, ImageEl, Heading, Calories, ProductButton  ,customStyles , WrapperDiaryLink ,ExerciseTime , WrapperCloseIcon, Span };
