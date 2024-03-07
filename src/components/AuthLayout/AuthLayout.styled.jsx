@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-// import Desk1x from '../../img/hero-1x.jpg';
-// import Desk2x from '../../img/hero-2x.jpg';
-// import Tab1x from '../../img/hero-tablet-1x.jpg';
-// import Tab2x from '../../img/hero-tablet-2x.jpg';
-// import Mob1x from '../../img/hero-mobile-1x.jpg';
-// import Mob2x from '../../img/hero-mobile-2x.jpg';
+import Desk1x from '../../img/hero-1x.jpg';
+import Desk2x from '../../img/hero-2x.jpg';
+import Tab1x from '../../img/hero-tablet-1x.jpg';
+import Tab2x from '../../img/hero-tablet-2x.jpg';
+import Mob1x from '../../img/hero-mobile-1.jpg';
+import Mob2x from '../../img/hero-mobile-2x.jpg';
 
 export const Container = styled.div`
   padding-top: 66px;
@@ -23,6 +23,63 @@ export const Container = styled.div`
     gap: 178px;
     padding-right: 32px;
     padding-top: 116px;
+  }
+`;
+export const Photo = styled.div`
+  background-image: url(${Mob1x});
+  position: absolute;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+
+  width: 298px;
+  height: 571px;
+  top: 180px;
+  left: 77px;
+  z-index: -1;
+
+  @media (min-device-pixel-ratio: 2),
+    (-webkit-min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+    background-image: linear-gradient(
+        168deg,
+        #040404 14.75%,
+        rgba(4, 4, 4, 0) 52.97%
+      ),
+      linear-gradient(73deg, #040404 6.11%, rgba(4, 4, 4, 0) 66.68%),
+      url(${Mob2x});
+  }
+
+  @media screen and (min-width: 768px) {
+    position: absolute;
+    width: 423px;
+    height: 893px;
+    top: 47px;
+    left: 345px;
+
+    background-image: url(${Tab1x});
+    @media (min-device-pixel-ratio: 2),
+      (-webkit-min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+      background-image: url(${Tab2x});
+    }
+  }
+  @media screen and (min-width: 1440px) {
+    position: absolute;
+    width: 670px;
+    height: 800px;
+    top: -84px;
+    left: 770px;
+    background-image: url(${Desk1x});
+
+    @media (min-device-pixel-ratio: 2),
+      (-webkit-min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+      background-image: url(${Desk2x});
+    }
   }
 `;
 
