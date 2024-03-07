@@ -17,7 +17,6 @@ import {
   SignInButton,
   FotoSection,
   IconsSVG,
-  Line
 } from '../components/HomePage/HomePage.styled'; 
 import { Icon } from '../components/Icon/Icon';
 import sprite from '../img/pulse-icons.svg';
@@ -28,9 +27,7 @@ const HomePage = () => {
       <Container>
         <Section>
           <HeroTitle>Transforming your body shape with Power Pulse
-            <Line stroke="#EF8964">
-            <use href={`${sprite}#line`}></use>
-          </Line>
+             
           </HeroTitle>
           
           <div className="cta-buttons">
