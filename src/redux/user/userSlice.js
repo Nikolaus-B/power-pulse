@@ -20,7 +20,7 @@ import toast from 'react-hot-toast';
 
 const initialState = {
   user: { name: null, email: null },
-  token: null,
+  token: '',
   isLoggedIn: false,
   isRefreshing: false,
   isLoading: false,
