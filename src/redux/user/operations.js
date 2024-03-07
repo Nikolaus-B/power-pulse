@@ -36,9 +36,9 @@ export const fetchUserLogIn = createAsyncThunk(
 
 export const fetchUserCurrent = createAsyncThunk(
   'user/userCurrent',
-  async ({ user: name }, thunkAPI) => {
+  async (PersonalData, thunkAPI) => {
     try {
-      const response = await axios.get(`users/current`);
+      const response = await axios.get(`users/current`, PersonalData);
       console.log(response.data);
       return response.data;
     } catch (e) {

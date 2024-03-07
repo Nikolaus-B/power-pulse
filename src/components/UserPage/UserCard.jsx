@@ -24,13 +24,20 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   fetchUserLogout,
   fetchUserCurrent,
+  fetchUserAvatars,
 } from '../../redux/user/operations.js';
-import { selectToken } from '../../redux/user/userSelectors.js';
+import {
+  selectUser,
+  selectAvatar,
+  selectToken,
+} from '../../redux/user/userSelectors.js';
 import { useEffect } from 'react';
 
 export const UserCard = () => {
   const dispatch = useDispatch();
   const token = useSelector(selectToken);
+  const name = useSelector(selectUser);
+  const avatar = useSelector(selectAvatar);
 
   useEffect(() => {
     dispatch(fetchUserCurrent({ token: token }));
@@ -51,6 +58,7 @@ export const UserCard = () => {
             >
               <Button
                 type="submit"
+                onClick={() => dispatch(fetchUserAvatars({ avatar }))}
                 pos="absolute"
                 right={{ base: '18px', md: '50px' }}
                 bottom={{ base: '-14px', md: '-14px' }}
@@ -73,7 +81,7 @@ export const UserCard = () => {
               lineHeight={{ base: '111%', md: '117%' }}
               mb={{ base: '4px', mb: '8px' }}
             >
-              User
+              {name}
             </Text>
             <Badge display="inline-flex" fontSize="14px" lineHeight="129%">
               User
