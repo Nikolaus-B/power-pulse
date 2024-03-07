@@ -36,9 +36,10 @@ export const fetchUserLogIn = createAsyncThunk(
 
 export const fetchUserCurrent = createAsyncThunk(
   'user/userCurrent',
-  async (_, thunkAPI) => {
+  async ({ user: name }, thunkAPI) => {
     try {
       const response = await axios.get(`users/current`);
+      console.log(response.data);
       return response.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);

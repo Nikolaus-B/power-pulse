@@ -21,21 +21,20 @@ import {
 
 //------------------------------------------------
 import { useDispatch, useSelector } from 'react-redux';
-// import { useEffect } from 'react';
-
 import {
-  // fetchUserCurrent,
   fetchUserLogout,
+  fetchUserCurrent,
 } from '../../redux/user/operations.js';
 import { selectToken } from '../../redux/user/userSelectors.js';
+import { useEffect } from 'react';
 
 export const UserCard = () => {
   const dispatch = useDispatch();
-  const user = useSelector(selectToken);
+  const token = useSelector(selectToken);
 
-  // useEffect(() => {
-  //   dispatch(fetchUserCurrent({}));
-  // });
+  useEffect(() => {
+    dispatch(fetchUserCurrent({ token: token }));
+  }, [dispatch, token]);
 
   return (
     <Stack>
@@ -44,16 +43,17 @@ export const UserCard = () => {
           <VStack>
             <Avatar
               icon={
-                <AvatarIcon iconid={'avatar'} width={'68px'} height={'68px'} />
+                <AvatarIcon iconid={'avatar'} width={'38px'} height={'38px'} />
               }
               pos="relative"
               w={{ base: '90px', md: '150px' }}
               h={{ base: '90px', md: '150px' }}
             >
               <Button
+                type="submit"
                 pos="absolute"
-                right={{ base: '16px', md: '50px' }}
-                bottom={{ base: '-12px', md: '-16px' }}
+                right={{ base: '18px', md: '50px' }}
+                bottom={{ base: '-14px', md: '-14px' }}
                 h="auto"
                 p="0"
                 variant="unstyled"
@@ -73,7 +73,7 @@ export const UserCard = () => {
               lineHeight={{ base: '111%', md: '117%' }}
               mb={{ base: '4px', mb: '8px' }}
             >
-              Anna Rybachok
+              User
             </Text>
             <Badge display="inline-flex" fontSize="14px" lineHeight="129%">
               User

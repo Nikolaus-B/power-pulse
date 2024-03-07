@@ -1,6 +1,5 @@
 import { Formik } from 'formik';
 import * as Yup from 'yup';
-import { useDispatch } from 'react-redux';
 
 import {
   Input,
@@ -18,7 +17,10 @@ import {
 
 //----------------------------------------------------
 import { CheckCircleIcon } from '@chakra-ui/icons';
-import { fetchUserCurrent } from '../../redux/user/operations';
+
+//----------------------------------------------------
+import { useDispatch } from 'react-redux';
+import { fetchUserParams } from '../../redux/user/operations';
 
 //----------------------------------------------------
 
@@ -36,8 +38,31 @@ export const UserForm = () => {
   const dispatch = useDispatch();
 
   const handleSubmit = values => {
-    const { name, email } = values;
-    dispatch(fetchUserCurrent({ name, email }));
+    const {
+      name,
+      email,
+      height,
+      currentWeight,
+      desiredWeight,
+      dob,
+      blood,
+      sex,
+      levelActivity,
+    } = values;
+
+    dispatch(
+      fetchUserParams({
+        name: name,
+        email: email,
+        height: height,
+        currentWeight: currentWeight,
+        desiredWeight: desiredWeight,
+        dob: dob,
+        blood: blood,
+        sex: sex,
+        levelActivity: levelActivity,
+      })
+    );
   };
 
   return (
@@ -49,6 +74,9 @@ export const UserForm = () => {
         currentWeight: '',
         desiredWeight: '',
         dob: '',
+        blood: '',
+        sex: '',
+        levelActivity: '',
       }}
       validationSchema={validation}
       onSubmit={(values, actions) => {
@@ -94,7 +122,7 @@ export const UserForm = () => {
                   lineHeight={{ base: '129%', md: '150%' }}
                 />
 
-                {!formik.errors.name ? (
+                {!formik.errors.name && formik.touched.name ? (
                   <FormErrorMessage
                     mt="4px"
                     color="#3cbf61"
@@ -144,7 +172,7 @@ export const UserForm = () => {
                   lineHeight={{ base: '129%', md: '150%' }}
                 />
 
-                {!formik.errors.email ? (
+                {!formik.errors.email && formik.touched.email ? (
                   <FormErrorMessage
                     mt="4px"
                     color="#3cbf61"
@@ -282,17 +310,29 @@ export const UserForm = () => {
                 <RadioGroup size={{ base: 'base', md: 'md' }} variant="groove">
                   <VStack>
                     <HStack spacing="8px">
-                      <Radio value="1">1</Radio>
-                      <Radio value="2">2</Radio>
-                      <Radio value="3">3</Radio>
-                      <Radio value="4">4</Radio>
+                      <Radio name="blood" value="1">
+                        1
+                      </Radio>
+                      <Radio name="blood" value="2">
+                        2
+                      </Radio>
+                      <Radio name="blood" value="3">
+                        3
+                      </Radio>
+                      <Radio name="blood" value="4">
+                        4
+                      </Radio>
                     </HStack>
                   </VStack>
                 </RadioGroup>
                 <RadioGroup size={{ base: 'base', md: 'md' }} variant="groove">
                   <HStack spacing="8px">
-                    <Radio value="1">Male</Radio>
-                    <Radio value="2">Female</Radio>
+                    <Radio name="sex" value="1">
+                      Male
+                    </Radio>
+                    <Radio name="sex" value="2">
+                      Female
+                    </Radio>
                   </HStack>
                 </RadioGroup>
               </HStack>
@@ -300,20 +340,20 @@ export const UserForm = () => {
 
             <RadioGroup size={{ base: 'base', md: 'md' }} variant="groove">
               <VStack spacing="8px" align="flex-start">
-                <Radio value="1">
+                <Radio name="levelActivity" value="1">
                   Sedentary lifestyle (little or no physical activity)
                 </Radio>
-                <Radio value="2">
+                <Radio name="levelActivity" value="2">
                   Light activity (light exercises/sports 1-3 days per week)
                 </Radio>
-                <Radio value="3">
+                <Radio name="levelActivity" value="3">
                   Moderately active (moderate exercises/sports 3-5 days per
                   week)
                 </Radio>
-                <Radio value="4">
+                <Radio name="levelActivity" value="4">
                   Very active (intense exercises/sports 6-7 days per week)
                 </Radio>
-                <Radio value="5">
+                <Radio name="levelActivity" value="5">
                   Extremely active (very strenuous exercises/sports and physical
                   work)
                 </Radio>
