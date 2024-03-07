@@ -6,6 +6,7 @@ import {
   fetchUserLogout,
   fetchUserParams,
   fetchUserRegister,
+  refreshing,
 } from './operations';
 import toast from 'react-hot-toast';
 // const handlePending = state => {
@@ -95,6 +96,20 @@ const userSlice = createSlice({
         state.user = action.payload.user;
         state.token = action.payload.token;
         state.isLoggedIn = true;
+      })
+
+      .addCase(refreshing.pending, state => {
+        state.isRefreshing = true;
+      })
+
+      .addCase(refreshing.fulfilled, (state, action) => {
+        state.user = action.payload;
+        state.isLoggedIn = action.payload.token;
+        state.isRefreshing = false;
+      })
+
+      .addCase(refreshing.rejected, state => {
+        state.isRefreshing = false;
       });
   },
 });

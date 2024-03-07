@@ -20,28 +20,25 @@ import {
 } from '@chakra-ui/react';
 
 //------------------------------------------------
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import {
   fetchUserLogout,
   fetchUserCurrent,
   fetchUserAvatars,
 } from '../../redux/user/operations.js';
-import {
-  selectUser,
-  selectAvatar,
-  selectToken,
-} from '../../redux/user/userSelectors.js';
 import { useEffect } from 'react';
+import { useAuth } from 'components/hooks/AuthHook.js';
 
 export const UserCard = () => {
   const dispatch = useDispatch();
-  const token = useSelector(selectToken);
-  const name = useSelector(selectUser);
-  const avatar = useSelector(selectAvatar);
+  const { user } = useAuth();
+  // const avatar = useSelector(selectAvatar);
+
+  console.log(user);
 
   useEffect(() => {
-    dispatch(fetchUserCurrent({ token: token }));
-  }, [dispatch, token]);
+    dispatch(fetchUserCurrent());
+  }, [dispatch]);
 
   return (
     <Stack>
@@ -58,7 +55,7 @@ export const UserCard = () => {
             >
               <Button
                 type="submit"
-                onClick={() => dispatch(fetchUserAvatars({ avatar }))}
+                onClick={() => dispatch(fetchUserAvatars())}
                 pos="absolute"
                 right={{ base: '18px', md: '50px' }}
                 bottom={{ base: '-14px', md: '-14px' }}
@@ -81,7 +78,7 @@ export const UserCard = () => {
               lineHeight={{ base: '111%', md: '117%' }}
               mb={{ base: '4px', mb: '8px' }}
             >
-              {name}
+              {user.name}
             </Text>
             <Badge display="inline-flex" fontSize="14px" lineHeight="129%">
               User
@@ -135,7 +132,9 @@ export const UserCard = () => {
               </HStack>
             </CardHeader>
             <CardFooter>
-              <Text lineHeight={{ base: '111%', md: '133%' }}>0 min</Text>
+              <Text lineHeight={{ base: '111%', md: '133%' }}>
+                {user.levelActivity} min
+              </Text>
             </CardFooter>
           </Card>
         </HStack>

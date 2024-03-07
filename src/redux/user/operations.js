@@ -1,3 +1,4 @@
+import { Alert, AlertIcon } from '@chakra-ui/react';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
@@ -39,7 +40,6 @@ export const fetchUserCurrent = createAsyncThunk(
   async (PersonalData, thunkAPI) => {
     try {
       const response = await axios.get(`users/current`, PersonalData);
-      console.log(response.data);
       return response.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
@@ -79,6 +79,32 @@ export const fetchUserLogout = createAsyncThunk(
       return response.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
+    }
+  }
+);
+
+export const refreshing = createAsyncThunk(
+  'user/refresh',
+  async (_, thunkAPI) => {
+    const state = thunkAPI.getState();
+    const persistedToken = state.auth.token;
+
+    if (persistedToken === null) {
+      return thunkAPI.rejectWithValue(
+        <Alert status="error">
+          <AlertIcon status="warning" />
+          Unable to fetch user
+        </Alert>
+      );
+    }
+
+    try {
+      setAuthHeader(persistedToken);
+
+      const response = await axios.get('/users/current');
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
