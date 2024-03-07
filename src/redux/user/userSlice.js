@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import toast from 'react-hot-toast';
 import {
   fetchUserAvatars,
   fetchUserCurrent,
@@ -8,7 +9,7 @@ import {
   fetchUserRegister,
   refreshing,
 } from './operations';
-import toast from 'react-hot-toast';
+
 // const handlePending = state => {
 //   state.isLoading = true;
 // };
@@ -95,10 +96,10 @@ const userSlice = createSlice({
         state.isLoggedIn = true;
       })
 
-      .addCase(fetchUserLogout.fulfilled, (state, action) => {
-        state.user = action.payload.user;
-        state.token = action.payload.token;
-        state.isLoggedIn = true;
+      .addCase(fetchUserLogout.fulfilled, state => {
+        state.user = { name: '', email: '' };
+        state.token = null;
+        state.isLoggedIn = false;
       })
 
       .addCase(refreshing.pending, state => {

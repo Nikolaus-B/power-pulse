@@ -21,18 +21,18 @@ import {
 
 //------------------------------------------------
 import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { useAuth } from 'components/hooks/AuthHook.js';
 import {
   fetchUserLogout,
   fetchUserCurrent,
   fetchUserAvatars,
 } from '../../redux/user/operations.js';
-import { useEffect } from 'react';
-import { useAuth } from 'components/hooks/AuthHook.js';
 
+//------------------------------------------------
 export const UserCard = () => {
   const dispatch = useDispatch();
-  const { user } = useAuth();
-  // const avatar = useSelector(selectAvatar);
+  const { user, bmr } = useAuth();
 
   console.log(user);
 
@@ -106,7 +106,7 @@ export const UserCard = () => {
               </HStack>
             </CardHeader>
             <CardFooter>
-              <Text lineHeight={{ base: '111%', md: '133%' }}>0 min</Text>
+              <Text lineHeight={{ base: '111%', md: '133%' }}>{bmr} min</Text>
             </CardFooter>
           </Card>
           <Card
