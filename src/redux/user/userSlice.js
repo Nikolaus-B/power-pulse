@@ -77,17 +77,18 @@ const userSlice = createSlice({
       })
 
       .addCase(fetchUserCurrent.fulfilled, (state, action) => {
-        state.user = { ...action.payload.user };
-        console.log(action.payload.user);
-        state.token = action.payload.token;
+        state.user = action.payload.user;
+        // console.log(action.payload.user);
+        // state.token = action.payload.token;
         state.isLoggedIn = true;
         state.bmr = action.payload.bmr;
       })
 
       .addCase(fetchUserParams.fulfilled, (state, action) => {
         state.user = action.payload.user;
-        state.token = action.payload.token;
+        // state.token = action.payload.token;
         state.isLoggedIn = true;
+        state.bmr = action.payload.bmr;
       })
 
       .addCase(fetchUserAvatars.fulfilled, (state, action) => {
@@ -107,7 +108,7 @@ const userSlice = createSlice({
       })
 
       .addCase(refreshing.fulfilled, (state, action) => {
-        state.user = action.payload;
+        state.user = action.payload.user;
         state.isLoggedIn = action.payload.token;
         state.isRefreshing = false;
       })

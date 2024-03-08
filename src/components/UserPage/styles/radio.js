@@ -38,22 +38,22 @@ const variants = {
     control: {
       bg: 'transparent',
       borderRadius: '10px',
-      border: '1.5px solid #ef8964',
+      border: '2px solid #ef8964',
       _checked: {
         color: '#ef8964',
         bg: 'transparent',
-        border: '1.5px solid #ef8964',
+        border: '2px solid #ef8964',
 
         _hover: {
           color: '#ef8964',
           bg: 'transparent',
-          border: '1.5px solid #ef8964',
+          border: '2px solid #ef8964',
         },
       },
       _hover: {
         color: '#ef8964',
         bg: 'transparent',
-        border: '1.5px solid #ef8964',
+        border: '2px solid #ef8964',
       },
     },
   }),

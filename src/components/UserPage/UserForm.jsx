@@ -1,4 +1,4 @@
-import { Formik } from 'formik';
+import { Field, Formik } from 'formik';
 // import * as Yup from 'yup';
 import { object, string, number, date } from 'yup';
 
@@ -11,9 +11,9 @@ import {
   VStack,
   HStack,
   RadioGroup,
-  Radio,
   Text,
   Button,
+  Radio,
 } from '@chakra-ui/react';
 
 //----------------------------------------------------
@@ -23,8 +23,7 @@ import { CheckCircleIcon } from '@chakra-ui/icons';
 import { useDispatch } from 'react-redux';
 import { fetchUserParams } from '../../redux/user/operations';
 import { useAuth } from 'components/hooks/AuthHook';
-import { useState } from 'react';
-
+// import { useState } from 'react';
 //----------------------------------------------------
 const validation = object({
   name: string().min(3, 'Name too short!').max(33, 'Name too long!'),
@@ -54,14 +53,13 @@ export const UserForm = () => {
   const dispatch = useDispatch();
   const { user } = useAuth();
 
-  const [blood, setBlood] = useState('1');
-  const [sex, setSex] = useState('1');
-  const [levelActivity, setLevelActivity] = useState('1');
+  // const [blood, setBlood] = useState('1');
+  // const [sex, setSex] = useState('1');
+  // const [levelActivity, setLevelActivity] = useState('1');
 
   const handleSubmit = values => {
     const {
       name,
-      email,
       blood,
       sex,
       height,
@@ -74,7 +72,6 @@ export const UserForm = () => {
     dispatch(
       fetchUserParams({
         name: name,
-        email: email,
         blood: blood,
         sex: sex,
         height: height,
@@ -90,7 +87,6 @@ export const UserForm = () => {
     <Formik
       initialValues={{
         name: '',
-        email: '',
         blood: '',
         sex: '',
         height: 0,
@@ -101,6 +97,7 @@ export const UserForm = () => {
       }}
       validationSchema={validation}
       onSubmit={(values, actions) => {
+        console.log(values);
         handleSubmit(values);
         actions.resetForm();
       }}
@@ -348,73 +345,138 @@ export const UserForm = () => {
               </Text>
               <HStack justify="space-between">
                 <RadioGroup
-                  name="blood"
-                  type="radio"
                   defaultValue={user.blood}
-                  // onChange={formik.handleChange}
-                  // value={formik.values.blood}
-                  value={blood}
-                  onChange={setBlood}
+                  // value={blood}
+                  // onChange={setBlood}
                   size={{ base: 'base', md: 'md' }}
                   variant="groove"
                 >
                   <VStack>
                     <HStack spacing="8px">
-                      <Radio value="1">1</Radio>
-                      <Radio value="2">2</Radio>
-                      <Radio value="3">3</Radio>
-                      <Radio value="4">4</Radio>
+                      <FormLabel d="flex">
+                        <Field
+                          as={Radio}
+                          type="radio"
+                          name="blood"
+                          value="1"
+                          pr="9px"
+                        />
+                        1
+                      </FormLabel>
+                      <FormLabel>
+                        <Field
+                          as={Radio}
+                          type="radio"
+                          name="blood"
+                          value="2"
+                          pr="9px"
+                        />
+                        2
+                      </FormLabel>
+                      <FormLabel d="flex">
+                        <Field
+                          as={Radio}
+                          type="radio"
+                          name="blood"
+                          value="3"
+                          pr="9px"
+                        />
+                        3
+                      </FormLabel>
+                      <FormLabel d="flex">
+                        <Field
+                          as={Radio}
+                          type="radio"
+                          name="blood"
+                          value="4"
+                          pr="9px"
+                        />
+                        4
+                      </FormLabel>
                     </HStack>
                   </VStack>
                 </RadioGroup>
                 <RadioGroup
-                  name="sex"
-                  type="radio"
                   defaultValue={user.sex}
-                  // value={formik.values.sex}
-                  // onChange={formik.handleChange}
-                  value={sex}
-                  onChange={setSex}
+                  // value={sex}
+                  // onChange={setSex}
                   size={{ base: 'base', md: 'md' }}
                   variant="groove"
                 >
                   <HStack spacing="8px">
-                    <Radio value="1">Male</Radio>
-                    <Radio value="2">Female</Radio>
+                    <FormLabel d="flex">
+                      <Field as={Radio} name="sex" value="male" pr="9px" />
+                      Male
+                    </FormLabel>
+                    <FormLabel d="flex">
+                      <Field as={Radio} name="sex" value="female" pr="9px" />
+                      Female
+                    </FormLabel>
                   </HStack>
                 </RadioGroup>
               </HStack>
             </Stack>
 
             <RadioGroup
-              name="levelActivity"
-              type="radio"
               defaultValue={user.levelActivity}
-              // value={formik.values.levelActivity}
-              // onChange={formik.handleChange}
-              value={levelActivity}
-              onChange={setLevelActivity}
+              // value={levelActivity}
+              // onChange={setLevelActivity}
               size={{ base: 'base', md: 'md' }}
               variant="groove"
             >
               <VStack spacing="8px" align="flex-start">
-                <Radio value="1">
+                <FormLabel d="flex">
+                  <Field
+                    as={Radio}
+                    type="radio"
+                    name="levelActivity"
+                    value="1"
+                    pr="9px"
+                  />
                   Sedentary lifestyle (little or no physical activity)
-                </Radio>
-                <Radio value="2">
+                </FormLabel>
+                <FormLabel d="flex">
+                  <Field
+                    as={Radio}
+                    type="radio"
+                    name="levelActivity"
+                    value="2"
+                    pr="9px"
+                  />
                   Light activity (light exercises/sports 1-3 days per week)
-                </Radio>
-                <Radio value="3">
+                </FormLabel>
+                <FormLabel d="flex">
+                  <Field
+                    as={Radio}
+                    type="radio"
+                    name="levelActivity"
+                    value="3"
+                    pr="9px"
+                  />
                   Moderately active (moderate exercises/sports 3-5 days per
                   week)
-                </Radio>
-                <Radio value="4">
+                </FormLabel>
+                <FormLabel d="flex">
+                  <Field
+                    as={Radio}
+                    type="radio"
+                    name="levelActivity"
+                    value="4"
+                    pr="9px"
+                  />
                   Very active (intense exercises/sports 6-7 days per week)
-                </Radio>
-                <Radio value="5">
+                </FormLabel>
+                <FormLabel d="flex">
+                  <Field
+                    as={Radio}
+                    type="radio"
+                    name="levelActivity"
+                    value="5"
+                    pr="9px"
+                  />
                   Extremely active (very strenuous exercises/sports and physical
                   work)
-                </Radio>
+                </FormLabel>
               </VStack>
             </RadioGroup>
           </Stack>

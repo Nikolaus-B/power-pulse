@@ -50,9 +50,9 @@ export const fetchUserCurrent = createAsyncThunk(
 
 export const fetchUserParams = createAsyncThunk(
   'user/userParams',
-  async (_, thunkAPI) => {
+  async (PersonalData, thunkAPI) => {
     try {
-      const response = await axios.patch(`users/params`);
+      const response = await axios.patch(`users/params`, PersonalData);
       return response.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
