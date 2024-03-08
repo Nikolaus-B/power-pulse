@@ -111,7 +111,7 @@ const userSlice = createSlice({
         };
         state.token = null;
         state.isLoggedIn = false;
-        state.bmr = null;
+        state.bmr = 0;
         state.dailyRateSports = 0;
       })
 
