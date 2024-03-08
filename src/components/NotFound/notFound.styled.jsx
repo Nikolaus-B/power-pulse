@@ -5,9 +5,9 @@ import hero2x from '../../img/hero-404-2x.jpg';
 import heromob1 from '../../img/hero-mob404-1x.jpg';
 import heromob2 from '../../img/hero-mob404-2x.jpg';
 import herotab1 from '../../img/hero-tablet404-1x.jpg';
-import herotab2 from '../../img/hero-tablet-2x.jpg';
+import herotab2 from '../../img/hero-tablet404-2x.jpg';
 
-export const Photo = styled.img`
+export const Photo = styled.div`
   background-image: url(${heromob1});
   position: absolute;
   background-repeat: no-repeat;
@@ -16,8 +16,8 @@ export const Photo = styled.img`
 
   width: 135px;
   height: 560px;
-  top: 189px;
-  left: 250px;
+  top: 250px;
+  left: 240px;
   z-index: 1;
 
   @media (min-device-pixel-ratio: 2),
@@ -34,10 +34,10 @@ export const Photo = styled.img`
   }
   @media screen and (min-width: 768px) {
     position: absolute;
-    width: 423px;
+    width: 348px;
     height: 893px;
-    top: 47px;
-    left: 345px;
+    top: 131px;
+    left: 420px;
 
     background-image: url(${herotab1});
     @media (min-device-pixel-ratio: 2),
@@ -51,7 +51,7 @@ export const Photo = styled.img`
     position: absolute;
     width: 670px;
     height: 800px;
-    top: -84px;
+    top: 0;
     left: 770px;
     background-image: url(${hero1x});
 
@@ -64,26 +64,18 @@ export const Photo = styled.img`
   }
 `;
 export const Section = styled.div`
+  font-family: 'Roboto', sans-serif;
   position: relative;
   color: #e6533c;
   height: 100vh;
   background-color: black;
-
-  @media screen and (min-width: 768px) {
-    max-width: none;
-    width: 768px;
-  }
-
-  @media screen and (min-width: 1440px) {
-    width: 1440px;
-    height: 800px;
-  }
+  width: 100%;
 `;
 
 export const ErrorBox = styled.div`
   position: absolute;
   width: 240px;
-  max-height: 812px;
+  height: 100%;
   background: #e6533c;
   box-sizing: border-box;
   padding: 24px 20px;
@@ -92,7 +84,7 @@ export const ErrorBox = styled.div`
 
   @media screen and (min-width: 768px) {
     padding: 32px 32px;
-    max-height: 1024px;
+
     width: 420px;
   }
 
@@ -103,18 +95,29 @@ export const ErrorBox = styled.div`
 `;
 
 export const BoxContent = styled.div`
-  margin-top: auto;
+  margin-top: 226px;
   margin-bottom: auto;
+
+  @media screen and (min-width: 768px) {
+    margin-top: 309px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    margin-top: 221px;
+  }
 `;
 
 export const Title404 = styled.h1`
   font-size: 66px;
-  line-height: 66px;
   color: #efede8;
+  margin: 0;
+  line-height: 1;
+  letter-spacing: 0.01em;
+  font-weight: 500;
 
   @media screen and (min-width: 768px) {
     font-size: 160px;
-    line-height: 150px;
+    line-height: 0.94;
   }
 `;
 
@@ -122,15 +125,14 @@ export const Text404 = styled.p`
   width: 200px;
   color: #efede8;
   font-size: 14px;
-  margin-top: 14px;
-  font-weight: 400;
-  line-height: 18px;
+  margin: 14px 0 28px 0;
+  line-height: 1.29;
 
   @media screen and (min-width: 768px) {
     width: 356px;
     font-size: 16px;
     margin-top: 28px;
-    line-height: 24px;
+    line-height: 1.5;
   }
 
   @media screen and (min-width: 1440px) {
@@ -140,9 +142,14 @@ export const Text404 = styled.p`
 
 export const StyledLink = styled(Link)`
   position: absolute;
-  left: 32px;
-  top: 32px;
+  left: 24px;
+  top: 20px;
   z-index: 2;
+
+  @media screen and (min-width: 768px) {
+    top: 32px;
+    left: 32px;
+  }
 
   @media screen and (min-width: 1440px) {
     left: 96px;
@@ -172,7 +179,7 @@ export const Button = styled.button`
   color: var(--color1, #efede8);
   font-size: 16px;
   font-weight: 500;
-  line-height: 18px;
+  line-height: 1.25;
   text-align: left;
   cursor: pointer;
 
@@ -185,6 +192,9 @@ export const Button = styled.button`
     width: 204px;
     height: 56px;
     font-size: 20px;
-    line-height: 24px;
+    line-height: 1.2;
   }
+`;
+export const Test = styled.div`
+  position: absolute;
 `;
