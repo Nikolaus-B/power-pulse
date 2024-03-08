@@ -10,11 +10,12 @@ import {
   WrapperDiaryLink,
   ExerciseTime,
   WrapperCloseIcon,
-  Span
+  Span, IconClose, ArrowForwardIcon
 } from './ExerciseSuccess.styled';
 
-import { CloseIcon, ArrowForwardIcon } from '@chakra-ui/icons';
-// import img from './img/Thumb_up.png';
+import { BasicModalWindow } from './customStylesModal';
+import imgHead from '../../img/like-1x.png'
+import { Icon } from 'components/Icon/Icon';
 
 export const AddExerciseSuccess = ({
   isSuccessOpen,
@@ -36,18 +37,18 @@ export const AddExerciseSuccess = ({
 
   return (
     <>
-      <Modal
+      <BasicModalWindow
         isOpen={isSuccessOpen}
         onRequestClose={onClose}
         style={customStyles}
         contentLabel="Add Product Modal"
       >
         <WrapperCloseIcon onClick={onClose}>
-          <CloseIcon w={11} h={11} />
+          <IconClose iconid='x-white' width={22} height={22}/>
         </WrapperCloseIcon>
 
         <Wrapper>
-          {/* <ImageEl src={img} alt="Success" style={{ marginBottom: '1rem' }} /> */}
+          <ImageEl src={imgHead} alt="Success"  />
           <Heading>Well done</Heading>
 
           <ExerciseTime>
@@ -60,11 +61,11 @@ export const AddExerciseSuccess = ({
           <WrapperDiaryLink to="/diary">
             <DiaryLink>To the diary </DiaryLink>
             <div>
-              <ArrowForwardIcon boxSize={24} color="rgba(239, 237, 232, 0.3)" />
+              <ArrowForwardIcon iconid='arrow' width={16} height={16}/>
             </div>
           </WrapperDiaryLink>
         </Wrapper>
-      </Modal>
+      </BasicModalWindow>
     </>
   );
 };

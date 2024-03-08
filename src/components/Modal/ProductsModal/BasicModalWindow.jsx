@@ -17,10 +17,9 @@ Modal.setAppElement('#root');
 
 export const BasicModalWindow = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [isSuccess, setIsSuccess] = useState(false);
-  // const [isAddProduct , setIsAddProduct]  =useState(true)
   const [caloriesAdded, setCaloriesAdded] = useState(0);
   // const [error, setError] = useState(null);
+  const [isFormVisible, setIsFormVisible] = useState(true);
 
   const handleOpenModal = () => {
     setIsOpen(true);
@@ -28,14 +27,22 @@ export const BasicModalWindow = () => {
 
   const handleCloseModal = () => {
     setIsOpen(false);
-    setIsSuccess(false);
   };
+
+  const handleCloseSuccess = () =>{
+    setIsFormVisible(!isFormVisible)
+    setIsOpen(false);
+
+  }
+
+  const handleCloseForm = () =>{
+        setIsFormVisible(!isFormVisible)
+  }
+
 
   const handleAddProductSuccess = calories => {
     // POST на бек
-    setIsSuccess(true);
     setCaloriesAdded(calories);
-    setIsOpen(false);
   };
 
   const handleAddProductError = errorMessage => {
@@ -45,9 +52,28 @@ export const BasicModalWindow = () => {
   return (
     <>
       <button onClick={handleOpenModal}>ADD PRODUCT</button>
-      <Modal
+<Modal
+isOpen={isOpen}
+onRequestClose={handleCloseModal}
+style={customStyles}
+contentLabel="Add Product Modal"> 
+
+{isFormVisible ? (
+    <AddProductForm
+      product={productData}
+      onClose={handleCloseModal}
+      onCloseForm = {handleCloseForm}
+      onSuccess={handleAddProductSuccess}
+      onError={handleAddProductError}
+    />
+  ) : (
+    <AddProductSuccess isSuccessOpen={true} onClose={handleCloseSuccess} onCloseSuccess = {handleCloseForm} caloriesAdded={caloriesAdded} />
+  )}</Modal>
+     
+
+      {/* <Modal
         isOpen={isOpen}
-        onRequestClose={handleCloseModal}
+        onRequestClose={() => setIsOpen(false)}
         style={customStyles}
         contentLabel="Add Product Modal"
       >
@@ -65,7 +91,7 @@ export const BasicModalWindow = () => {
           onClose={() => setIsSuccess(false)}
           caloriesAdded={caloriesAdded}
         />
-      )}
+      )} */}
     </>
   );
 };

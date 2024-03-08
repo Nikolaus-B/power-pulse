@@ -15,7 +15,7 @@ import {
   WrapperInputForm
 } from './AddProductForm.styled';
 
-export const AddProductForm = ({ product, onClose, onSuccess, onError }) => {
+export const AddProductForm = ({ product, onClose, onCloseForm, onSuccess, onError }) => {
   const [grams, setGrams] = useState('');
   const [calories, setCalories] = useState(0);
 
@@ -35,6 +35,7 @@ export const AddProductForm = ({ product, onClose, onSuccess, onError }) => {
 
   const handleSubmit = async e => {
     e.preventDefault();
+    e.stopPropagation();
     // try {
     //   const response = await axios.post('/api/addProductToDiary', {
     //     productID: product.id,
@@ -45,7 +46,8 @@ export const AddProductForm = ({ product, onClose, onSuccess, onError }) => {
 
       // if (response.status === 200) {
         // Закриття модального вікна додавання продукту і відкриття вікна успішного додавання
-        onClose();
+        // onClose();
+        onCloseForm()
         onSuccess(calories);
   //     } else {
   //       onError('Помилка під час додавання продукту');

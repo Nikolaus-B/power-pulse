@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { Icon } from 'components/Icon/Icon';
 
 const customStyles = {
   content: {
@@ -98,6 +99,13 @@ const DiaryLink = styled.p`
   text-decoration: none;
   border-radius: 4px;
   cursor: pointer;
-
 `;
-export { Wrapper, DiaryLink, ImageEl, Heading, Calories, ProductButton  ,customStyles , WrapperDiaryLink ,ExerciseTime , WrapperCloseIcon, Span };
+
+const IconClose = styled(Icon)`
+
+`
+
+const ArrowForwardIcon = styled(Icon)`
+`
+
+export { Wrapper, DiaryLink, ImageEl, Heading, Calories, ProductButton  ,customStyles , WrapperDiaryLink ,ExerciseTime , WrapperCloseIcon, Span , IconClose , ArrowForwardIcon };

@@ -18,15 +18,16 @@ export const AddProductSuccess = ({
   isSuccessOpen,
   onClose,
   caloriesAdded,
+  onCloseSuccess
 }) => {
   return (
     <>
-      <Modal
+      {/* <Modal
         isOpen={isSuccessOpen}
         onRequestClose={onClose}
         style={customStyles}
         contentLabel="Add Product Modal"
-      >
+      > */}
         <WrapperCloseIcon onClick={onClose}>
           <CloseIcon w={11} h={11} />
         </WrapperCloseIcon>
@@ -45,7 +46,7 @@ export const AddProductSuccess = ({
             </div>
           </WrapperDiaryLink>
         </Wrapper>
-      </Modal>
+      {/* </Modal> */}
     </>
   );
 };

@@ -146,7 +146,7 @@ export const AddExerciseForm = ({
     exerciseData;
 
   const seconds = time * 60;
-  const caloriesPerMin = burnedCalories / seconds;
+  const caloriesPerMin = burnedCalories / time;
 
   const [isPaused, setIsPaused] = useState(true);
   const [totalCalories, setTotalCalories] = useState(0);

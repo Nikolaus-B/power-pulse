@@ -44,7 +44,6 @@ export const ExercisesItem = ({ exercise }) => {
   const handleAddProductSuccess = () => {
     // POST на бек
     setIsSuccess(true);
-    // setCaloriesAdded(calories);
     setIsOpen(false);
   };
 
