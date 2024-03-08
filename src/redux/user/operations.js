@@ -76,7 +76,7 @@ export const fetchUserLogout = createAsyncThunk(
   'user/userLogout',
   async (_, thunkAPI) => {
     try {
-      const response = await axios.patch(`users/logout`);
+      const response = await axios.post(`users/logout`);
       return response.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);

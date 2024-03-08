@@ -5,6 +5,7 @@ import {
   selectIsRefreshing,
   selectIsLoading,
   selectBMR,
+  selectDailyRateSports,
 } from '../../redux/user/userSelectors';
 
 export const useAuth = () => {
@@ -13,6 +14,7 @@ export const useAuth = () => {
   const isRefreshing = useSelector(selectIsRefreshing);
   const isLoading = useSelector(selectIsLoading);
   const bmr = useSelector(selectBMR);
+  const dailyRateSports = useSelector(selectDailyRateSports);
 
   return {
     user,
@@ -20,5 +22,6 @@ export const useAuth = () => {
     isRefreshing,
     isLoading,
     bmr,
+    dailyRateSports,
   };
 };

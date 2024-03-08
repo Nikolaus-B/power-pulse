@@ -24,6 +24,7 @@ import { useDispatch } from 'react-redux';
 import { fetchUserParams } from '../../redux/user/operations';
 import { useAuth } from 'components/hooks/AuthHook';
 // import { useState } from 'react';
+
 //----------------------------------------------------
 const validation = object({
   name: string().min(3, 'Name too short!').max(33, 'Name too long!'),
@@ -97,7 +98,6 @@ export const UserForm = () => {
       }}
       validationSchema={validation}
       onSubmit={(values, actions) => {
-        console.log(values);
         handleSubmit(values);
         actions.resetForm();
       }}
@@ -353,7 +353,7 @@ export const UserForm = () => {
                 >
                   <VStack>
                     <HStack spacing="8px">
-                      <FormLabel d="flex">
+                      <FormLabel display="flex">
                         <Field
                           as={Radio}
                           type="radio"
@@ -363,7 +363,7 @@ export const UserForm = () => {
                         />
                         1
                       </FormLabel>
-                      <FormLabel>
+                      <FormLabel display="flex">
                         <Field
                           as={Radio}
                           type="radio"
@@ -373,7 +373,7 @@ export const UserForm = () => {
                         />
                         2
                       </FormLabel>
-                      <FormLabel d="flex">
+                      <FormLabel display="flex">
                         <Field
                           as={Radio}
                           type="radio"
@@ -383,7 +383,7 @@ export const UserForm = () => {
                         />
                         3
                       </FormLabel>
-                      <FormLabel d="flex">
+                      <FormLabel display="flex">
                         <Field
                           as={Radio}
                           type="radio"
@@ -404,11 +404,11 @@ export const UserForm = () => {
                   variant="groove"
                 >
                   <HStack spacing="8px">
-                    <FormLabel d="flex">
+                    <FormLabel display="flex">
                       <Field as={Radio} name="sex" value="male" pr="9px" />
                       Male
                     </FormLabel>
-                    <FormLabel d="flex">
+                    <FormLabel display="flex">
                       <Field as={Radio} name="sex" value="female" pr="9px" />
                       Female
                     </FormLabel>
@@ -425,7 +425,7 @@ export const UserForm = () => {
               variant="groove"
             >
               <VStack spacing="8px" align="flex-start">
-                <FormLabel d="flex">
+                <FormLabel display="flex">
                   <Field
                     as={Radio}
                     type="radio"
@@ -435,7 +435,7 @@ export const UserForm = () => {
                   />
                   Sedentary lifestyle (little or no physical activity)
                 </FormLabel>
-                <FormLabel d="flex">
+                <FormLabel display="flex">
                   <Field
                     as={Radio}
                     type="radio"
@@ -445,7 +445,7 @@ export const UserForm = () => {
                   />
                   Light activity (light exercises/sports 1-3 days per week)
                 </FormLabel>
-                <FormLabel d="flex">
+                <FormLabel display="flex">
                   <Field
                     as={Radio}
                     type="radio"
@@ -456,7 +456,7 @@ export const UserForm = () => {
                   Moderately active (moderate exercises/sports 3-5 days per
                   week)
                 </FormLabel>
-                <FormLabel d="flex">
+                <FormLabel display="flex">
                   <Field
                     as={Radio}
                     type="radio"
@@ -466,7 +466,7 @@ export const UserForm = () => {
                   />
                   Very active (intense exercises/sports 6-7 days per week)
                 </FormLabel>
-                <FormLabel d="flex">
+                <FormLabel display="flex">
                   <Field
                     as={Radio}
                     type="radio"

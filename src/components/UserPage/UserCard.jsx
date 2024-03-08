@@ -32,9 +32,7 @@ import {
 //------------------------------------------------
 export const UserCard = () => {
   const dispatch = useDispatch();
-  const { user, bmr } = useAuth();
-
-  console.log(user);
+  const { user, bmr, dailyRateSports } = useAuth();
 
   useEffect(() => {
     dispatch(fetchUserCurrent());
@@ -133,7 +131,7 @@ export const UserCard = () => {
             </CardHeader>
             <CardFooter>
               <Text lineHeight={{ base: '111%', md: '133%' }}>
-                {user.levelActivity} min
+                {dailyRateSports} min
               </Text>
             </CardFooter>
           </Card>

@@ -27,6 +27,7 @@ const initialState = {
   isLoading: false,
   error: null,
   bmr: 0,
+  dailyRateSports: 0,
 };
 
 const userSlice = createSlice({
@@ -78,15 +79,14 @@ const userSlice = createSlice({
 
       .addCase(fetchUserCurrent.fulfilled, (state, action) => {
         state.user = action.payload.user;
-        // console.log(action.payload.user);
-        // state.token = action.payload.token;
+        state.token = action.payload.token;
         state.isLoggedIn = true;
         state.bmr = action.payload.bmr;
       })
 
       .addCase(fetchUserParams.fulfilled, (state, action) => {
         state.user = action.payload.user;
-        // state.token = action.payload.token;
+        state.token = action.payload.token;
         state.isLoggedIn = true;
         state.bmr = action.payload.bmr;
       })
@@ -98,9 +98,21 @@ const userSlice = createSlice({
       })
 
       .addCase(fetchUserLogout.fulfilled, state => {
-        state.user = { name: '', email: '' };
+        state.user = {
+          name: '',
+          email: '',
+          blood: '1',
+          sex: '',
+          height: 0,
+          currentWeight: 0,
+          desiredWeight: 0,
+          birthday: '',
+          levelActivity: '1',
+        };
         state.token = null;
         state.isLoggedIn = false;
+        state.bmr = null;
+        state.dailyRateSports = 0;
       })
 
       .addCase(refreshing.pending, state => {
