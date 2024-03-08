@@ -1,25 +1,13 @@
-import React, { Suspense, useEffect } from 'react';
+import React from 'react';
 import { ChakraProvider, Container, Stack, VStack } from '@chakra-ui/react';
 import { theme } from './mods/Theme';
 import { Title } from 'components/Title/Title';
 import { UserCard } from './UserCard';
 import { UserForm } from './UserForm';
 //---------------------------------------
-import { useDispatch } from 'react-redux';
-import { useAuth } from 'components/hooks/AuthHook';
-import { refreshing } from '../../redux/user/operations';
 
 export const ProfilePage = () => {
-  const dispatch = useDispatch();
-  const { isRefreshing } = useAuth();
-
-  useEffect(() => {
-    dispatch(refreshing());
-  }, [dispatch]);
-
-  return isRefreshing ? (
-    <Suspense fallback />
-  ) : (
+  return (
     <ChakraProvider theme={theme} resetCSS>
       <Container px={{ base: '20px', md: '32px', xl: '96px' }} centerContent>
         <VStack spacing={10} w="100%">

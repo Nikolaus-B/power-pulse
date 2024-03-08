@@ -92,7 +92,7 @@ export const refreshing = createAsyncThunk(
 
     if (persistedToken === null) {
       return thunkAPI.rejectWithValue(
-        <Alert status="error">
+        <Alert status="error" variant="top-accent">
           <AlertIcon status="warning" />
           Unable to fetch user
         </Alert>

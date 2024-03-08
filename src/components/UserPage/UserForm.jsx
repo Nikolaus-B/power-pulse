@@ -1,5 +1,6 @@
 import { Formik } from 'formik';
-import * as Yup from 'yup';
+// import * as Yup from 'yup';
+import { object, string, number, date } from 'yup';
 
 import {
   Input,
@@ -21,32 +22,52 @@ import { CheckCircleIcon } from '@chakra-ui/icons';
 //----------------------------------------------------
 import { useDispatch } from 'react-redux';
 import { fetchUserParams } from '../../redux/user/operations';
+import { useAuth } from 'components/hooks/AuthHook';
+import { useState } from 'react';
 
 //----------------------------------------------------
-
-const validation = Yup.object({
-  name: Yup.string()
-    .min(3, 'Name too short!')
-    .max(27, 'Name too long!')
+const validation = object({
+  name: string().min(3, 'Name too short!').max(33, 'Name too long!'),
+  height: number()
+    .min(50, 'Height too small')
+    // .positive()
+    .integer()
     .required('Required'),
-  email: Yup.string().email('Invalid email').required('Required'),
+  currentWeight: number()
+    .min(45, 'Weight too low')
+    // .positive()
+    .integer()
+    .required('Required'),
+  desiredWeight: number()
+    .min(45, 'Weight too low')
+    // .positive()
+    .integer()
+    .required('Required'),
+  birthday: date()
+    .nullable()
+    .default(() => new Date()),
 });
 
 //----------------------------------------------------
 
 export const UserForm = () => {
   const dispatch = useDispatch();
+  const { user } = useAuth();
+
+  const [blood, setBlood] = useState('1');
+  const [sex, setSex] = useState('1');
+  const [levelActivity, setLevelActivity] = useState('1');
 
   const handleSubmit = values => {
     const {
       name,
       email,
+      blood,
+      sex,
       height,
       currentWeight,
       desiredWeight,
-      dob,
-      blood,
-      sex,
+      birthday,
       levelActivity,
     } = values;
 
@@ -54,12 +75,12 @@ export const UserForm = () => {
       fetchUserParams({
         name: name,
         email: email,
+        blood: blood,
+        sex: sex,
         height: height,
         currentWeight: currentWeight,
         desiredWeight: desiredWeight,
-        dob: dob,
-        blood: blood,
-        sex: sex,
+        birthday: birthday,
         levelActivity: levelActivity,
       })
     );
@@ -70,12 +91,12 @@ export const UserForm = () => {
       initialValues={{
         name: '',
         email: '',
-        height: '',
-        currentWeight: '',
-        desiredWeight: '',
-        dob: '',
         blood: '',
         sex: '',
+        height: 0,
+        currentWeight: 0,
+        desiredWeight: 0,
+        birthday: '',
         levelActivity: '',
       }}
       validationSchema={validation}
@@ -87,6 +108,8 @@ export const UserForm = () => {
       {formik => (
         <Stack
           as="form"
+          autoComplete="off"
+          autoFocus={false}
           onSubmit={formik.handleSubmit}
           spacing={{ base: '40px', md: '16px' }}
           paddingRight={{ xl: '64px' }}
@@ -98,6 +121,8 @@ export const UserForm = () => {
               direction={{ base: 'column', md: 'row', xl: 'row' }}
             >
               <FormControl
+                // isInvalid={true}
+                // autoFocus={true}
                 isInvalid={formik.errors.name && formik.touched.name}
               >
                 <FormLabel
@@ -112,28 +137,18 @@ export const UserForm = () => {
                   name="name"
                   type="text"
                   {...formik.getFieldProps('name')}
-                  placeholder="Anna Rybachok"
+                  placeholder={user.name}
                   value={formik.values.name}
                   onChange={formik.handleChange}
                   aria-label="name"
+                  aria-invalid={true}
                   w="100%"
                   h={{ base: '46px', md: '52px' }}
                   fontSize={{ base: '14px', md: '16px' }}
                   lineHeight={{ base: '129%', md: '150%' }}
                 />
 
-                {!formik.errors.name && formik.touched.name ? (
-                  <FormErrorMessage
-                    mt="4px"
-                    color="#3cbf61"
-                    fontSize="12px"
-                    lineHeight="150%"
-                    gap="4px"
-                  >
-                    <CheckCircleIcon fontSize={14} />
-                    Success name
-                  </FormErrorMessage>
-                ) : (
+                {formik.errors.name && formik.touched.name && (
                   <FormErrorMessage
                     mt="4px"
                     color="#d80027"
@@ -142,14 +157,12 @@ export const UserForm = () => {
                     gap="4px"
                   >
                     <CheckCircleIcon fontSize={14} />
-                    Error name
+                    {formik.errors.name}
                   </FormErrorMessage>
                 )}
               </FormControl>
 
-              <FormControl
-                isInvalid={formik.errors.email && formik.touched.email}
-              >
+              <FormControl>
                 <FormLabel
                   fontSize={{ base: '12px', md: '14px' }}
                   lineHeight={{ base: '150%', md: '129%' }}
@@ -157,44 +170,17 @@ export const UserForm = () => {
                 >
                   Email
                 </FormLabel>
-
                 <Input
                   name="email"
                   type="email"
-                  {...formik.getFieldProps('email')}
-                  placeholder="annarybachok@gmail.com"
-                  value={formik.values.email}
-                  onChange={formik.handleChange}
+                  placeholder={user.email}
                   aria-label="email"
+                  isReadOnly={true}
                   w="100%"
                   h={{ base: '46px', md: '52px' }}
                   fontSize={{ base: '14px', md: '16px' }}
                   lineHeight={{ base: '129%', md: '150%' }}
                 />
-
-                {!formik.errors.email && formik.touched.email ? (
-                  <FormErrorMessage
-                    mt="4px"
-                    color="#3cbf61"
-                    fontSize="12px"
-                    lineHeight="150%"
-                    gap="4px"
-                  >
-                    <CheckCircleIcon fontSize={14} />
-                    Success email
-                  </FormErrorMessage>
-                ) : (
-                  <FormErrorMessage
-                    mt="4px"
-                    color="#d80027"
-                    fontSize="12px"
-                    lineHeight="150%"
-                    gap="4px"
-                  >
-                    <CheckCircleIcon fontSize={14} />
-                    Error email
-                  </FormErrorMessage>
-                )}
               </FormControl>
             </Stack>
             <Stack
@@ -202,7 +188,10 @@ export const UserForm = () => {
               spacing={{ base: '14px', md: '14px', xl: '14px' }}
             >
               <HStack spacing="14px">
-                <FormControl>
+                <FormControl
+                  isInvalid={formik.errors.height && formik.touched.height}
+                  alignSelf="baseline"
+                >
                   <FormLabel
                     fontSize={{ base: '12px', md: '14px' }}
                     lineHeight={{ base: '150%', md: '129%' }}
@@ -215,7 +204,7 @@ export const UserForm = () => {
                     name="height"
                     type="number"
                     {...formik.getFieldProps('height')}
-                    placeholder={0}
+                    placeholder={user.height}
                     value={formik.values.height}
                     onChange={formik.handleChange}
                     aria-label="height"
@@ -223,9 +212,27 @@ export const UserForm = () => {
                     fontSize={{ base: '14px', md: '16px' }}
                     lineHeight={{ base: '129%', md: '150%' }}
                   />
+
+                  {formik.errors.height && formik.touched.height && (
+                    <FormErrorMessage
+                      mt="4px"
+                      color="#d80027"
+                      fontSize="12px"
+                      lineHeight="150%"
+                      gap="4px"
+                    >
+                      <CheckCircleIcon fontSize={14} />
+                      {formik.errors.height}
+                    </FormErrorMessage>
+                  )}
                 </FormControl>
 
-                <FormControl>
+                <FormControl
+                  isInvalid={
+                    formik.errors.currentWeight && formik.touched.currentWeight
+                  }
+                  alignSelf="baseline"
+                >
                   <FormLabel
                     fontSize={{ base: '12px', md: '14px' }}
                     lineHeight={{ base: '150%', md: '129%' }}
@@ -238,7 +245,7 @@ export const UserForm = () => {
                     name="currentWeight"
                     type="number"
                     {...formik.getFieldProps('currentWeight')}
-                    placeholder={0}
+                    placeholder={user.currentWeight}
                     value={formik.values.currentWeight}
                     onChange={formik.handleChange}
                     aria-label="currentWeight"
@@ -246,10 +253,29 @@ export const UserForm = () => {
                     fontSize={{ base: '14px', md: '16px' }}
                     lineHeight={{ base: '129%', md: '150%' }}
                   />
+
+                  {formik.errors.currentWeight &&
+                    formik.touched.currentWeight && (
+                      <FormErrorMessage
+                        mt="4px"
+                        color="#d80027"
+                        fontSize="12px"
+                        lineHeight="150%"
+                        gap="4px"
+                      >
+                        <CheckCircleIcon fontSize={14} />
+                        {formik.errors.currentWeight}
+                      </FormErrorMessage>
+                    )}
                 </FormControl>
               </HStack>
               <HStack spacing="14px">
-                <FormControl>
+                <FormControl
+                  isInvalid={
+                    formik.errors.desiredWeight && formik.touched.desiredWeight
+                  }
+                  alignSelf="baseline"
+                >
                   <FormLabel
                     fontSize={{ base: '12px', md: '14px' }}
                     lineHeight={{ base: '150%', md: '129%' }}
@@ -262,7 +288,7 @@ export const UserForm = () => {
                     name="desiredWeight"
                     type="number"
                     {...formik.getFieldProps('desiredWeight')}
-                    placeholder={0}
+                    placeholder={user.desiredWeight}
                     value={formik.values.desiredWeight}
                     onChange={formik.handleChange}
                     aria-label="desiredWeight"
@@ -270,9 +296,23 @@ export const UserForm = () => {
                     fontSize={{ base: '14px', md: '16px' }}
                     lineHeight={{ base: '129%', md: '150%' }}
                   />
+
+                  {formik.errors.desiredWeight &&
+                    formik.touched.desiredWeight && (
+                      <FormErrorMessage
+                        mt="4px"
+                        color="#d80027"
+                        fontSize="12px"
+                        lineHeight="150%"
+                        gap="4px"
+                      >
+                        <CheckCircleIcon fontSize={14} />
+                        {formik.errors.desiredWeight}
+                      </FormErrorMessage>
+                    )}
                 </FormControl>
 
-                <FormControl>
+                <FormControl alignSelf="baseline">
                   <FormLabel
                     fontSize={{ base: '12px', md: '14px' }}
                     lineHeight={{ base: '150%', md: '129%' }}
@@ -282,13 +322,13 @@ export const UserForm = () => {
                   </FormLabel>
 
                   <Input
-                    name="dob"
+                    name="birthday"
                     type="date"
-                    {...formik.getFieldProps('dob')}
+                    {...formik.getFieldProps('birthday')}
                     placeholder="Select Date"
-                    value={formik.values.dob}
+                    value={formik.values.birthday}
                     onChange={formik.handleChange}
-                    aria-label="dob"
+                    aria-label="birthday"
                     h={{ base: '46px', md: '52px' }}
                     fontSize={{ base: '14px', md: '16px' }}
                     lineHeight={{ base: '129%', md: '150%' }}
@@ -307,53 +347,71 @@ export const UserForm = () => {
                 Blood
               </Text>
               <HStack justify="space-between">
-                <RadioGroup size={{ base: 'base', md: 'md' }} variant="groove">
+                <RadioGroup
+                  name="blood"
+                  type="radio"
+                  defaultValue={user.blood}
+                  // onChange={formik.handleChange}
+                  // value={formik.values.blood}
+                  value={blood}
+                  onChange={setBlood}
+                  size={{ base: 'base', md: 'md' }}
+                  variant="groove"
+                >
                   <VStack>
                     <HStack spacing="8px">
-                      <Radio name="blood" value="1">
-                        1
-                      </Radio>
-                      <Radio name="blood" value="2">
-                        2
-                      </Radio>
-                      <Radio name="blood" value="3">
-                        3
-                      </Radio>
-                      <Radio name="blood" value="4">
-                        4
-                      </Radio>
+                      <Radio value="1">1</Radio>
+                      <Radio value="2">2</Radio>
+                      <Radio value="3">3</Radio>
+                      <Radio value="4">4</Radio>
                     </HStack>
                   </VStack>
                 </RadioGroup>
-                <RadioGroup size={{ base: 'base', md: 'md' }} variant="groove">
+                <RadioGroup
+                  name="sex"
+                  type="radio"
+                  defaultValue={user.sex}
+                  // value={formik.values.sex}
+                  // onChange={formik.handleChange}
+                  value={sex}
+                  onChange={setSex}
+                  size={{ base: 'base', md: 'md' }}
+                  variant="groove"
+                >
                   <HStack spacing="8px">
-                    <Radio name="sex" value="1">
-                      Male
-                    </Radio>
-                    <Radio name="sex" value="2">
-                      Female
-                    </Radio>
+                    <Radio value="1">Male</Radio>
+                    <Radio value="2">Female</Radio>
                   </HStack>
                 </RadioGroup>
               </HStack>
             </Stack>
 
-            <RadioGroup size={{ base: 'base', md: 'md' }} variant="groove">
+            <RadioGroup
+              name="levelActivity"
+              type="radio"
+              defaultValue={user.levelActivity}
+              // value={formik.values.levelActivity}
+              // onChange={formik.handleChange}
+              value={levelActivity}
+              onChange={setLevelActivity}
+              size={{ base: 'base', md: 'md' }}
+              variant="groove"
+            >
               <VStack spacing="8px" align="flex-start">
-                <Radio name="levelActivity" value="1">
+                <Radio value="1">
                   Sedentary lifestyle (little or no physical activity)
                 </Radio>
-                <Radio name="levelActivity" value="2">
+                <Radio value="2">
                   Light activity (light exercises/sports 1-3 days per week)
                 </Radio>
-                <Radio name="levelActivity" value="3">
+                <Radio value="3">
                   Moderately active (moderate exercises/sports 3-5 days per
                   week)
                 </Radio>
-                <Radio name="levelActivity" value="4">
+                <Radio value="4">
                   Very active (intense exercises/sports 6-7 days per week)
                 </Radio>
-                <Radio name="levelActivity" value="5">
+                <Radio value="5">
                   Extremely active (very strenuous exercises/sports and physical
                   work)
                 </Radio>
