@@ -1,26 +1,29 @@
 import { Title } from 'components/Title/Title';
 import { ExercisesCategories } from "components/Exercises/ExercisesCatigories/ExercisesCategories"
 import {ExercisesSubcategoriesList} from "components/Exercises/ExercisesSubcatigoriesList/ExercisesSubcategoriesList"
-import React, { useState} from 'react';
-import {filters} from 'components/Exercises/filters'
+import React, { useState, useEffect} from 'react';
+// import {filters} from 'components/Exercises/filters'
 import { ExercisesList } from 'components/Exercises/ExercisesList/ExercisesList';
 import {GlobalStyle} from "../components/GlobalStyle"
 import { Icon } from 'components/Icon/Icon';
 import { Button, Svg } from 'components/Exercises/ExercisesPage.styled'
-// import { useDispatch, useSelector } from 'react-redux';
-// import { fetchExercises, fetchFilters } from '../redux/exercises/operations';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectExercises, selectSubcatigories } from '../redux/exercises/exercisesSelectors';
+import { fetchExercises, fetchFilters } from '../redux/exercises/operations';
 
 
 function ExercisesPage() {
-  // const dispatch = useDispatch();
+  const [filter, setFilter] = useState('Body parts')
+  const dispatch = useDispatch();
+  dispatch(fetchFilters(filter))
 
   // useEffect(() => {
   //   dispatch(fetchExercises());
   //   dispatch(fetchFilters());
   // }, [dispatch]);
 
-  // const exercises = useSelector(fetchExercises);
-  // const filters = useSelector(fetchFilters);
+  const exercises = useSelector(selectExercises);
+  const filters = useSelector(selectSubcatigories);
 
   const [selectedCategory, setSelectedCategory] = useState("Body parts");
   const [selectedSubcategory, setSelectedSubcategory] = useState(null);
@@ -51,7 +54,7 @@ function ExercisesPage() {
       <ExercisesCategories onSelect={handleCategorySelect} selectedCategory={selectedCategory}/>
       
       {selectedSubcategory ? (
-        <ExercisesList subCategory={selectedSubcategory} />
+          <ExercisesList exercises={exercises} subCategory={selectedSubcategory} />
         ) : (
               <ExercisesSubcategoriesList
                 category={selectedCategory}

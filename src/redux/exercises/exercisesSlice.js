@@ -1,14 +1,16 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { fetchExercises, fetchFilters } from './operations';
 
-// const handlePending = state => {
-//   state.isLoading = true;
-// };
 
-// const handleRejected = (state, action) => {
-//   state.isLoading = false;
-//   state.error = action.payload;
-// };
+// const setFilter = (filter, value) => ({
+//   type: 'SET_FILTER',
+//   payload: { filter, value }
+// });
+
+// const setExercises = (exercises) => ({
+//   type: 'SET_EXERCISES',
+//   payload: exercises
+// })
 
 const initialState = {
   exercises: [],

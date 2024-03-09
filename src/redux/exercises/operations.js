@@ -17,12 +17,12 @@ export const fetchExercises = createAsyncThunk(
 
 export const fetchFilters = createAsyncThunk(
   'exercises/filters/getAll',
-  async (_, thunkAPI) => {
+  async function (filter, {rejectWithValue, dispatch}){
     try {
-      const response = await axios.get(`exercises/filters`);
-      return response.data;
+      const {data}= await axios.get(`exercises/filters/${filter}`);
+      return data;
     } catch (e) {
-      return thunkAPI.rejectWithValue(e.message);
+      return rejectWithValue(e.message);
     }
   }
 );
