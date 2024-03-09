@@ -1,7 +1,6 @@
 
 import React, { useState } from 'react';
 import { CloseIcon } from '@chakra-ui/icons';
-import axios from 'axios';
 
 import {
   CancelButton,
@@ -20,7 +19,6 @@ export const AddProductForm = ({ product, onClose, onCloseForm, onSuccess, onErr
   const [calories, setCalories] = useState(0);
 
   const { title, calories: productCalories } = product;
-  console.log(title);
 
   const handleGramsChange = e => {
     const gramsValue = e.target.value;

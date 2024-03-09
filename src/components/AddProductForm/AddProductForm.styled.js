@@ -24,10 +24,9 @@ const ModalForm = styled.form`
   padding: 48px 24px;
   box-sizing: border-box;
   color: #EFEDE8;
-  /* height : 280px; */
   max-width: 100%;
 
-  height: auto; /* Позволяем модальному окну растягиваться по высоте */
+  height: auto;
 
   @media screen and (min-width: 768px) and (max-width: 1439px)  {
     padding: 48px 32px;
@@ -43,7 +42,6 @@ cursor: pointer;
 `
 
 const WrapperInputForm = styled.div`
-/* max-width: 335px; */
 width: 100%;
 
   @media screen and (min-width: 768px) and (max-width: 1439px)  {
@@ -53,7 +51,6 @@ width: 100%;
 `
 
 const ProductInput = styled.input`
-  /* width: 287px; */
   width: 100%;
   height: 34px;
   border-radius: 12px;
