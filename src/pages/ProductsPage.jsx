@@ -19,9 +19,6 @@ import {
   selectVisibleProducts,
 } from '../redux/products/productsSelectors';
 
-import { GlobalStyle } from 'components/GlobalStyle';
-
-import {BasicModalWindow} from '../components/Modal/ProductsModal/BasicModalWindow'
 
 function ProductPage() {
   const dispatch = useDispatch();
