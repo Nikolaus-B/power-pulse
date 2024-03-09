@@ -40,7 +40,7 @@ export const fetchUserCurrent = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const response = await axios.get(`users/current`);
-      setAuthHeader(response.data.token);
+      // setAuthHeader(response.data.token);
       return response.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);

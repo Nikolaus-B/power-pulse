@@ -13,8 +13,8 @@ import {
   RadioGroup,
   Text,
   Button,
-  Radio,
 } from '@chakra-ui/react';
+import { Radio } from './styles/field.styled';
 
 //----------------------------------------------------
 import { CheckCircleIcon } from '@chakra-ui/icons';
@@ -23,7 +23,6 @@ import { CheckCircleIcon } from '@chakra-ui/icons';
 import { useDispatch } from 'react-redux';
 import { fetchUserParams } from '../../redux/user/operations';
 import { useAuth } from 'components/hooks/AuthHook';
-// import { useState } from 'react';
 
 //----------------------------------------------------
 const validation = object({
@@ -53,10 +52,6 @@ const validation = object({
 export const UserForm = () => {
   const dispatch = useDispatch();
   const { user } = useAuth();
-
-  // const [blood, setBlood] = useState('1');
-  // const [sex, setSex] = useState('1');
-  // const [levelActivity, setLevelActivity] = useState('1');
 
   const handleSubmit = values => {
     const {
@@ -346,70 +341,38 @@ export const UserForm = () => {
               <HStack justify="space-between">
                 <RadioGroup
                   defaultValue={user.blood}
-                  // value={blood}
-                  // onChange={setBlood}
                   size={{ base: 'base', md: 'md' }}
                   variant="groove"
                 >
                   <VStack>
                     <HStack spacing="8px">
                       <FormLabel display="flex">
-                        <Field
-                          as={Radio}
-                          type="radio"
-                          name="blood"
-                          value={1}
-                          pr="9px"
-                        />
-                        1
+                        <Radio type="radio" name="blood" value={1} />1
                       </FormLabel>
                       <FormLabel display="flex">
-                        <Field
-                          as={Radio}
-                          type="radio"
-                          name="blood"
-                          value={2}
-                          pr="9px"
-                        />
-                        2
+                        <Radio type="radio" name="blood" value={2} />2
                       </FormLabel>
                       <FormLabel display="flex">
-                        <Field
-                          as={Radio}
-                          type="radio"
-                          name="blood"
-                          value={3}
-                          pr="9px"
-                        />
-                        3
+                        <Radio type="radio" name="blood" value={3} />3
                       </FormLabel>
                       <FormLabel display="flex">
-                        <Field
-                          as={Radio}
-                          type="radio"
-                          name="blood"
-                          value={4}
-                          pr="9px"
-                        />
-                        4
+                        <Radio type="radio" name="blood" value={4} />4
                       </FormLabel>
                     </HStack>
                   </VStack>
                 </RadioGroup>
                 <RadioGroup
                   defaultValue={user.sex}
-                  // value={sex}
-                  // onChange={setSex}
                   size={{ base: 'base', md: 'md' }}
                   variant="groove"
                 >
                   <HStack spacing="8px">
                     <FormLabel display="flex">
-                      <Field as={Radio} name="sex" value="male" pr="9px" />
+                      <Radio type="radio" name="sex" value="male" />
                       Male
                     </FormLabel>
                     <FormLabel display="flex">
-                      <Field as={Radio} name="sex" value="female" pr="9px" />
+                      <Radio type="radio" name="sex" value="female" />
                       Female
                     </FormLabel>
                   </HStack>
@@ -419,61 +382,29 @@ export const UserForm = () => {
 
             <RadioGroup
               defaultValue={user.levelActivity}
-              // value={levelActivity}
-              // onChange={setLevelActivity}
               size={{ base: 'base', md: 'md' }}
               variant="groove"
             >
               <VStack spacing="8px" align="flex-start">
                 <FormLabel display="flex">
-                  <Field
-                    as={Radio}
-                    type="radio"
-                    name="levelActivity"
-                    value={1}
-                    pr="9px"
-                  />
+                  <Radio type="radio" name="levelActivity" value={1} />
                   Sedentary lifestyle (little or no physical activity)
                 </FormLabel>
                 <FormLabel display="flex">
-                  <Field
-                    as={Radio}
-                    type="radio"
-                    name="levelActivity"
-                    value={2}
-                    pr="9px"
-                  />
+                  <Radio type="radio" name="levelActivity" value={2} />
                   Light activity (light exercises/sports 1-3 days per week)
                 </FormLabel>
                 <FormLabel display="flex">
-                  <Field
-                    as={Radio}
-                    type="radio"
-                    name="levelActivity"
-                    value={3}
-                    pr="9px"
-                  />
+                  <Radio type="radio" name="levelActivity" value={3} />
                   Moderately active (moderate exercises/sports 3-5 days per
                   week)
                 </FormLabel>
                 <FormLabel display="flex">
-                  <Field
-                    as={Radio}
-                    type="radio"
-                    name="levelActivity"
-                    value={4}
-                    pr="9px"
-                  />
+                  <Radio type="radio" name="levelActivity" value={4} />
                   Very active (intense exercises/sports 6-7 days per week)
                 </FormLabel>
                 <FormLabel display="flex">
-                  <Field
-                    as={Radio}
-                    type="radio"
-                    name="levelActivity"
-                    value={5}
-                    pr="9px"
-                  />
+                  <Radio type="radio" name="levelActivity" value={5} />
                   Extremely active (very strenuous exercises/sports and physical
                   work)
                 </FormLabel>

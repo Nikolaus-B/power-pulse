@@ -61,6 +61,14 @@ div {
      color: var(--white-color);
 }
 
+input[type="radio"] {
+  display: grid;
+  place-content: center;
+  appearance: none;
+  background-color: #040404;
+}
+
+
 .container {
   margin: 0 auto;
   max-width: 375px;
@@ -81,4 +89,3 @@ div {
 }
 
 `;
-
