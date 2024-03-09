@@ -90,9 +90,9 @@ export const UserForm = () => {
         name: '',
         blood: '',
         sex: '',
-        height: 0,
-        currentWeight: 0,
-        desiredWeight: 0,
+        height: '',
+        currentWeight: '',
+        desiredWeight: '',
         birthday: '',
         levelActivity: '',
       }}
@@ -322,7 +322,7 @@ export const UserForm = () => {
                     name="birthday"
                     type="date"
                     {...formik.getFieldProps('birthday')}
-                    placeholder="Select Date"
+                    placeholder={user.birthday}
                     value={formik.values.birthday}
                     onChange={formik.handleChange}
                     aria-label="birthday"
@@ -358,7 +358,7 @@ export const UserForm = () => {
                           as={Radio}
                           type="radio"
                           name="blood"
-                          value="1"
+                          value={1}
                           pr="9px"
                         />
                         1
@@ -368,7 +368,7 @@ export const UserForm = () => {
                           as={Radio}
                           type="radio"
                           name="blood"
-                          value="2"
+                          value={2}
                           pr="9px"
                         />
                         2
@@ -378,7 +378,7 @@ export const UserForm = () => {
                           as={Radio}
                           type="radio"
                           name="blood"
-                          value="3"
+                          value={3}
                           pr="9px"
                         />
                         3
@@ -388,7 +388,7 @@ export const UserForm = () => {
                           as={Radio}
                           type="radio"
                           name="blood"
-                          value="4"
+                          value={4}
                           pr="9px"
                         />
                         4
@@ -430,7 +430,7 @@ export const UserForm = () => {
                     as={Radio}
                     type="radio"
                     name="levelActivity"
-                    value="1"
+                    value={1}
                     pr="9px"
                   />
                   Sedentary lifestyle (little or no physical activity)
@@ -440,7 +440,7 @@ export const UserForm = () => {
                     as={Radio}
                     type="radio"
                     name="levelActivity"
-                    value="2"
+                    value={2}
                     pr="9px"
                   />
                   Light activity (light exercises/sports 1-3 days per week)
@@ -450,7 +450,7 @@ export const UserForm = () => {
                     as={Radio}
                     type="radio"
                     name="levelActivity"
-                    value="3"
+                    value={3}
                     pr="9px"
                   />
                   Moderately active (moderate exercises/sports 3-5 days per
@@ -461,7 +461,7 @@ export const UserForm = () => {
                     as={Radio}
                     type="radio"
                     name="levelActivity"
-                    value="4"
+                    value={4}
                     pr="9px"
                   />
                   Very active (intense exercises/sports 6-7 days per week)
@@ -471,7 +471,7 @@ export const UserForm = () => {
                     as={Radio}
                     type="radio"
                     name="levelActivity"
-                    value="5"
+                    value={5}
                     pr="9px"
                   />
                   Extremely active (very strenuous exercises/sports and physical
