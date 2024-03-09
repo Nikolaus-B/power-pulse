@@ -1,10 +1,10 @@
 import styled from 'styled-components';
-// import Desk1x from '../../img/hero-1x.jpg';
-// import Desk2x from '../../img/hero-2x.jpg';
-// import Tab1x from '../../img/hero-tablet-1x.jpg';
-// import Tab2x from '../../img/hero-tablet-2x.jpg';
-// import Mob1x from '../../img/hero-mobile-1x.jpg';
-// import Mob2x from '../../img/hero-mobile-2x.jpg';
+import Desk1x from '../../img/hero-1x.jpg';
+import Desk2x from '../../img/hero-2x.jpg';
+import Tab1x from '../../img/hero-tablet-1x.jpg';
+import Tab2x from '../../img/hero-tablet-2x.jpg';
+import Mob1x from '../../img/hero-mobile-1.jpg';
+import Mob2x from '../../img/hero-mobile-2x.jpg';
 
 export const HeroTitle = styled.h1`
   width: 335px;
@@ -15,37 +15,42 @@ export const HeroTitle = styled.h1`
   line-height: 105%;
   letter-spacing: 0.01em;
   color: var(--white);
-  position: relative; 
-  z-index: 1;
 
   @media screen and (min-width: 768px) {
     width: 598px;
     height: 234px;
     font-size: 70px;
     line-height: 111%;
+    margin-bottom: 64px;
   }
 
   @media screen and (min-width: 1440px) {
     width: 598px;
   height: 234px;
+  
   }
  
 `;
 
-
-// Стилі для лінії
 export const Line = styled.svg`
+stroke-width: 2px;
   position: absolute; 
-  top: 50%; 
-  left: 0; 
-  transform: translateY(-50%); 
+  top: 133px;
+  left: 11px;
   z-index: 0; 
   width: 98px; 
   height: 35px; 
-
+  fill: transparent;
+  
   @media screen and (min-width: 768px) {
     width: 185px;
     height: 67px; 
+    top: 270px;
+  left: 16px;
+  }
+  @media screen and (min-width: 1440px) {
+    top: 235px;
+  left: 80px;
   }
 `;
 export const CTAButton = styled.button`
@@ -71,7 +76,6 @@ export const CTAButton = styled.button`
   }
 
   @media screen and (min-width: 768px) {
-    /* padding: 16px 60px; */
 width: 190px;
 height: 56px;
   }
@@ -139,7 +143,76 @@ export const Text = styled.p`
 `;
 
 export const Container = styled.div`
+  box-sizing: border-box;
+`;
 
+export const Photo = styled.div`
+  background-image: url(${Mob1x});
+  position: absolute;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  width: 446px;
+  height: 669px;
+  /* top: 180px;
+  left: 77px; */
+  top: 241px;
+  /* left: 71px; */
+  z-index: -1;
+
+  /* width: 298px;
+  height: 571px;
+  top: 180px;
+  left: 77px; */
+
+  @media (min-device-pixel-ratio: 2),
+    (-webkit-min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+    background-image: linear-gradient(
+        168deg,
+        #040404 14.75%,
+        rgba(4, 4, 4, 0) 52.97%
+      ),
+      linear-gradient(73deg, #040404 6.11%, rgba(4, 4, 4, 0) 66.68%),
+      url(${Mob2x});
+  }
+
+  @media screen and (min-width: 768px) {
+    position: absolute;
+    /* width: 670px;
+    height: 1005px;
+    
+    top: 131px;
+  left: 233px; */
+  /* width: 423px; */
+    height: 1005px;
+    top: 131px;
+    left: 331px;
+
+    background-image: url(${Tab1x});
+    @media (min-device-pixel-ratio: 2),
+      (-webkit-min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+      background-image: url(${Tab2x});
+    }
+  }
+  @media screen and (min-width: 1440px) {
+    position: absolute;
+    width: 670px;
+    height: 1005px;
+    top: -99px;
+    left: 770px;
+    background-image: url(${Desk1x});
+
+    @media (min-device-pixel-ratio: 2),
+      (-webkit-min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+      background-image: url(${Desk2x});
+    }
+  }
 `;
 
 export const UserImage = styled.img`
@@ -152,16 +225,18 @@ export const Section = styled.section`
   padding-left: 20px;
   padding-right: 20px;
   padding-bottom: 40px;
+  position: relative; 
+  z-index: 1;
   @media screen and (min-width: 768px) {
-    padding-top: 140px;
-  padding-left: 96px;
+    padding-top: 189px;
+  padding-left: 32px;
   padding-right: 76px;
   padding-bottom: 64px;
   }
 
   @media screen and (min-width: 1440px) {
     padding-top: 151px;
-  padding-left: 32px;
+  padding-left: 96px;
   padding-right: 138px;
   padding-bottom: 64px;
   }
@@ -381,3 +456,58 @@ export const Foto = styled.img`
   height: 669px;
 `;
 
+// ////////////////////////////////////////
+export const IconPlays = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 146px;
+  height: 66px;
+  background-color: #303030;
+  border-radius: 12px;
+  position: absolute;
+  top: 618px;
+  left: 121px;
+
+  @media screen and (min-width: 768px) {
+    top: 770px;
+    left: 331px;
+    width: 206px;
+    height: 96px;
+    padding: 20px 23px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    top: 384px;
+    left: 770px;
+  }
+`;
+
+export const CaloriesMe = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 119px;
+  height: 76px;
+  border-radius: 12px;
+  background-color: #ef8964;
+  padding: 14px 18px;
+  position: absolute;
+  /* top: 635px; */
+  top: 775px;
+  left: 256px;
+
+  @media screen and (min-width: 768px) {
+    width: 180px;
+    height: 110px;
+    /* top: 782px; */
+    top: 922px;
+    left: 556px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    /* top: 435px; */
+    top: 519px;
+    left: 1228px;
+  }
+`;
