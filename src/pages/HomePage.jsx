@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { Calories, IconPlay } from '../components/AuthLayout/AuthLayout.styled';
+// import { Calories } from '../components/AuthLayout/AuthLayout.styled';
 import { 
   Container, 
   HeroTitle, 
@@ -18,7 +18,9 @@ import {
   FotoSection,
   IconsSVG,
   Photo,
-  Line
+  Line,
+  IconPlays,
+  CaloriesMe
 } from '../components/HomePage/HomePage.styled'; 
 import { Icon } from '../components/Icon/Icon';
 import sprite from '../img/pulse-icons.svg';
@@ -38,7 +40,7 @@ const HomePage = () => {
           </div>
         </Section>
         <FotoSection>
-        <IconPlay>
+        <IconPlays>
             <VideoIcon>
           <IconsSVG>
             <use href={`${sprite}#play-log`}></use>
@@ -50,8 +52,8 @@ const HomePage = () => {
             350+<VideoTutorialButton>Video tutorial</VideoTutorialButton>
           </Video>
         </SectionVideo>
-      </IconPlay>
-        <Calories>
+      </IconPlays>
+        <CaloriesMe>
         <CaloriesIcon>
           <Icon iconid={'circle-running-man'}/>
         </CaloriesIcon>
@@ -59,7 +61,7 @@ const HomePage = () => {
           <CaloriesText>500</CaloriesText>
           <Text>cal</Text>
         </CaloriesInfo>
-      </Calories>
+      </CaloriesMe>
         </FotoSection>
       </Container>
     </>

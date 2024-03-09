@@ -21,11 +21,13 @@ export const HeroTitle = styled.h1`
     height: 234px;
     font-size: 70px;
     line-height: 111%;
+    margin-bottom: 64px;
   }
 
   @media screen and (min-width: 1440px) {
     width: 598px;
   height: 234px;
+  
   }
  
 `;
@@ -43,7 +45,7 @@ stroke-width: 2px;
   @media screen and (min-width: 768px) {
     width: 185px;
     height: 67px; 
-    top: 224px;
+    top: 270px;
   left: 16px;
   }
   @media screen and (min-width: 1440px) {
@@ -155,8 +157,13 @@ export const Photo = styled.div`
   /* top: 180px;
   left: 77px; */
   top: 241px;
-  left: 77px;
+  /* left: 71px; */
   z-index: -1;
+
+  /* width: 298px;
+  height: 571px;
+  top: 180px;
+  left: 77px; */
 
   @media (min-device-pixel-ratio: 2),
     (-webkit-min-device-pixel-ratio: 2),
@@ -173,12 +180,15 @@ export const Photo = styled.div`
 
   @media screen and (min-width: 768px) {
     position: absolute;
-    width: 423px;
+    /* width: 670px;
     height: 1005px;
-    /* top: 47px;
-    left: 345px; */
+    
     top: 131px;
-  left: 331px;
+  left: 233px; */
+  /* width: 423px; */
+    height: 1005px;
+    top: 131px;
+    left: 331px;
 
     background-image: url(${Tab1x});
     @media (min-device-pixel-ratio: 2),
@@ -191,7 +201,8 @@ export const Photo = styled.div`
   @media screen and (min-width: 1440px) {
     position: absolute;
     width: 670px;
-    top: -152px;
+    height: 1005px;
+    top: -99px;
     left: 770px;
     background-image: url(${Desk1x});
 
@@ -217,7 +228,7 @@ export const Section = styled.section`
   position: relative; 
   z-index: 1;
   @media screen and (min-width: 768px) {
-    padding-top: 140px;
+    padding-top: 189px;
   padding-left: 32px;
   padding-right: 76px;
   padding-bottom: 64px;
@@ -445,3 +456,58 @@ export const Foto = styled.img`
   height: 669px;
 `;
 
+// ////////////////////////////////////////
+export const IconPlays = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 146px;
+  height: 66px;
+  background-color: #303030;
+  border-radius: 12px;
+  position: absolute;
+  top: 618px;
+  left: 121px;
+
+  @media screen and (min-width: 768px) {
+    top: 770px;
+    left: 331px;
+    width: 206px;
+    height: 96px;
+    padding: 20px 23px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    top: 384px;
+    left: 770px;
+  }
+`;
+
+export const CaloriesMe = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 119px;
+  height: 76px;
+  border-radius: 12px;
+  background-color: #ef8964;
+  padding: 14px 18px;
+  position: absolute;
+  /* top: 635px; */
+  top: 775px;
+  left: 256px;
+
+  @media screen and (min-width: 768px) {
+    width: 180px;
+    height: 110px;
+    /* top: 782px; */
+    top: 922px;
+    left: 556px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    /* top: 435px; */
+    top: 519px;
+    left: 1228px;
+  }
+`;
