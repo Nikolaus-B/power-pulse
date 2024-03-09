@@ -26,9 +26,10 @@ BasicModalWindow.setAppElement('#root');
 export const ExercisesItem = ({ exercise }) => {
 
   const [isOpen, setIsOpen] = useState();
-  const [isSuccess, setIsSuccess] = useState(false);
+  // const [isSuccess, setIsSuccess] = useState(false);
   const [caloriesAdded, setCaloriesAdded] = useState(0);
   const [remainingTime, setRemainingTime] = useState(0);
+  const [isFormVisible, setIsFormVisible] = useState(true);
 
   const { name, burnedCalories, bodyPart, target } = exercise;
 
@@ -36,14 +37,23 @@ export const ExercisesItem = ({ exercise }) => {
     setIsOpen(true);
   };
 
-  const handleCloseModal = () => {
+  const handleCloseModal = (time) => {
     setIsOpen(false);
-    setIsSuccess(false);
+    setRemainingTime(time)
+  };
+
+  const handleCloseForm = () => {
+    setIsFormVisible(!isFormVisible);
+  };
+
+  const handleCloseSuccess = () => {
+    setIsFormVisible(!isFormVisible);
+    setIsOpen(false);
   };
 
   const handleAddProductSuccess = () => {
     // POST на бек
-    setIsSuccess(true);
+    // setIsSuccess(true);
     setIsOpen(false);
   };
 
@@ -103,24 +113,25 @@ export const ExercisesItem = ({ exercise }) => {
         onRequestClose={handleCloseModal}
         style={customStyles}
         contentLabel="Add Product Modal"
+        shouldCloseOnOverlayClick={false}
+        shouldCloseOnEsc={false}
       >
-        <AddExerciseForm
-          exerciseData={exercise}
-          onClose={handleCloseModal}
-          onSuccess={handleAddProductSuccess}
-          //   onError={handleAddProductError}
-          caloriesAdded={handleAddCalories}
-          updateRemainingTime={handleRemainingTime}
-        />
+              {isFormVisible ? (
+                <AddExerciseForm
+                exerciseData={exercise}
+                onCloseForm={handleCloseForm}
+                caloriesAdded={handleAddCalories}
+                updateRemainingTime={handleRemainingTime}
+                />
+              ) : (
+                <AddExerciseSuccess
+                onClose={handleCloseSuccess}
+                caloriesAdded={caloriesAdded}
+                remainingTime={remainingTime}
+                />
+              )}
+
       </BasicModalWindow>
-      {isSuccess && (
-        <AddExerciseSuccess
-          isSuccessOpen={true}
-          onClose={() => setIsSuccess(false)}
-          caloriesAdded={caloriesAdded}
-          remainingTime={remainingTime}
-        />
-      )}
     </Container>
   );
 };

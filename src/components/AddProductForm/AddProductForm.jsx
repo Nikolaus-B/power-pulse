@@ -20,6 +20,7 @@ export const AddProductForm = ({ product, onClose, onCloseForm, onSuccess, onErr
   const [calories, setCalories] = useState(0);
 
   const { title, calories: productCalories } = product;
+  console.log(title);
 
   const handleGramsChange = e => {
     const gramsValue = e.target.value;
@@ -36,26 +37,10 @@ export const AddProductForm = ({ product, onClose, onCloseForm, onSuccess, onErr
   const handleSubmit = async e => {
     e.preventDefault();
     e.stopPropagation();
-    // try {
-    //   const response = await axios.post('/api/addProductToDiary', {
-    //     productID: product.id,
-    //     date: new Date().toISOString(),
-    //     amount: grams,
-    //     calories,
-    //   });
 
-      // if (response.status === 200) {
-        // Закриття модального вікна додавання продукту і відкриття вікна успішного додавання
-        // onClose();
         onCloseForm()
         onSuccess(calories);
-  //     } else {
-  //       onError('Помилка під час додавання продукту');
-  //     }
-  //   } catch (error) {
-  //     console.error('Помилка під час відправки запиту:', error);
-  //     onError('Помилка під час відправки запиту');
-  //   }
+
   };
 
   return (

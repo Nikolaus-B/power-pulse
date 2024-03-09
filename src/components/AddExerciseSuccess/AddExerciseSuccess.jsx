@@ -1,4 +1,3 @@
-import Modal from 'react-modal';
 import {
   Wrapper,
   ImageEl,
@@ -6,43 +5,30 @@ import {
   Heading,
   Calories,
   ProductButton,
-  customStyles,
   WrapperDiaryLink,
   ExerciseTime,
   WrapperCloseIcon,
   Span, IconClose, ArrowForwardIcon
 } from './ExerciseSuccess.styled';
 
-import { BasicModalWindow } from './customStylesModal';
 import imgHead from '../../img/like-1x.png'
-import { Icon } from 'components/Icon/Icon';
 
 export const AddExerciseSuccess = ({
-  isSuccessOpen,
   onClose,
   caloriesAdded,
   remainingTime
 }) => {
 
-  // const formatTime = (time) => {
-  //   return time < 10 ? `${time}` : 0`${time}`;
-  // };
-
-  // const children = () => {
-  //   const minutes = Math.floor(remainingTime / 60);
-  //   const seconds = remainingTime % 60;
-  //   return `${formatTime(minutes)} minutes ${formatTime(seconds)} second`;
-  // };
-  
+  const formatTime = (totalSeconds) => {
+    const minutes = Math.floor(totalSeconds / 60);
+    const seconds = totalSeconds % 60;
+    // const formattedMinutes = minutes < 10 ? `0${minutes}` : `${minutes}`;
+    const formattedSeconds = seconds < 10 ? `0${seconds}` : `${seconds}`;
+    return `${minutes}. ${formattedSeconds} second`;
+  };
 
   return (
     <>
-      <BasicModalWindow
-        isOpen={isSuccessOpen}
-        onRequestClose={onClose}
-        style={customStyles}
-        contentLabel="Add Product Modal"
-      >
         <WrapperCloseIcon onClick={onClose}>
           <IconClose iconid='x-white' width={22} height={22}/>
         </WrapperCloseIcon>
@@ -52,7 +38,7 @@ export const AddExerciseSuccess = ({
           <Heading>Well done</Heading>
 
           <ExerciseTime>
-          Your time:<Span>{remainingTime}</Span>
+          Your time:<Span>{formatTime(Math.floor(remainingTime))}</Span>
           </ExerciseTime>
           <Calories>
             Burned calories:<span>{caloriesAdded}</span>
@@ -65,7 +51,6 @@ export const AddExerciseSuccess = ({
             </div>
           </WrapperDiaryLink>
         </Wrapper>
-      </BasicModalWindow>
     </>
   );
 };
