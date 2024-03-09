@@ -1,10 +1,10 @@
 import styled from 'styled-components';
-// import Desk1x from '../../img/hero-1x.jpg';
-// import Desk2x from '../../img/hero-2x.jpg';
-// import Tab1x from '../../img/hero-tablet-1x.jpg';
-// import Tab2x from '../../img/hero-tablet-2x.jpg';
-// import Mob1x from '../../img/hero-mobile-1x.jpg';
-// import Mob2x from '../../img/hero-mobile-2x.jpg';
+import Desk1x from '../../img/hero-1x.jpg';
+import Desk2x from '../../img/hero-2x.jpg';
+import Tab1x from '../../img/hero-tablet-1x.jpg';
+import Tab2x from '../../img/hero-tablet-2x.jpg';
+import Mob1x from '../../img/hero-mobile-1.jpg';
+import Mob2x from '../../img/hero-mobile-2x.jpg';
 
 export const HeroTitle = styled.h1`
   width: 335px;
@@ -15,8 +15,6 @@ export const HeroTitle = styled.h1`
   line-height: 105%;
   letter-spacing: 0.01em;
   color: var(--white);
-  position: relative; 
-  z-index: 1;
 
   @media screen and (min-width: 768px) {
     width: 598px;
@@ -32,20 +30,25 @@ export const HeroTitle = styled.h1`
  
 `;
 
-
-// Стилі для лінії
 export const Line = styled.svg`
+stroke-width: 2px;
   position: absolute; 
-  top: 50%; 
-  left: 0; 
-  transform: translateY(-50%); 
+  top: 133px;
+  left: 11px;
   z-index: 0; 
   width: 98px; 
   height: 35px; 
-
+  fill: transparent;
+  
   @media screen and (min-width: 768px) {
     width: 185px;
     height: 67px; 
+    top: 224px;
+  left: 16px;
+  }
+  @media screen and (min-width: 1440px) {
+    top: 235px;
+  left: 80px;
   }
 `;
 export const CTAButton = styled.button`
@@ -71,7 +74,6 @@ export const CTAButton = styled.button`
   }
 
   @media screen and (min-width: 768px) {
-    /* padding: 16px 60px; */
 width: 190px;
 height: 56px;
   }
@@ -139,7 +141,67 @@ export const Text = styled.p`
 `;
 
 export const Container = styled.div`
+  box-sizing: border-box;
+`;
 
+export const Photo = styled.div`
+  background-image: url(${Mob1x});
+  position: absolute;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  width: 446px;
+  height: 669px;
+  /* top: 180px;
+  left: 77px; */
+  top: 241px;
+  left: 77px;
+  z-index: -1;
+
+  @media (min-device-pixel-ratio: 2),
+    (-webkit-min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+    background-image: linear-gradient(
+        168deg,
+        #040404 14.75%,
+        rgba(4, 4, 4, 0) 52.97%
+      ),
+      linear-gradient(73deg, #040404 6.11%, rgba(4, 4, 4, 0) 66.68%),
+      url(${Mob2x});
+  }
+
+  @media screen and (min-width: 768px) {
+    position: absolute;
+    width: 423px;
+    height: 1005px;
+    /* top: 47px;
+    left: 345px; */
+    top: 131px;
+  left: 331px;
+
+    background-image: url(${Tab1x});
+    @media (min-device-pixel-ratio: 2),
+      (-webkit-min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+      background-image: url(${Tab2x});
+    }
+  }
+  @media screen and (min-width: 1440px) {
+    position: absolute;
+    width: 670px;
+    top: -152px;
+    left: 770px;
+    background-image: url(${Desk1x});
+
+    @media (min-device-pixel-ratio: 2),
+      (-webkit-min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+      background-image: url(${Desk2x});
+    }
+  }
 `;
 
 export const UserImage = styled.img`
@@ -152,16 +214,18 @@ export const Section = styled.section`
   padding-left: 20px;
   padding-right: 20px;
   padding-bottom: 40px;
+  position: relative; 
+  z-index: 1;
   @media screen and (min-width: 768px) {
     padding-top: 140px;
-  padding-left: 96px;
+  padding-left: 32px;
   padding-right: 76px;
   padding-bottom: 64px;
   }
 
   @media screen and (min-width: 1440px) {
     padding-top: 151px;
-  padding-left: 32px;
+  padding-left: 96px;
   padding-right: 138px;
   padding-bottom: 64px;
   }
