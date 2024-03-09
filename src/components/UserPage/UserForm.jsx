@@ -346,17 +346,17 @@ export const UserForm = () => {
                 >
                   <VStack>
                     <HStack spacing="8px">
-                      <FormLabel display="flex">
-                        <Radio type="radio" name="blood" value={1} />1
+                      <FormLabel>
+                        <Radio type="radio" name="blood" value="1" />1
                       </FormLabel>
-                      <FormLabel display="flex">
-                        <Radio type="radio" name="blood" value={2} />2
+                      <FormLabel>
+                        <Radio type="radio" name="blood" value="2" />2
                       </FormLabel>
-                      <FormLabel display="flex">
-                        <Radio type="radio" name="blood" value={3} />3
+                      <FormLabel>
+                        <Radio type="radio" name="blood" value="3" />3
                       </FormLabel>
-                      <FormLabel display="flex">
-                        <Radio type="radio" name="blood" value={4} />4
+                      <FormLabel>
+                        <Radio type="radio" name="blood" value="4" />4
                       </FormLabel>
                     </HStack>
                   </VStack>
@@ -367,11 +367,11 @@ export const UserForm = () => {
                   variant="groove"
                 >
                   <HStack spacing="8px">
-                    <FormLabel display="flex">
+                    <FormLabel>
                       <Radio type="radio" name="sex" value="male" />
                       Male
                     </FormLabel>
-                    <FormLabel display="flex">
+                    <FormLabel>
                       <Radio type="radio" name="sex" value="female" />
                       Female
                     </FormLabel>
@@ -386,25 +386,25 @@ export const UserForm = () => {
               variant="groove"
             >
               <VStack spacing="8px" align="flex-start">
-                <FormLabel display="flex">
-                  <Radio type="radio" name="levelActivity" value={1} />
+                <FormLabel>
+                  <Radio type="radio" name="levelActivity" value="1" />
                   Sedentary lifestyle (little or no physical activity)
                 </FormLabel>
-                <FormLabel display="flex">
-                  <Radio type="radio" name="levelActivity" value={2} />
+                <FormLabel>
+                  <Radio type="radio" name="levelActivity" value="2" />
                   Light activity (light exercises/sports 1-3 days per week)
                 </FormLabel>
-                <FormLabel display="flex">
-                  <Radio type="radio" name="levelActivity" value={3} />
+                <FormLabel>
+                  <Radio type="radio" name="levelActivity" value="3" />
                   Moderately active (moderate exercises/sports 3-5 days per
                   week)
                 </FormLabel>
-                <FormLabel display="flex">
-                  <Radio type="radio" name="levelActivity" value={4} />
+                <FormLabel>
+                  <Radio type="radio" name="levelActivity" value="4" />
                   Very active (intense exercises/sports 6-7 days per week)
                 </FormLabel>
-                <FormLabel display="flex">
-                  <Radio type="radio" name="levelActivity" value={5} />
+                <FormLabel>
+                  <Radio type="radio" name="levelActivity" value="5" />
                   Extremely active (very strenuous exercises/sports and physical
                   work)
                 </FormLabel>

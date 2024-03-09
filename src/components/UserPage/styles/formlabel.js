@@ -1,6 +1,7 @@
 import { defineStyle, defineStyleConfig } from '@chakra-ui/styled-system';
 
 const baseStyle = defineStyle({
+  display: 'flex',
   mx: 0,
   fontWeight: 'normal',
   transitionProperty: 'common',
