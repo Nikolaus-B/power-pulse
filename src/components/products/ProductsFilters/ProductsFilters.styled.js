@@ -51,8 +51,10 @@ const InputWrapper = styled.div`
   border-radius: 12px;
   padding: 14px;
   width: 335px;
+  height: 46px;
   @media screen and (min-width: 768px) {
     width: 236px;
+    height: 52px;
   }
 `;
 

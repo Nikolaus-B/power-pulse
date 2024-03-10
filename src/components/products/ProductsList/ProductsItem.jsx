@@ -15,6 +15,7 @@ import {
     RightSideWrapper,
     RecommendedWrapper,
     Button,
+    RedRound,
   } from './ProductsList.styled';
 
   import {
@@ -26,6 +27,8 @@ import { AddProductForm } from '../../AddProductForm/AddProductForm';
 import { AddProductSuccess } from '../../AddProductSuccess/AddProductSuccess';
 import { useState } from 'react';
 import { Icon } from '../../Icon/Icon';
+import { selectRecommended } from '../../../redux/products/productsSelectors';
+import { useSelector } from 'react-redux';
 
 BasicModalWindow.setAppElement('#root');
   
@@ -65,6 +68,8 @@ BasicModalWindow.setAppElement('#root');
       return text.charAt(0).toUpperCase() + text.slice(1);
     };
 
+    const recommended = true;
+
     return (
       <ListItem>
         <Container>
@@ -74,10 +79,17 @@ BasicModalWindow.setAppElement('#root');
             </DietContainer>
             <RightSideWrapper>
               <RecommendedContainer>
+              {recommended ? (
                 <RecommendedWrapper>
                   <GreenRound></GreenRound>
                   <Text>Recommended</Text>
                 </RecommendedWrapper>
+                 ) : (
+                <RecommendedWrapper>
+                  <RedRound></RedRound>
+                  <Text>Not recommended</Text>
+                </RecommendedWrapper>
+                 )}
               </RecommendedContainer>
               <Button type="button" onClick={handleOpenModal}>
                 Add
