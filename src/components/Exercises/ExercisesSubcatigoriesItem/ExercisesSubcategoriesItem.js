@@ -51,12 +51,12 @@ export const ExercisesSubcategoriesItem = ({ subcategory, filters, onSelect }) =
     return (
         <>
             {categoriesToShow.map((category, index) => {
-                const item = filters.find(item => item._id.$oid === category);
+                const item = filters.find(item => item._id === category);
                 const handleClick = () => {
                     onSelect(item.name);
                 };
                 return (
-                    <Li key={item._id.$oid}
+                    <Li key={item._id}
                         style={{
                             backgroundImage: `linear-gradient(rgba(4, 4, 4, 0.5), rgba(4, 4, 4, 0.5)), url(${item.imgURL})`,
                             backgroundSize: 'cover',
