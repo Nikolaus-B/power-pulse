@@ -19,8 +19,9 @@ import {
   SectionVideo,
   CaloriesIcon,
   Photo,
+  Line
 } from '../components/HomePage/HomePage.styled';
-import sprite from '../img/sprite.svg';
+import sprite from '../img/pulse-icons.svg';
 
 const HomePage = () => {
   return (
@@ -28,6 +29,9 @@ const HomePage = () => {
       <Photo />
       <ContainerForm>
         <HeroTitle>Transforming your body shape with Power Pulse</HeroTitle>
+        <Line stroke='#EF8964'>
+              <use href={`${sprite}#line`}></use>
+            </Line>
         <div className="cta-buttons">
            <NavLink to="/register"><CTAButton>Sign Up</CTAButton></NavLink>
            <NavLink to="/login"><SignInButton>Sign In</SignInButton></NavLink>
@@ -37,7 +41,7 @@ const HomePage = () => {
       <IconPlays>
         <VideoIcon>
           <IconsSVG>
-            <use href={`${sprite}#icon-Polygon-1`}></use>
+            <use href={`${sprite}#play-log`}></use>
           </IconsSVG>
         </VideoIcon>
 
@@ -50,7 +54,7 @@ const HomePage = () => {
       <CaloriesMe>
         <IconMan>
           <CaloriesIcon>
-            <use href={`${sprite}#icon-Group`}></use>
+            <use href={`${sprite}#circle-running-man`}></use>
           </CaloriesIcon>
         </IconMan>
         <CaloriesInfo>

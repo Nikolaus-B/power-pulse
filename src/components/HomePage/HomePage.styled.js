@@ -53,10 +53,12 @@ export const Photo = styled.div`
 
   @media screen and (min-width: 768px) {
     position: absolute;
-    width: 423px;
+    /* width: 423px;
+    height: 893px; */
+    width: 437px;
     height: 893px;
     top: 47px;
-    left: 345px;
+    left: 331px;
 
     background-image: url(${Tab1x});
     @media (min-device-pixel-ratio: 2),
@@ -85,7 +87,8 @@ export const Photo = styled.div`
 
 export const ContainerForm = styled.div`
   width: 100%;
-  max-width: 335px;
+  /* max-width: 335px; */
+  min-width: 335px;
   margin: 0;
 
   @media screen and (min-width: 768px) {
@@ -101,6 +104,9 @@ line-height: 105%;
 letter-spacing: 0.01em;
 color: var(--white-color);
 margin-bottom: 40px;
+
+position: relative; /* Додаємо позиціонування */
+  z-index: 1;
   @media screen and (min-width: 768px) {
 font-size: 70px;
 line-height: 111%;
@@ -370,4 +376,28 @@ export const SignInButton = styled.button`
     height: 56px;
   }
 
+`;
+
+// line
+
+export const Line = styled.svg`
+stroke-width: 2px;
+  position: absolute; 
+  top: 110px;
+  left: 11px;
+  z-index: 0; 
+  width: 98px; 
+  height: 35px; 
+  fill: transparent;
+  
+  @media screen and (min-width: 768px) {
+    width: 185px;
+    height: 67px; 
+    top: 189px;
+  left: 16px;
+  }
+  @media screen and (min-width: 1440px) {
+    top: 201px;
+  left: 80px;
+  }
 `;

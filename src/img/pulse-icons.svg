@@ -2,4 +2,7 @@
 <path fill="none" stroke="#e6533c" style="stroke: var(--color1, #e6533c)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="4.5714" d="M2.286 16h27.429M2.286 2.286h41.143M2.286 29.714h41.143"></path></symbol>
 <symbol id="line" viewBox="0 0 87 32">
 <path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="1.7297" d="M60.717 0.865c-20.169 0.292-64.211 3.812-59.502 21.728 4.232 12.649 64.534 9.932 79.413 0.414s-5.555-19.422-34.037-15.916"></path>
+</symbol>
+<symbol id="icon-Polygon-1" viewBox="0 0 28 32">
+<path d="M27.713 16l-27.713-16v32l27.713-16z"></path>
 </symbol></defs></svg>
