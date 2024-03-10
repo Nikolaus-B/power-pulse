@@ -12,15 +12,8 @@ import {
 
 const initialState = {
   user: {
-    name: '',
-    email: '',
-    blood: '1',
-    sex: '',
-    height: 0,
-    currentWeight: 0,
-    desiredWeight: 0,
-    birthday: '',
-    levelActivity: '1',
+    name: null,
+    email: null,
   },
   token: '',
   isLoggedIn: false,
