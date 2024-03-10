@@ -16,7 +16,7 @@ export const Section = styled.div`
   );
   color: #efede8;
   background-repeat: no-repeat;
-  background-position: bottom 0 right -40%;
+  background-position: bottom 0 right 0;
   margin: 0 auto;
   position: relative;
   height: 100vh;
