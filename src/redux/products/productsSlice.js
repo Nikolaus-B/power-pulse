@@ -1,10 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-import {
-  fetchAllProducts,
-  fetchCategories,
-  fetchIsRecommended,
-} from './operations';
+import { fetchCategories } from './operations';
 
 // const handlePending = state => {
 //   state.isLoading = true;
@@ -16,9 +12,7 @@ import {
 // };
 
 const initialState = {
-  products: [],
   categories: [],
-  isRecommended: [],
   filter: {
     query: '',
     category: '',
@@ -32,6 +26,7 @@ const productsSlice = createSlice({
   reducers: {
     setFilterQuery: (state, action) => {
       state.filter.query = action.payload;
+      console.log(action.payload)
     },
     setFilterCategory: (state, action) => {
       state.filter.category = action.payload;
@@ -42,12 +37,6 @@ const productsSlice = createSlice({
   },
   extraReducers: builder => {
     builder
-      .addCase(fetchAllProducts.fulfilled, (state, action) => {
-        state.products = action.payload;
-      })
-      .addCase(fetchIsRecommended.fulfilled, (state, action) => {
-        state.isRecommended = action.payload;
-      })
       .addCase(fetchCategories.fulfilled, (state, action) => {
         state.categories = action.payload;
       });

@@ -51,13 +51,22 @@ const InputWrapper = styled.div`
   border-radius: 12px;
   padding: 14px;
   width: 335px;
+  height: 46px;
+  &:hover {
+    border: 1px solid var(--orange-color);
+  }
+  &:focus {
+    border: 1px solid var(--orange-color);
+  }
   @media screen and (min-width: 768px) {
     width: 236px;
+    height: 52px;
   }
 `;
 
 const Input = styled.input`
   font-size: 14px;
+  line-height: 1.28;
   border: none;
   outline: none;
   background-color: inherit;
@@ -65,6 +74,7 @@ const Input = styled.input`
   width: 100%;
   @media screen and (min-width: 768px) {
     font-size: 16px;
+    line-height: 1.5;
   }
 `;
 
