@@ -19,6 +19,7 @@ import {
   selectVisibleProducts,
 } from '../redux/products/productsSelectors';
 
+
 function ProductPage() {
   const dispatch = useDispatch();
 
