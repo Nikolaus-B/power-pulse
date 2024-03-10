@@ -7,85 +7,61 @@ import heromob2 from '../../img/hero-mob404-2x.jpg';
 import herotab1 from '../../img/hero-tablet404-1x.jpg';
 import herotab2 from '../../img/hero-tablet404-2x.jpg';
 
-export const Photo = styled.div`
+export const Section = styled.div`
+ position: relative;
   background-image: url(${heromob1});
-  position: absolute;
+  background-image: -webkit-image-set(
+    url(${heromob1}); 1x,
+    url(${heromob2}); 2x
+  );
+  color: #efede8;
   background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
+  background-position: bottom 0 right -40%;
+  margin: 0 auto;
+  position: relative;
+  height: 100vh;
 
-  width: 135px;
-  height: 560px;
-  top: 250px;
-  left: 240px;
-  z-index: 1;
-
-  @media (min-device-pixel-ratio: 2),
-    (-webkit-min-device-pixel-ratio: 2),
-    (min-resolution: 192dpi),
-    (min-resolution: 2dppx) {
-    background-image: linear-gradient(
-        168deg,
-        #040404 14.75%,
-        rgba(4, 4, 4, 0) 52.97%
-      ),
-      linear-gradient(73deg, #040404 6.11%, rgba(4, 4, 4, 0) 66.68%),
-      url(${heromob2});
+  @media screen and (min-width: 375px) {
+    max-width: 375px;
   }
+
   @media screen and (min-width: 768px) {
-    position: absolute;
-    width: 348px;
-    height: 893px;
-    top: 131px;
-    left: 420px;
+    max-width: none;
+    width: 768px;
+    background-color: rgba(0, 0, 0, 1);
 
     background-image: url(${herotab1});
-    @media (min-device-pixel-ratio: 2),
-      (-webkit-min-device-pixel-ratio: 2),
-      (min-resolution: 192dpi),
-      (min-resolution: 2dppx) {
-      background-image: url(${herotab2});
-    }
+    background-image: -webkit-image-set(
+     url(${herotab1}); 1x,
+     url(${herotab2}); 2x
+    );
+    background-position: bottom 0 right 0%;
   }
-  @media screen and (min-width: 1440px) {
-    position: absolute;
-    width: 670px;
-    height: 800px;
-    top: 0;
-    left: 770px;
-    background-image: url(${hero1x});
 
-    @media (min-device-pixel-ratio: 2),
-      (-webkit-min-device-pixel-ratio: 2),
-      (min-resolution: 192dpi),
-      (min-resolution: 2dppx) {
-      background-image: url(${hero2x});
-    }
+  @media screen and (min-width: 1440px) {
+    width: 1440px;
+    height: 800px;
+
+    background-image: url(${hero1x}); 771px;
+    background-image: -webkit-image-set(
+      url(${hero1x}); 1x,
+      url(${hero2x}); 2x
+    );
   }
-`;
-export const Section = styled.div`
-  font-family: 'Roboto', sans-serif;
-  position: relative;
-  color: #e6533c;
-  height: 100vh;
-  background-color: black;
-  width: 100%;
 `;
 
 export const ErrorBox = styled.div`
-  position: absolute;
-  width: 240px;
-  height: 100%;
   background: #e6533c;
+  max-width: calc(64%);
+  height: 100%;
   box-sizing: border-box;
   padding: 24px 20px;
   display: flex;
-  z-index: 1;
 
   @media screen and (min-width: 768px) {
-    padding: 32px 32px;
-
+    max-width: none;
     width: 420px;
+    padding: 32px 32px;
   }
 
   @media screen and (min-width: 1440px) {
@@ -95,16 +71,8 @@ export const ErrorBox = styled.div`
 `;
 
 export const BoxContent = styled.div`
-  margin-top: 226px;
+  margin-top: auto;
   margin-bottom: auto;
-
-  @media screen and (min-width: 768px) {
-    margin-top: 309px;
-  }
-
-  @media screen and (min-width: 1440px) {
-    margin-top: 221px;
-  }
 `;
 
 export const Title404 = styled.h1`
@@ -195,6 +163,6 @@ export const Button = styled.button`
     line-height: 1.2;
   }
 `;
-export const Test = styled.div`
-  position: absolute;
+export const Body = styled.div`
+  background-color: black;
 `;

@@ -9,8 +9,7 @@ import {
   StyledLink,
   Button,
   Section,
-  Photo,
-  Test,
+  Body,
 } from '../../components/NotFound/notFound.styled';
 import { Icon } from 'components/Icon/Icon';
 
@@ -22,9 +21,8 @@ const NotFound = () => {
   };
 
   return (
-    <Section>
-      <Test>
-        <Photo />
+    <Body>
+      <Section>
         <StyledLink to="/">
           <Svg>
             <Icon iconid={'white-logo'} />
@@ -44,8 +42,8 @@ const NotFound = () => {
             </Button>
           </BoxContent>
         </ErrorBox>
-      </Test>
-    </Section>
+      </Section>
+    </Body>
   );
 };
 
