@@ -104,7 +104,7 @@ export const UserCard = () => {
               </HStack>
             </CardHeader>
             <CardFooter>
-              <Text lineHeight={{ base: '111%', md: '133%' }}>{bmr} min</Text>
+              <Text lineHeight={{ base: '111%', md: '133%' }}>{bmr}</Text>
             </CardFooter>
           </Card>
           <Card
