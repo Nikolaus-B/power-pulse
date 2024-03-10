@@ -1,5 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchDiary } from './operations';
+import {
+  fetchAddExercises,
+  fetchAddProduct,
+  fetchDeleteExercise,
+  fetchDeleteProduct,
+  fetchDiary,
+} from './operations';
 
 // const handlePending = state => {
 //   state.isLoading = true;
@@ -11,7 +17,8 @@ import { fetchDiary } from './operations';
 // };
 
 const initialState = {
-  diary: [],
+  products: [],
+  exercises: [],
 };
 
 const diarySlice = createSlice({
@@ -20,6 +27,14 @@ const diarySlice = createSlice({
   reducers: {},
   extraReducers: builder => {
     builder.addCase(fetchDiary.fulfilled, (state, action) => {});
+    builder.addCase(fetchAddProduct.fulfilled, (state, action) => {
+      state.products = action.payload.data.addProducts;
+    });
+    builder.addCase(fetchAddExercises.fulfilled, (state, action) => {
+      state.exercises.push(action.payload.addExercises);
+    });
+    builder.addCase(fetchDeleteProduct.fulfilled, (state, action) => {});
+    builder.addCase(fetchDeleteExercise.fulfilled, (state, action) => {});
   },
 });
 

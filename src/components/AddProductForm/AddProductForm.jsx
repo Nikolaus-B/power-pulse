@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { CloseIcon } from '@chakra-ui/icons';
 
@@ -11,14 +10,43 @@ import {
   Text,
   Span,
   WrapperCloseIcon,
-  WrapperInputForm
+  WrapperInputForm,
 } from './AddProductForm.styled';
+import { useDispatch } from 'react-redux';
+import { fetchAddProduct } from '../../redux/diary/operations';
 
-export const AddProductForm = ({ product, onClose, onCloseForm, onSuccess, onError }) => {
+export const AddProductForm = ({
+  product,
+  onClose,
+  onCloseForm,
+  onSuccess,
+  onError,
+}) => {
+  const dispatch = useDispatch();
   const [grams, setGrams] = useState('');
   const [calories, setCalories] = useState(0);
-
   const { title, calories: productCalories } = product;
+
+  const data = {
+    productId: product._id,
+    date: new Date()
+      .toISOString()
+      .split('T', 1)[0]
+      .split('-')
+      .reverse()
+      .join('-'),
+    amount: Number(grams),
+    calories: calories,
+  };
+
+  const addProduct = productData => {
+    if (productData.amount === 0) {
+      return;
+    }
+
+    // console.log(productData.data);
+    dispatch(fetchAddProduct(productData.data));
+  };
 
   const handleGramsChange = e => {
     const gramsValue = e.target.value;
@@ -36,9 +64,8 @@ export const AddProductForm = ({ product, onClose, onCloseForm, onSuccess, onErr
     e.preventDefault();
     e.stopPropagation();
 
-        onCloseForm()
-        onSuccess(calories);
-
+    onCloseForm();
+    onSuccess(calories);
   };
 
   return (
@@ -64,12 +91,12 @@ export const AddProductForm = ({ product, onClose, onCloseForm, onSuccess, onErr
           Calories:
           <span style={{ color: 'white', marginLeft: '4px' }}>{calories}</span>
         </Text>
-          <AddToDiaryButton type="submit">
-            Add to diary
-          </AddToDiaryButton>
-          <CancelButton type="button" onClick={onClose}>
-            Cancel
-          </CancelButton>
+        <AddToDiaryButton type="submit" onClick={() => addProduct({ data })}>
+          Add to diary
+        </AddToDiaryButton>
+        <CancelButton type="button" onClick={onClose}>
+          Cancel
+        </CancelButton>
       </ModalForm>
     </>
   );
