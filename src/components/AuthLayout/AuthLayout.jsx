@@ -17,6 +17,7 @@ import {
   Icon,
   Block,
   IconManSvg,
+  Photo,
 } from './AuthLayout.styled';
 import sprite from '../../img/sprite.svg';
 
@@ -30,6 +31,7 @@ const AuthLayout = ({
 }) => {
   return (
     <Container className="container">
+      <Photo />
       <ContainerForm>
         <Title>{title}</Title>
         <Text>{paragraph}</Text>

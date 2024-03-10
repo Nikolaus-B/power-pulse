@@ -13,13 +13,13 @@ export const GlobalStyle = createGlobalStyle`
    --border-static-color: rgba(239, 237, 232, 0.2);
   --text-info-color: rgba(239, 237, 232, 0.3);
   --text-categories-color:rgba(239, 237, 232, 0.4);
-  
+
 }
 
   body {
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, 'Roboto',
-      
+
       sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -79,5 +79,10 @@ div {
 
 }
 }
+<<<<<<< HEAD
+=======
 
+
+>>>>>>> main
 `;
+
