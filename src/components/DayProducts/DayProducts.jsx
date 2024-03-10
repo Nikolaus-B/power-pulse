@@ -25,19 +25,6 @@ export const DayProducts = () => {
   const { blood } = useSelector(selectUser);
   const isWide = useMedia({ minWidth: '767px' });
 
-  // const defineClassNames = (key, index) => {
-  //   const size =
-  //     key === 'title' ? 'big' : key === 'category' ? 'medium' : 'small';
-
-  //   const firstEl = index === 0 ? 'firstEl' : '';
-
-  //   return `${size} ${firstEl}`;
-  // };
-
-  // const convertValue = value => {
-  //   return value ? 'Yes' : 'No';
-  // };
-
   // const deleteProduct = id => {
   //   dispatch(fetchDeleteProduct(id));
   // };
