@@ -19,7 +19,7 @@ import {
   IconManSvg,
   Photo,
 } from './AuthLayout.styled';
-import sprite from '../../img/sprite.svg';
+import sprite from '../../img/pulse-icons.svg';
 
 const AuthLayout = ({
   title,

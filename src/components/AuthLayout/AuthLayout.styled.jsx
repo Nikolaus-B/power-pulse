@@ -53,10 +53,10 @@ export const Photo = styled.div`
 
   @media screen and (min-width: 768px) {
     position: absolute;
-    width: 423px;
+    width: 437px;
     height: 893px;
     top: 47px;
-    left: 345px;
+    left: 331px;
 
     background-image: url(${Tab1x});
     @media (min-device-pixel-ratio: 2),

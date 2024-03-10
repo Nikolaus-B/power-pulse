@@ -12,7 +12,7 @@ export const StyledForm = styled(Form)`
   }
 `;
 
-export const Test = styled.div`
+export const Contsform = styled.div`
   display: flex;
   flex-direction: column;
   gap: 14px;
@@ -24,6 +24,11 @@ export const StyledFormIn = styled(Form)`
   flex-direction: column;
   gap: 14px;
   justify-content: center;
+
+  @media screen and (min-width: 768px) {
+    width: 364px;
+    // gap: 20px;
+  }
 `;
 
 export const Input = styled(Field)`
@@ -97,7 +102,8 @@ export const Button = styled.button`
     line-height: 1.2;
   }
 `;
-export const Message = styled.div`
+
+export const MessageInput = styled.div`
   position: absolute;
   padding: 0;
   margin: 0;
@@ -108,11 +114,58 @@ export const Message = styled.div`
   justify-content: flex-start;
 `;
 
+export const SvgIcon = styled.svg`
+  fill: #d80027;
+  width: 16px;
+  height: 16px;
+  margin-right: 4px;
+  margin-top: 1px;
+`;
+
 export const ErrorText = styled.p`
+  font-family: 'Roboto', sans-serif;
   font-size: 12px;
   font-weight: 400;
-  line-height: 18px;
+  line-height: 1.5;
   letter-spacing: 0.01em;
   text-align: left;
-  color: var(--error-color);
+  color: #d80027;
+`;
+
+export const SuccessText = styled.p`
+  font-family: 'Roboto', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 0.01em;
+  text-align: left;
+  color: #3cbf61;
+`;
+
+export const SuccessSvg = styled.svg`
+  fill: #3cbf61;
+  width: 16px;
+  height: 16px;
+  margin-right: 4px;
+  margin-top: 1px;
+`;
+export const Icons = styled.svg`
+  stroke: rgba(239, 237, 232, 1);
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  left: 320px;
+  bottom: 112px;
+
+  @media screen and (min-width: 768px) {
+    position: absolute;
+    left: 360px;
+    bottom: 162px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    position: absolute;
+    left: 422px;
+    bottom: 162px;
+  }
 `;
