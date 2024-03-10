@@ -1,90 +1,65 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { Calories, IconPlay } from '../components/AuthLayout/AuthLayout.styled';
-import { 
-  Container, 
-  HeroTitle, 
-  CTAButton, 
-  VideoTutorialButton, 
-  CaloriesInfo, 
-  CaloriesIcon, 
-  CaloriesText,
-  Text,
-  Section, 
-  VideoIcon, 
-  Video,
-  SectionVideo,
+import {
+  Container,
+  ContainerForm,
+  HeroTitle,
+  CTAButton,
   SignInButton,
-  FotoSection,
+  IconPlays,
   IconsSVG,
-} from '../components/HomePage/HomePage.styled'; 
-import { Icon } from '../components/Icon/Icon';
-import sprite from '../img/pulse-icons.svg';
+  Video,
+  TextTutorial,
+  CaloriesMe,
+  IconMan,
+  CaloriesInfo,
+  CaloriesText,
+  SpanText,
+  VideoIcon,
+  SectionVideo,
+  CaloriesIcon,
+  Photo,
+} from '../components/HomePage/HomePage.styled';
+import sprite from '../img/sprite.svg';
+
 const HomePage = () => {
   return (
-    <>
-      
-      <Container>
-        <Section>
-          <HeroTitle>Transforming your body shape with Power Pulse
-             
-          </HeroTitle>
-          
-          <div className="cta-buttons">
-            <NavLink to="/register"><CTAButton>Sign Up</CTAButton></NavLink>
-            <NavLink to="/login"><SignInButton>Sign In</SignInButton></NavLink>
-          </div>
-        </Section>
-        
+    <Container className="container">
+      <Photo />
+      <ContainerForm>
+        <HeroTitle>Transforming your body shape with Power Pulse</HeroTitle>
+        <div className="cta-buttons">
+           <NavLink to="/register"><CTAButton>Sign Up</CTAButton></NavLink>
+           <NavLink to="/login"><SignInButton>Sign In</SignInButton></NavLink>
+        </div>
+      </ContainerForm>
 
-         
-        {/* <img src={img} alt="Woman exercising" />  */}
-        <FotoSection>
-        <IconPlay>
-            <VideoIcon>
+      <IconPlays>
+        <VideoIcon>
           <IconsSVG>
-            <use href={`${sprite}#play-log`}></use>
+            <use href={`${sprite}#icon-Polygon-1`}></use>
           </IconsSVG>
         </VideoIcon>
-            
+
         <SectionVideo>
           <Video>
-            350+<VideoTutorialButton>Video tutorial</VideoTutorialButton>
+            350+<TextTutorial>Video tutorial</TextTutorial>
           </Video>
         </SectionVideo>
-      </IconPlay>
-
-        <Calories>
-        <CaloriesIcon>
-          <Icon iconid={'circle-running-man'}/>
-        </CaloriesIcon>
+      </IconPlays>
+      <CaloriesMe>
+        <IconMan>
+          <CaloriesIcon>
+            <use href={`${sprite}#icon-Group`}></use>
+          </CaloriesIcon>
+        </IconMan>
         <CaloriesInfo>
           <CaloriesText>500</CaloriesText>
-          <Text>cal</Text>
+          <SpanText>cal</SpanText>
         </CaloriesInfo>
-      </Calories>
-        </FotoSection>
-        {/* <FotoContainer>
-        <source
-          srcSet="../img/hero-1x.jpg 1x, ../img/hero-2x.jpg 2x"
-          media="(min-width: 1440px)"
-        />
-        <source
-          srcSet="../img/hero-tablet-1x.jpg 1x, ../img/hero-tablet-2x.jpg 2x"
-          media="(min-width: 768px)"
-        />
-        <source
-          srcSet="../img/hero-mobile-1x.jpg 1x, ../img/hero-mobile-2x.jpg 2x"
-          media="(max-width: 767px)"
-        />
-
-        <Foto src="../img/hero-1x.jpg" alt="woman" />
-      
-        </FotoContainer> */}
-      </Container>
-    </>
+      </CaloriesMe>
+    </Container>
   );
-}
-
+};
 
 export default HomePage;
