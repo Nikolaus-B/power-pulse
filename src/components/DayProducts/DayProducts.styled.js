@@ -1,9 +1,7 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-const getText = props => {
-  return `'${props.$keyOfProduct}'`;
-};
+const getRecomended = props => (props.$isRecomended ? '#E9101D' : '#419B09');
 
 export const ProductsContainer = styled.div`
   position: relative;
@@ -47,86 +45,126 @@ export const ProductsLink = styled(Link)`
   }
 `;
 
-export const Productslist = styled.ul`
+export const DayProductsContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 39px;
-  height: 752px;
-  overflow-y: scroll;
 `;
 
-export const Productsli = styled.li``;
-
-export const ProductsItemsList = styled.ul`
+export const TitlesContainer = styled.div`
   display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
 `;
 
-export const ProductsItem = styled.li`
-  display: block;
-  height: 64px;
-  &.big {
-    width: 295px;
-    color: red;
-  }
+export const DayProductsList = styled.div`
+  display: flex;
+  list-style: none;
+`;
 
-  &.medium {
-    width: 295px;
-    color: aquamarine;
-  }
-
-  &.small {
-    width: 81px;
-    color: blue;
-  }
-
-  @media screen and (max-width: 767px) {
-    &::before {
-      content: ${getText};
-      font-size: 12px;
-      line-height: 18px;
-      text-transform: capitalize;
-
-      color: var(--orange_1-color);
-    }
-  }
-
-  @media screen and (min-width: 768px) {
-    &.firstEl {
-      &::before {
-        font-size: 12px;
-        line-height: 18px;
-        content: ${getText};
-        text-transform: capitalize;
-        color: var(--orange_1-color);
-      }
-    }
+export const El = styled.p`
+  &::before {
+    content: '';
+    display: block;
+    width: 30px;
+    height: 30px;
+    background-color: ${getRecomended};
   }
 `;
 
-export const ProductsTextContainer = styled.div`
-  margin-top: 8px;
-  height: 38px;
-  border: 1px solid var(--text-info-color);
-  border-radius: 12px;
-  padding: 10px 14px;
-
-  &.big {
-  }
-
-  &.medium {
-  }
-
-  &.small {
-  }
+export const DayProductsMobileList = styled.ul`
+  display: flex;
+  list-style: none;
+  flex-direction: column;
 `;
 
-export const ProductsText = styled.p`
-  text-transform: capitalize;
-  font-size: 14px;
-  line-height: 18px;
+export const MobileItemContainer = styled.div``;
+
+export const MobileTitle = styled.p``;
+
+export const MobileValueContainer = styled.div`
+  border: 2px solid red;
 `;
+
+export const MobileValue = styled.p``;
+
+// export const Productslist = styled.ul`;
+//   display: flex;
+//   flex-direction: column;
+//   gap: 39px;
+//   height: 752px;
+//   overflow-y: scroll;
+// `;
+
+// export const Productsli = styled.li``;
+
+// export const ProductsItemsList = styled.ul`
+//   display: flex;
+//   flex-wrap: wrap;
+//   gap: 16px;
+// `;
+
+// export const ProductsItem = styled.li`
+//   display: block;
+//   height: 64px;
+//   &.big {
+//     width: 295px;
+//     color: red;
+//   }
+
+//   &.medium {
+//     width: 295px;
+//     color: aquamarine;
+//   }
+
+//   &.small {
+//     width: 81px;
+//     color: blue;
+//   }
+
+//   @media screen and (max-width: 767px) {
+//     &::before {
+//       content: ${getText};
+//       font-size: 12px;
+//       line-height: 18px;
+//       text-transform: capitalize;
+
+//       color: var(--orange_1-color);
+//     }
+//   }
+
+//   @media screen and (min-width: 768px) {
+//     &.firstEl {
+//       &::before {
+//         font-size: 12px;
+//         line-height: 18px;
+//         content: ${getText};
+//         text-transform: capitalize;
+//         color: var(--orange_1-color);
+//       }
+//     }
+//   }
+// `;
+
+// export const ProductsTextContainer = styled.div`
+//   margin-top: 8px;
+//   height: 38px;
+//   border: 1px solid var(--text-info-color);
+//   border-radius: 12px;
+//   padding: 10px 14px;
+
+//   &.big {
+//   }
+
+//   &.medium {
+//   }
+
+//   &.small {
+//   }
+// `;
+
+// export const ProductsText = styled.p`
+//   text-transform: capitalize;
+//   font-size: 14px;
+//   line-height: 18px;
+// `;
 
 export const NotFoundProducts = styled.p`
   position: absolute;
