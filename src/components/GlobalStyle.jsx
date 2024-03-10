@@ -15,13 +15,13 @@ export const GlobalStyle = createGlobalStyle`
   --text-categories-color:rgba(239, 237, 232, 0.4);
   --diary-active-color:rgba(239, 237, 232, 0.8);
     --transition-dur-and-func: 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  
+
 }
 
   body {
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, 'Roboto',
-      
+
       sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -81,5 +81,4 @@ div {
 
 }
 }
-
 `;
