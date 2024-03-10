@@ -33,7 +33,7 @@ export const ExercisesList = ({ selectedCategory, subCategory }) => {
     return (
       <List>
         {exercises.map((exercise) => (
-          <ExercisesItem key={exercise._id.$oid} exercise={exercise} />
+          <ExercisesItem key={exercise._id} exercise={exercise} />
         ))}
       </List>
     )

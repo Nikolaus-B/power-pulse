@@ -1,56 +1,55 @@
 import React, { useState, useEffect } from "react";
-import { Li, SubTitle, CategoryTitle } from "./ExercisesSubcatigoriesItem.styled";
+import { Li, SubTitle, CategoryTitle, Input } from "./ExercisesSubcatigoriesItem.styled";
 
 const sliderSizes = {
-  small: 5,
+  small: 10,
   medium: 9,
   large: 10
 };
 
 export const ExercisesSubcategoriesItem = ({ subcategory, filters, onSelect }) => {
     
-    const [viewportSize, setViewportSize] = useState('medium');
-  const [currentPage, setCurrentPage] = useState(0);
-  const [categoriesToShow, setCategoriesToShow] = useState([]);
+  const [viewportSize, setViewportSize] = useState('medium');
+    const [currentPage, setCurrentPage] = useState(0);
+    const [categoriesToShow, setCategoriesToShow] = useState([]);
 
-  useEffect(() => {
-    const handleResize = () => {
-      const width = window.innerWidth;
-      if (width < 600) {
-        setViewportSize('small');
-      } else if (width >= 600 && width < 1000) {
-        setViewportSize('medium');
-      } else {
-        setViewportSize('large');
-      }
+    useEffect(() => {
+        const handleResize = () => {
+            const width = window.innerWidth;
+            if (width < 600) {
+                setViewportSize('small');
+            } else if (width >= 600 && width < 1000) {
+                setViewportSize('medium');
+            } else {
+                setViewportSize('large');
+            }
+        };
+
+        handleResize();
+        window.addEventListener('resize', handleResize);
+
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
+
+    useEffect(() => {
+        setCurrentPage(0); 
+    }, [subcategory]);
+
+    useEffect(() => {
+        const startIndex = currentPage * sliderSizes[viewportSize];
+        const endIndex = startIndex + sliderSizes[viewportSize];
+        setCategoriesToShow(subcategory.slice(startIndex, endIndex));
+    }, [currentPage, subcategory, viewportSize]);
+
+    const handlePageClick = (page) => {
+        setCurrentPage(page);
     };
-
-    handleResize();
-    window.addEventListener('resize', handleResize);
-
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
-
-  useEffect(() => {
-    const startIndex = currentPage * sliderSizes[viewportSize];
-    const endIndex = startIndex + sliderSizes[viewportSize];
-    setCategoriesToShow(subcategory.slice(startIndex, endIndex));
-  }, [currentPage, subcategory, viewportSize]);
-
-  const handleClickNext = () => {
-    setCurrentPage(currentPage + 1);
-  };
-
-  const handleClickPrev = () => {
-    setCurrentPage(currentPage - 1);
-  };
-
     
     return (
-        <>
-            {categoriesToShow.map((category, index) => {
+      <>
+        {categoriesToShow.map((category, index) => {
                 const item = filters.find(item => item._id === category);
                 const handleClick = () => {
                     onSelect(item.name);
@@ -69,12 +68,19 @@ export const ExercisesSubcategoriesItem = ({ subcategory, filters, onSelect }) =
                     </Li>
                 );
             })}
-      <button onClick={handleClickPrev} disabled={currentPage === 0}>
-        Prev
-      </button>
-      <button onClick={handleClickNext} disabled={currentPage === Math.ceil(subcategory.length / sliderSizes[viewportSize]) - 1}>
-        Next
-      </button>
+            <div>
+                {Array.from(Array(Math.ceil(subcategory.length / sliderSizes[viewportSize])).keys()).map((page) => (
+                    <label key={page}>
+                        <Input
+                            type="radio"
+                            name="page"
+                            value={page}
+                            checked={currentPage === page}
+                            onChange={() => handlePageClick(page)}
+                        />
+                    </label>
+                ))}
+            </div>
     </>
         // <>
         //     {subcategory.map(id => {
