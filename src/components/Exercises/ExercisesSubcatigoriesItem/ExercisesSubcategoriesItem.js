@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Li, SubTitle, CategoryTitle, Input } from "./ExercisesSubcatigoriesItem.styled";
+import { Li, SubTitle, CategoryTitle, Input, RadioBtns } from "./ExercisesSubcatigoriesItem.styled";
 
 const sliderSizes = {
   small: 10,
@@ -9,16 +9,16 @@ const sliderSizes = {
 
 export const ExercisesSubcategoriesItem = ({ subcategory, filters, onSelect }) => {
     
-  const [viewportSize, setViewportSize] = useState('medium');
+    const [viewportSize, setViewportSize] = useState('medium');
     const [currentPage, setCurrentPage] = useState(0);
     const [categoriesToShow, setCategoriesToShow] = useState([]);
 
     useEffect(() => {
         const handleResize = () => {
             const width = window.innerWidth;
-            if (width < 600) {
+            if (width < 768) {
                 setViewportSize('small');
-            } else if (width >= 600 && width < 1000) {
+            } else if (width >= 768 && width < 1440) {
                 setViewportSize('medium');
             } else {
                 setViewportSize('large');
@@ -67,20 +67,21 @@ export const ExercisesSubcategoriesItem = ({ subcategory, filters, onSelect }) =
                         <CategoryTitle>{item.filter}</CategoryTitle>
                     </Li>
                 );
-            })}
-            <div>
-                {Array.from(Array(Math.ceil(subcategory.length / sliderSizes[viewportSize])).keys()).map((page) => (
-                    <label key={page}>
-                        <Input
-                            type="radio"
-                            name="page"
-                            value={page}
-                            checked={currentPage === page}
-                            onChange={() => handlePageClick(page)}
-                        />
-                    </label>
-                ))}
-            </div>
+        })}
+        {subcategory.length > sliderSizes[viewportSize] && (
+          <RadioBtns>
+            {Array.from(Array(Math.ceil(subcategory.length / sliderSizes[viewportSize])).keys()).map((page) => (
+              <label key={page}>
+                <Input
+                  type="radio"
+                  name="page"
+                  value={page}
+                  checked={currentPage === page}
+                  onChange={() => handlePageClick(page)}
+                />
+              </label>
+            ))}
+          </RadioBtns>)}
     </>
         // <>
         //     {subcategory.map(id => {

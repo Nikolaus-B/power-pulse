@@ -9,6 +9,13 @@ export const Li = styled.li`
     border: 1px solid rgba(239, 237, 232, 0.2);
     border-radius: 12px;
     padding: 81px 0;
+
+    @media screen and (min-width: 768px) {
+        width: 224px;
+    }
+    @media screen and (min-width: 1440px) {
+        width: 236.8px;
+    }
 `;
 
 export const SubTitle = styled.h1`
@@ -19,49 +26,68 @@ export const SubTitle = styled.h1`
     text-transform: capitalize;
     color: var(--white-color);
     margin-bottom: 2px;
+    @media screen and (min-width: 768px) {
+        font-size: 24px;
+        line-height: 1.33;
+    }
 `;
 
 export const CategoryTitle = styled.p`
     font-weight: 400;
     font-size: 12px;
-    line-height: 18px;
+    line-height: 1.5;
     text-align: center;
     color: rgba(239, 237, 232, 0.4);
 `;
 
 export const Input = styled.input`
-    width: 18px;
-  height: 18px;
-  margin-right: 9px;
-
-  color: #ef8964;
-
-  border: 1.5px solid currentColor;
-  border-radius: 50%;
-
-  transform: translateY(0.18rem);
-
-  cursor: pointer;
-
-  &::before {
-    content: '';
-    width: 10px;
-    height: 10px;
+    width: 14px;
+    height: 14px;
     border-radius: 50%;
-    box-shadow: inset 10px 10px #ef8964;
+    cursor: pointer;
+
+    &::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    background-color: #040404;
+    color: var(--orange-color);
+    border: var(--orange-color);
+    border-radius: 50%;
+    box-shadow: inset 10px 10px var(--orange-color);
     transform: scale(0);
     transition: 120ms transform ease-in-out;
-  }
+    }
 
-  &:hover:before,
-  &:checked:before {
-    transform: scale(1);
-  }
+    &:hover:before,
+    &:checked:before {
+        transform: scale(1);
+    }
 
-  @media screen and (min-width: 768px) {
-    width: 20px;
-    height: 20px;
+    &:not(:checked) {
+    background-color: rgba(239, 237, 232, 0.1);; 
+    }
 
-    transform: translateY(0.2rem);
-  }
+    &:checked {
+    color: var(--orange-color);
+    border: 1.5px solid currentColor;
+    }
+`;
+
+export const RadioBtns = styled.div`
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+    justify-content: center;
+/* фиксированные кнопки на планшете */
+    @media screen and (min-width: 768px) {
+        gap: 8px;
+        position: fixed;
+            bottom: 32px;
+            left: 50%;
+            transform: translateX(-50%);
+    }
+    @media screen and (min-width: 1440px) {
+        bottom: 46px;
+    }
 `;

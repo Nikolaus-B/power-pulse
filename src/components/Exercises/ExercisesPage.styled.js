@@ -13,3 +13,13 @@ export const Svg = styled.span`
     padding: 0;
     align-items: center;
 `
+
+export const TitleWrap = styled.div`
+    @media screen and (min-width: 768px) {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 64px;
+    }
+
+`;
