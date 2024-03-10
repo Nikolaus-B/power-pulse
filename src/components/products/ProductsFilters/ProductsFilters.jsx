@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import Select from 'react-select';
 
 import {
@@ -15,9 +15,35 @@ import {
   setFilterRecommended,
 } from '../../../redux/products/productsSlice';
 import { Icon } from 'components/Icon/Icon';
+import { fetchCategories } from '../../../redux/products/operations';
+import { selectCategories } from '../../../redux/products/productsSelectors';
 
-export const ProductsFilters = ({ categories }) => {
-  const recommendedFilters = ['all', 'recommended', 'not recommended'];
+export const ProductsFilters = () => {
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchCategories());
+  }, [dispatch]);
+
+  const categories = useSelector(selectCategories);
+  
+  const capitalizeFirstLetter = text => {
+    return text.charAt(0).toUpperCase() + text.slice(1);
+  };
+
+  const recommendedFilters = [
+    { value: 'all', label: 'All' },
+    { value: 'true', label: 'Recommended ' },
+    { value: 'false', label: 'Not recommended' },
+  ];
+
+  const categoriesList = [
+    { value: 'all', label: 'All categories' },
+    ...categories.map(category => ({
+      value: category,
+      label: capitalizeFirstLetter(category),
+    })),
+  ];
 
   const customStyles = {
     control: (base, state) => ({
@@ -69,15 +95,11 @@ export const ProductsFilters = ({ categories }) => {
     }),
   };
 
-  const capitalizeFirstLetter = text => {
-    return text.charAt(0).toUpperCase() + text.slice(1);
-  };
-
   const clearQuery = () => {
     setQuery('');
     dispatch(setFilterQuery(''));
+    setHiddenBtn(false);
   };
-  const dispatch = useDispatch();
   const [hiddenBtn, setHiddenBtn] = useState(false);
   const [query, setQuery] = useState('');
 
@@ -90,7 +112,6 @@ export const ProductsFilters = ({ categories }) => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    setQuery('');
     setHiddenBtn(false);
   };
 
@@ -117,10 +138,7 @@ export const ProductsFilters = ({ categories }) => {
       </InputWrapper>
       <Select
         onChange={evt => dispatch(setFilterCategory(evt.value))}
-        options={categories.map(category => ({
-          value: category,
-          label: capitalizeFirstLetter(category),
-        }))}
+        options={categoriesList}
         name="Categories"
         placeholder="Categories"
         styles={customStyles}
@@ -136,10 +154,7 @@ export const ProductsFilters = ({ categories }) => {
         styles={customStyles}
         minWidth="173px"
         maxWidth="204px"
-        options={recommendedFilters.map(el => ({
-          value: el,
-          label: capitalizeFirstLetter(el),
-        }))}
+        options={recommendedFilters}
         theme={theme => ({
           ...theme,
           borderRadius: '12px',
