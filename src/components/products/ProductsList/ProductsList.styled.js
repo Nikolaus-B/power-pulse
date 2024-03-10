@@ -61,6 +61,7 @@ const DietContainer = styled.div`
 const DietText = styled.p`
   font-weight: 700;
   font-size: 12px;
+  line-height: 1.16;
   color: #fff;
 `;
 
@@ -101,6 +102,7 @@ const RedRound = styled.div`
 
 const Text = styled.p`
   font-size: 12px;
+  line-height: 1.5;
   color: var(--white-color);
   max-width: 122px;
   white-space: nowrap;
@@ -117,6 +119,7 @@ const Button = styled.button`
   background-color: inherit;
   border: none;
   font-size: 14px;
+  line-height: 1.28;
   color: var(--orange-color);
 `;
 
@@ -129,12 +132,17 @@ const TitleWrapper = styled.div`
 
 const TitleText = styled.p`
   font-size: 20px;
+  line-height: 1.2;
   color: var(--white-color);
   margin-left: 16px;
   max-width: 258px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  @media screen and (min-width: 768px) {
+    font-size: 24px;
+    line-height: 1.3;
+  }
 `;
 
 const InfoWrapper = styled.div`

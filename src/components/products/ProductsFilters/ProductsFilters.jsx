@@ -20,14 +20,13 @@ import { selectCategories } from '../../../redux/products/productsSelectors';
 import { firstSelectStyles, secondSelectStyles } from './selectCustomStyles';
 
 export const ProductsFilters = () => {
-
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchCategories());
   }, [dispatch]);
 
   const categories = useSelector(selectCategories);
-  
+
   const capitalizeFirstLetter = text => {
     return text.charAt(0).toUpperCase() + text.slice(1);
   };
@@ -94,7 +93,7 @@ export const ProductsFilters = () => {
         name="Categories"
         placeholder="Categories"
         styles={firstSelectStyles}
-        theme={(theme) => ({
+        theme={theme => ({
           ...theme,
           borderRadius: '12px',
           colors: {
@@ -109,7 +108,7 @@ export const ProductsFilters = () => {
         placeholder="All"
         styles={secondSelectStyles}
         options={recommendedFilters}
-        theme={(theme) => ({
+        theme={theme => ({
           ...theme,
           borderRadius: '12px',
           colors: {
