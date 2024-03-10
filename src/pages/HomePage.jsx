@@ -1,71 +1,65 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-// import { Calories } from '../components/AuthLayout/AuthLayout.styled';
-import { 
-  Container, 
-  HeroTitle, 
-  CTAButton, 
-  VideoTutorialButton, 
-  CaloriesInfo, 
-  CaloriesIcon, 
-  CaloriesText,
-  Text,
-  Section, 
-  VideoIcon, 
-  Video,
-  SectionVideo,
+import {
+  Container,
+  ContainerForm,
+  HeroTitle,
+  CTAButton,
   SignInButton,
-  FotoSection,
-  IconsSVG,
-  Photo,
-  Line,
   IconPlays,
-  CaloriesMe
-} from '../components/HomePage/HomePage.styled'; 
-import { Icon } from '../components/Icon/Icon';
-import sprite from '../img/pulse-icons.svg';
+  IconsSVG,
+  Video,
+  TextTutorial,
+  CaloriesMe,
+  IconMan,
+  CaloriesInfo,
+  CaloriesText,
+  SpanText,
+  VideoIcon,
+  SectionVideo,
+  CaloriesIcon,
+  Photo,
+} from '../components/HomePage/HomePage.styled';
+import sprite from '../img/sprite.svg';
+
 const HomePage = () => {
   return (
-    <>
-      <Container>
-        <Photo />
-        <Section>
-          <HeroTitle>Transforming your body shape with Power Pulse</HeroTitle>
-            <Line stroke='#EF8964'>
-              <Icon iconid={'line'}/>
-            </Line>
-          <div className="cta-buttons">
-            <NavLink to="/register"><CTAButton>Sign Up</CTAButton></NavLink>
-            <NavLink to="/login"><SignInButton>Sign In</SignInButton></NavLink>
-          </div>
-        </Section>
-        <FotoSection>
-        <IconPlays>
-            <VideoIcon>
+    <Container className="container">
+      <Photo />
+      <ContainerForm>
+        <HeroTitle>Transforming your body shape with Power Pulse</HeroTitle>
+        <div className="cta-buttons">
+           <NavLink to="/register"><CTAButton>Sign Up</CTAButton></NavLink>
+           <NavLink to="/login"><SignInButton>Sign In</SignInButton></NavLink>
+        </div>
+      </ContainerForm>
+
+      <IconPlays>
+        <VideoIcon>
           <IconsSVG>
-            <use href={`${sprite}#play-log`}></use>
+            <use href={`${sprite}#icon-Polygon-1`}></use>
           </IconsSVG>
         </VideoIcon>
-            
+
         <SectionVideo>
           <Video>
-            350+<VideoTutorialButton>Video tutorial</VideoTutorialButton>
+            350+<TextTutorial>Video tutorial</TextTutorial>
           </Video>
         </SectionVideo>
       </IconPlays>
-        <CaloriesMe>
-        <CaloriesIcon>
-          <Icon iconid={'circle-running-man'}/>
-        </CaloriesIcon>
+      <CaloriesMe>
+        <IconMan>
+          <CaloriesIcon>
+            <use href={`${sprite}#icon-Group`}></use>
+          </CaloriesIcon>
+        </IconMan>
         <CaloriesInfo>
           <CaloriesText>500</CaloriesText>
-          <Text>cal</Text>
+          <SpanText>cal</SpanText>
         </CaloriesInfo>
       </CaloriesMe>
-        </FotoSection>
-      </Container>
-    </>
+    </Container>
   );
-}
+};
 
 export default HomePage;
