@@ -4,8 +4,6 @@ import { AppLayout } from './AppLayout/AppLayout';
 import { useDispatch } from 'react-redux';
 import { useAuth } from './hooks/AuthHook';
 import { refreshing } from '../redux/user/operations';
-// import { RestrictedRoute } from './RestrictedRoute';
-// import { PrivateRoute } from './PrivateRoute';
 
 const HomePage = lazy(() => import('pages/HomePage'));
 const NotFoundPage = lazy(() => import('pages/NotFoundPage'));

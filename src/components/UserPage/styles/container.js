@@ -6,7 +6,6 @@ const baseStyle = defineStyle({
   mx: 'auto',
   minW: '375px',
   maxW: '1440px',
-  // minH: '100vh',
   px: '5',
   py: '10',
 });

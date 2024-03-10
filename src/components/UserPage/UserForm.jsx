@@ -1,5 +1,4 @@
 import { Formik } from 'formik';
-// import * as Yup from 'yup';
 import { object, string, number, date } from 'yup';
 
 import {
@@ -27,19 +26,13 @@ import { useAuth } from 'components/hooks/AuthHook';
 //----------------------------------------------------
 const validation = object({
   name: string().min(3, 'Name too short!').max(33, 'Name too long!'),
-  height: number()
-    .min(50, 'Height too small')
-    // .positive()
-    .integer()
-    .required('Required'),
+  height: number().min(50, 'Height too small').integer().required('Required'),
   currentWeight: number()
     .min(45, 'Weight too low')
-    // .positive()
     .integer()
     .required('Required'),
   desiredWeight: number()
     .min(45, 'Weight too low')
-    // .positive()
     .integer()
     .required('Required'),
   birthday: date()
@@ -113,8 +106,6 @@ export const UserForm = () => {
               direction={{ base: 'column', md: 'row', xl: 'row' }}
             >
               <FormControl
-                // isInvalid={true}
-                // autoFocus={true}
                 isInvalid={formik.errors.name && formik.touched.name}
               >
                 <FormLabel

@@ -7,8 +7,6 @@ import {
   ExclamationMarkIcon,
 } from './styles/Icon.styled.js';
 import {
-  Alert,
-  AlertIcon,
   Avatar,
   Badge,
   Button,
@@ -52,21 +50,9 @@ export const UserCard = () => {
     setAvatar(avatar);
   };
 
-  const appendAvatar = () => {
-    if (selectedAvatar) {
-      const formData = new FormData();
-      formData.append('avatarURL', selectedAvatar);
-
-      <Alert status="success" variant="top-accent">
-        <AlertIcon status="warning" />
-        Avatar uploaded successfully
-      </Alert>;
-    } else {
-      <Alert status="error" variant="top-accent">
-        <AlertIcon status="warning" />
-        No file selected
-      </Alert>;
-    }
+  const appendAvatar = avatarURL => {
+    const formData = new FormData();
+    formData.append('avatarURL', selectedAvatar.files[0]);
   };
 
   return (
@@ -87,10 +73,11 @@ export const UserCard = () => {
                 multiple
                 accept="image/*"
                 onChange={handleAvatarChange}
+                display="none"
                 //---------------------------
                 pos="absolute"
-                width="75px"
-                height="auto"
+                width="200px"
+                height="60px"
                 p="0"
                 right="-150px"
                 variant="unstyled"

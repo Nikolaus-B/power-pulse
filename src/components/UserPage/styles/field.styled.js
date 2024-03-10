@@ -21,7 +21,6 @@ export const Radio = styled(Field)`
     height: 10px;
     border-radius: 50%;
     box-shadow: inset 10px 10px #ef8964;
-    /* background-color: #ef8964; */
     transform: scale(0);
     transition: 120ms transform ease-in-out;
   }

@@ -3,11 +3,9 @@ import { containerStyle } from '../styles/container';
 import { avatarStyles } from '../styles/avatar';
 import { textStyles } from '../styles/text';
 import { badgeStyles } from '../styles/badge';
-import { boxStyle } from '../styles/box';
 import { cardStyles } from '../styles/card';
 import { formLabelStyles } from '../styles/formlabel';
 import { inputStyles } from '../styles/input';
-import { radioStyles } from '../styles/radio';
 import { buttonStyles } from '../styles/button';
 
 export const theme = extendTheme({
@@ -45,11 +43,9 @@ export const theme = extendTheme({
     Avatar: avatarStyles,
     Text: textStyles,
     Badge: badgeStyles,
-    Box: boxStyle,
     Card: cardStyles,
     FormLabel: formLabelStyles,
     Input: inputStyles,
-    Radio: radioStyles,
     Button: buttonStyles,
   },
 });
