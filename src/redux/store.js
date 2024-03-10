@@ -19,8 +19,8 @@ import { diaryReducer } from './diary/diarySlice';
 const authPersistConfig = {
   key: 'user',
   storage,
-  whitelist: ['token', 'user', 'bmr', 'dailyRateSports'],
-  blacklist: ['chakra'],
+  whitelist: ['token'],
+  blacklist: ['chakra', 'chakra-ui-color-mode'],
 };
 
 export const store = configureStore({

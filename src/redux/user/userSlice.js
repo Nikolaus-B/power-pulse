@@ -11,7 +11,17 @@ import {
 } from './operations';
 
 const initialState = {
-  user: { name: null, email: null },
+  user: {
+    name: '',
+    email: '',
+    blood: '1',
+    sex: '',
+    height: 0,
+    currentWeight: 0,
+    desiredWeight: 0,
+    birthday: '',
+    levelActivity: '1',
+  },
   token: '',
   isLoggedIn: false,
   isRefreshing: false,
@@ -28,7 +38,7 @@ const userSlice = createSlice({
   extraReducers: builder => {
     builder
 
-      .addCase(fetchUserRegister.pending, (state, action) => {
+      .addCase(fetchUserRegister.pending, state => {
         state.isLoading = true;
         state.error = null;
       })
@@ -41,14 +51,14 @@ const userSlice = createSlice({
         toast.success('Registration successful');
       })
 
-      .addCase(fetchUserRegister.rejected, (state, action) => {
+      .addCase(fetchUserRegister.rejected, state => {
         state.isLoading = false;
         toast.error(
           'This email address is already registered. Please enter another email address to proceed.'
         );
       })
 
-      .addCase(fetchUserLogIn.pending, (state, action) => {
+      .addCase(fetchUserLogIn.pending, state => {
         state.isLoading = true;
         state.error = null;
       })
@@ -61,7 +71,7 @@ const userSlice = createSlice({
         toast.loading('Successful login.');
       })
 
-      .addCase(fetchUserLogIn.rejected, (state, action) => {
+      .addCase(fetchUserLogIn.rejected, state => {
         state.isLoading = false;
         toast.error(
           'Unable to sign in. Please check your email and password. Please try again!'
@@ -70,21 +80,18 @@ const userSlice = createSlice({
 
       .addCase(fetchUserCurrent.fulfilled, (state, action) => {
         state.user = action.payload.user;
-        state.token = action.payload.token;
         state.isLoggedIn = true;
         state.bmr = action.payload.bmr;
+        state.dailyRateSports = action.payload.dailyRateSports;
       })
 
       .addCase(fetchUserParams.fulfilled, (state, action) => {
         state.user = action.payload.user;
-        state.token = action.payload.token;
         state.isLoggedIn = true;
-        state.bmr = action.payload.bmr;
       })
 
       .addCase(fetchUserAvatars.fulfilled, (state, action) => {
         state.user = action.payload.user;
-        state.token = action.payload.token;
         state.isLoggedIn = true;
       })
 
@@ -92,13 +99,13 @@ const userSlice = createSlice({
         state.user = {
           name: '',
           email: '',
-          blood: '1',
+          blood: '',
           sex: '',
-          height: 0,
-          currentWeight: 0,
-          desiredWeight: 0,
+          height: '',
+          currentWeight: '',
+          desiredWeight: '',
           birthday: '',
-          levelActivity: '1',
+          levelActivity: '',
         };
         state.token = null;
         state.isLoggedIn = false;

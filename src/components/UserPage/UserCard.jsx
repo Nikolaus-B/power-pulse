@@ -14,8 +14,6 @@ import {
   CardFooter,
   CardHeader,
   HStack,
-  IconButton,
-  Input,
   Stack,
   Text,
   VStack,
@@ -23,7 +21,7 @@ import {
 
 //------------------------------------------------
 import { useDispatch } from 'react-redux';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useAuth } from 'components/hooks/AuthHook.js';
 import {
   fetchUserLogout,
@@ -32,7 +30,6 @@ import {
 } from '../../redux/user/operations.js';
 
 //------------------------------------------------
-
 export const UserCard = () => {
   const dispatch = useDispatch();
   const { user, bmr, dailyRateSports } = useAuth();
@@ -40,20 +37,6 @@ export const UserCard = () => {
   useEffect(() => {
     dispatch(fetchUserCurrent());
   }, [dispatch]);
-
-  //-------setAvatar---------
-
-  const [selectedAvatar, setAvatar] = useState(null);
-
-  const handleAvatarChange = e => {
-    const avatar = e.target.files[0];
-    setAvatar(avatar);
-  };
-
-  const appendAvatar = avatarURL => {
-    const formData = new FormData();
-    formData.append('avatarURL', selectedAvatar.files[0]);
-  };
 
   return (
     <Stack>
@@ -68,36 +51,22 @@ export const UserCard = () => {
               w={{ base: '90px', md: '150px' }}
               h={{ base: '90px', md: '150px' }}
             >
-              <Input
-                type="file"
-                multiple
-                accept="image/*"
-                onChange={handleAvatarChange}
-                display="none"
-                //---------------------------
+              <Button
+                type="submit"
+                onClick={() => dispatch(fetchUserAvatars())}
                 pos="absolute"
-                width="200px"
-                height="60px"
+                right={{ base: '18px', md: '50px' }}
+                bottom={{ base: '-14px', md: '-14px' }}
+                h="auto"
                 p="0"
-                right="-150px"
                 variant="unstyled"
-              />
-              <IconButton
-                type="button"
-                onClick={() => dispatch(fetchUserAvatars(appendAvatar))}
-                //---------------------------
-                icon=<AddAvatarIcon
-                  iconid="add-avatar"
-                  width="38px"
-                  height="38px"
+              >
+                <AddAvatarIcon
+                  iconid={'add-avatar'}
+                  width={'32px'}
+                  height={'32px'}
                 />
-                fontSize="24px"
-                pos="absolute"
-                right={{ base: '22px', md: '50px' }}
-                bottom={{ base: '-18px', md: '-18px' }}
-                p="0"
-                variant="unstyled"
-              />
+              </Button>
             </Avatar>
           </VStack>
 
