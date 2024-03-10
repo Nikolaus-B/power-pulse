@@ -13,14 +13,26 @@ import {
   AddToDiaryButton,
 } from './ExerciseForm.styled';
 import { Icon } from 'components/Icon/Icon';
+import { useDispatch } from 'react-redux';
+import { fetchAddExercise } from '../../redux/diary/operations';
+
 export const AddExerciseForm = ({
   exerciseData,
   onCloseForm,
   caloriesAdded,
   updateRemainingTime,
 }) => {
-  const { gifUrl, name, target, bodyPart, equipment, burnedCalories, time } =
-    exerciseData;
+  const dispatch = useDispatch();
+  const {
+    gifUrl,
+    name,
+    target,
+    bodyPart,
+    equipment,
+    burnedCalories,
+    time,
+    _id,
+  } = exerciseData;
 
   function secondsToMinutes(seconds) {
     let minutes = seconds / 60;
@@ -30,6 +42,22 @@ export const AddExerciseForm = ({
   const [isPaused, setIsPaused] = useState(true);
   const [dynamicBurnCal, setDynamicBurnCal] = useState(0);
   const [dynamicTime, setDynamicTime] = useState(0);
+
+  const data = {
+    exerciseId: _id,
+    date: new Date()
+      .toISOString()
+      .split('T', 1)[0]
+      .split('-')
+      .reverse()
+      .join('-'),
+    time: dynamicTime,
+    calories: dynamicBurnCal,
+  };
+
+  const addExercise = exerciseData => {
+    dispatch(fetchAddExercise(exerciseData));
+  };
 
   const formatTime = t => {
     return t < 10 ? `0${t}` : `${t}`;
@@ -54,6 +82,7 @@ export const AddExerciseForm = ({
     onCloseForm();
     caloriesAdded(dynamicBurnCal);
     updateRemainingTime(dynamicTime);
+    addExercise(data);
   };
 
   useEffect(() => {
@@ -62,7 +91,6 @@ export const AddExerciseForm = ({
     );
     setDynamicBurnCal(updatedCalories);
   }, [dynamicTime, burnedCalories]);
-
 
   return (
     <Wrapper>
@@ -92,9 +120,9 @@ export const AddExerciseForm = ({
           }}
         >
           {isPaused ? (
-            <Icon width="24" height="24" iconid="pause"/>
+            <Icon width="24" height="24" iconid="pause" />
           ) : (
-            <Icon width="24" height="24" iconid="play"/>
+            <Icon width="24" height="24" iconid="play" />
           )}
         </IconWrapper>
         <BurnedCalories>

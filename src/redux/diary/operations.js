@@ -34,7 +34,7 @@ export const fetchAddProduct = createAsyncThunk(
   }
 );
 
-export const fetchAddExercises = createAsyncThunk(
+export const fetchAddExercise = createAsyncThunk(
   'diary/AddExercise',
   async (exercise, thunkAPI) => {
     try {

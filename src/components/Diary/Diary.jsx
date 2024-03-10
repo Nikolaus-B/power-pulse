@@ -1,5 +1,5 @@
 import { Title } from 'components/Title/Title';
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import { DaySwitch } from 'components/DaySwitch/DaySwitch';
 import { DayProducts } from 'components/DayProducts/DayProducts';
@@ -11,8 +11,18 @@ import {
   TitleContainer,
   DashboardContainer,
 } from './Diary.styled';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectDate } from '../../redux/diary/diarySelectors';
+import { fetchDiary } from '../../redux/diary/operations';
 
 export const Diary = () => {
+  const dispatch = useDispatch();
+  const date = useSelector(selectDate);
+
+  useEffect(() => {
+    dispatch(fetchDiary(date));
+  }, [dispatch, date]);
+
   return (
     <DiaryContainer className="container">
       <TitleContainer>

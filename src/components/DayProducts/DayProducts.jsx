@@ -13,6 +13,8 @@ import {
   ProductsItemsList,
 } from './DayProducts.styled';
 import { Icon } from 'components/Icon/Icon';
+import { useDispatch } from 'react-redux';
+import { fetchDeleteProduct } from '../../redux/diary/operations';
 
 // const products = [];
 const products = [
@@ -59,6 +61,8 @@ const products = [
 ];
 
 export const DayProducts = () => {
+  const dispatch = useDispatch();
+
   const defineClassNames = (key, index) => {
     const size =
       key === 'title' ? 'big' : key === 'category' ? 'medium' : 'small';
@@ -78,9 +82,14 @@ export const DayProducts = () => {
       return id;
     }
   };
-
+  const deleteProduct = id => {
+    dispatch(fetchDeleteProduct(id));
+  };
   return (
     <ProductsContainer>
+      <button onClick={() => deleteProduct('65ede92d38d2c0e13e62c135')}>
+        Delete product
+      </button>
       <ProductHeader>
         <DayProductTitle>Products</DayProductTitle>
         <ProductsLink to="/product">
