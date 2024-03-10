@@ -13,124 +13,49 @@ import {
   ProductsItemsList,
 } from './DayProducts.styled';
 import { Icon } from 'components/Icon/Icon';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { fetchDeleteProduct } from '../../redux/diary/operations';
+import { selectDiaryProducts } from '../../redux/diary/diarySelectors';
 
 // const products = [];
-const products = [
-  {
-    id: 'ewfwfdsds',
-    title: 'rise',
-    category: 'flour',
-    calories: '200',
-    weith: '100',
-    recomended: true,
-  },
-  {
-    id: 'ewfwfds',
-    title: 'mear',
-    category: 'flour',
-    calories: '400',
-    weith: '300',
-    recomended: false,
-  },
-  {
-    id: 'ewfwfds',
-    title: 'milk',
-    category: 'flour',
-    calories: '100',
-    weith: '50',
-    recomended: true,
-  },
-  {
-    id: 'ewfwf',
-    title: 'milk',
-    category: 'flour',
-    calories: '100',
-    weith: '50',
-    recomended: false,
-  },
-  {
-    id: 'ewfwff',
-    title: 'milk',
-    category: 'flour',
-    calories: '100',
-    weith: '50',
-    recomended: true,
-  },
-];
 
 export const DayProducts = () => {
   const dispatch = useDispatch();
+  const products = useSelector(selectDiaryProducts);
 
-  const defineClassNames = (key, index) => {
-    const size =
-      key === 'title' ? 'big' : key === 'category' ? 'medium' : 'small';
+  // const defineClassNames = (key, index) => {
+  //   const size =
+  //     key === 'title' ? 'big' : key === 'category' ? 'medium' : 'small';
 
-    const firstEl = index === 0 ? 'firstEl' : '';
+  //   const firstEl = index === 0 ? 'firstEl' : '';
 
-    return `${size} ${firstEl}`;
-  };
+  //   return `${size} ${firstEl}`;
+  // };
 
-  const convertValue = value => {
-    return value ? 'Yes' : 'No';
-  };
+  // const convertValue = value => {
+  //   return value ? 'Yes' : 'No';
+  // };
 
-  const returnId = id => {
-    if (id === 'id') {
-      console.log(id);
-      return id;
-    }
-  };
+  // const returnId = id => {
+  //   if (id === 'id') {
+  //     console.log(id);
+  //     return id;
+  //   }
+  // };
+
   const deleteProduct = id => {
     dispatch(fetchDeleteProduct(id));
   };
   return (
     <ProductsContainer>
-      <button onClick={() => deleteProduct('65ede92d38d2c0e13e62c135')}>
-        Delete product
-      </button>
       <ProductHeader>
         <DayProductTitle>Products</DayProductTitle>
         <ProductsLink to="/product">
           Add Product <Icon height={15} width={15} iconid={'arrow'} />
         </ProductsLink>
       </ProductHeader>
-      {products.length ? (
-        <Productslist>
-          {products.map((el, i) => {
-            return (
-              <>
-                <Productsli key={el.id}>
-                  <ProductsItemsList>
-                    {Object.entries(el).map(([key, value]) => {
-                      return (
-                        <ProductsItem
-                          key={returnId(key)}
-                          $keyOfProduct={key}
-                          className={defineClassNames(key, i)}
-                        >
-                          <ProductsTextContainer
-                            className={defineClassNames(key, i)}
-                          >
-                            <ProductsText className={defineClassNames(key, i)}>
-                              {key === 'recomended'
-                                ? convertValue(value)
-                                : value}
-                            </ProductsText>
-                          </ProductsTextContainer>
-                        </ProductsItem>
-                      );
-                    })}
-                    <button>
-                      <Icon iconid={'trash-icon'} />
-                    </button>
-                  </ProductsItemsList>
-                </Productsli>
-              </>
-            );
-          })}
-        </Productslist>
+      {products ? (
+        <div></div>
       ) : (
         <NotFoundProducts>Not found products</NotFoundProducts>
       )}
