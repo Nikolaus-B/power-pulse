@@ -1,99 +1,43 @@
-import {
-  List,
-  ListItem,
-  Container,
-  GreenRound,
-  RedRound,
-  DietContainer,
-  MainContainer,
-  RecommendedContainer,
-  Text,
-  TitleText,
-  TitleWrapper,
-  DarkText,
-  DietText,
-  InfoWrapper,
-  HeaderWrapper,
-  RightSideWrapper,
-  RecommendedWrapper,
-  NotRecommendedWrapper,
-  Button,
-} from './ProductsList.styled';
-import { Icon } from 'components/Icon/Icon';
 import { useSelector } from 'react-redux';
-import { selectIsRecommended } from '../../../redux/products/productsSelectors';
+import { useEffect, useState } from 'react';
 
-export const ProductsList = ({ products }) => {
-  const capitalizeFirstLetter = text => {
-    return text.charAt(0).toUpperCase() + text.slice(1);
-  };
+import { fetchProducts } from 'API/productsAPI';
+import { ProductItem } from './ProductsItem';
+import { NotFoundProduct } from '../NotFoundProduct/NotFoundProduct';
+import {
+  selectCategory,
+  selectQuery,
+  selectRecommended,
+} from '../../../redux/products/productsSelectors';
+import { List } from './ProductsList.styled';
 
-  const recommended = useSelector(selectIsRecommended);
-  const recommendedList = recommended.recommendedProducts;
-  const isRecommended = products.map((product, index) => {
-    if (recommendedList) {
-      return recommendedList.some(item => item._id === product._id);
+export const ProductsList = () => {
+  const query = useSelector(selectQuery);
+  const category = useSelector(selectCategory);
+  const recommended = useSelector(selectRecommended);
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    async function getProducts() {
+      try {
+        const products = await fetchProducts(query, category, recommended);
+        setProducts(products);
+      } catch (error) {}
     }
-    return [];
-  });
+    getProducts();
+  }, [query, category, recommended]);
 
   return (
-    <List>
-      {products.map((product, index) => {
-        return (
-          <ListItem key={product._id}>
-            <Container>
-              <HeaderWrapper>
-                <DietContainer>
-                  <DietText>DIET</DietText>
-                </DietContainer>
-                <RightSideWrapper>
-                  <RecommendedContainer>
-                    {isRecommended[index] ? (
-                      <RecommendedWrapper>
-                        <GreenRound></GreenRound>
-                        <Text>Recommended</Text>
-                      </RecommendedWrapper>
-                    ) : (
-                      <NotRecommendedWrapper>
-                        <RedRound></RedRound>
-                        <Text>Not recommended</Text>
-                      </NotRecommendedWrapper>
-                    )}
-                  </RecommendedContainer>
-                  <Button type="button">
-                    {' '}
-                    Add
-                    <div style={{ paddingTop: '4px', marginLeft: '8px' }}>
-                      <Icon iconid={'arrow'} width={16} height={16} />
-                    </div>
-                  </Button>
-                </RightSideWrapper>
-              </HeaderWrapper>
-              <MainContainer>
-                <TitleWrapper>
-                  <Icon iconid={'circle-running-man'} width={24} height={24} />
-                  <TitleText>{capitalizeFirstLetter(product.title)}</TitleText>
-                </TitleWrapper>
-                <InfoWrapper>
-                  <Text>
-                    <DarkText>Calories: </DarkText>
-                    {product.calories}
-                  </Text>
-                  <Text>
-                    <DarkText>Category: </DarkText>
-                    {capitalizeFirstLetter(product.category)}
-                  </Text>
-                  <Text>
-                    <DarkText>Weight: </DarkText>
-                    {product.weight}
-                  </Text>
-                </InfoWrapper>
-              </MainContainer>
-            </Container>
-          </ListItem>
-        );
-      })}
-    </List>
+    <>
+      <List>
+        {products && products.length !== 0 ? (
+          products.map(product => {
+            return <ProductItem product={product} key={product._id} />;
+          })
+        ) : (
+          <NotFoundProduct />
+        )}
+      </List>
+    </>
   );
 };
