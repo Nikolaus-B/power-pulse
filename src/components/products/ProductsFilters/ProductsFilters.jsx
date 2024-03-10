@@ -46,57 +46,6 @@ export const ProductsFilters = () => {
     })),
   ];
 
-  //const customStyles = {
-    // control: (base, state) => ({
-    //   ...base,
-    //   backgroundColor: 'inherit',
-    //   borderRadius: '12px',
-    //   border: '1px solid var(--text-info-color)',
-    //   width: '100%',
-    //   padding: '6px',
-    //   fontSize: '14px',
-    //   height: '50px',
-    //   '@media screen and (min-width: 768px)': {
-    //     fontSize: '16px',
-    //     width: '192px',
-    //   },
-    // }),
-    // menu: base => ({
-    //   ...base,
-    //   color: 'var(--white-color)',
-    // }),
-    // menuList: base => ({
-    //   ...base,
-    //   backgroundColor: '#1c1c1c',
-    //   borderRadius: '12px',
-    //   padding: '14px 32px 14px 14px',
-    //   gap: '8px',
-    //   maxHeight: '228px',
-    //   overflowY: 'auto',
-    //   '&::-webkit-scrollbar': {
-    //     width: '6px',
-    //   },
-    //   '&::-webkit-scrollbar-thumb': {
-    //     backgroundColor: 'rgba(239, 237, 232, 0.1)',
-    //     borderRadius: '12px',
-    //   },
-    //   color: 'var(--white-color)',
-    // }),
-    // indicatorSeparator: base => ({
-    //   ...base,
-    //   display: 'none',
-    // }),
-    // placeholder: base => ({
-    //   ...base,
-    //   color: 'var(--white-color)',
-    // }),
-    // singleValue: base => ({
-    //   ...base,
-    //   color: 'var(--white-color)',
-    // }),
-
-  //};
-
   const clearQuery = () => {
     setQuery('');
     dispatch(setFilterQuery(''));
@@ -145,9 +94,14 @@ export const ProductsFilters = () => {
         name="Categories"
         placeholder="Categories"
         styles={firstSelectStyles}
-        theme={theme => ({
+        theme={(theme) => ({
           ...theme,
           borderRadius: '12px',
+          colors: {
+            ...theme.colors,
+            primary50: 'rgba(239, 237, 232, 0.1)',
+            primary: 'var(--orange-color)',
+          },
         })}
       />
       <Select
@@ -155,9 +109,14 @@ export const ProductsFilters = () => {
         placeholder="All"
         styles={secondSelectStyles}
         options={recommendedFilters}
-        theme={theme => ({
+        theme={(theme) => ({
           ...theme,
           borderRadius: '12px',
+          colors: {
+            ...theme.colors,
+            primary50: 'rgba(239, 237, 232, 0.1)',
+            primary: 'var(--orange-color)',
+          },
         })}
         name="recommended"
       />

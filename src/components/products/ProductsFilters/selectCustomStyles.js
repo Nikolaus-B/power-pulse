@@ -3,8 +3,8 @@ export const customStyles = {
       ...provided,
       
     cursor: 'pointer',
-      backgroundColor: '#1c1c1c', // Стилизация фона окна
-      appearance: 'none', // Removing default appearance
+      backgroundColor: '#1c1c1c', 
+      appearance: 'none',
       WebkitAppearance: 'none',
       MozAppearance: 'none',
       
@@ -16,21 +16,21 @@ export const customStyles = {
         ? 'transparent'
         : isFocused
         ? 'transparent'
-        : '#1c1c1c', // Стилизация фона активной опции и ховера
-      color: isSelected ? 'var(--orange-color)' : 'var(--white-color)', // Стилизация цвета текста активной опции в списке
+        : '#1c1c1c', 
+      color: isSelected ? 'var(--orange-color)' : 'var(--white-color)',
       padding: '14px',
     }),
     menu: provided => ({
       ...provided,
-      backgroundColor: '#1c1c1c', //  фон для списка
+      backgroundColor: '#1c1c1c', 
     }),
     singleValue: provided => ({
       ...provided,
-      color: 'var(--white-color)', // Цвет текста активного селектора в окне
+      color: 'var(--white-color)',
     }),
     indicatorSeparator: provided => ({
       ...provided,
-      display: 'none', // Цвет разделителя
+      display: 'none', 
     }),
     dropdownIndicator: provided => ({
       ...provided,
@@ -59,10 +59,11 @@ export const customStyles = {
   
   export const firstSelectStyles = {
     ...customStyles,
-    control: (defaultStyles) => ({
+    control: (defaultStyles, {isFocused}) => ({
       ...defaultStyles,
       backgroundColor: 'var(--primary-black-color)',
       border: '1px solid var(--text-info-color)',
+      borderColor: isFocused ? 'var(--orange-color)' : 'var(--text-info-color)',
       '&:hover': {
         border: "1px solid var(--orange-color)",
       },
@@ -85,10 +86,11 @@ export const customStyles = {
   
   export const secondSelectStyles = {
     ...customStyles,
-    control: (defaultStyles) => ({
+    control: (defaultStyles, {isFocused}) => ({
       ...defaultStyles,
       backgroundColor: 'var(--primary-black-color)',
         border: '1px solid var(--text-info-color)',
+        borderColor: isFocused ? 'var(--orange-color)' : 'var(--text-info-color)',
         '&:hover': {
             border: "1px solid var(--orange-color)",
           },

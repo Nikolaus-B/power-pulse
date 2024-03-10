@@ -52,6 +52,12 @@ const InputWrapper = styled.div`
   padding: 14px;
   width: 335px;
   height: 46px;
+  &:hover {
+    border: 1px solid var(--orange-color)
+  }
+  &:focus {
+    border: 1px solid var(--orange-color)
+  }
   @media screen and (min-width: 768px) {
     width: 236px;
     height: 52px;
