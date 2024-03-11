@@ -41,11 +41,12 @@ export const selectCaloriesRemaining = createSelector(
 export const selectSportRemaining = createSelector(
   [selectDiaryExercises, selectDailyRateSports],
   (exercises, rate) => {
-    let minutes = 0;
+    let seconds = 0;
     exercises.map(el => {
-      return (minutes += el.time);
+      return (seconds += el.time);
     });
-    const isExceeded = rate - minutes;
+    const trainingTimeInMinutes = seconds / 60;
+    const isExceeded = Math.floor(rate - trainingTimeInMinutes);
     if (isExceeded < 0) {
       return `+${isExceeded.toString().split('-')[1]}`;
     }

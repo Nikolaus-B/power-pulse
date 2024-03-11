@@ -6,22 +6,33 @@ import {
   ProductHeader,
   DayProductTitle,
   DayProductsContainer,
-  El,
+  RecomendedProduct,
   DayProductsMobileList,
+  DayProductsMobileElement,
+  MobileTitle,
+  MobileValueContainer,
+  MobileItemContainer,
+  DeleteProductBtn,
+  Table,
+  TableTitle,
+  TableValue,
+  TableValueContainer,
+  ValueContainer,
+  TR,
 } from './DayProducts.styled';
 import { Icon } from 'components/Icon/Icon';
 import { useSelector } from 'react-redux';
 // import { fetchDeleteProduct } from '../../redux/diary/operations';
-// import { selectDiaryProducts } from '../../redux/diary/diarySelectors';
+import { selectDiaryProducts } from '../../redux/diary/diarySelectors';
 
 import { selectUser } from '../../redux/user/userSelectors';
 import { DayProductItem } from './DayProductItem';
 
-const products = [];
+// const products = [];
 
 export const DayProducts = ({ media }) => {
   // const dispatch = useDispatch();
-  // const products = useSelector(selectDiaryProducts);
+  const products = useSelector(selectDiaryProducts);
   const { blood } = useSelector(selectUser);
 
   // const deleteProduct = id => {
@@ -39,14 +50,14 @@ export const DayProducts = ({ media }) => {
         <>
           {media ? (
             <DayProductsContainer>
-              <table id="products">
+              <Table id="products">
                 <thead>
                   <tr>
-                    <th>Title</th>
-                    <th>Category</th>
-                    <th>Calories</th>
-                    <th>Weight</th>
-                    <th>Recommend</th>
+                    <TableTitle>Title</TableTitle>
+                    <TableTitle>Category</TableTitle>
+                    <TableTitle>Calories</TableTitle>
+                    <TableTitle>Weight</TableTitle>
+                    <TableTitle>Recommend</TableTitle>
                   </tr>
                 </thead>
 
@@ -54,12 +65,20 @@ export const DayProducts = ({ media }) => {
                   {products.map((el, i) => {
                     return (
                       <tr key={el._id}>
-                        <td>{el.productId.title}</td>
-                        <td>{el.productId.category}</td>
-                        <td>{el.calories}</td>
-                        <td>{el.amount}</td>
-                        <td>
-                          <El
+                        <TableValueContainer style={{ width: '204px' }}>
+                          <TableValue>{el.productId.title}</TableValue>
+                        </TableValueContainer>
+                        <TableValueContainer style={{ width: '128px' }}>
+                          <TableValue>{el.productId.category}</TableValue>
+                        </TableValueContainer>
+                        <TableValueContainer>
+                          <TableValue>{el.calories}</TableValue>
+                        </TableValueContainer>
+                        <TableValueContainer>
+                          <TableValue>{el.amount}</TableValue>
+                        </TableValueContainer>
+                        <TableValueContainer>
+                          <RecomendedProduct
                             $isRecomended={
                               el.productId.groupBloodNotAllowed[blood]
                             }
@@ -67,29 +86,29 @@ export const DayProducts = ({ media }) => {
                             {el.productId.groupBloodNotAllowed[blood]
                               ? 'No'
                               : 'Yes'}
-                          </El>
-                        </td>
+                          </RecomendedProduct>
+                        </TableValueContainer>
                         <td>
-                          <button>
+                          <DeleteProductBtn style={{ marginTop: '0px' }}>
                             <Icon
                               width={20}
                               height={20}
                               iconid={'trash-icon'}
                             />
-                          </button>
+                          </DeleteProductBtn>
                         </td>
                       </tr>
                     );
                   })}
                 </tbody>
-              </table>
+              </Table>
             </DayProductsContainer>
           ) : (
             <>
               <DayProductsMobileList>
                 {products.map((el, i) => {
                   return (
-                    <li key={el._id}>
+                    <DayProductsMobileElement key={el._id}>
                       <DayProductItem
                         title={'Title'}
                         value={el.productId.title}
@@ -100,22 +119,24 @@ export const DayProducts = ({ media }) => {
                       />
                       <DayProductItem title={'Calories'} value={el.calories} />
                       <DayProductItem title={'Weight'} value={el.amount} />
-                      <p>Recommend</p>
-                      <div>
-                        <El
-                          $isRecomended={
-                            el.productId.groupBloodNotAllowed[blood]
-                          }
-                        >
-                          {el.productId.groupBloodNotAllowed[blood]
-                            ? 'No'
-                            : 'Yes'}
-                        </El>
-                      </div>
-                      <button>
+                      <MobileItemContainer>
+                        <MobileTitle>Recommend</MobileTitle>
+                        <MobileValueContainer>
+                          <RecomendedProduct
+                            $isRecomended={
+                              el.productId.groupBloodNotAllowed[blood]
+                            }
+                          >
+                            {el.productId.groupBloodNotAllowed[blood]
+                              ? 'No'
+                              : 'Yes'}
+                          </RecomendedProduct>
+                        </MobileValueContainer>
+                      </MobileItemContainer>
+                      <DeleteProductBtn>
                         <Icon width={20} height={20} iconid={'trash-icon'} />
-                      </button>
-                    </li>
+                      </DeleteProductBtn>
+                    </DayProductsMobileElement>
                   );
                 })}
               </DayProductsMobileList>

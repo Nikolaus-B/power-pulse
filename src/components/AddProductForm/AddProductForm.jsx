@@ -43,8 +43,6 @@ export const AddProductForm = ({
     if (productData.amount === 0) {
       return;
     }
-
-    // console.log(productData.data);
     dispatch(fetchAddProduct(productData.data));
   };
 

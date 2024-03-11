@@ -8,7 +8,7 @@ export const ProductsContainer = styled.div`
 
   min-height: 335px;
   max-height: 824px;
-  padding: 16px 22px 16px 16px;
+  padding: 16px 12px 16px 16px;
   border: 1px solid var(--border-static-color);
   border-radius: 12px;
 
@@ -26,6 +26,7 @@ export const ProductHeader = styled.div`
   display: flex;
   justify-content: space-between;
   margin-bottom: 22px;
+  margin-right: 4px;
 `;
 
 export const DayProductTitle = styled.p`
@@ -54,117 +55,134 @@ export const TitlesContainer = styled.div`
   display: flex;
 `;
 
-export const DayProductsList = styled.div`
-  display: flex;
-  list-style: none;
-`;
-
-export const El = styled.p`
-  &::before {
-    content: '';
-    display: block;
-    width: 30px;
-    height: 30px;
-    background-color: ${getRecomended};
-  }
-`;
-
+//* Mobile *//
 export const DayProductsMobileList = styled.ul`
   display: flex;
   list-style: none;
   flex-direction: column;
+  gap: 40px;
+
+  height: 752px;
+  overflow-y: scroll;
+
+  &::-webkit-scrollbar-thumb {
+    background-color: red;
+    border-radius: 6px;
+  }
+`;
+
+export const DayProductsMobileElement = styled.li`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px 12px;
 `;
 
 export const MobileItemContainer = styled.div``;
 
-export const MobileTitle = styled.p``;
-
-export const MobileValueContainer = styled.div`
-  border: 2px solid red;
+export const MobileTitle = styled.p`
+  font-size: 12px;
+  line-height: 18px;
+  margin-bottom: 8px;
+  color: var(--orange_1-color);
 `;
 
-export const MobileValue = styled.p``;
+export const MobileValueContainer = styled.div`
+  display: block;
+  height: 38px;
+  padding: 10px 14px;
+  border: 1px solid var(--text-info-color);
+  border-radius: 12px;
 
-// export const Productslist = styled.ul`;
-//   display: flex;
-//   flex-direction: column;
-//   gap: 39px;
-//   height: 752px;
-//   overflow-y: scroll;
-// `;
+  &.big {
+    width: 295px;
+    color: red;
+  }
 
-// export const Productsli = styled.li``;
+  &.medium {
+    width: 295px;
+    color: aquamarine;
+  }
 
-// export const ProductsItemsList = styled.ul`
-//   display: flex;
-//   flex-wrap: wrap;
-//   gap: 16px;
-// `;
+  &.small {
+    width: 81px;
+    color: blue;
+  }
+`;
 
-// export const ProductsItem = styled.li`
-//   display: block;
-//   height: 64px;
-//   &.big {
-//     width: 295px;
-//     color: red;
-//   }
+export const MobileValue = styled.p`
+  font-size: 14px;
+  line-height: 18px;
+  text-transform: capitalize;
+`;
 
-//   &.medium {
-//     width: 295px;
-//     color: aquamarine;
-//   }
+export const DeleteProductBtn = styled.button`
+  width: 20px;
+  height: 20px;
+  margin-top: 34px;
+  padding: 0px;
 
-//   &.small {
-//     width: 81px;
-//     color: blue;
-//   }
+  background-color: transparent;
+  border: none;
+`;
 
-//   @media screen and (max-width: 767px) {
-//     &::before {
-//       content: ${getText};
-//       font-size: 12px;
-//       line-height: 18px;
-//       text-transform: capitalize;
+export const RecomendedProduct = styled.p`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
 
-//       color: var(--orange_1-color);
-//     }
-//   }
+  font-size: 14px;
+  line-height: 18px;
+  &::before {
+    content: '';
+    display: block;
+    width: 14px;
+    height: 14px;
+    border-radius: 10px;
+    background-color: ${getRecomended};
+  }
+`;
 
-//   @media screen and (min-width: 768px) {
-//     &.firstEl {
-//       &::before {
-//         font-size: 12px;
-//         line-height: 18px;
-//         content: ${getText};
-//         text-transform: capitalize;
-//         color: var(--orange_1-color);
-//       }
-//     }
-//   }
-// `;
+//* Desctop *//
 
-// export const ProductsTextContainer = styled.div`
-//   margin-top: 8px;
-//   height: 38px;
-//   border: 1px solid var(--text-info-color);
-//   border-radius: 12px;
-//   padding: 10px 14px;
+export const Table = styled.table`
+  width: 672px;
+`;
 
-//   &.big {
-//   }
+export const TableTitle = styled.th`
+  text-align: left;
+  font-size: 12px;
+  line-height: 18px;
 
-//   &.medium {
-//   }
+  color: var(--orange_1-color);
+`;
 
-//   &.small {
-//   }
-// `;
+export const TR = styled.tr``;
 
-// export const ProductsText = styled.p`
-//   text-transform: capitalize;
-//   font-size: 14px;
-//   line-height: 18px;
-// `;
+export const TableValueContainer = styled.td`
+  width: 90px;
+  height: 40px;
+  padding: 8px 14px;
+  border: 1px solid var(--text-info-color);
+  border-radius: 12px;
+  overflow: hidden;
+`;
+
+export const ValueContainer = styled.div`
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+`;
+
+export const TableValue = styled.p`
+  font-size: 12px;
+  line-height: 18px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+`;
+
+//* Not Found *//
 
 export const NotFoundProducts = styled.p`
   position: absolute;

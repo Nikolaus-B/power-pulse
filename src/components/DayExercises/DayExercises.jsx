@@ -1,7 +1,10 @@
 import React from 'react';
 import {
   DayExercisesIcon,
+  DayExercisesMobileElement,
+  DayExercisesMobileList,
   DayExercisesTitle,
+  DeleteExerciseBtn,
   ExercisesContainer,
   ExercisesHeader,
   ExercisesLink,
@@ -66,10 +69,10 @@ export const DayExercises = ({ media }) => {
                 </tbody>
               </table>
             ) : (
-              <ul>
+              <DayExercisesMobileList>
                 {exercises.map((el, i) => {
                   return (
-                    <li key={el._id}>
+                    <DayExercisesMobileElement key={el._id}>
                       <DayExerciseItem
                         title={'Body Part'}
                         value={el.exerciseId.bodyPart}
@@ -91,13 +94,13 @@ export const DayExercises = ({ media }) => {
                         value={el.calories}
                       />
                       <DayExerciseItem title={'Time'} value={el.time} />
-                      <button>
+                      <DeleteExerciseBtn>
                         <Icon width={20} height={20} iconid={'trash-icon'} />
-                      </button>
-                    </li>
+                      </DeleteExerciseBtn>
+                    </DayExercisesMobileElement>
                   );
                 })}
-              </ul>
+              </DayExercisesMobileList>
             )}
           </div>
         ) : (
