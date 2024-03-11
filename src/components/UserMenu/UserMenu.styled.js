@@ -6,6 +6,10 @@ export const UserContainer = styled.div`
   justify-content: center;
   align-items: center;
   margin-right: 16px;
+
+  @media (min-width: 1440px) {
+    margin-right: 0;
+  }
 `;
 
 export const NavContainer = styled.div`
