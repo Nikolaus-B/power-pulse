@@ -70,7 +70,7 @@ export const Photo = styled.div`
     position: absolute;
     width: 670px;
     height: 800px;
-    top: -84px;
+    top: -85px;
     left: 770px;
     background-image: url(${Desk1x});
 
@@ -176,6 +176,7 @@ export const SvgPlay = styled.svg`
   width: 12px;
   height: 12px;
   color: #efede8;
+  padding-left: 2px;
   @media screen and (min-width: 768px) {
     width: 20px;
     height: 20px;
