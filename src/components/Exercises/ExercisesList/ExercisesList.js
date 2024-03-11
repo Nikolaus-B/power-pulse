@@ -1,8 +1,7 @@
 import React, { useState, useEffect} from 'react';
 import { ExercisesItem } from '../ExercisesItem/ExercisesItem';
-// import { data } from 'components/Exercises/data';
 import { List } from "./ExercisesList.styled"
-import { fetchExercises } from 'exercisesApi';
+import { fetchExercises } from 'API/exercisesApi';
 
 export const ExercisesList = ({ selectedCategory, subCategory }) => {
   let category = '';
@@ -29,7 +28,6 @@ export const ExercisesList = ({ selectedCategory, subCategory }) => {
     getSubcategory();
   }, [category, subCategory]);
 
-  // const sortedExercises = data.filter(item => item.bodyPart === subCategory || item.equipment === subCategory || item.target === subCategory);
     return (
       <List>
         {exercises.map((exercise) => (

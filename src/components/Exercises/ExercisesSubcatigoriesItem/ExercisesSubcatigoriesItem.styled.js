@@ -82,6 +82,7 @@ export const RadioBtns = styled.div`
 /* фиксированные кнопки на планшете */
     @media screen and (min-width: 768px) {
         gap: 8px;
+        margin-top: 0;
         position: fixed;
             bottom: 32px;
             left: 50%;

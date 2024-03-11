@@ -4,6 +4,8 @@ export const Ul = styled.ul`
     display: flex;
     flex-direction: column;
     gap: 20px;
+    margin-top: 64px;
+    height: 704px;
 
     @media screen and (min-width: 768px) {
         display: flex;
@@ -15,6 +17,5 @@ export const Ul = styled.ul`
 
     @media screen and (min-width: 1440px) {
         margin-bottom: 0;
-
     } 
 `;

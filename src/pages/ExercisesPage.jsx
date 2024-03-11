@@ -5,8 +5,8 @@ import React, { useState, useEffect} from 'react';
 import { ExercisesList } from 'components/Exercises/ExercisesList/ExercisesList';
 import {GlobalStyle} from "../components/GlobalStyle"
 import { Icon } from 'components/Icon/Icon';
-import { Button, Svg, TitleWrap } from 'components/Exercises/ExercisesPage.styled'
-import { fetchFilters } from 'exercisesApi';
+import { Button, PageContainer, Svg, TitleWrap} from 'components/Exercises/ExercisesPage.styled'
+import { fetchFilters } from 'API/exercisesApi';
 
 function ExercisesPage() {
   const [subCategories, setSubCategories] = useState([]);
@@ -38,10 +38,37 @@ function ExercisesPage() {
     setShowBackButton(false);
   };
   const handleCategorySelect = (category) => {
+    setSelectedSubcategory(null);
     setSelectedCategory(category);
+    setTitle('Exercises');
+    setShowBackButton(false);
   }
   return (
     <>
+      {selectedSubcategory ? 
+      <>
+        <PageContainer className='container'>
+          {showBackButton && <Button onClick={handleBackButtonClick}><Svg>
+            <Icon width={16} height={16} iconid={'arrow-back'} />
+          </Svg>Back</Button>}
+        <TitleWrap>
+          <Title title={title} />
+          <ExercisesCategories onSelect={handleCategorySelect} selectedCategory={selectedCategory} />
+        </TitleWrap>
+          
+        {selectedSubcategory ? (
+            <ExercisesList selectedCategory={selectedCategory} subCategory={selectedSubcategory} />
+          ) : (
+                <ExercisesSubcategoriesList
+                  category={selectedCategory}
+                  subcategories={subCategories}
+                  onSelect={handleSubcategorySelect}
+                  />
+        )}
+        </PageContainer>
+        <GlobalStyle/>
+      </>
+    : <>
       <div className='container'>
         {showBackButton && <Button onClick={handleBackButtonClick}><Svg>
           <Icon width={16} height={16} iconid={'arrow-back'} />
@@ -62,6 +89,8 @@ function ExercisesPage() {
       )}
       </div>
       <GlobalStyle/>
+    </>}
+      
     </>
       
     )
