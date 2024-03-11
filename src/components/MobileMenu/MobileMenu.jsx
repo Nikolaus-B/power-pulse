@@ -93,3 +93,5 @@ MobileMenu.propTypes = {
 };
 
 export default MobileMenu;
+
+export const MobileMenu = () => {};

@@ -1,8 +1,9 @@
-import { lazy } from 'react';
+import { Suspense, lazy, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { AppLayout } from './AppLayout/AppLayout';
-// import { RestrictedRoute } from './RestrictedRoute';
-// import { PrivateRoute } from './PrivateRoute';
+import { useDispatch } from 'react-redux';
+import { useAuth } from './hooks/AuthHook';
+import { refreshing } from '../redux/user/operations';
 
 const HomePage = lazy(() => import('pages/HomePage'));
 const NotFoundPage = lazy(() => import('pages/NotFoundPage'));
@@ -15,7 +16,16 @@ const ExercisesPage = lazy(() => import('pages/ExercisesPage'));
 const TitlePage = lazy(() => import('pages/TitlePage'));
 
 export const App = () => {
-  return (
+  const dispatch = useDispatch();
+  const { isRefreshing } = useAuth();
+
+  useEffect(() => {
+    dispatch(refreshing());
+  }, [dispatch]);
+
+  return isRefreshing ? (
+    <Suspense fallback />
+  ) : (
     <Routes>
       <Route path="/" element={<AppLayout />}>
         <Route index element={<HomePage />} />

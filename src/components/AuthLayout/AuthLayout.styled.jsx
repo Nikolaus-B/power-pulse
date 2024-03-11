@@ -53,10 +53,10 @@ export const Photo = styled.div`
 
   @media screen and (min-width: 768px) {
     position: absolute;
-    width: 423px;
+    width: 437px;
     height: 893px;
     top: 47px;
-    left: 345px;
+    left: 331px;
 
     background-image: url(${Tab1x});
     @media (min-device-pixel-ratio: 2),
@@ -179,6 +179,7 @@ export const SvgPlay = styled.svg`
   @media screen and (min-width: 768px) {
     width: 20px;
     height: 20px;
+    padding-left: 4px;
   }
 `;
 
