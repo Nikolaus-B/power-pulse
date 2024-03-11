@@ -4,20 +4,24 @@ import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 import { fetchUserLogIn } from '../redux/user/operations';
-
+import pulseIcon from '../img/pulse-icons.svg';
 import {
   StyledFormIn,
   Input,
   Button,
-  Message,
+  MessageInput,
   ErrorText,
-} from '../components/AuthLayout/StyledForm.styled';
+  SvgIcon,
+  SuccessText,
+  SuccessSvg,
+  IconsIn,
+} from '../components/FormStyle/StyledForm.styled';
 
 import AuthLayout from 'components/AuthLayout/AuthLayout';
 
 function SignInPage() {
-  const [showPassword] = useState(false);
   const dispatch = useDispatch();
+  const [showPassword, setShowPassword] = useState(false);
 
   const SignIn = Yup.object().shape({
     email: Yup.string()
@@ -31,7 +35,7 @@ function SignInPage() {
   return (
     <AuthLayout
       title="Sign in"
-      paragraph="Some text about Welcome! Please enter your credentials to login to the platform:"
+      paragraph="Welcome! Please enter your credentials to login to the platform:"
       bottomText="Don’t have an account?"
       linkName="Sign up"
       linkUrl="/register"
@@ -41,7 +45,7 @@ function SignInPage() {
           email: '',
           password: '',
         }}
-        validation={SignIn}
+        validationSchema={SignIn}
         onSubmit={values => {
           dispatch(fetchUserLogIn(values));
         }}
@@ -54,10 +58,27 @@ function SignInPage() {
                 name="email"
                 placeholder="Email"
                 type="email"
-                className={`${'defoult'}
-                    ${touched.email && !errors.email && 'success'}
-                    ${touched.email && errors.email && 'error'}`}
+                className={`
+                    ${errors.email && touched.email ? 'error' : ''}
+                    ${touched.email && !errors.email ? 'success' : ''}`}
               />
+
+              {errors.email && touched.email && (
+                <MessageInput>
+                  <SvgIcon>
+                    <use href={pulseIcon + '#checkbox'}></use>
+                  </SvgIcon>
+                  <ErrorMessage component={ErrorText} name="email" />
+                </MessageInput>
+              )}
+              {!errors.email && touched.email && (
+                <MessageInput>
+                  <SuccessSvg>
+                    <use href={`${pulseIcon}#checkbox`} />
+                  </SuccessSvg>
+                  <SuccessText>Success email</SuccessText>
+                </MessageInput>
+              )}
             </label>
             <label htmlFor="password">
               <Input
@@ -65,23 +86,43 @@ function SignInPage() {
                 name="password"
                 placeholder="Password"
                 type={showPassword ? 'text' : 'password'}
-                className={`${'defoult'}
-                    ${touched.password && !errors.password && 'success'}
-                    ${touched.password && errors.password && 'error'}`}
+                className={`${
+                  errors.password && touched.password ? 'error' : ''
+                }
+                                    ${
+                                      touched.password && !errors.password
+                                        ? 'success'
+                                        : ''
+                                    }`}
               />
               {errors.password && touched.password && (
-                <Message>
-                  <ErrorText>
-                    <ErrorMessage component="p" name="password" />
-                  </ErrorText>
-                </Message>
+                <MessageInput>
+                  <SvgIcon>
+                    <use href={`${pulseIcon}#checkbox`} />
+                  </SvgIcon>
+                  <ErrorMessage component={ErrorText} name="password" />
+                </MessageInput>
               )}
               {!errors.password && touched.password && (
-                <Message>
-                  <ErrorText>Success password</ErrorText>
-                </Message>
+                <MessageInput>
+                  <SuccessSvg>
+                    <use href={`${pulseIcon}#checkbox`} />
+                  </SuccessSvg>
+                  <SuccessText>Success password</SuccessText>
+                </MessageInput>
+              )}
+              {!showPassword && (
+                <IconsIn onClick={() => setShowPassword(!showPassword)}>
+                  <use href={pulseIcon + '#icon-eye'}></use>
+                </IconsIn>
+              )}
+              {showPassword && (
+                <IconsIn onClick={() => setShowPassword(!showPassword)}>
+                  <use href={pulseIcon + '#icon-eye-off'}></use>
+                </IconsIn>
               )}
             </label>
+
             <Button type="submit">Sign In</Button>
           </StyledFormIn>
         )}
