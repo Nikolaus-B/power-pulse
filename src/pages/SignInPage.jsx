@@ -14,14 +14,14 @@ import {
   SvgIcon,
   SuccessText,
   SuccessSvg,
-  Icons,
+  IconsIn,
 } from '../components/FormStyle/StyledForm.styled';
 
 import AuthLayout from 'components/AuthLayout/AuthLayout';
 
 function SignInPage() {
-  const [showPassword, setShowPassword] = useState(false);
   const dispatch = useDispatch();
+  const [showPassword, setShowPassword] = useState(false);
 
   const SignIn = Yup.object().shape({
     email: Yup.string()
@@ -45,7 +45,7 @@ function SignInPage() {
           email: '',
           password: '',
         }}
-        validation={SignIn}
+        validationSchema={SignIn}
         onSubmit={values => {
           dispatch(fetchUserLogIn(values));
         }}
@@ -112,14 +112,14 @@ function SignInPage() {
                 </MessageInput>
               )}
               {!showPassword && (
-                <Icons onClick={() => setShowPassword(!showPassword)}>
+                <IconsIn onClick={() => setShowPassword(!showPassword)}>
                   <use href={pulseIcon + '#icon-eye'}></use>
-                </Icons>
+                </IconsIn>
               )}
               {showPassword && (
-                <Icons onClick={() => setShowPassword(!showPassword)}>
+                <IconsIn onClick={() => setShowPassword(!showPassword)}>
                   <use href={pulseIcon + '#icon-eye-off'}></use>
-                </Icons>
+                </IconsIn>
               )}
             </label>
 

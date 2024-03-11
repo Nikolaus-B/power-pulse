@@ -15,14 +15,14 @@ export const StyledForm = styled(Form)`
 export const Contsform = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 18px;
   justify-content: center;
 `;
 
 export const StyledFormIn = styled(Form)`
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 18px;
   justify-content: center;
 
   @media screen and (min-width: 768px) {
@@ -147,7 +147,6 @@ export const SuccessSvg = styled.svg`
   width: 16px;
   height: 16px;
   margin-right: 4px;
-  margin-top: 1px;
 `;
 export const Icons = styled.svg`
   stroke: rgba(239, 237, 232, 1);
@@ -155,17 +154,37 @@ export const Icons = styled.svg`
   height: 20px;
   position: absolute;
   left: 320px;
-  bottom: 112px;
+  bottom: 192px;
 
   @media screen and (min-width: 768px) {
     position: absolute;
     left: 360px;
-    bottom: 162px;
+    bottom: 240px;
   }
 
   @media screen and (min-width: 1440px) {
     position: absolute;
     left: 422px;
-    bottom: 162px;
+    bottom: 230px;
+  }
+`;
+export const IconsIn = styled.svg`
+  stroke: rgba(239, 237, 232, 1);
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  left: 320px;
+  bottom: 205px;
+
+  @media screen and (min-width: 768px) {
+    position: absolute;
+    left: 362px;
+    bottom: 254px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    position: absolute;
+    left: 426px;
+    bottom: 243px;
   }
 `;

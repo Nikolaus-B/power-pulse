@@ -179,6 +179,7 @@ export const SvgPlay = styled.svg`
   @media screen and (min-width: 768px) {
     width: 20px;
     height: 20px;
+    padding-left: 4px;
   }
 `;
 
