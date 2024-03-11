@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
+
 import {
   MenuWrapper,
   Overlay,
@@ -22,27 +22,11 @@ const MobileMenu = ({ isOpen }) => {
     setMenuIsOpen(false);
   };
 
-  const handleEscKey = event => {
-    if (event.key === 'Escape') {
-      closeMenu();
-    }
-  };
-
   const handleBackdropClick = event => {
     if (event.target === event.currentTarget) {
       closeMenu();
     }
   };
-
-  useEffect(() => {
-    if (menuIsOpen) {
-      window.addEventListener('keydown', handleEscKey);
-    }
-
-    return () => {
-      window.removeEventListener('keydown', handleEscKey);
-    };
-  }, [menuIsOpen]);
 
   useEffect(() => {
     setMenuIsOpen(isOpen);
@@ -87,10 +71,6 @@ const MobileMenu = ({ isOpen }) => {
       </MenuWrapper>
     </>
   );
-};
-
-MobileMenu.propTypes = {
-  isOpen: PropTypes.bool.isRequired,
 };
 
 export default MobileMenu;
