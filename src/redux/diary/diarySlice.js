@@ -53,8 +53,15 @@ const diarySlice = createSlice({
     builder.addCase(fetchAddExercise.fulfilled, (state, action) => {
       state.exercises = action.payload.data.addExercises;
     });
-    builder.addCase(fetchDeleteProduct.fulfilled, (state, action) => {});
-    builder.addCase(fetchDeleteExercise.fulfilled, (state, action) => {});
+    builder.addCase(fetchDeleteProduct.fulfilled, (state, action) => {
+      const index = state.products.findIndex(el => el._id === action.meta.arg);
+      state.products.splice(index, 1);
+    });
+    builder.addCase(fetchDeleteExercise.fulfilled, (state, action) => {
+      const index = state.exercises.findIndex(el => el._id === action.meta.arg);
+
+      state.exercises.splice(index, 1);
+    });
   },
 });
 

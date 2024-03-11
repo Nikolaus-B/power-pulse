@@ -1,4 +1,3 @@
-import React from 'react';
 import {
   ProductsContainer,
   NotFoundProducts,
@@ -20,8 +19,8 @@ import {
   ValueContainer,
 } from './DayProducts.styled';
 import { Icon } from 'components/Icon/Icon';
-import { useSelector } from 'react-redux';
-// import { fetchDeleteProduct } from '../../redux/diary/operations';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchDeleteProduct } from '../../redux/diary/operations';
 import { selectDiaryProducts } from '../../redux/diary/diarySelectors';
 
 import { selectUser } from '../../redux/user/userSelectors';
@@ -30,13 +29,15 @@ import { DayProductItem } from './DayProductItem';
 // const products = [];
 
 export const DayProducts = ({ media }) => {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
+
   const products = useSelector(selectDiaryProducts);
   const { blood } = useSelector(selectUser);
 
-  // const deleteProduct = id => {
-  //   dispatch(fetchDeleteProduct(id));
-  // };
+  const deleteProduct = id => {
+    dispatch(fetchDeleteProduct(id));
+  };
+
   return (
     <ProductsContainer>
       <ProductHeader>
@@ -64,12 +65,12 @@ export const DayProducts = ({ media }) => {
                   {products.map((el, i) => {
                     return (
                       <tr key={el._id}>
-                        <TableValueContainer style={{ width: '204px' }}>
+                        <TableValueContainer className="big">
                           <ValueContainer>
                             <TableValue>{el.productId.title}</TableValue>
                           </ValueContainer>
                         </TableValueContainer>
-                        <TableValueContainer style={{ width: '128px' }}>
+                        <TableValueContainer className="medium">
                           <TableValue>{el.productId.category}</TableValue>
                         </TableValueContainer>
                         <TableValueContainer>
@@ -78,7 +79,7 @@ export const DayProducts = ({ media }) => {
                         <TableValueContainer>
                           <TableValue>{el.amount}</TableValue>
                         </TableValueContainer>
-                        <TableValueContainer>
+                        <TableValueContainer className="recomended">
                           <RecomendedProduct
                             $isRecomended={
                               el.productId.groupBloodNotAllowed[blood]
@@ -90,7 +91,10 @@ export const DayProducts = ({ media }) => {
                           </RecomendedProduct>
                         </TableValueContainer>
                         <td>
-                          <DeleteProductBtn style={{ marginTop: '0px' }}>
+                          <DeleteProductBtn
+                            style={{ marginTop: '0px' }}
+                            onClick={() => deleteProduct(el._id)}
+                          >
                             <Icon
                               width={20}
                               height={20}
@@ -134,7 +138,7 @@ export const DayProducts = ({ media }) => {
                           </RecomendedProduct>
                         </MobileValueContainer>
                       </MobileItemContainer>
-                      <DeleteProductBtn>
+                      <DeleteProductBtn onClick={() => deleteProduct(el._id)}>
                         <Icon width={20} height={20} iconid={'trash-icon'} />
                       </DeleteProductBtn>
                     </DayProductsMobileElement>

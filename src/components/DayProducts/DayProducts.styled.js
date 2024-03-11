@@ -13,8 +13,6 @@ export const ProductsContainer = styled.div`
 
   @media screen and (max-width: 767px) {
     width: 335px;
-    min-height: 234px;
-    max-height: 235px;
   }
 
   @media screen and (min-width: 768px) and (max-width: 1439px) {
@@ -23,7 +21,8 @@ export const ProductsContainer = styled.div`
 
   @media screen and (min-width: 1440px) {
     width: 826px;
-    height: 234px;
+    min-height: 234px;
+    padding: 19px 32px 16px 32px;
   }
 `;
 
@@ -141,6 +140,11 @@ export const RecomendedProduct = styled.p`
     border-radius: 10px;
     background-color: ${getRecomended};
   }
+
+  @media screen and (min-width: 1440px) {
+    display: flex;
+    justify-content: start;
+  }
 `;
 
 //* Desctop *//
@@ -148,11 +152,16 @@ export const RecomendedProduct = styled.p`
 export const DayProductsContainer = styled.div`
   height: 172px;
   overflow-y: scroll;
+  overflow-x: hidden;
 `;
 
 export const Table = styled.table`
   width: 672px;
   border-spacing: 8px;
+
+  @media screen and (min-width: 1440px) {
+    width: 762px;
+  }
 `;
 
 export const TableTitle = styled.th`
@@ -172,6 +181,30 @@ export const TableValueContainer = styled.td`
   border: 1px solid var(--text-info-color);
   border-radius: 12px;
   overflow: hidden;
+
+  &.big {
+    width: 204px;
+  }
+
+  &.medium {
+    width: 128px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    width: 105px;
+
+    &.big {
+      width: 212px;
+    }
+
+    &.medium {
+      width: 166px;
+    }
+
+    &.recomended {
+      width: 110px;
+    }
+  }
 `;
 
 export const ValueContainer = styled.div`
@@ -183,6 +216,7 @@ export const ValueContainer = styled.div`
 export const TableValue = styled.p`
   font-size: 12px;
   line-height: 18px;
+  text-align: left;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;

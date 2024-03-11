@@ -1,23 +1,37 @@
 import React from 'react';
 import {
+  DayExercisesContainer,
   DayExercisesIcon,
   DayExercisesMobileElement,
   DayExercisesMobileList,
   DayExercisesTitle,
   DeleteExerciseBtn,
+  ExercisesCaloriesTitle,
+  ExercisesCaloriesWrapper,
   ExercisesContainer,
   ExercisesHeader,
   ExercisesLink,
+  ExercisesTable,
+  ExercisesTableTitle,
+  ExercisesTableValue,
+  ExercisesTableValueContainer,
   Exerciseslist,
   NotFoundExercises,
+  ValueContainer,
 } from './DayExercises.styled';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { selectDiaryExercises } from '../../redux/diary/diarySelectors';
 import { Icon } from 'components/Icon/Icon';
 import { DayExerciseItem } from './DayExerciseItem';
+import { fetchDeleteExercise } from '../../redux/diary/operations';
 
 export const DayExercises = ({ media }) => {
   const exercises = useSelector(selectDiaryExercises);
+  const dispatch = useDispatch();
+
+  const deleteExercise = id => {
+    dispatch(fetchDeleteExercise(id));
+  };
 
   return (
     <ExercisesContainer>
@@ -30,79 +44,126 @@ export const DayExercises = ({ media }) => {
       </ExercisesHeader>
       <Exerciseslist>
         {exercises.length ? (
-          <div>
+          <>
             {media ? (
-              <table id="products">
-                <thead>
-                  <tr>
-                    <th>Body Part</th>
-                    <th>Equipment</th>
-                    <th>Name</th>
-                    <th>Target</th>
-                    <th>Burned Calories</th>
-                    <th>Time</th>
-                  </tr>
-                </thead>
+              <DayExercisesContainer>
+                <ExercisesTable id="exercises">
+                  <thead>
+                    <tr>
+                      <ExercisesTableTitle>Body Part</ExercisesTableTitle>
+                      <ExercisesTableTitle>Equipment</ExercisesTableTitle>
+                      <ExercisesTableTitle>Name</ExercisesTableTitle>
+                      <ExercisesTableTitle>Target</ExercisesTableTitle>
+                      <ExercisesTableTitle>
+                        <ExercisesCaloriesWrapper>
+                          <ExercisesCaloriesTitle>
+                            Burned Calories
+                          </ExercisesCaloriesTitle>
+                        </ExercisesCaloriesWrapper>
+                      </ExercisesTableTitle>
+                      <ExercisesTableTitle>Time</ExercisesTableTitle>
+                    </tr>
+                  </thead>
 
-                <tbody>
+                  <tbody>
+                    {exercises.map((el, i) => {
+                      return (
+                        <tr key={el._id}>
+                          <ExercisesTableValueContainer>
+                            <ValueContainer>
+                              <ExercisesTableValue>
+                                {el.exerciseId.bodyPart}
+                              </ExercisesTableValue>
+                            </ValueContainer>
+                          </ExercisesTableValueContainer>
+                          <ExercisesTableValueContainer>
+                            <ValueContainer className="equipment">
+                              <ExercisesTableValue>
+                                {el.exerciseId.equipment}
+                              </ExercisesTableValue>
+                            </ValueContainer>
+                          </ExercisesTableValueContainer>
+                          <ExercisesTableValueContainer>
+                            <ValueContainer className="name">
+                              <ExercisesTableValue>
+                                {el.exerciseId.name}
+                              </ExercisesTableValue>
+                            </ValueContainer>
+                          </ExercisesTableValueContainer>
+                          <ExercisesTableValueContainer>
+                            <ValueContainer className="target">
+                              <ExercisesTableValue>
+                                {el.exerciseId.target}
+                              </ExercisesTableValue>
+                            </ValueContainer>
+                          </ExercisesTableValueContainer>
+                          <ExercisesTableValueContainer>
+                            <ValueContainer className="calories">
+                              <ExercisesTableValue>
+                                {el.calories}
+                              </ExercisesTableValue>
+                            </ValueContainer>
+                          </ExercisesTableValueContainer>
+                          <ExercisesTableValueContainer>
+                            {el.time}
+                          </ExercisesTableValueContainer>
+                          <td>
+                            <DeleteExerciseBtn
+                              style={{ marginTop: '0px' }}
+                              onClick={() => deleteExercise(el._id)}
+                            >
+                              <Icon
+                                width={20}
+                                height={20}
+                                iconid={'trash-icon'}
+                              />
+                            </DeleteExerciseBtn>
+                          </td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </ExercisesTable>
+              </DayExercisesContainer>
+            ) : (
+              <>
+                <DayExercisesMobileList>
                   {exercises.map((el, i) => {
                     return (
-                      <tr key={el._id}>
-                        <td>{el.exerciseId.bodyPart}</td>
-                        <td>{el.exerciseId.equipment}</td>
-                        <td>{el.exerciseId.name}</td>
-                        <td>{el.exerciseId.target}</td>
-                        <td>{el.calories}</td>
-                        <td>{el.time}</td>
-                        <td>
-                          <button>
-                            <Icon
-                              width={20}
-                              height={20}
-                              iconid={'trash-icon'}
-                            />
-                          </button>
-                        </td>
-                      </tr>
+                      <DayExercisesMobileElement key={el._id}>
+                        <DayExerciseItem
+                          title={'Body Part'}
+                          value={el.exerciseId.bodyPart}
+                        />
+                        <DayExerciseItem
+                          title={'Equipment'}
+                          value={el.exerciseId.equipment}
+                        />
+                        <DayExerciseItem
+                          title={'Name'}
+                          value={el.exerciseId.name}
+                        />
+                        <DayExerciseItem
+                          title={'Target'}
+                          value={el.exerciseId.target}
+                        />
+                        <DayExerciseItem
+                          title={'Burned Calories'}
+                          value={el.calories}
+                        />
+                        <DayExerciseItem title={'Time'} value={el.time} />
+                        <DeleteExerciseBtn
+                          onClick={() => deleteExercise(el._id)}
+                        >
+                          <Icon width={20} height={20} iconid={'trash-icon'} />
+                        </DeleteExerciseBtn>
+                      </DayExercisesMobileElement>
                     );
                   })}
-                </tbody>
-              </table>
-            ) : (
-              <DayExercisesMobileList>
-                {exercises.map((el, i) => {
-                  return (
-                    <DayExercisesMobileElement key={el._id}>
-                      <DayExerciseItem
-                        title={'Body Part'}
-                        value={el.exerciseId.bodyPart}
-                      />
-                      <DayExerciseItem
-                        title={'Equipment'}
-                        value={el.exerciseId.equipment}
-                      />
-                      <DayExerciseItem
-                        title={'Name'}
-                        value={el.exerciseId.name}
-                      />
-                      <DayExerciseItem
-                        title={'Target'}
-                        value={el.exerciseId.target}
-                      />
-                      <DayExerciseItem
-                        title={'Burned Calories'}
-                        value={el.calories}
-                      />
-                      <DayExerciseItem title={'Time'} value={el.time} />
-                      <DeleteExerciseBtn>
-                        <Icon width={20} height={20} iconid={'trash-icon'} />
-                      </DeleteExerciseBtn>
-                    </DayExercisesMobileElement>
-                  );
-                })}
-              </DayExercisesMobileList>
+                </DayExercisesMobileList>
+              </>
             )}
-          </div>
+          </>
         ) : (
           <NotFoundExercises>Not found exercises</NotFoundExercises>
         )}
