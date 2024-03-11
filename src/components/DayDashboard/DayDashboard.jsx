@@ -7,40 +7,64 @@ import {
   NotificationContainer,
 } from './DayDashboard.styled';
 import { Icon } from 'components/Icon/Icon';
+import { useSelector } from 'react-redux';
+import {
+  selectBMR,
+  selectDailyRateSports,
+} from '../../redux/user/userSelectors';
+import {
+  selectCaloriesBurned,
+  selectCaloriesConsumed,
+  selectCaloriesRemaining,
+  selectSportRemaining,
+} from '../../redux/diary/diarySelectors';
 
 export const DayDashboard = () => {
+  const dailyRateSports = useSelector(selectDailyRateSports);
+  const bmr = useSelector(selectBMR);
+  const caloriesConsumed = useSelector(selectCaloriesConsumed);
+  const caloriesBurned = useSelector(selectCaloriesBurned);
+  const caloriesRemaining = useSelector(selectCaloriesRemaining);
+  const sportRemaining = useSelector(selectSportRemaining);
+
   return (
     <DayDashboardContainer>
       <DashboardList>
         <DashboardElement
           isOrange={true}
           name={'Daily calorie intake'}
-          text={'2200'}
+          text={bmr || 2200}
           icon={'food'}
         />
 
         <DashboardElement
           isOrange={true}
           name={'Daily physical activity'}
-          text={'110 min'}
+          text={`${dailyRateSports || 110} min`}
           icon={'dumbbell'}
         />
         <DashboardElement
-          name={'Сalories consumed'}
-          text={'707'}
+          name={'Calories consumed'}
+          text={caloriesConsumed}
           icon={'apple'}
         />
 
-        <DashboardElement name={'Сalories burned'} text={'855'} icon={'fire'} />
+        <DashboardElement
+          name={'Calories burned'}
+          text={caloriesBurned}
+          icon={'fire'}
+        />
         <DashboardElement
           name={'Calories remaining'}
-          text={'1443'}
+          text={caloriesRemaining}
           icon={'bubble'}
+          exceeded={['calories', caloriesRemaining]}
         />
         <DashboardElement
           name={'Sports remaining'}
-          text={'85 min'}
+          text={`${sportRemaining} min`}
           icon={'running-man'}
+          exceeded={['sports', sportRemaining]}
         />
       </DashboardList>
       <NotificationContainer>

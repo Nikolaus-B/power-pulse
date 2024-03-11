@@ -19,7 +19,7 @@ import { diaryReducer } from './diary/diarySlice';
 const authPersistConfig = {
   key: 'user',
   storage,
-  whitelist: ['token'],
+  whitelist: ['token', 'bmr', 'dailyRateSports'],
   blacklist: ['chakra', 'chakra-ui-color-mode'],
 };
 

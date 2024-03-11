@@ -21,6 +21,14 @@ export const Dashboard = styled.div`
     width: 187px;
     height: 116px;
   }
+
+  &.too-much-calories {
+    border: 1px solid #e9101d;
+  }
+
+  &.good-training {
+    border: 1px solid #3cbf61;
+  }
 `;
 
 export const IconAndTitleContainer = styled.div`

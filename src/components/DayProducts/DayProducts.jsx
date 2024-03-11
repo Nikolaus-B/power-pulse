@@ -10,20 +10,19 @@ import {
   DayProductsMobileList,
 } from './DayProducts.styled';
 import { Icon } from 'components/Icon/Icon';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 // import { fetchDeleteProduct } from '../../redux/diary/operations';
-import { selectDiaryProducts } from '../../redux/diary/diarySelectors';
-import { useMedia } from 'use-media';
+// import { selectDiaryProducts } from '../../redux/diary/diarySelectors';
+
 import { selectUser } from '../../redux/user/userSelectors';
 import { DayProductItem } from './DayProductItem';
 
-// const products = [];
+const products = [];
 
-export const DayProducts = () => {
-  const dispatch = useDispatch();
-  const products = useSelector(selectDiaryProducts);
+export const DayProducts = ({ media }) => {
+  // const dispatch = useDispatch();
+  // const products = useSelector(selectDiaryProducts);
   const { blood } = useSelector(selectUser);
-  const isWide = useMedia({ minWidth: '767px' });
 
   // const deleteProduct = id => {
   //   dispatch(fetchDeleteProduct(id));
@@ -36,11 +35,11 @@ export const DayProducts = () => {
           Add Product <Icon height={15} width={15} iconid={'arrow'} />
         </ProductsLink>
       </ProductHeader>
-      {products ? (
+      {products.length ? (
         <>
-          {isWide ? (
+          {media ? (
             <DayProductsContainer>
-              <table id="customers">
+              <table id="products">
                 <thead>
                   <tr>
                     <th>Title</th>

@@ -14,11 +14,12 @@ import {
 import { useDispatch, useSelector } from 'react-redux';
 import { selectDate } from '../../redux/diary/diarySelectors';
 import { fetchDiary } from '../../redux/diary/operations';
+import { useMedia } from 'use-media';
 
 export const Diary = () => {
   const dispatch = useDispatch();
   const date = useSelector(selectDate);
-
+  const isWide = useMedia({ minWidth: '767px' });
   useEffect(() => {
     dispatch(fetchDiary(date));
   }, [dispatch, date]);
@@ -31,8 +32,8 @@ export const Diary = () => {
       </TitleContainer>
       <DashboardContainer>
         <ProductAndExercises>
-          <DayProducts />
-          <DayExercises />
+          <DayProducts media={isWide} />
+          <DayExercises media={isWide} />
         </ProductAndExercises>
         <DayDashboard />
       </DashboardContainer>
