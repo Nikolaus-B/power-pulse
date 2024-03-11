@@ -6,7 +6,6 @@ export const UserContainer = styled.div`
   justify-content: center;
   align-items: center;
   margin-right: 16px;
-  }
 `;
 
 export const NavContainer = styled.div`
@@ -15,7 +14,7 @@ export const NavContainer = styled.div`
   align-items: inherit;
   margin-left: auto;
 
-  @media (max-width: 1440px) {
+  @media (max-width: 1439px) {
     display: none;
   }
 `;
@@ -48,18 +47,33 @@ export const UserData = styled.div`
   }
 `;
 
+export const SettingLink = styled(NavLink)`
+  display: flex;
+  svg {
+    stroke: #efede8;
+    stroke-opacity: 0.3;
+  }
+
+  @media (min-width: 768px) {
+    svg {
+      width: 28px;
+      height: 28px;
+    }
+  }
+`;
+
 export const AvatarHeader = styled.div`
-  width: 46px;
-  height: 46px;
+  width: 37px;
+  height: 37px;
   border-radius: 50%;
   border: 1px solid var(--orange-color);
   display: flex;
   justify-content: center;
   align-items: center;
 
-  @media (max-width: 768px) {
-    width: 37px;
-    height: 37px;
+  @media (min-width: 768px) {
+    width: 46px;
+    height: 46px;
   }
 `;
 
@@ -74,7 +88,17 @@ export const LogOutBtn = styled.button`
   outline: none;
   cursor: pointer;
   display: flex;
+  align-items: center;
   justify-content: center;
   gap: 8px;
   padding: 0;
+  @media (min-width: 1440px) {
+    svg {
+      stroke: #e6533c;
+    }
+  }
+`;
+
+export const LogOutText = styled.span`
+  font-size: 16px;
 `;

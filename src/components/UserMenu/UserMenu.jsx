@@ -1,4 +1,3 @@
-import { NavLink } from 'react-router-dom';
 import { Icon } from 'components/Icon/Icon';
 import {
   UserContainer,
@@ -7,14 +6,15 @@ import {
   UserData,
   AvatarHeader,
   LogOutBtn,
+  SettingLink,
+  LogOutText,
   //   Photo,
 } from './UserMenu.styled';
 import { useMediaQuery } from 'react-responsive';
 
 export const UserMenu = () => {
-
-  const isTablet = useMediaQuery({ minWidth: 768 });
-  const isMobile = useMediaQuery({ maxWidth: 768 });
+  // const isTablet = useMediaQuery({ minWidth: 768 });
+  // const isMobile = useMediaQuery({ maxWidth: 768 });
   const isDesktop = useMediaQuery({ minWidth: 1440 });
 
   return (
@@ -26,21 +26,21 @@ export const UserMenu = () => {
       </NavContainer>
 
       <UserData>
-        <NavLink to="/params">
-          <Icon iconid={'settings'} width={28} height={28} />
-        </NavLink>
+        <SettingLink to="/params">
+          <Icon iconid={'settings'} width={24} height={24} />
+        </SettingLink>
         <AvatarHeader>
           {/* <Photo src={} width={46} height={46} alt="Avatar" /> */}
         </AvatarHeader>
 
         {isDesktop && (
-        <LogOutBtn type="button">
-          <span>Logout</span>
-          <Icon iconid={'log-out'} width={20} height={20} />
-        </LogOutBtn>
+          <LogOutBtn type="button">
+            <LogOutText>Logout</LogOutText>
+            <Icon iconid={'log-out'} width={20} height={20} />
+          </LogOutBtn>
         )}
-
       </UserData>
     </UserContainer>
   );
 };
+
