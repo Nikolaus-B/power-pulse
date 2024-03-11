@@ -1,7 +1,12 @@
+import { Diary } from 'components/Diary/Diary';
 import React from 'react';
 
 function DiaryPage() {
-  return <div>DiaryPage</div>;
+  return (
+    <>
+      <Diary />
+    </>
+  );
 }
 
 export default DiaryPage;
