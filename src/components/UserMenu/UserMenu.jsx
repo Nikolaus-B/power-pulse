@@ -21,12 +21,12 @@ export const UserMenu = () => {
     <UserContainer>
       <NavContainer>
         <StyledNavLink to="/diary">Diary</StyledNavLink>
-        <StyledNavLink to="/products">Products</StyledNavLink>
+        <StyledNavLink to="/product">Products</StyledNavLink>
         <StyledNavLink to="/exercises">Exercises</StyledNavLink>
       </NavContainer>
 
       <UserData>
-        <SettingLink to="/params">
+        <SettingLink to="/settings">
           <Icon iconid={'settings'} width={24} height={24} />
         </SettingLink>
         <AvatarHeader>
@@ -43,4 +43,3 @@ export const UserMenu = () => {
     </UserContainer>
   );
 };
-

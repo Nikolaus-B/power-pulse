@@ -47,6 +47,7 @@ const MobileMenu = ({ isOpen }) => {
   useEffect(() => {
     setMenuIsOpen(isOpen);
   }, [isOpen]);
+
   const dispatch = useDispatch();
 
   const handleLogOut = () => {
@@ -70,7 +71,7 @@ const MobileMenu = ({ isOpen }) => {
           <NavMenuLink to="/diary" onClick={closeMenu}>
             Diary
           </NavMenuLink>
-          <NavMenuLink to="/products" onClick={closeMenu}>
+          <NavMenuLink to="/product" onClick={closeMenu}>
             Products
           </NavMenuLink>
           <NavMenuLink to="/exercises" onClick={closeMenu}>
@@ -93,5 +94,3 @@ MobileMenu.propTypes = {
 };
 
 export default MobileMenu;
-
-export const MobileMenu = () => {};
