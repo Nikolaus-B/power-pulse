@@ -5,7 +5,6 @@ const getRecomended = props => (props.$isRecomended ? '#E9101D' : '#419B09');
 
 export const ProductsContainer = styled.div`
   position: relative;
-
   min-height: 335px;
   max-height: 824px;
   padding: 16px 12px 16px 16px;
@@ -14,6 +13,12 @@ export const ProductsContainer = styled.div`
 
   @media screen and (max-width: 767px) {
     width: 335px;
+    min-height: 234px;
+    max-height: 235px;
+  }
+
+  @media screen and (min-width: 768px) and (max-width: 1439px) {
+    min-height: 234px;
   }
 
   @media screen and (min-width: 1440px) {
@@ -44,11 +49,6 @@ export const ProductsLink = styled(Link)`
   &:focus {
     color: var(--orange_1-color);
   }
-`;
-
-export const DayProductsContainer = styled.div`
-  display: flex;
-  flex-direction: column;
 `;
 
 export const TitlesContainer = styled.div`
@@ -145,8 +145,14 @@ export const RecomendedProduct = styled.p`
 
 //* Desctop *//
 
+export const DayProductsContainer = styled.div`
+  height: 172px;
+  overflow-y: scroll;
+`;
+
 export const Table = styled.table`
   width: 672px;
+  border-spacing: 8px;
 `;
 
 export const TableTitle = styled.th`
@@ -169,9 +175,9 @@ export const TableValueContainer = styled.td`
 `;
 
 export const ValueContainer = styled.div`
-  white-space: nowrap;
+  width: 176px;
+
   overflow: hidden;
-  text-overflow: ellipsis;
 `;
 
 export const TableValue = styled.p`

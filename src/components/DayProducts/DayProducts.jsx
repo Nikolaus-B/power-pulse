@@ -18,7 +18,6 @@ import {
   TableValue,
   TableValueContainer,
   ValueContainer,
-  TR,
 } from './DayProducts.styled';
 import { Icon } from 'components/Icon/Icon';
 import { useSelector } from 'react-redux';
@@ -66,7 +65,9 @@ export const DayProducts = ({ media }) => {
                     return (
                       <tr key={el._id}>
                         <TableValueContainer style={{ width: '204px' }}>
-                          <TableValue>{el.productId.title}</TableValue>
+                          <ValueContainer>
+                            <TableValue>{el.productId.title}</TableValue>
+                          </ValueContainer>
                         </TableValueContainer>
                         <TableValueContainer style={{ width: '128px' }}>
                           <TableValue>{el.productId.category}</TableValue>
