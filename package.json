@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "https://Nikolaus-B.github.io/power-pulse/",
   "dependencies": {
+    "@chakra-ui/icon": "^3.2.0",
     "@chakra-ui/icons": "^2.1.1",
     "@chakra-ui/react": "^2.8.2",
     "@emotion/react": "^11.11.4",
@@ -29,6 +30,7 @@
     "react-router-dom": "^6.22.2",
     "react-scripts": "5.0.1",
     "react-select": "^5.8.0",
+    "redux": "^5.0.1",
     "redux-persist": "^6.0.0",
     "styled-components": "^6.1.8",
     "use-media": "^1.5.0",
