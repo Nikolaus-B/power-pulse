@@ -1,11 +1,11 @@
 {
   "files": {
     "main.css": "/power-pulse/static/css/main.cd2e038f.css",
-    "main.js": "/power-pulse/static/js/main.e60840e9.js",
-    "static/js/777.e6b2f262.chunk.js": "/power-pulse/static/js/777.e6b2f262.chunk.js",
+    "main.js": "/power-pulse/static/js/main.b0d010d5.js",
+    "static/js/12.d090faf7.chunk.js": "/power-pulse/static/js/12.d090faf7.chunk.js",
     "static/js/870.03751d06.chunk.js": "/power-pulse/static/js/870.03751d06.chunk.js",
-    "static/js/235.a94d0ed7.chunk.js": "/power-pulse/static/js/235.a94d0ed7.chunk.js",
-    "static/js/182.c0eba0e2.chunk.js": "/power-pulse/static/js/182.c0eba0e2.chunk.js",
+    "static/js/235.d842f879.chunk.js": "/power-pulse/static/js/235.d842f879.chunk.js",
+    "static/js/182.5e9521b0.chunk.js": "/power-pulse/static/js/182.5e9521b0.chunk.js",
     "static/js/345.6cd6b7b1.chunk.js": "/power-pulse/static/js/345.6cd6b7b1.chunk.js",
     "static/js/544.034093c5.chunk.js": "/power-pulse/static/js/544.034093c5.chunk.js",
     "static/js/259.4179219a.chunk.js": "/power-pulse/static/js/259.4179219a.chunk.js",
@@ -18,7 +18,7 @@
     "static/css/390.c79ed22e.chunk.css": "/power-pulse/static/css/390.c79ed22e.chunk.css",
     "static/js/390.8f9efb5b.chunk.js": "/power-pulse/static/js/390.8f9efb5b.chunk.js",
     "static/js/488.2009ace1.chunk.js": "/power-pulse/static/js/488.2009ace1.chunk.js",
-    "static/js/380.0df5f219.chunk.js": "/power-pulse/static/js/380.0df5f219.chunk.js",
+    "static/js/275.f5dfc70e.chunk.js": "/power-pulse/static/js/275.f5dfc70e.chunk.js",
     "static/media/hero-2x.jpg": "/power-pulse/static/media/hero-2x.620f84d9e8425758933b.jpg",
     "static/media/hero-404-2x.jpg": "/power-pulse/static/media/hero-404-2x.620f84d9e8425758933b.jpg",
     "static/media/hero-tablet-2x.jpg": "/power-pulse/static/media/hero-tablet-2x.0d42bb19e192b82f5ee6.jpg",
@@ -35,11 +35,11 @@
     "static/media/avocado-1x.png": "/power-pulse/static/media/avocado-1x.4b09d53aa12a58ab901f.png",
     "index.html": "/power-pulse/index.html",
     "main.cd2e038f.css.map": "/power-pulse/static/css/main.cd2e038f.css.map",
-    "main.e60840e9.js.map": "/power-pulse/static/js/main.e60840e9.js.map",
-    "777.e6b2f262.chunk.js.map": "/power-pulse/static/js/777.e6b2f262.chunk.js.map",
+    "main.b0d010d5.js.map": "/power-pulse/static/js/main.b0d010d5.js.map",
+    "12.d090faf7.chunk.js.map": "/power-pulse/static/js/12.d090faf7.chunk.js.map",
     "870.03751d06.chunk.js.map": "/power-pulse/static/js/870.03751d06.chunk.js.map",
-    "235.a94d0ed7.chunk.js.map": "/power-pulse/static/js/235.a94d0ed7.chunk.js.map",
-    "182.c0eba0e2.chunk.js.map": "/power-pulse/static/js/182.c0eba0e2.chunk.js.map",
+    "235.d842f879.chunk.js.map": "/power-pulse/static/js/235.d842f879.chunk.js.map",
+    "182.5e9521b0.chunk.js.map": "/power-pulse/static/js/182.5e9521b0.chunk.js.map",
     "345.6cd6b7b1.chunk.js.map": "/power-pulse/static/js/345.6cd6b7b1.chunk.js.map",
     "544.034093c5.chunk.js.map": "/power-pulse/static/js/544.034093c5.chunk.js.map",
     "259.4179219a.chunk.js.map": "/power-pulse/static/js/259.4179219a.chunk.js.map",
@@ -52,10 +52,10 @@
     "390.c79ed22e.chunk.css.map": "/power-pulse/static/css/390.c79ed22e.chunk.css.map",
     "390.8f9efb5b.chunk.js.map": "/power-pulse/static/js/390.8f9efb5b.chunk.js.map",
     "488.2009ace1.chunk.js.map": "/power-pulse/static/js/488.2009ace1.chunk.js.map",
-    "380.0df5f219.chunk.js.map": "/power-pulse/static/js/380.0df5f219.chunk.js.map"
+    "275.f5dfc70e.chunk.js.map": "/power-pulse/static/js/275.f5dfc70e.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.cd2e038f.css",
-    "static/js/main.e60840e9.js"
+    "static/js/main.b0d010d5.js"
   ]
 }
