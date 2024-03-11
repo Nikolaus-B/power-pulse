@@ -8,16 +8,16 @@ import {
 import { Icon } from 'components/Icon/Icon';
 import { useState } from 'react';
 import { UserMenu } from 'components/UserMenu/UserMenu';
-import { useAuth } from '../hooks/AuthHook';
 import MobileMenu from 'components/MobileMenu/MobileMenu';
+import { useSelector } from 'react-redux';
 
 import { useMediaQuery } from 'react-responsive';
 
+import { selectToken } from '../../redux/user/userSelectors';
+
 export const Header = () => {
-  const { isLoggedIn } = useAuth();
-
   const [isOpen, setIsOpen] = useState(false);
-
+  const token = useSelector(selectToken);
   const onClickNavBtn = () => {
     setIsOpen({ isOpen: !isOpen });
   };
@@ -28,7 +28,7 @@ export const Header = () => {
   return (
     <HeaderWrapper
       style={
-        isLoggedIn
+        token
           ? { borderBottom: '1px solid rgba(239, 237, 232, 0.20)' }
           : { borderBottom: 'none' }
       }
@@ -39,7 +39,7 @@ export const Header = () => {
         </LogoLink>
 
         <UserContainer>
-          {isLoggedIn && (
+          {token && (
             <>
               <UserMenu />
               {(isMobile || isTablet) && (
