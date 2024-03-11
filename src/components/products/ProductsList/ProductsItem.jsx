@@ -27,6 +27,8 @@ import { AddProductForm } from '../../AddProductForm/AddProductForm';
 import { AddProductSuccess } from '../../AddProductSuccess/AddProductSuccess';
 import { useState } from 'react';
 import { Icon } from '../../Icon/Icon';
+import { useSelector } from 'react-redux';
+import { selectUserBlood } from '../../../redux/products/productsSelectors';
 
 BasicModalWindow.setAppElement('#root');
 
@@ -66,7 +68,12 @@ export const ProductItem = ({ product }) => {
     return text.charAt(0).toUpperCase() + text.slice(1);
   };
 
-  const recommended = true;
+  const userBlood = useSelector(selectUserBlood);
+
+  const recommended = userBlood ? product.groupBloodNotAllowed[userBlood]
+        ? false
+        : true
+      : false;
 
   return (
     <ListItem>

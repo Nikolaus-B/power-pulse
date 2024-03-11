@@ -26,7 +26,6 @@ const productsSlice = createSlice({
   reducers: {
     setFilterQuery: (state, action) => {
       state.filter.query = action.payload;
-      console.log(action.payload)
     },
     setFilterCategory: (state, action) => {
       state.filter.category = action.payload;
