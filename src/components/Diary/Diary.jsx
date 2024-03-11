@@ -20,6 +20,7 @@ export const Diary = () => {
   const dispatch = useDispatch();
   const date = useSelector(selectDate);
   const isWide = useMedia({ minWidth: '767px' });
+
   useEffect(() => {
     dispatch(fetchDiary(date));
   }, [dispatch, date]);
