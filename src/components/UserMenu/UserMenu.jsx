@@ -20,7 +20,7 @@ export const UserMenu = () => {
   // const isMobile = useMediaQuery({ maxWidth: 768 });
   const isDesktop = useMediaQuery({ minWidth: 1440 });
 
-  const [isActivePage, setIsActivePage] = useState('diary');
+  const [isActivePage, setIsActivePage] = useState('');
   const dispatch = useDispatch();
 
   const handleLogOut = () => dispatch(fetchUserLogout());
