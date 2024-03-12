@@ -13,13 +13,15 @@ export const GlobalStyle = createGlobalStyle`
    --border-static-color: rgba(239, 237, 232, 0.2);
   --text-info-color: rgba(239, 237, 232, 0.3);
   --text-categories-color:rgba(239, 237, 232, 0.4);
-  
+  --diary-active-color:rgba(239, 237, 232, 0.8);
+    --transition-dur-and-func: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
 }
 
   body {
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, 'Roboto',
-      
+
       sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -61,25 +63,30 @@ div {
      color: var(--white-color);
 }
 
-.container {
-  margin: 0 auto;
-  max-width: 375px;
-  padding: 40px 20px 80px 20px;
+input[type="radio"] {
+  display: grid;
+  place-content: center;
+  appearance: none;
+  background-color: #040404;
+}
 
 
-    @media screen and (min-width: 768px) and (max-width: 1439px) {
-    max-width: 768px;
-    padding: 72px 32px 78px 32px;
+  .container {
+    margin: 0 auto;
+    max-width: 375px;
+    padding: 40px 20px 80px 20px;
+
+
+      @media screen and (min-width: 768px) and (max-width: 1439px) {
+      max-width: 768px;
+      padding: 72px 32px 78px 32px;
+
+    }
+
+    @media screen and (min-width: 1440px) {
+      max-width: 1440px;
+      padding: 72px 96px 68px 96px;
 
   }
-
-  @media screen and (min-width: 1440px) {
-    max-width: 1440px;
-    padding: 72px 96px 68px 96px;
-
 }
-}
-
-
 `;
-

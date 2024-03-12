@@ -1,8 +1,10 @@
-import { lazy } from 'react';
+import { Suspense, lazy, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { AppLayout } from './AppLayout/AppLayout';
-// import { RestrictedRoute } from './RestrictedRoute';
-// import { PrivateRoute } from './PrivateRoute';
+import { useDispatch } from 'react-redux';
+import { useAuth } from './hooks/AuthHook';
+import { refreshing } from '../redux/user/operations';
+import { Toaster } from 'react-hot-toast';
 
 const HomePage = lazy(() => import('pages/HomePage'));
 const NotFoundPage = lazy(() => import('pages/NotFoundPage'));
@@ -15,20 +17,58 @@ const ExercisesPage = lazy(() => import('pages/ExercisesPage'));
 const TitlePage = lazy(() => import('pages/TitlePage'));
 
 export const App = () => {
-  return (
-    <Routes>
-      <Route path="/" element={<AppLayout />}>
-        <Route index element={<HomePage />} />
-        <Route path="/register" element={<SingUpPage />} />
-        <Route path="/login" element={<SingInPage />} />
-        <Route path="/settings" element={<UserPage />} />
-        <Route path="/diary" element={<DiaryPage />} />
-        <Route path="/product" element={<ProductsPage />} />
-        <Route path="/exercises" element={<ExercisesPage />}>
-          <Route path="title" element={<TitlePage />} />
+  const dispatch = useDispatch();
+  const { isRefreshing } = useAuth();
+
+  useEffect(() => {
+    dispatch(refreshing());
+  }, [dispatch]);
+
+  return isRefreshing ? (
+    <Suspense fallback />
+  ) : (
+    <>
+      <Routes>
+        <Route path="/" element={<AppLayout />}>
+          <Route index element={<HomePage />} />
+          <Route path="/register" element={<SingUpPage />} />
+          <Route path="/login" element={<SingInPage />} />
+          <Route path="/settings" element={<UserPage />} />
+          <Route path="/diary" element={<DiaryPage />} />
+          <Route path="/product" element={<ProductsPage />} />
+          <Route path="/exercises" element={<ExercisesPage />}>
+            <Route path="title" element={<TitlePage />} />
+          </Route>
         </Route>
-      </Route>
-      <Route path="*" element={<NotFoundPage />} />
-    </Routes>
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
+      <Toaster
+        toastOptions={{
+          duration: 5000,
+          style: {
+            background: '#321f0c',
+            color: '#fff',
+          },
+          success: {
+            duration: 3000,
+            style: {
+              border: '2px solid #3CBF61',
+            },
+          },
+          error: {
+            duration: 4000,
+            style: {
+              border: '2px solid #D80027',
+            },
+          },
+          loading: {
+            duration: 2000,
+            style: {
+              border: '2px solid #e6533c',
+            },
+          },
+        }}
+      />
+    </>
   );
 };

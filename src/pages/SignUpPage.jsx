@@ -2,6 +2,7 @@ import { useDispatch } from 'react-redux';
 import React from 'react';
 import { fetchUserRegister } from '../redux/user/operations';
 import { Formik, ErrorMessage } from 'formik';
+import pulseIcon from '../img/pulse-icons.svg';
 import * as Yup from 'yup';
 import { useState } from 'react';
 
@@ -9,22 +10,26 @@ import {
   StyledForm,
   Input,
   Button,
-  Message,
   ErrorText,
-  Test,
-} from '../components/AuthLayout/StyledForm.styled';
+  Contsform,
+  MessageInput,
+  SvgIcon,
+  SuccessText,
+  SuccessSvg,
+  Icons,
+} from '../components/FormStyle/StyledForm.styled';
 
 import AuthLayout from '../components/AuthLayout/AuthLayout';
 
 function SignInPage() {
   const dispatch = useDispatch();
-  const [showPassword] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const SignUp = Yup.object().shape({
     name: Yup.string().min(2).max(20).required('Required'),
     email: Yup.string()
       .min(6, 'The email address must be at least 6 characters long!')
-      .max(20, 'The email address is too long!')
+      .max(40, 'The email address is too long!')
       .email('Error email')
       .required('Required'),
     password: Yup.string()
@@ -54,17 +59,34 @@ function SignInPage() {
       >
         {({ errors, touched }) => (
           <StyledForm>
-            <Test>
+            <Contsform>
               <label htmlFor="name">
                 <Input
                   id="name"
                   name="name"
                   placeholder="Name"
                   type="text"
-                  className={`${'defoult'}
-                ${touched.name && !errors.name && 'success'}
-                ${touched.name && errors.name && 'error'}`}
+                  autoComplete="off"
+                  className={`
+                    ${errors.name && touched.name ? 'error' : ''}
+                    ${touched.name && !errors.name ? 'success' : ''}`}
                 />
+                {errors.name && touched.name && (
+                  <MessageInput>
+                    <SvgIcon>
+                      <use href={`${pulseIcon}#checkbox`} />
+                    </SvgIcon>
+                    <ErrorMessage component={ErrorText} name="name" />
+                  </MessageInput>
+                )}
+                {!errors.name && touched.name && (
+                  <MessageInput>
+                    <SuccessSvg>
+                      <use href={`${pulseIcon}#checkbox`} />
+                    </SuccessSvg>
+                    <SuccessText>Success name</SuccessText>
+                  </MessageInput>
+                )}
               </label>
               <label htmlFor="email">
                 <Input
@@ -72,10 +94,28 @@ function SignInPage() {
                   name="email"
                   placeholder="Email"
                   type="email"
-                  className={`${'defoult'}
-                    ${touched.email && !errors.email && 'success'}
-                    ${touched.email && errors.email && 'error'}`}
+                  autoComplete="off"
+                  className={`
+                    ${errors.email && touched.email ? 'error' : ''}
+                    ${touched.email && !errors.email ? 'success' : ''}`}
                 />
+
+                {errors.email && touched.email && (
+                  <MessageInput>
+                    <SvgIcon>
+                      <use href={pulseIcon + '#checkbox'}></use>
+                    </SvgIcon>
+                    <ErrorMessage component={ErrorText} name="email" />
+                  </MessageInput>
+                )}
+                {!errors.email && touched.email && (
+                  <MessageInput>
+                    <SuccessSvg>
+                      <use href={`${pulseIcon}#checkbox`} />
+                    </SuccessSvg>
+                    <SuccessText>Success email</SuccessText>
+                  </MessageInput>
+                )}
               </label>
               <label htmlFor="password">
                 <Input
@@ -83,24 +123,43 @@ function SignInPage() {
                   id="password"
                   name="password"
                   placeholder="Password"
-                  className={`${'defoult'}
-                    ${touched.password && !errors.password && 'success'}
-                    ${touched.password && errors.password && 'error'}`}
+                  className={`${
+                    errors.password && touched.password ? 'error' : ''
+                  }
+                                    ${
+                                      touched.password && !errors.password
+                                        ? 'success'
+                                        : ''
+                                    }`}
                 />
                 {errors.password && touched.password && (
-                  <Message>
-                    <ErrorText>
-                      <ErrorMessage component="p" name="password" />
-                    </ErrorText>
-                  </Message>
+                  <MessageInput>
+                    <SvgIcon>
+                      <use href={`${pulseIcon}#checkbox`} />
+                    </SvgIcon>
+                    <ErrorMessage component={ErrorText} name="password" />
+                  </MessageInput>
                 )}
                 {!errors.password && touched.password && (
-                  <Message>
-                    <ErrorText>Success password</ErrorText>
-                  </Message>
+                  <MessageInput>
+                    <SuccessSvg>
+                      <use href={`${pulseIcon}#checkbox`} />
+                    </SuccessSvg>
+                    <SuccessText>Success password</SuccessText>
+                  </MessageInput>
+                )}
+                {!showPassword && (
+                  <Icons onClick={() => setShowPassword(!showPassword)}>
+                    <use href={pulseIcon + '#icon-eye'}></use>
+                  </Icons>
+                )}
+                {showPassword && (
+                  <Icons onClick={() => setShowPassword(!showPassword)}>
+                    <use href={pulseIcon + '#icon-eye-off'}></use>
+                  </Icons>
                 )}
               </label>
-            </Test>
+            </Contsform>
             <Button type="submit">Sign Up</Button>
           </StyledForm>
         )}

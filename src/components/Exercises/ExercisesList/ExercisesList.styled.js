@@ -5,6 +5,7 @@ export const List = styled.ul`
   flex-direction: column;
   gap: 20px;
   @media screen and (min-width: 768px) {
+    margin-top: 32px;
     flex-direction: row;
     flex-wrap: wrap;
     gap: 32px 16px;
@@ -26,5 +27,6 @@ export const List = styled.ul`
   @media screen and (min-width: 1440px) {
     max-height: 487px;
     max-width: calc(405px * 2 + 16px * 2 + 8px);
+
   }
 `;

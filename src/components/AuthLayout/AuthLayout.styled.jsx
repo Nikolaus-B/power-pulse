@@ -53,10 +53,10 @@ export const Photo = styled.div`
 
   @media screen and (min-width: 768px) {
     position: absolute;
-    width: 423px;
+    width: 437px;
     height: 893px;
     top: 47px;
-    left: 345px;
+    left: 331px;
 
     background-image: url(${Tab1x});
     @media (min-device-pixel-ratio: 2),
@@ -70,7 +70,7 @@ export const Photo = styled.div`
     position: absolute;
     width: 670px;
     height: 800px;
-    top: -84px;
+    top: -85px;
     left: 770px;
     background-image: url(${Desk1x});
 
@@ -100,11 +100,12 @@ export const Title = styled.h2`
   line-height: 1.17;
   color: #efede8;
   margin-bottom: 14px;
-
+  margin-top: 26px;
   @media screen and (min-width: 768px) {
     font-size: 32px;
     line-height: 1.38;
     margin-bottom: 16px;
+    margin-top: 33px;
   }
 `;
 
@@ -176,9 +177,11 @@ export const SvgPlay = styled.svg`
   width: 12px;
   height: 12px;
   color: #efede8;
+  padding-left: 2px;
   @media screen and (min-width: 768px) {
     width: 20px;
     height: 20px;
+    padding-left: 4px;
   }
 `;
 
