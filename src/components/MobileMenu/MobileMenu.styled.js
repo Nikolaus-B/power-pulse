@@ -46,6 +46,12 @@ export const CloseBtn = styled.button`
   background: none;
   border: none;
   cursor: pointer;
+
+  @media screen and (min-width: 768px) {
+    padding: 0;
+    width: 32px;
+    height: 32px;
+  }
 `;
 
 export const Svg = styled.svg`
@@ -76,6 +82,8 @@ export const Logout = styled.button`
 
   @media screen and (min-width: 768px) {
     font-size: 16px;
+    bottom: 32px;
+    padding: 0;
   }
 `;
 
