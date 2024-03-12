@@ -22,7 +22,7 @@ import {
 //------------------------------------------------
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
-import { useAuth } from 'components/hooks/AuthHook.js';
+import { useAuth } from '../../hooks/AuthHook.js';
 import {
   fetchUserLogout,
   fetchUserCurrent,
