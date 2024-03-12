@@ -8,49 +8,55 @@ import {
   WrapperDiaryLink,
   ExerciseTime,
   WrapperCloseIcon,
-  Span, IconClose, ArrowForwardIcon
+  Span,
+  IconClose,
 } from './ExerciseSuccess.styled';
 
-import imgHead from '../../img/like-1x.png'
+import imgHead1x from '../../img/like-1x.png';
+import imgHead2x from '../../img/like-2x.png';
+import { WrapperIconArrow } from 'components/AddProductSuccess/AddProductSuccess.styled';
+import { Icon } from 'components/Icon/Icon';
 
 export const AddExerciseSuccess = ({
   onClose,
   caloriesAdded,
-  remainingTime
+  remainingTime,
 }) => {
-
-  const formatTime = (totalSeconds) => {
+  const formatTime = totalSeconds => {
     const minutes = Math.floor(totalSeconds / 60);
     const seconds = totalSeconds % 60;
-    // const formattedMinutes = minutes < 10 ? `0${minutes}` : `${minutes}`;
     const formattedSeconds = seconds < 10 ? `0${seconds}` : `${seconds}`;
     return `${minutes}. ${formattedSeconds} second`;
   };
 
   return (
     <>
-        <WrapperCloseIcon onClick={onClose}>
-          <IconClose iconid='x-white' width={22} height={22}/>
-        </WrapperCloseIcon>
+      <WrapperCloseIcon onClick={onClose}>
+        <IconClose iconid="icon-arrow" width={22} height={22} />
+      </WrapperCloseIcon>
 
-        <Wrapper>
-          <ImageEl src={imgHead} alt="Success"  />
-          <Heading>Well done</Heading>
+      <Wrapper>
+        <ImageEl
+          src={imgHead1x}
+          srcSet={`${imgHead1x} 1x, ${imgHead2x} 2x`}
+          alt="Success"
+        />
+        <Heading>Well done</Heading>
 
-          <ExerciseTime>
+        <ExerciseTime>
           Your time:<Span>{formatTime(Math.floor(remainingTime))}</Span>
-          </ExerciseTime>
-          <Calories>
-            Burned calories:<span>{caloriesAdded}</span>
-          </Calories>
-          <ProductButton onClick={onClose}>Next product</ProductButton>
-          <WrapperDiaryLink to="/diary">
-            <DiaryLink>To the diary </DiaryLink>
-            <div>
-              <ArrowForwardIcon iconid='arrow' width={16} height={16}/>
-            </div>
-          </WrapperDiaryLink>
-        </Wrapper>
+        </ExerciseTime>
+        <Calories>
+          Burned calories:<span>{caloriesAdded}</span>
+        </Calories>
+        <ProductButton onClick={onClose}>Next exercise</ProductButton>
+        <WrapperDiaryLink to="/diary">
+          <DiaryLink>To the diary </DiaryLink>
+          <WrapperIconArrow>
+            <Icon width="16px" height="16px" iconid="icon-arrow" />
+          </WrapperIconArrow>
+        </WrapperDiaryLink>
+      </Wrapper>
     </>
   );
 };
