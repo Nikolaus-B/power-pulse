@@ -32,7 +32,7 @@ export const AddExerciseSuccess = ({
   return (
     <>
       <WrapperCloseIcon onClick={onClose}>
-        <IconClose iconid="x-white" width={22} height={22} />
+        <IconClose iconid="icon-arrow" width={22} height={22} />
       </WrapperCloseIcon>
 
       <Wrapper>

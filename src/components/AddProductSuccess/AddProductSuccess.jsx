@@ -34,7 +34,7 @@ export const AddProductSuccess = ({ onClose, caloriesAdded }) => {
         <WrapperDiaryLink to="/diary">
           <DiaryLink>To the diary </DiaryLink>
           <WrapperIconArrow>
-            <Icon width="16px" height="16px" iconid="arrow" />
+            <Icon width="16px" height="16px" iconid="icon-arrow" />
           </WrapperIconArrow>
         </WrapperDiaryLink>
       </Wrapper>
