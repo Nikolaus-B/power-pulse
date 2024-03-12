@@ -1,12 +1,12 @@
 {
   "files": {
     "main.css": "/power-pulse/static/css/main.cd2e038f.css",
-    "main.js": "/power-pulse/static/js/main.49db59d3.js",
+    "main.js": "/power-pulse/static/js/main.c1df1d8b.js",
     "static/js/12.d090faf7.chunk.js": "/power-pulse/static/js/12.d090faf7.chunk.js",
     "static/js/870.03751d06.chunk.js": "/power-pulse/static/js/870.03751d06.chunk.js",
     "static/js/235.d842f879.chunk.js": "/power-pulse/static/js/235.d842f879.chunk.js",
     "static/js/182.5e9521b0.chunk.js": "/power-pulse/static/js/182.5e9521b0.chunk.js",
-    "static/js/345.69dd981b.chunk.js": "/power-pulse/static/js/345.69dd981b.chunk.js",
+    "static/js/891.9c247255.chunk.js": "/power-pulse/static/js/891.9c247255.chunk.js",
     "static/js/311.4169059a.chunk.js": "/power-pulse/static/js/311.4169059a.chunk.js",
     "static/js/574.fbd23741.chunk.js": "/power-pulse/static/js/574.fbd23741.chunk.js",
     "static/js/168.ef315ebe.chunk.js": "/power-pulse/static/js/168.ef315ebe.chunk.js",
@@ -36,12 +36,12 @@
     "static/media/avocado-1x.png": "/power-pulse/static/media/avocado-1x.4b09d53aa12a58ab901f.png",
     "index.html": "/power-pulse/index.html",
     "main.cd2e038f.css.map": "/power-pulse/static/css/main.cd2e038f.css.map",
-    "main.49db59d3.js.map": "/power-pulse/static/js/main.49db59d3.js.map",
+    "main.c1df1d8b.js.map": "/power-pulse/static/js/main.c1df1d8b.js.map",
     "12.d090faf7.chunk.js.map": "/power-pulse/static/js/12.d090faf7.chunk.js.map",
     "870.03751d06.chunk.js.map": "/power-pulse/static/js/870.03751d06.chunk.js.map",
     "235.d842f879.chunk.js.map": "/power-pulse/static/js/235.d842f879.chunk.js.map",
     "182.5e9521b0.chunk.js.map": "/power-pulse/static/js/182.5e9521b0.chunk.js.map",
-    "345.69dd981b.chunk.js.map": "/power-pulse/static/js/345.69dd981b.chunk.js.map",
+    "891.9c247255.chunk.js.map": "/power-pulse/static/js/891.9c247255.chunk.js.map",
     "311.4169059a.chunk.js.map": "/power-pulse/static/js/311.4169059a.chunk.js.map",
     "574.fbd23741.chunk.js.map": "/power-pulse/static/js/574.fbd23741.chunk.js.map",
     "168.ef315ebe.chunk.js.map": "/power-pulse/static/js/168.ef315ebe.chunk.js.map",
@@ -54,6 +54,6 @@
   },
   "entrypoints": [
     "static/css/main.cd2e038f.css",
-    "static/js/main.49db59d3.js"
+    "static/js/main.c1df1d8b.js"
   ]
 }
