@@ -6,7 +6,7 @@ import { ExercisesList } from 'components/Exercises/ExercisesList/ExercisesList'
 import {GlobalStyle} from "../components/GlobalStyle"
 import { Icon } from 'components/Icon/Icon';
 import { Button, PageContainer, Svg, TitleWrap} from 'components/Exercises/ExercisesPage.styled'
-import { fetchFilters } from 'API/exercisesApi';
+import { fetchFilters } from '../API/exercisesApi';
 
 function ExercisesPage() {
   const [subCategories, setSubCategories] = useState([]);

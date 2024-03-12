@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Li, SubTitle, CategoryTitle, Input, RadioBtns } from "./ExercisesSubcatigoriesItem.styled";
+import { Li, SubTitle, CategoryTitle } from "./ExercisesSubcatigoriesItem.styled";
 
 const sliderSizes = {
   small: 10,
@@ -7,10 +7,9 @@ const sliderSizes = {
   large: 10
 };
 
-export const ExercisesSubcategoriesItem = ({ subcategory, filters, onSelect }) => {
+export const ExercisesSubcategoriesItem = ({ subcategory, filters, onSelect, currentPage }) => {
     
     const [viewportSize, setViewportSize] = useState('medium');
-    const [currentPage, setCurrentPage] = useState(0);
     const [categoriesToShow, setCategoriesToShow] = useState([]);
 
     useEffect(() => {
@@ -34,21 +33,13 @@ export const ExercisesSubcategoriesItem = ({ subcategory, filters, onSelect }) =
     }, []);
 
     useEffect(() => {
-        setCurrentPage(0); 
-    }, [subcategory]);
-
-    useEffect(() => {
         const startIndex = currentPage * sliderSizes[viewportSize];
         const endIndex = startIndex + sliderSizes[viewportSize];
         setCategoriesToShow(subcategory.slice(startIndex, endIndex));
     }, [currentPage, subcategory, viewportSize]);
-
-    const handlePageClick = (page) => {
-        setCurrentPage(page);
-    };
     
     return (
-      <>
+        <>
         {categoriesToShow.map((category, index) => {
                 const item = filters.find(item => item._id === category);
                 const handleClick = () => {
@@ -68,41 +59,6 @@ export const ExercisesSubcategoriesItem = ({ subcategory, filters, onSelect }) =
                     </Li>
                 );
         })}
-        {subcategory.length > sliderSizes[viewportSize] && (
-          <RadioBtns>
-            {Array.from(Array(Math.ceil(subcategory.length / sliderSizes[viewportSize])).keys()).map((page) => (
-              <label key={page}>
-                <Input
-                  type="radio"
-                  name="page"
-                  value={page}
-                  checked={currentPage === page}
-                  onChange={() => handlePageClick(page)}
-                />
-              </label>
-            ))}
-          </RadioBtns>)}
     </>
-        // <>
-        //     {subcategory.map(id => {
-        //         const item = filters.find(item => item._id.$oid === id); 
-        //         const handleClick = () => {
-        //             onSelect(item.name); 
-        //         };
-        //             return (
-        //                 <Li key={item._id.$oid}
-        //                     style={{
-        //                         backgroundImage: `linear-gradient(rgba(4, 4, 4, 0.5), rgba(4, 4, 4, 0.5)), url(${item.imgURL})`,
-        //                         backgroundSize: 'cover', 
-        //                         backgroundPosition: 'center', 
-        //                         backgroundRepeat: 'no-repeat'
-        //                     }}
-        //                     onClick={handleClick}>
-        //                     <SubTitle>{item.name}</SubTitle>
-        //                     <CategoryTitle>{item.filter}</CategoryTitle>
-        //                 </Li>
-        //             );
-        //     })}
-        // </>
     )
 }

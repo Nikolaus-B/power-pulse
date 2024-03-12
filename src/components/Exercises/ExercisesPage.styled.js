@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import BgImg1x from '../../img/hero-1x.jpg';
-import BgImg2x from '../../img/hero-2x.jpg';
+import BgImg1x from '../../img/exercises-1x.jpg';
+import BgImg2x from '../../img/exercises-2x.jpg';
 
 export const Button = styled.button`
     background-color: transparent;
@@ -33,8 +33,7 @@ export const PageContainer = styled.div`
     background-image: url(${BgImg1x});
     background-repeat: no-repeat;
     background-position: 963px top;
-    background-size: 50%;
-    height: 716px;
+    background-size: contain;
 
     @media (min-device-pixel-ratio: 2),
       (-webkit-min-device-pixel-ratio: 2),
