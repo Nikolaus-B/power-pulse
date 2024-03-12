@@ -1,7 +1,5 @@
-
 import React, { useState } from 'react';
-import { CloseIcon } from '@chakra-ui/icons';
-
+import { Icon } from 'components/Icon/Icon';
 import {
   CancelButton,
   AddToDiaryButton,
@@ -11,10 +9,16 @@ import {
   Text,
   Span,
   WrapperCloseIcon,
-  WrapperInputForm
+  WrapperInputForm,
 } from './AddProductForm.styled';
 
-export const AddProductForm = ({ product, onClose, onCloseForm, onSuccess, onError }) => {
+export const AddProductForm = ({
+  product,
+  onClose,
+  onCloseForm,
+  onSuccess,
+  onError,
+}) => {
   const [grams, setGrams] = useState('');
   const [calories, setCalories] = useState(0);
 
@@ -36,15 +40,14 @@ export const AddProductForm = ({ product, onClose, onCloseForm, onSuccess, onErr
     e.preventDefault();
     e.stopPropagation();
 
-        onCloseForm()
-        onSuccess(calories);
-
+    onCloseForm();
+    onSuccess(calories);
   };
 
   return (
     <>
       <WrapperCloseIcon onClick={onClose}>
-        <CloseIcon w={11} h={11} />
+        <Icon width='22px' height='22px' iconid='x-white'/>
       </WrapperCloseIcon>
       <ModalForm onSubmit={handleSubmit}>
         <WrapperInputForm>
@@ -53,6 +56,7 @@ export const AddProductForm = ({ product, onClose, onCloseForm, onSuccess, onErr
             <GrammInput
               type="number"
               inputMode="numeric"
+              placeholder='0'
               value={grams}
               onChange={handleGramsChange}
             />
@@ -64,12 +68,10 @@ export const AddProductForm = ({ product, onClose, onCloseForm, onSuccess, onErr
           Calories:
           <span style={{ color: 'white', marginLeft: '4px' }}>{calories}</span>
         </Text>
-          <AddToDiaryButton type="submit">
-            Add to diary
-          </AddToDiaryButton>
-          <CancelButton type="button" onClick={onClose}>
-            Cancel
-          </CancelButton>
+        <AddToDiaryButton type="submit">Add to diary</AddToDiaryButton>
+        <CancelButton type="button" onClick={onClose}>
+          Cancel
+        </CancelButton>
       </ModalForm>
     </>
   );

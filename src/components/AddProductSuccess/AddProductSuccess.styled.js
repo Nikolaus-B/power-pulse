@@ -10,7 +10,7 @@ const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
 
-  @media screen and (min-width: 768px) and (max-width: 1439px)  {
+  @media screen and (min-width: 768px) {
 padding: 64px 136px 64px 137px;
   }
 `;
@@ -27,7 +27,7 @@ const ImageEl = styled.img`
   width: 123px;
   height: 84px;
 
-  @media screen and (min-width: 768px) and (max-width: 1439px)  {
+  @media screen and (min-width: 768px) {
 margin-bottom: 32px;
   }
 `;
@@ -47,7 +47,7 @@ const Calories = styled.p`
     color: rgba(230, 83, 60, 1);
   }
 
-  @media screen and (min-width: 768px) and (max-width: 1439px)  {
+  @media screen and (min-width: 768px) {
 margin-bottom: 32px;
   }
 `;
@@ -66,7 +66,7 @@ const ProductButton = styled.button`
   padding: 12px 32px;
   margin-bottom: 16px;
 
-  @media screen and (min-width: 768px) and (max-width: 1439px)  {
+  @media screen and (min-width: 768px) {
 width: 157px;
 height: 52px;
   }

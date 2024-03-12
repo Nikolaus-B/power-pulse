@@ -28,23 +28,30 @@ const ModalForm = styled.form`
 
   height: auto;
 
-  @media screen and (min-width: 768px) and (max-width: 1439px)  {
+  @media screen and (min-width: 768px)  {
     padding: 48px 32px;
   }
 `;
 
 const WrapperCloseIcon = styled.div`
 position: fixed;
-top: 18px;
-right: 18px;
+top: 14px;
+right: 14px;
 cursor: pointer;
+
+@media screen and (min-width: 768px)   {
+svg{
+  width: 26px;
+  height: 26px;
+}
+  }
 
 `
 
 const WrapperInputForm = styled.div`
 width: 100%;
 
-  @media screen and (min-width: 768px) and (max-width: 1439px)  {
+  @media screen and (min-width: 768px)  {
     display: flex;
     gap: 16px;
   }
@@ -64,7 +71,7 @@ const ProductInput = styled.input`
   background-color: transparent;
   outline: none;
 
-  @media screen and (min-width: 768px) and (max-width: 1439px)  {
+  @media screen and (min-width: 768px)   {
     width: 244px;
     font-size: 16px;
     line-height: 1.5;
@@ -86,7 +93,7 @@ const GrammInput = styled.input`
   background-color: transparent;
   outline: none;
 
-  @media screen and (min-width: 768px) and (max-width: 1439px)  {
+  @media screen and (min-width: 768px)   {
     width: 155px;
     font-size: 16px;
     line-height: 1.5;
@@ -104,7 +111,7 @@ const Span = styled.span`
   top: 115px;
   transform: translateY(-50%);
 
-  @media screen and (min-width: 768px) and (max-width: 1439px)  {
+  @media screen and (min-width: 768px) {
     top: 68px;
   }
 `;
@@ -115,7 +122,7 @@ const Text = styled.p`
   color: rgba(239, 237, 232, 0.3);
   margin-bottom: 24px;
 
-  @media screen and (min-width: 768px) and (max-width: 1439px)  {
+  @media screen and (min-width: 768px)  {
     margin-bottom: 64px;
   }
 
@@ -132,7 +139,7 @@ const AddToDiaryButton = styled.button`
   color: #EFEDE8;
   border: none;
 
-  @media screen and (min-width: 768px) and (max-width: 1439px)  {
+  @media screen and (min-width: 768px) {
     line-height: 1.5;
     padding: 14px 32px;
     height: 52px;
@@ -155,7 +162,7 @@ margin: 0;
 
   
 
-  @media screen and (min-width: 768px) and (max-width: 1439px)  {
+  @media screen and (min-width: 768px) {
   width: 142px;
   height: 52px;
 font-size: 20px;

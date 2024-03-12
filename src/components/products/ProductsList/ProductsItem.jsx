@@ -124,9 +124,7 @@ BasicModalWindow.setAppElement('#root');
             />
           ) : (
             <AddProductSuccess
-              isSuccessOpen={true}
               onClose={handleCloseSuccess}
-              onCloseSuccess={handleCloseForm}
               caloriesAdded={caloriesAdded}
             />
           )}
