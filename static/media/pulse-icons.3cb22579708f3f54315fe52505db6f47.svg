@@ -42,4 +42,7 @@
 </symbol><symbol id="icon-Icon" viewBox="0 0 46 32">
 <path stroke-linejoin="round" stroke-linecap="butt" stroke-miterlimit="4" stroke-width="4.5714" d="M2.286 16h27.429M2.286 2.286h41.143M2.286 29.714h41.143"></path>
 </symbol>
+<symbol id="icon-arrow" viewBox="0 0 32 32">
+<path fill="rgba(239, 237, 232, 0.3)" stroke="rgba(239, 237, 232, 0.3)" style="stroke: var(--color1, rgba(239, 237, 232, 0.3))" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.6" d="M15 28l13-13M28 15l-13-13M28 15h-26"></path>
+</symbol>
 </defs></svg>
