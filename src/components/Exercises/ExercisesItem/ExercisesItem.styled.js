@@ -17,7 +17,7 @@ export const HeaderWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 35px;
+  margin-bottom: 33px;
 `;
 
 export const WorkoutContainer = styled.div`
@@ -38,8 +38,8 @@ export const Button = styled.button`
   margin: 0; 
   cursor: pointer;
   display: flex;
+  gap: 8px;
   align-items: center;
-  width: 49px;
   height: 18px;
   padding: 0px;
   background-color: inherit;
@@ -48,16 +48,27 @@ export const Button = styled.button`
   color: var(--orange-color);
 `;
 
+export const StartWrap = styled.div`
+  width: 16px;
+  height: 16px;
+`;
+
 export const TitleWrapper = styled.div`
   display: flex;
+  gap: 16px;
   margin-bottom: 8px;
+`;
+
+export const IconWrap = styled.div`
+  width: 24px;
+  height: 24px;
 `;
 
 export const TitleText = styled.p`
   font-weight: 400;
   font-size: 20px;
+  line-height: 1.2;
   color: var(--white-color);
-  margin-left: 16px;
   text-transform: capitalize;
   white-space: nowrap;
   overflow: hidden;

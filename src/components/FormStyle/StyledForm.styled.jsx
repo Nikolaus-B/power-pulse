@@ -174,17 +174,16 @@ export const IconsIn = styled.svg`
   height: 20px;
   position: absolute;
   left: 320px;
-  bottom: 205px;
+  top: 250px;
 
   @media screen and (min-width: 768px) {
     position: absolute;
     left: 362px;
-    bottom: 254px;
+    top: 298px;
   }
 
   @media screen and (min-width: 1440px) {
     position: absolute;
     left: 426px;
-    bottom: 243px;
   }
 `;
