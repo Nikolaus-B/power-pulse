@@ -5,6 +5,8 @@ import { useDispatch } from 'react-redux';
 import { useAuth } from './hooks/AuthHook';
 import { refreshing } from '../redux/user/operations';
 import { Toaster } from 'react-hot-toast';
+import { PrivateRoute } from '../redux/PrivateRoute';
+import { RestrictedRoute } from '../redux/RestrictedRoute';
 
 const HomePage = lazy(() => import('pages/HomePage'));
 const NotFoundPage = lazy(() => import('pages/NotFoundPage'));
@@ -25,20 +27,43 @@ export const App = () => {
   }, [dispatch]);
 
   return isRefreshing ? (
-    <Suspense fallback />
+    <Suspense fallback={<div>Loading...</div>}>
+      {/* Додайте спінер або повідомлення завантаження */}
+    </Suspense>
   ) : (
     <>
       <Routes>
         <Route path="/" element={<AppLayout />}>
           <Route index element={<HomePage />} />
-          <Route path="/register" element={<SingUpPage />} />
-          <Route path="/login" element={<SingInPage />} />
-          <Route path="/settings" element={<UserPage />} />
-          <Route path="/diary" element={<DiaryPage />} />
-          <Route path="/product" element={<ProductsPage />} />
-          <Route path="/exercises" element={<ExercisesPage />}>
-            <Route path="title" element={<TitlePage />} />
-          </Route>
+          <Route
+            path="/register"
+            element={
+              <RestrictedRoute redirectTo="/settings" component={SingUpPage} />
+            }
+          />
+          <Route
+            path="/login"
+            element={
+              <RestrictedRoute redirectTo="/diary" component={SingInPage} />
+            }
+          />
+          <PrivateRoute
+            path="/settings"
+            element={<UserPage />}
+            redirectTo="/"
+          />
+          <PrivateRoute path="/diary" element={<DiaryPage />} redirectTo="/" />
+          <PrivateRoute
+            path="/product"
+            element={<ProductsPage />}
+            redirectTo="/"
+          />
+          <PrivateRoute
+            path="/exercises"
+            element={<ExercisesPage />}
+            redirectTo="/"
+          />
+          <Route path="/exercises/title" element={<TitlePage />} />
         </Route>
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
