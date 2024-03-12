@@ -96,9 +96,13 @@ export const UserForm = () => {
           autoComplete="off"
           autoFocus={false}
           onSubmit={formik.handleSubmit}
-          spacing={{ base: '40px', md: '16px' }}
-          paddingRight={{ xl: '64px' }}
-          borderRight={{ xl: '1px solid rgba(239, 237, 232, 0.2)' }}
+          spacing={[10, 4, 4]}
+          paddingRight={[0, 0, 16]}
+          borderRight={{
+            base: '0',
+            md: '0',
+            xl: '1px solid rgba(239, 237, 232, 0.2)',
+          }}
         >
           <Stack spacing="14px">
             <Stack
@@ -109,9 +113,9 @@ export const UserForm = () => {
                 isInvalid={formik.errors.name && formik.touched.name}
               >
                 <FormLabel
-                  fontSize={{ base: '12px', md: '14px' }}
-                  lineHeight={{ base: '150%', md: '129%' }}
-                  mb={{ base: '4px', md: '8px' }}
+                  fontSize={[12, 14, 14]}
+                  lineHeight={['150%', '129%', '129%']}
+                  mb={[4, 8, 8]}
                 >
                   Name
                 </FormLabel>
@@ -126,9 +130,9 @@ export const UserForm = () => {
                   aria-label="name"
                   aria-invalid={true}
                   w="100%"
-                  h={{ base: '46px', md: '52px' }}
-                  fontSize={{ base: '14px', md: '16px' }}
-                  lineHeight={{ base: '129%', md: '150%' }}
+                  h={['46px', '52px', '52px']}
+                  fontSize={[14, 16, 16]}
+                  lineHeight={['129%', '150%', '150%']}
                 />
 
                 {formik.errors.name && formik.touched.name && (
@@ -147,9 +151,9 @@ export const UserForm = () => {
 
               <FormControl>
                 <FormLabel
-                  fontSize={{ base: '12px', md: '14px' }}
-                  lineHeight={{ base: '150%', md: '129%' }}
-                  mb={{ base: '4px', md: '8px' }}
+                  fontSize={[12, 14, 14]}
+                  lineHeight={['150%', '129%', '129%']}
+                  mb={[4, 8, 8]}
                 >
                   Email
                 </FormLabel>
@@ -160,15 +164,15 @@ export const UserForm = () => {
                   aria-label="email"
                   isReadOnly={true}
                   w="100%"
-                  h={{ base: '46px', md: '52px' }}
-                  fontSize={{ base: '14px', md: '16px' }}
-                  lineHeight={{ base: '129%', md: '150%' }}
+                  h={['46px', '52px', '52px']}
+                  fontSize={[14, 16, 16]}
+                  lineHeight={['129%', '150%', '150%']}
                 />
               </FormControl>
             </Stack>
             <Stack
               direction={{ base: 'column', md: 'row', xl: 'row' }}
-              spacing={{ base: '14px', md: '14px', xl: '14px' }}
+              spacing={['14px']}
             >
               <HStack spacing="14px">
                 <FormControl
@@ -176,9 +180,9 @@ export const UserForm = () => {
                   alignSelf="baseline"
                 >
                   <FormLabel
-                    fontSize={{ base: '12px', md: '14px' }}
-                    lineHeight={{ base: '150%', md: '129%' }}
-                    mb={{ base: '4px', md: '8px' }}
+                    fontSize={[12, 14, 14]}
+                    lineHeight={['150%', '129%', '129%']}
+                    mb={[1, 2, 2]}
                   >
                     Height
                   </FormLabel>
@@ -191,9 +195,9 @@ export const UserForm = () => {
                     value={formik.values.height}
                     onChange={formik.handleChange}
                     aria-label="height"
-                    h={{ base: '46px', md: '52px' }}
-                    fontSize={{ base: '14px', md: '16px' }}
-                    lineHeight={{ base: '129%', md: '150%' }}
+                    h={['46px', '52px', '52px']}
+                    fontSize={[14, 16, 16]}
+                    lineHeight={['129%', '150%', '150%']}
                   />
 
                   {formik.errors.height && formik.touched.height && (
@@ -217,9 +221,9 @@ export const UserForm = () => {
                   alignSelf="baseline"
                 >
                   <FormLabel
-                    fontSize={{ base: '12px', md: '14px' }}
-                    lineHeight={{ base: '150%', md: '129%' }}
-                    mb={{ base: '4px', md: '8px' }}
+                    fontSize={[12, 14, 14]}
+                    lineHeight={['150%', '129%', '129%']}
+                    mb={[1, 2, 2]}
                   >
                     Current Weight
                   </FormLabel>
@@ -232,9 +236,9 @@ export const UserForm = () => {
                     value={formik.values.currentWeight}
                     onChange={formik.handleChange}
                     aria-label="currentWeight"
-                    h={{ base: '46px', md: '52px' }}
-                    fontSize={{ base: '14px', md: '16px' }}
-                    lineHeight={{ base: '129%', md: '150%' }}
+                    h={['46px', '52px', '52px']}
+                    fontSize={[14, 16, 16]}
+                    lineHeight={['129%', '150%', '150%']}
                   />
 
                   {formik.errors.currentWeight &&
@@ -260,9 +264,9 @@ export const UserForm = () => {
                   alignSelf="baseline"
                 >
                   <FormLabel
-                    fontSize={{ base: '12px', md: '14px' }}
-                    lineHeight={{ base: '150%', md: '129%' }}
-                    mb={{ base: '4px', md: '8px' }}
+                    fontSize={[12, 14, 14]}
+                    lineHeight={['150%', '129%', '129%']}
+                    mb={[1, 2, 2]}
                   >
                     Desired Weight
                   </FormLabel>
@@ -275,9 +279,9 @@ export const UserForm = () => {
                     value={formik.values.desiredWeight}
                     onChange={formik.handleChange}
                     aria-label="desiredWeight"
-                    h={{ base: '46px', md: '52px' }}
-                    fontSize={{ base: '14px', md: '16px' }}
-                    lineHeight={{ base: '129%', md: '150%' }}
+                    h={['46px', '52px', '52px']}
+                    fontSize={[14, 16, 16]}
+                    lineHeight={['129%', '150%', '150%']}
                   />
 
                   {formik.errors.desiredWeight &&
@@ -297,9 +301,9 @@ export const UserForm = () => {
 
                 <FormControl alignSelf="baseline">
                   <FormLabel
-                    fontSize={{ base: '12px', md: '14px' }}
-                    lineHeight={{ base: '150%', md: '129%' }}
-                    mb={{ base: '4px', md: '8px' }}
+                    fontSize={[12, 14, 14]}
+                    lineHeight={['150%', '129%', '129%']}
+                    mb={[1, 2, 2]}
                   >
                     Date of birth
                   </FormLabel>
@@ -312,20 +316,20 @@ export const UserForm = () => {
                     value={formik.values.birthday}
                     onChange={formik.handleChange}
                     aria-label="birthday"
-                    h={{ base: '46px', md: '52px' }}
-                    fontSize={{ base: '14px', md: '16px' }}
-                    lineHeight={{ base: '129%', md: '150%' }}
+                    h={['46px', '52px', '52px']}
+                    fontSize={[14, 16, 16]}
+                    lineHeight={['129%', '150%', '150%']}
                   />
                 </FormControl>
               </HStack>
             </Stack>
           </Stack>
-          <Stack spacing={{ base: '40px', md: '32px' }}>
+          <Stack spacing={{ base: '40px', md: '32px', xl: '32px' }}>
             <Stack spacing="0">
               <Text
-                fontSize={{ base: '12px', md: '14px' }}
-                lineHeight={{ base: '150%', md: '129%' }}
-                mb={{ base: '4px', md: '8px' }}
+                fontSize={[12, 14, 14]}
+                lineHeight={['150%', '129%', '129%']}
+                mb={[1, 2, 2]}
               >
                 Blood
               </Text>
@@ -373,7 +377,7 @@ export const UserForm = () => {
 
             <RadioGroup
               defaultValue={user.levelActivity}
-              size={{ base: 'base', md: 'md' }}
+              size={{ base: 'base', md: 'md', xl: 'md' }}
               variant="groove"
             >
               <VStack spacing="8px" align="flex-start">
@@ -404,9 +408,10 @@ export const UserForm = () => {
           </Stack>
           <Button
             type="submit"
-            w={{ base: '115px', md: '144px' }}
-            mt={{ base: '40px', md: '38px', xl: '48px' }}
-            size={{ base: 'base', md: 'md' }}
+            w={[115, 144, 144]}
+            mt={[10, 10, 12]}
+            size={{ base: 'base', md: 'md', xl: 'md' }}
+            bgColor="#e6533c"
             variant="solid"
             disabled
           >

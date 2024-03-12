@@ -32,11 +32,8 @@ export const theme = extendTheme({
   },
   breakpoints: {
     base: '0px',
-    sm: null,
     md: '768px',
-    lg: null,
     xl: '1281px',
-    '2xl': '1536px',
   },
   components: {
     Container: containerStyle,

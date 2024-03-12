@@ -1,6 +1,25 @@
 import { defineStyle, defineStyleConfig } from '@chakra-ui/react';
 
-const solid = defineStyle({
+const sizes = defineStyle({
+  base: {
+    minWidth: '32px',
+    px: '40px',
+    py: '12px',
+
+    fontSize: '15px',
+    lineHeight: '112%',
+  },
+  md: {
+    minWidth: '32px',
+    px: '50px',
+    py: '16px',
+
+    fontSize: '20px',
+    lineHeight: '112%',
+  },
+});
+
+const variantSolid = defineStyle({
   border: '1px solid',
   borderRadius: '12px',
   borderColor: '#e6533c',
@@ -19,24 +38,23 @@ const solid = defineStyle({
   },
 });
 
-const sizes = defineStyle({
-  base: {
-    px: '40px',
-    py: '12px',
-
-    fontSize: '15px',
-    lineHeight: '112%',
-  },
-  md: {
-    px: '50px',
-    py: '16px',
-
-    fontSize: '20px',
-    lineHeight: '112%',
-  },
+const variantUnstyled = defineStyle({
+  color: 'inherit',
+  display: 'inline',
+  lineHeight: 'inherit',
+  fontWeight: 'normal',
+  w: '32px',
+  h: 'auto',
+  m: '0',
+  p: '0',
 });
+
+const variants = {
+  solid: variantSolid,
+  unstyled: variantUnstyled,
+};
 
 export const buttonStyles = defineStyleConfig({
   sizes,
-  variants: { solid },
+  variants,
 });

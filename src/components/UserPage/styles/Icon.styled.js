@@ -1,7 +1,10 @@
 import styled from 'styled-components';
 import { Icon } from 'components/Icon/Icon';
 
-export const AvatarIcon = styled(Icon)``;
+export const AvatarIcon = styled(Icon)`
+  width: '41px';
+  height: '41px';
+`;
 
 export const AddAvatarIcon = styled(Icon)``;
 

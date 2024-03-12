@@ -40,25 +40,23 @@ export const UserCard = () => {
 
   return (
     <Stack>
-      <VStack spacing={{ base: '40px', md: '32px' }}>
+      <VStack spacing={[10, 8, 8]}>
         <VStack spacing="32px">
           <VStack>
             <Avatar
               icon={
-                <AvatarIcon iconid={'avatar'} width={'38px'} height={'38px'} />
+                <AvatarIcon iconid={'avatar'} width={'41px'} height={'41px'} />
               }
               pos="relative"
-              w={{ base: '90px', md: '150px' }}
-              h={{ base: '90px', md: '150px' }}
+              w={[90, 150, 150]}
+              h={[90, 150, 150]}
             >
               <Button
                 type="submit"
                 onClick={() => dispatch(fetchUserAvatars())}
                 pos="absolute"
-                right={{ base: '18px', md: '50px' }}
-                bottom={{ base: '-14px', md: '-14px' }}
-                h="auto"
-                p="0"
+                right={[7, 14, 14]}
+                bottom={[-4]}
                 variant="unstyled"
               >
                 <AddAvatarIcon
@@ -72,9 +70,9 @@ export const UserCard = () => {
 
           <VStack>
             <Text
-              fontSize={{ base: '18px', md: '24px' }}
-              lineHeight={{ base: '111%', md: '117%' }}
-              mb={{ base: '4px', mb: '8px' }}
+              fontSize={[18, 24, 24]}
+              lineHeight={['111%', '117%', '117%']}
+              mb={[1, 2, 2]}
             >
               {user.name}
             </Text>
@@ -84,35 +82,35 @@ export const UserCard = () => {
           </VStack>
         </VStack>
 
-        <HStack spacing={{ base: '12px', md: '16px' }}>
+        <HStack spacing={[3, 4, 4]}>
           <Card
             direction="column"
             justify="space-between"
             align="flex-start"
-            w={{ base: '165px', md: '214px', xl: '209px' }}
-            h={{ base: '96px', md: '108px' }}
+            w={[165, 214, 209]}
+            h={['96px', 108, 108]}
           >
             <CardHeader>
               <HStack>
                 <FoodIcon iconid={'food'} width={'20px'} height={'20px'} />
                 <Text
                   color="rgba(239, 237, 232, 0.8)"
-                  lineHeight={{ base: '133%', md: '150%' }}
+                  lineHeight={['133%', '150%', '150%']}
                 >
                   Daily calorie intake
                 </Text>
               </HStack>
             </CardHeader>
             <CardFooter>
-              <Text lineHeight={{ base: '111%', md: '133%' }}>{bmr}</Text>
+              <Text lineHeight={['111%', '133%', '133%']}>{bmr}</Text>
             </CardFooter>
           </Card>
           <Card
             direction="column"
             justify="space-between"
             align="flex-start"
-            w={{ base: '165px', md: '214px', xl: '209px' }}
-            h={{ base: '96px', md: '108px' }}
+            w={[165, 214, 209]}
+            h={['96px', 108, 108]}
           >
             <CardHeader>
               <HStack>
@@ -123,14 +121,14 @@ export const UserCard = () => {
                 />
                 <Text
                   color="rgba(239, 237, 232, 0.8)"
-                  line-height={{ base: '133%', md: '150%' }}
+                  line-height={['133%', '150%', '150%']}
                 >
                   Daily physical activity
                 </Text>
               </HStack>
             </CardHeader>
             <CardFooter>
-              <Text lineHeight={{ base: '111%', md: '133%' }}>
+              <Text lineHeight={['111%', '133%', '133%']}>
                 {dailyRateSports} min
               </Text>
             </CardFooter>
@@ -152,10 +150,10 @@ export const UserCard = () => {
             />
           </Stack>
           <Text
-            w={{ base: '303px', md: '407px' }}
+            w={[303, 407]}
             h="73px"
-            fontSize={{ base: '14px', md: '16px' }}
-            lineHeight={{ base: '129%', md: '150%' }}
+            fontSize={[14, 16, 16]}
+            lineHeight={['129%', '150%', '150%']}
           >
             We understand that each individual is unique, so the entire approach
             to diet is relative and tailored to your unique body and goals.
@@ -172,10 +170,7 @@ export const UserCard = () => {
           alignContent="center"
           alignSelf="flex-end"
           iconSpacing="8px"
-          h="auto"
-          p="0"
-          fontSize={{ base: '14px', md: '16px' }}
-          fontWeight="normal"
+          fontSize={[14, 16, 16]}
           variant="unstyled"
         >
           Logout
