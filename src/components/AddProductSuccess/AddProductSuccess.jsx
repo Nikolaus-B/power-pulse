@@ -1,5 +1,4 @@
 import img from '../../img/avocado-1x.png';
-import { CloseIcon, ArrowForwardIcon } from '@chakra-ui/icons';
 import { Icon } from 'components/Icon/Icon';
 import {
   Wrapper,
@@ -10,6 +9,7 @@ import {
   ProductButton,
   WrapperCloseIcon,
   WrapperDiaryLink,
+  WrapperIconArrow
 } from './AddProductSuccess.styled';
 
 export const AddProductSuccess = ({
@@ -31,10 +31,9 @@ export const AddProductSuccess = ({
           <ProductButton onClick={onClose}>Next product</ProductButton>
           <WrapperDiaryLink to="/diary">
             <DiaryLink>To the diary </DiaryLink>
-            <div style={{marginRight: '10px'}}>
-              {/* <ArrowForwardIcon boxSize={24} color="rgba(239, 237, 232, 0.3)" /> */}
+            <WrapperIconArrow>
               <Icon width='16px' height='16px' iconid='arrow'/>
-            </div>
+            </WrapperIconArrow>
           </WrapperDiaryLink>
         </Wrapper>
     </>

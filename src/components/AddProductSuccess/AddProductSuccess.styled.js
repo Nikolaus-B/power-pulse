@@ -65,10 +65,15 @@ const ProductButton = styled.button`
   background-color: rgba(230, 83, 60, 1);
   padding: 12px 32px;
   margin-bottom: 16px;
+  transition: transform 0.2s;
 
   @media screen and (min-width: 768px) {
 width: 157px;
 height: 52px;
+
+&:hover{
+      transform: scale(1.02);
+    }
   }
 `;
 
@@ -77,6 +82,12 @@ display: flex;
 align-items : center ;
 text-decoration: none;
 cursor: pointer;
+`
+
+const WrapperIconArrow = styled.div`
+display: flex;
+justify-content: center;
+margin-left: 8px;
 `
 
 const DiaryLink = styled.div`
@@ -88,4 +99,4 @@ const DiaryLink = styled.div`
 `;
 
 
-export { Wrapper, DiaryLink, ImageEl, Heading, Calories, ProductButton , WrapperCloseIcon , WrapperDiaryLink };
+export { Wrapper, DiaryLink, ImageEl, Heading, Calories, ProductButton , WrapperCloseIcon , WrapperDiaryLink , WrapperIconArrow };

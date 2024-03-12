@@ -11,6 +11,8 @@ import {
   InfoList,
   InfoItem,
   AddToDiaryButton,
+  TimerInfoWrapper,
+  InfoListWrapper
 } from './ExerciseForm.styled';
 import { Icon } from 'components/Icon/Icon';
 import { useDispatch } from 'react-redux';
@@ -94,6 +96,7 @@ export const AddExerciseForm = ({
 
   return (
     <Wrapper>
+      <TimerInfoWrapper>
       <ImageExercise src={gifUrl} alt="Exercise GIF" />
       <WrapperTimer>
         <Timetext>Time</Timetext>
@@ -128,8 +131,11 @@ export const AddExerciseForm = ({
         <BurnedCalories>
           Burned calories : <span>{dynamicBurnCal}</span>
         </BurnedCalories>
+
       </WrapperTimer>
-      <InfoList>
+      </TimerInfoWrapper>
+<InfoListWrapper>
+<InfoList>
         <InfoItem>
           <p>Name</p>
           <p>{name}</p>
@@ -148,6 +154,7 @@ export const AddExerciseForm = ({
       <AddToDiaryButton onClick={() => handleAddToDiary()}>
         Add to diary
       </AddToDiaryButton>
+</InfoListWrapper>
     </Wrapper>
   );
 };
