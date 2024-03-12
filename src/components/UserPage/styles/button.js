@@ -46,7 +46,7 @@ const variantUnstyled = defineStyle({
   w: '32px',
   h: 'auto',
   m: '0',
-  p: '0',
+  pr: '30px',
 });
 
 const variants = {

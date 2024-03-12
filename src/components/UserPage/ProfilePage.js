@@ -1,5 +1,11 @@
 import React from 'react';
-import { ChakraProvider, Container, Stack, VStack } from '@chakra-ui/react';
+import {
+  ChakraProvider,
+  Container,
+  Stack,
+  VStack,
+  Heading,
+} from '@chakra-ui/react';
 import { theme } from './mods/Theme';
 import { Title } from 'components/Title/Title';
 import { UserCard } from './UserCard';
@@ -10,8 +16,8 @@ export const ProfilePage = () => {
   return (
     <ChakraProvider theme={theme} resetCSS>
       <Container px={[5, 8, 8]} centerContent>
-        <VStack spacing={10} w="100%">
-          <Title />
+        <VStack spacing={10} w="100%" align="flex-start">
+          <Title as={Heading} title={'ProfileSettings'} />
           <Stack
             w={{ xl: '100%' }}
             direction={{ base: 'column', md: 'column', xl: 'row-reverse' }}

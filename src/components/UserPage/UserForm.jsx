@@ -115,7 +115,7 @@ export const UserForm = () => {
                 <FormLabel
                   fontSize={[12, 14, 14]}
                   lineHeight={['150%', '129%', '129%']}
-                  mb={[4, 8, 8]}
+                  mb={[1, 2, 2]}
                 >
                   Name
                 </FormLabel>
@@ -153,7 +153,7 @@ export const UserForm = () => {
                 <FormLabel
                   fontSize={[12, 14, 14]}
                   lineHeight={['150%', '129%', '129%']}
-                  mb={[4, 8, 8]}
+                  mb={[1, 2, 2]}
                 >
                   Email
                 </FormLabel>
@@ -336,7 +336,7 @@ export const UserForm = () => {
               <HStack justify="space-between">
                 <RadioGroup
                   defaultValue={user.blood}
-                  size={{ base: 'base', md: 'md' }}
+                  size={{ base: 'base', md: 'md', xl: 'md' }}
                   variant="groove"
                 >
                   <VStack>
@@ -377,31 +377,43 @@ export const UserForm = () => {
 
             <RadioGroup
               defaultValue={user.levelActivity}
+              fontSize={[14, 16, 16]}
+              lineHeight={['129%', '150%', '150%']}
               size={{ base: 'base', md: 'md', xl: 'md' }}
               variant="groove"
             >
               <VStack spacing="8px" align="flex-start">
                 <FormLabel>
                   <Radio type="radio" name="levelActivity" value="1" />
-                  Sedentary lifestyle (little or no physical activity)
+                  <Text as="span" width={[310, 523, 523]}>
+                    Sedentary lifestyle (little or no physical activity)
+                  </Text>
                 </FormLabel>
                 <FormLabel>
                   <Radio type="radio" name="levelActivity" value="2" />
-                  Light activity (light exercises/sports 1-3 days per week)
+                  <Text as="span" width={[310, 523, 523]}>
+                    Light activity (light exercises/sports 1-3 days per week)
+                  </Text>
                 </FormLabel>
                 <FormLabel>
                   <Radio type="radio" name="levelActivity" value="3" />
-                  Moderately active (moderate exercises/sports 3-5 days per
-                  week)
+                  <Text as="span" width={[310, 523, 523]}>
+                    Moderately active (moderate exercises/sports 3-5 days per
+                    week)
+                  </Text>
                 </FormLabel>
                 <FormLabel>
                   <Radio type="radio" name="levelActivity" value="4" />
-                  Very active (intense exercises/sports 6-7 days per week)
+                  <Text as="span" width={[310, 523, 523]}>
+                    Very active (intense exercises/sports 6-7 days per week)
+                  </Text>
                 </FormLabel>
                 <FormLabel>
                   <Radio type="radio" name="levelActivity" value="5" />
-                  Extremely active (very strenuous exercises/sports and physical
-                  work)
+                  <Text as="span" width={[310, 523, 523]}>
+                    Extremely active (very strenuous exercises/sports and
+                    physical work)
+                  </Text>
                 </FormLabel>
               </VStack>
             </RadioGroup>
