@@ -1,4 +1,3 @@
-import img from '../../img/avocado-1x.png';
 import { Icon } from 'components/Icon/Icon';
 import {
   Wrapper,
@@ -9,33 +8,36 @@ import {
   ProductButton,
   WrapperCloseIcon,
   WrapperDiaryLink,
-  WrapperIconArrow
+  WrapperIconArrow,
 } from './AddProductSuccess.styled';
+import avocado1x from '../../img/avocado-1x.png';
+import avocado2x from '../../img/avocado-2x.png';
 
-export const AddProductSuccess = ({
-  onClose,
-  caloriesAdded,
-}) => {
+export const AddProductSuccess = ({ onClose, caloriesAdded }) => {
   return (
     <>
-        <WrapperCloseIcon onClick={onClose}>
-        <Icon width='22px' height='22px' iconid='x-white'/>
-        </WrapperCloseIcon>
-        <Wrapper>
-          <ImageEl src={img} alt="Success" />
-          <Heading>Well done</Heading>
+      <WrapperCloseIcon onClick={onClose}>
+        <Icon width="22px" height="22px" iconid="x-white" />
+      </WrapperCloseIcon>
+      <Wrapper>
+        <ImageEl
+          src={avocado1x}
+          srcSet={`${avocado1x} 1x, ${avocado2x} 2x`}
+          alt="Success"
+        />
+        <Heading>Well done</Heading>
 
-          <Calories>
-            Calories:<span> {caloriesAdded}</span>
-          </Calories>
-          <ProductButton onClick={onClose}>Next product</ProductButton>
-          <WrapperDiaryLink to="/diary">
-            <DiaryLink>To the diary </DiaryLink>
-            <WrapperIconArrow>
-              <Icon width='16px' height='16px' iconid='arrow'/>
-            </WrapperIconArrow>
-          </WrapperDiaryLink>
-        </Wrapper>
+        <Calories>
+          Calories:<span> {caloriesAdded}</span>
+        </Calories>
+        <ProductButton onClick={onClose}>Next product</ProductButton>
+        <WrapperDiaryLink to="/diary">
+          <DiaryLink>To the diary </DiaryLink>
+          <WrapperIconArrow>
+            <Icon width="16px" height="16px" iconid="arrow" />
+          </WrapperIconArrow>
+        </WrapperDiaryLink>
+      </Wrapper>
     </>
   );
 };

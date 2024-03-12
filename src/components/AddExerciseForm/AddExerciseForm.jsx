@@ -12,11 +12,13 @@ import {
   InfoItem,
   AddToDiaryButton,
   TimerInfoWrapper,
-  InfoListWrapper
+  InfoListWrapper,
+  WrapperCloseIcon,
 } from './ExerciseForm.styled';
 import { Icon } from 'components/Icon/Icon';
 import { useDispatch } from 'react-redux';
 import { fetchAddExercise } from '../../redux/diary/operations';
+import { IconClose } from 'components/AddExerciseSuccess/ExerciseSuccess.styled';
 
 export const AddExerciseForm = ({
   exerciseData,
@@ -96,65 +98,67 @@ export const AddExerciseForm = ({
 
   return (
     <Wrapper>
+      <WrapperCloseIcon onClick={onCloseForm}>
+        <IconClose iconid="x-white" width={26} height={26} />
+      </WrapperCloseIcon>
       <TimerInfoWrapper>
-      <ImageExercise src={gifUrl} alt="Exercise GIF" />
-      <WrapperTimer>
-        <Timetext>Time</Timetext>
-        <CountdownCircleTimer
-          isPlaying={isPaused}
-          duration={time * 60}
-          colors={'rgba(230, 83, 60, 1)'}
-          trailColor="rgba(239, 237, 232, 0.1)"
-          colorsTime={[7, 5, 2, 0]}
-          size={124}
-          strokeWidth={4}
-          viewBox="0 0 125 124"
-          onUpdate={remainingTime => {
-            handleTime(remainingTime);
-          }}
-        >
-          {children}
-        </CountdownCircleTimer>
+        <ImageExercise src={gifUrl} alt="Exercise GIF" />
+        <WrapperTimer>
+          <Timetext>Time</Timetext>
+          <CountdownCircleTimer
+            isPlaying={isPaused}
+            duration={time * 60}
+            colors={'rgba(230, 83, 60, 1)'}
+            trailColor="rgba(239, 237, 232, 0.1)"
+            colorsTime={[7, 5, 2, 0]}
+            size={124}
+            strokeWidth={4}
+            viewBox="0 0 125 124"
+            onUpdate={remainingTime => {
+              handleTime(remainingTime);
+            }}
+          >
+            {children}
+          </CountdownCircleTimer>
 
-        <IconWrapper
-          style={{ marginTop: '18px' }}
-          onClick={() => {
-            setIsPaused(!isPaused);
-          }}
-        >
-          {isPaused ? (
-            <Icon width="24" height="24" iconid="pause" />
-          ) : (
-            <Icon width="24" height="24" iconid="play" />
-          )}
-        </IconWrapper>
-        <BurnedCalories>
-          Burned calories : <span>{dynamicBurnCal}</span>
-        </BurnedCalories>
-
-      </WrapperTimer>
+          <IconWrapper
+            style={{ marginTop: '18px' }}
+            onClick={() => {
+              setIsPaused(!isPaused);
+            }}
+          >
+            {isPaused ? (
+              <Icon width="24" height="24" iconid="pause" />
+            ) : (
+              <Icon width="24" height="24" iconid="play" />
+            )}
+          </IconWrapper>
+          <BurnedCalories>
+            Burned calories : <span>{dynamicBurnCal}</span>
+          </BurnedCalories>
+        </WrapperTimer>
       </TimerInfoWrapper>
-<InfoListWrapper>
-<InfoList>
-        <InfoItem>
-          <p>Name</p>
-          <p>{name}</p>
-        </InfoItem>
-        <InfoItem>
-          <p>Target</p> <p>{target}</p>
-        </InfoItem>
-        <InfoItem>
-          <p>Body Parts</p> <p>{bodyPart}</p>
-        </InfoItem>
-        <InfoItem>
-          <p>Equipment</p>
-          <p>{equipment}</p>
-        </InfoItem>
-      </InfoList>
-      <AddToDiaryButton onClick={() => handleAddToDiary()}>
-        Add to diary
-      </AddToDiaryButton>
-</InfoListWrapper>
+      <InfoListWrapper>
+        <InfoList>
+          <InfoItem>
+            <p>Name</p>
+            <p>{name}</p>
+          </InfoItem>
+          <InfoItem>
+            <p>Target</p> <p>{target}</p>
+          </InfoItem>
+          <InfoItem>
+            <p>Body Parts</p> <p>{bodyPart}</p>
+          </InfoItem>
+          <InfoItem>
+            <p>Equipment</p>
+            <p>{equipment}</p>
+          </InfoItem>
+        </InfoList>
+        <AddToDiaryButton onClick={() => handleAddToDiary()}>
+          Add to diary
+        </AddToDiaryButton>
+      </InfoListWrapper>
     </Wrapper>
   );
 };
