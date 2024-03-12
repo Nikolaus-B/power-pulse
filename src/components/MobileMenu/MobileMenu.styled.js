@@ -41,14 +41,16 @@ export const Menu = styled.div`
 
 export const CloseBtn = styled.button`
   position: absolute;
-  top: 26px;
-  right: 32px;
+  top: 19px;
+  right: 20px;
+  padding: 0;
   background: none;
   border: none;
   cursor: pointer;
 
   @media screen and (min-width: 768px) {
-    padding: 0;
+    top: 26px;
+    right: 32px;
     width: 32px;
     height: 32px;
   }
