@@ -60,8 +60,9 @@ export const Svg = styled.svg`
 
 export const Logout = styled.button`
   position: absolute;
-  bottom: 26px;
-  left: 32px;
+  bottom: 20px;
+  left: 20px;
+  padding: 0;
   display: inline-flex;
   align-items: center;
   background-color: transparent;
