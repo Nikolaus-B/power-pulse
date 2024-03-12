@@ -44,9 +44,8 @@ export const CloseBtn = styled.button`
   top: 26px;
   right: 32px;
   background: none;
-  cursor: pointer;
   border: none;
-  outline: none;
+  cursor: pointer;
 `;
 
 export const Svg = styled.svg`
