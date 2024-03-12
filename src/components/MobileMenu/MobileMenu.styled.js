@@ -85,6 +85,7 @@ export const Logout = styled.button`
   @media screen and (min-width: 768px) {
     font-size: 16px;
     bottom: 32px;
+    left: 32px;
     padding: 0;
   }
 `;
