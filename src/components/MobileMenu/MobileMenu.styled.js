@@ -11,7 +11,7 @@ export const Overlay = styled.div`
   z-index: 1;
 `;
 
-export const MenuWrapper = styled.div`
+export const Menu = styled.div`
   position: absolute;
   top: 0;
   display: flex;
@@ -21,26 +21,17 @@ export const MenuWrapper = styled.div`
   padding: 19px 20px 21px 20px;
   background-color: var(--orange-color);
   z-index: 2;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+
+  &.hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
 
   @media screen and (min-width: 768px) {
     width: 350px;
     padding: 26px 32px 32px 32px;
-  }
-
-  @media screen and (max-width: 1439px) {
-    &.shown {
-      right: 0;
-    }
-
-    &.hidden {
-      position: absolute;
-      clip: rect(0 0 0 0);
-      width: 1px;
-      height: 1px;
-      margin: -1px;
-    }
-
-    transition: right 250ms cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   @media screen and (min-width: 1440px) {
@@ -48,19 +39,19 @@ export const MenuWrapper = styled.div`
   }
 `;
 
-export const CloseButton = styled.button`
+export const CloseBtn = styled.button`
   position: absolute;
   top: 26px;
   right: 32px;
   background: none;
-  border: none;
   cursor: pointer;
+  border: none;
+  outline: none;
 `;
 
 export const Svg = styled.svg`
   width: 24px;
   height: 24px;
-  stroke: #ffffff;
 
   @media screen and (min-width: 768px) {
     width: 32px;
@@ -80,6 +71,8 @@ export const Logout = styled.button`
   font-weight: 400;
   line-height: 1.33;
   color: rgba(239, 237, 232, 1);
+  border: none;
+  outline: none;
 
   @media screen and (min-width: 768px) {
     font-size: 16px;
@@ -97,6 +90,7 @@ export const NavMenu = styled.nav`
 `;
 
 export const NavMenuLink = styled(NavLink)`
+  text-decoration: none;
   text-align: center;
   font-size: 14px;
   font-weight: 400;
@@ -119,5 +113,4 @@ export const NavMenuLink = styled(NavLink)`
 export const LogoutSvg = styled.svg`
   width: 20px;
   height: 20px;
-  stroke: #ffffff;
 `;
