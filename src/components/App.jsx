@@ -1,12 +1,12 @@
 import { Suspense, lazy, useEffect } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, Navigate } from 'react-router-dom';
 import { AppLayout } from './AppLayout/AppLayout';
 import { useDispatch } from 'react-redux';
 import { useAuth } from './hooks/AuthHook';
 import { refreshing } from '../redux/user/operations';
 import { Toaster } from 'react-hot-toast';
-import { PrivateRoute } from '../redux/PrivateRoute';
-import { RestrictedRoute } from '../redux/RestrictedRoute';
+import { PrivateRoute } from './PrivateRoute';
+import { RestrictedRoute } from './RestrictedRoute';
 
 const HomePage = lazy(() => import('pages/HomePage'));
 const NotFoundPage = lazy(() => import('pages/NotFoundPage'));
@@ -33,39 +33,49 @@ export const App = () => {
   ) : (
     <>
       <Routes>
-        <Route path="/" element={<AppLayout />}>
-          <Route index element={<HomePage />} />
+        <Route path="/" component={<AppLayout />}>
+          <Route index component={<HomePage />} />
           <Route
             path="/register"
-            element={
+            component={
               <RestrictedRoute redirectTo="/settings" component={SingUpPage} />
             }
           />
           <Route
             path="/login"
-            element={
+            component={
               <RestrictedRoute redirectTo="/diary" component={SingInPage} />
             }
           />
           <PrivateRoute
             path="/settings"
-            element={<UserPage />}
+            component={<UserPage />}
             redirectTo="/"
           />
-          <PrivateRoute path="/diary" element={<DiaryPage />} redirectTo="/" />
+          <PrivateRoute
+            path="/diary"
+            component={<DiaryPage />}
+            redirectTo="/"
+          />
           <PrivateRoute
             path="/product"
-            element={<ProductsPage />}
+            component={<ProductsPage />}
             redirectTo="/"
           />
           <PrivateRoute
             path="/exercises"
-            element={<ExercisesPage />}
+            component={<ExercisesPage />}
             redirectTo="/"
           />
-          <Route path="/exercises/title" element={<TitlePage />} />
+          <Route
+            path="/error"
+            component={
+              <RestrictedRoute redirectTo="/" component={<NotFoundPage />} />
+            }
+          />
+          <Route path="/exercises/title" component={<TitlePage />} />
         </Route>
-        <Route path="*" element={<NotFoundPage />} />
+        <Route path="*" component={<Navigate />} />
       </Routes>
       <Toaster
         toastOptions={{
