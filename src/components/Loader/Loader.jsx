@@ -1,5 +1,6 @@
 import React from 'react';
+import { StyledLoader } from './Loader.styled';
 
 export const Loader = () => {
-  return <div>Loader</div>;
+  return <StyledLoader />;
 };
