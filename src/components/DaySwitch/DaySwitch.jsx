@@ -1,7 +1,7 @@
 import React, { forwardRef, useRef, useState } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import { addDays, format, isBefore } from 'date-fns';
+import { addDays, format, isAfter, isBefore } from 'date-fns';
 
 //------------------------------------------
 import {
@@ -24,6 +24,7 @@ export const DaySwitch = () => {
   const { user } = useAuth();
   const calRef = useRef();
   const [startDate, setCurrentDate] = useState(new Date());
+  const today = new Date();
 
   const formatDate = notFormatedDate => {
     return notFormatedDate
@@ -37,19 +38,24 @@ export const DaySwitch = () => {
   const clearStore = () => dispatch(clearData());
 
   const goPrevDate = () => {
-    clearStore();
     const day = new Date(startDate);
     const prevDay = new Date(day.setDate(day.getDate() - 1));
-    setCurrentDate(prevDay);
-    dispatch(setDate(formatDate(prevDay)));
+    console.log(isBefore(user.createdAt, prevDay));
+    if (isBefore(user.createdAt, prevDay)) {
+      clearStore();
+      setCurrentDate(prevDay);
+      dispatch(setDate(formatDate(prevDay)));
+    }
   };
 
   const goNextDate = () => {
-    clearStore();
     const day = new Date(startDate);
     const nextDay = new Date(day.setDate(day.getDate() + 1));
-    setCurrentDate(nextDay);
-    dispatch(setDate(formatDate(nextDay)));
+    if (isAfter(today, nextDay)) {
+      clearStore();
+      setCurrentDate(nextDay);
+      dispatch(setDate(formatDate(nextDay)));
+    }
   };
 
   const selectPickerDate = date => {
