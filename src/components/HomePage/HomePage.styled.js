@@ -26,7 +26,6 @@ export const Container = styled.div`
   }
 `;
 
-
 export const ContainerForm = styled.div`
   width: 100%;
   /* max-width: 335px; */
@@ -40,23 +39,23 @@ export const ContainerForm = styled.div`
 
 export const HeroTitle = styled.h1`
   font-family: var(--font-family);
-font-weight: 500;
-font-size: 38px;
-line-height: 105%;
-letter-spacing: 0.01em;
-color: var(--white-color);
-margin-bottom: 40px;
-margin-top: 27px;
-position: relative; 
+  font-weight: 500;
+  font-size: 38px;
+  line-height: 105%;
+  letter-spacing: 0.01em;
+  color: var(--white-color);
+  margin-bottom: 40px;
+  margin-top: 27px;
+  position: relative;
   z-index: 1;
   @media screen and (min-width: 768px) {
-font-size: 70px;
-line-height: 111%;
-margin-bottom: 64px;
-margin-top: 32px;
+    font-size: 70px;
+    line-height: 111%;
+    margin-bottom: 64px;
+    margin-top: 32px;
   }
   @media screen and (min-width: 1440px) {
-margin-top: 43px;
+    margin-top: 43px;
   }
 `;
 
@@ -73,7 +72,6 @@ export const Text = styled.p`
     font-size: 16px;
     line-height: 1.5;
     margin-bottom: 32px;
-    
   }
 `;
 
@@ -99,8 +97,6 @@ export const StyledLink = styled(Link)`
   color: #ffff;
 `;
 
-
-
 // /////////////
 export const CTAButton = styled.button`
   border: 1px solid var(--orange-color);
@@ -125,10 +121,9 @@ export const CTAButton = styled.button`
   }
 
   @media screen and (min-width: 768px) {
-width: 190px;
-height: 56px;
+    width: 190px;
+    height: 56px;
   }
-
 `;
 
 export const SignInButton = styled.button`
@@ -155,29 +150,28 @@ export const SignInButton = styled.button`
     width: 182px;
     height: 56px;
   }
-
 `;
 
 // line
 
 export const Line = styled.svg`
-stroke-width: 2px;
-  position: absolute; 
-  top: 110px;
+  stroke-width: 2px;
+  position: absolute;
+  top: 136px;
   left: 11px;
-  z-index: 0; 
-  width: 98px; 
-  height: 35px; 
+  z-index: 0;
+  width: 98px;
+  height: 35px;
   fill: transparent;
-  
+
   @media screen and (min-width: 768px) {
     width: 185px;
-    height: 67px; 
-    top: 189px;
-  left: 16px;
+    height: 67px;
+    top: 222px;
+    left: 16px;
   }
   @media screen and (min-width: 1440px) {
-    top: 201px;
-  left: 80px;
+    top: 244px;
+    left: 80px;
   }
 `;
