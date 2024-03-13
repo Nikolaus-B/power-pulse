@@ -1,7 +1,7 @@
 import React, { forwardRef, useRef, useState } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import { addDays, format } from 'date-fns';
+import { addDays, format, isBefore } from 'date-fns';
 
 //------------------------------------------
 import {
@@ -15,37 +15,47 @@ import {
 import { Icon } from 'components/Icon/Icon';
 
 //------------------------------------------
-// import { fetchDiary } from '../../redux/diary/operations';
-import { selectDate } from '../../redux/diary/diarySelectors';
-import { useAuth } from '../hooks/AuthHook';
-import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { useAuth } from 'hooks/AuthHook';
+import { clearData, setDate } from '../../redux/diary/diarySlice';
 
 export const DaySwitch = () => {
+  const dispatch = useDispatch();
   const { user } = useAuth();
-  const selectedDate = useSelector(selectDate);
   const calRef = useRef();
-
-  // const currentDate = new Date();
-  // const selectedDate = Date.now();
-
-  console.log(selectedDate);
-
   const [startDate, setCurrentDate] = useState(new Date());
 
+  const formatDate = notFormatedDate => {
+    return notFormatedDate
+      .toISOString()
+      .split('T', 1)[0]
+      .split('-')
+      .reverse()
+      .join('-');
+  };
+
+  const clearStore = () => dispatch(clearData());
+
   const goPrevDate = () => {
-    setCurrentDate(prevDate => {
-      const prevDay = new Date(prevDate);
-      prevDay.setDate(prevDate.getDate() - 1);
-      return prevDay;
-    });
+    clearStore();
+    const day = new Date(startDate);
+    const prevDay = new Date(day.setDate(day.getDate() - 1));
+    setCurrentDate(prevDay);
+    dispatch(setDate(formatDate(prevDay)));
   };
 
   const goNextDate = () => {
-    setCurrentDate(nextDate => {
-      const nextDay = new Date(nextDate);
-      nextDay.setDate(nextDate.getDate() + 1);
-      return nextDay;
-    });
+    clearStore();
+    const day = new Date(startDate);
+    const nextDay = new Date(day.setDate(day.getDate() + 1));
+    setCurrentDate(nextDay);
+    dispatch(setDate(formatDate(nextDay)));
+  };
+
+  const selectPickerDate = date => {
+    clearStore();
+    setCurrentDate(date);
+    dispatch(setDate(formatDate(date)));
   };
 
   //------------------------------------------
@@ -71,15 +81,15 @@ export const DaySwitch = () => {
         shouldCloseOnSelect={true}
         minDate={new Date(user.createdAt)}
         maxDate={addDays(new Date(), 0)}
-        onChange={date => setCurrentDate(date)}
+        onChange={date => selectPickerDate(date)}
         //------------------------------------
         customInput={<CustomInput />}
       />
       <Wrap>
-        <Button onClick={goPrevDate}>
+        <Button onClick={() => goPrevDate()}>
           <Icon iconid="arrow-prev" width={24} height={24} />
         </Button>
-        <Button onClick={goNextDate}>
+        <Button onClick={() => goNextDate()}>
           <Icon iconid="arrow-next" width={24} height={24} />
         </Button>
       </Wrap>

@@ -17,8 +17,8 @@ export const Wrapper = styled.div`
 export const Wrap = styled.div``;
 
 export const Button = styled.button`
-  background-color: transparent;
-  border-color: transparent;
+  /* background-color: transparent;
+  border-color: transparent; */
   width: 24px;
   height: 24px;
 `;

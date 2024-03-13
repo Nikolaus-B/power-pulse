@@ -41,6 +41,10 @@ const diarySlice = createSlice({
     setDate: (state, action) => {
       state.date = action.payload;
     },
+    clearData: state => {
+      state.products = [];
+      state.exercises = [];
+    },
   },
   extraReducers: builder => {
     builder.addCase(fetchDiary.fulfilled, (state, action) => {
@@ -65,5 +69,5 @@ const diarySlice = createSlice({
   },
 });
 
-export const { setDate } = diarySlice.actions;
+export const { setDate, clearData } = diarySlice.actions;
 export const diaryReducer = diarySlice.reducer;
