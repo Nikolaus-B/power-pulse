@@ -9,7 +9,7 @@ import {
   TitleWrapper,
 } from './styles/StyledDatepicker.styled';
 
-// import { format } from 'date-fns';
+import { format } from 'date-fns';
 
 const StyledDatepicker = () => {
   // const { user } = useAuth();
@@ -19,7 +19,7 @@ const StyledDatepicker = () => {
   const CustomInput = forwardRef(({ value, onClick }, ref) => {
     return (
       <TitleWrapper type="button" onClick={onClick} ref={ref}>
-        {value}
+        {format(selectedDate, 'dd/MM/yyyy')}
       </TitleWrapper>
     );
   });
@@ -29,7 +29,7 @@ const StyledDatepicker = () => {
       <DatePicker
         ref={calRef}
         showIcon={false}
-        dateFormat={'dd MM yyyy'}
+        dateFormat={'dd/MM/yyyy'}
         selected={selectedDate}
         onChange={date => {
           setSelectedDate(date);
