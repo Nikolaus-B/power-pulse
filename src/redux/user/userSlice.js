@@ -37,10 +37,11 @@ const userSlice = createSlice({
       })
 
       .addCase(fetchUserRegister.fulfilled, (state, action) => {
-        state.user = action.payload.user;
+        state.user = action.payload;
         state.isLoggedIn = true;
         state.goToParams = true;
         state.isLoading = false;
+
         toast.success('Registration successful');
       })
 
@@ -112,7 +113,7 @@ const userSlice = createSlice({
 
       .addCase(refreshing.fulfilled, (state, action) => {
         state.user = action.payload.user;
-        state.isLoggedIn = action.payload.token;
+        state.isLoggedIn = true;
         state.isRefreshing = false;
       })
 

@@ -50,7 +50,7 @@ export const UserMenu = () => {
               : { backgroundColor: 'transparent' }
           }
           onClick={() => handleActivePage('products')}
-          to="/product"
+          to="/products"
         >
           Products
         </StyledNavLink>

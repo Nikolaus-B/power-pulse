@@ -6,7 +6,7 @@ import {
   selectIsLoading,
   selectBMR,
   selectDailyRateSports,
-} from '../../redux/user/userSelectors';
+} from '../redux/user/userSelectors';
 
 export const useAuth = () => {
   const user = useSelector(selectUser);

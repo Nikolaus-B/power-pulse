@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 
 import {
-  MenuWrapper,
+  Menu,
   Overlay,
-  CloseButton,
+  CloseBtn,
   Logout,
   NavMenu,
   NavMenuLink,
@@ -41,21 +41,21 @@ const MobileMenu = ({ isOpen }) => {
   return (
     <>
       {menuIsOpen && <Overlay onClick={closeMenu}></Overlay>}
-      <MenuWrapper
+      <Menu
         className={menuIsOpen ? 'shown' : 'hidden'}
         onClick={handleBackdropClick}
       >
-        <CloseButton onClick={closeMenu}>
+        <CloseBtn onClick={closeMenu}>
           <Svg>
             <Icon iconid={'x-white'} />
           </Svg>
-        </CloseButton>
+        </CloseBtn>
 
         <NavMenu>
           <NavMenuLink to="/diary" onClick={closeMenu}>
             Diary
           </NavMenuLink>
-          <NavMenuLink to="/product" onClick={closeMenu}>
+          <NavMenuLink to="/products" onClick={closeMenu}>
             Products
           </NavMenuLink>
           <NavMenuLink to="/exercises" onClick={closeMenu}>
@@ -68,7 +68,7 @@ const MobileMenu = ({ isOpen }) => {
             <Icon iconid={'log-out-white'} />
           </LogoutSvg>
         </Logout>
-      </MenuWrapper>
+      </Menu>
     </>
   );
 };
