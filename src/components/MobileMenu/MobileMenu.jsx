@@ -55,7 +55,7 @@ const MobileMenu = ({ isOpen }) => {
           <NavMenuLink to="/diary" onClick={closeMenu}>
             Diary
           </NavMenuLink>
-          <NavMenuLink to="/product" onClick={closeMenu}>
+          <NavMenuLink to="/products" onClick={closeMenu}>
             Products
           </NavMenuLink>
           <NavMenuLink to="/exercises" onClick={closeMenu}>

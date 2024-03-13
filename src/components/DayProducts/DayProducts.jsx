@@ -42,7 +42,7 @@ export const DayProducts = ({ media }) => {
     <ProductsContainer>
       <ProductHeader>
         <DayProductTitle>Products</DayProductTitle>
-        <ProductsLink to="/product">
+        <ProductsLink to="/products">
           Add Product <Icon height={15} width={15} iconid={'arrow'} />
         </ProductsLink>
       </ProductHeader>
