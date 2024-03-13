@@ -57,13 +57,13 @@ export const ProductsFilters = () => {
     const { value } = e.target;
     setHiddenBtn(value.length > 0);
     setQuery(value);
-    dispatch(setFilterQuery(value));
   };
 
   const handleSubmit = e => {
     const value = e.target.query.value;
     e.preventDefault();
     setHiddenBtn(value.length > 0);
+    dispatch(setFilterQuery(value));
   };
 
   return (
