@@ -151,7 +151,20 @@ function SignInPage() {
                 {!showPassword && (
                   <Icons
                     onClick={() => setShowPassword(!showPassword)}
-                    style={{ left: '420px', bottom: '163px' }}
+                    style={{
+                      left:
+                        window.innerWidth >= 1440
+                          ? '424px'
+                          : window.innerWidth >= 768
+                          ? '360px'
+                          : '320px',
+                      bottom:
+                        window.innerWidth >= 1440
+                          ? '163px'
+                          : window.innerWidth >= 768
+                          ? '163px'
+                          : '112px',
+                    }}
                   >
                     <use href={pulseIcon + '#icon-eye'}></use>
                   </Icons>
@@ -159,7 +172,20 @@ function SignInPage() {
                 {showPassword && (
                   <Icons
                     onClick={() => setShowPassword(!showPassword)}
-                    style={{ left: '420px', bottom: '163px' }}
+                    style={{
+                      left:
+                        window.innerWidth >= 1440
+                          ? '424px'
+                          : window.innerWidth >= 768
+                          ? '360px'
+                          : '320px',
+                      bottom:
+                        window.innerWidth >= 1440
+                          ? '163px'
+                          : window.innerWidth >= 768
+                          ? '163px'
+                          : '112px',
+                    }}
                   >
                     <use href={pulseIcon + '#icon-eye-off'}></use>
                   </Icons>
