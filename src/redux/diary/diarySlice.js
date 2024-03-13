@@ -11,13 +11,6 @@ import {
 //   state.isLoading = true;
 // };
 
-// new Date(new Date().setDate(new Date().getDate() + 1))
-//     .toISOString()
-//     .split('T', 1)[0]
-//     .split('-')
-//     .reverse()
-//     .join('-'),
-
 // const handleRejected = (state, action) => {
 //   state.isLoading = false;
 //   state.error = action.payload;

@@ -42,6 +42,7 @@ export const DayProducts = ({ media }) => {
     <ProductsContainer>
       <ProductHeader>
         <DayProductTitle>Products</DayProductTitle>
+
         <ProductsLink to="/products">
           Add Product <Icon height={15} width={15} iconid={'arrow'} />
         </ProductsLink>
@@ -74,7 +75,7 @@ export const DayProducts = ({ media }) => {
                           <TableValue>{el.productId.category}</TableValue>
                         </TableValueContainer>
                         <TableValueContainer>
-                          <TableValue>{el.calories}</TableValue>
+                          <TableValue>{Math.floor(el.calories)}</TableValue>
                         </TableValueContainer>
                         <TableValueContainer>
                           <TableValue>{el.amount}</TableValue>

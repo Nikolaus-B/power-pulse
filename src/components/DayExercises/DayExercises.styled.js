@@ -45,6 +45,10 @@ export const DayExercisesIcon = styled(Icon)`
 export const ExercisesLink = styled(Link)`
   text-decoration: none;
   text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
   color: var(--orange-color);
   transition: color var(--transition-dur-and-func);
   &:hover,
@@ -125,6 +129,7 @@ export const DayExercisesContainer = styled.div`
 export const ExercisesTable = styled.table`
   width: 672px;
   border-spacing: 8px;
+  border-collapse: separate;
 
   @media screen and (min-width: 1440px) {
     width: 762px;
