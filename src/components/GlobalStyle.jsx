@@ -20,9 +20,7 @@ export const GlobalStyle = createGlobalStyle`
 
   body {
     margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, 'Roboto',
-
-      sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     background-color: var( --primary-black-color);
@@ -67,7 +65,7 @@ input[type="radio"] {
   display: grid;
   place-content: center;
   appearance: none;
-  background-color: #040404;
+  background-color: transparent;
 }
 
 

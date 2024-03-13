@@ -8,7 +8,7 @@ export const Radio = styled(Field)`
 
   color: #ef8964;
 
-  border: 1.5px solid currentColor;
+  border: 1.5px solid #ef8964;
   border-radius: 10px;
 
   transform: translateY(0.18rem);

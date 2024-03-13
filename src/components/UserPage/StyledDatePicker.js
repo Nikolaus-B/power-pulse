@@ -14,7 +14,7 @@ import { format } from 'date-fns';
 const StyledDatepicker = () => {
   // const { user } = useAuth();
   const calRef = useRef();
-  const { selectedDate, setSelectedDate } = useState(new Date());
+  const [selectedDate, setSelectedDate] = useState(Date.now());
 
   const CustomInput = forwardRef(({ value, onClick }, ref) => {
     return (
@@ -34,6 +34,9 @@ const StyledDatepicker = () => {
         onChange={date => {
           setSelectedDate(date);
         }}
+        calendarStartDay={1}
+        formatWeekDay={day => day.substring(0, 2)}
+        placeholderText="Weeks start on Monday"
         customInput={<CustomInput />}
       />
       <CalendarGlobalStyles />
