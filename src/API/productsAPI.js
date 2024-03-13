@@ -1,4 +1,5 @@
 import axios from 'axios';
+import toast from 'react-hot-toast';
 
 axios.defaults.baseURL = `
  https://power-pulse-back.onrender.com/`;
@@ -22,7 +23,7 @@ axios.defaults.baseURL = `
       }
       return response.data;
     } catch (e) {
-      console.error('Error fetching products:', e.message);
+      toast.error('Oops, something went wrong. Try reloading page!');
       return null;
     }
   }
