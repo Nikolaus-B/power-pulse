@@ -43,7 +43,7 @@ npm install — install dependencies;
 
 npm start — run the app in production mode;
 
-npm run dev — run the app in development mode
+npm run start — run the app in development mode
 
 ## Development team :
 
