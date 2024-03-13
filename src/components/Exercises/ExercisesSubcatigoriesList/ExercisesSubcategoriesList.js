@@ -1,25 +1,120 @@
 import { ExercisesSubcategoriesItem } from '../ExercisesSubcatigoriesItem/ExercisesSubcategoriesItem'
-import React from 'react'
-import { Ul } from './ExercisesSubcatigoriesList.styled';
+import React, { useState, useEffect} from 'react'
+import { Ul, Input, RadioBtns, Container} from './ExercisesSubcatigoriesList.styled';
+
+const sliderSizes = {
+  small: 10,
+  medium: 9,
+  large: 10
+};
 
 export const ExercisesSubcategoriesList = ({ category, subcategories, onSelect }) => {
+    const [viewportSize, setViewportSize] = useState('medium');
+    const [currentPage, setCurrentPage] = useState(0);
+
+    useEffect(() => {
+        const handleResize = () => {
+            const width = window.innerWidth;
+            if (width < 768) {
+                setViewportSize('small');
+            } else if (width >= 768 && width < 1440) {
+                setViewportSize('medium');
+            } else {
+                setViewportSize('large');
+            }
+        };
+
+        handleResize();
+        window.addEventListener('resize', handleResize);
+
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
+
+
     const filterItemsByCategory = (subcategories, category) => {
     return subcategories.filter(item => item.filter === category);
     };
     
     const muscles = filterItemsByCategory(subcategories, "Muscles");
-    console.log(muscles)
     const subMuscles= muscles.map(item => item._id)
     const equipment = filterItemsByCategory(subcategories, "Equipment");
     const subEquiment = equipment.map(item => item._id);
     const bodyParts = filterItemsByCategory(subcategories, "Body parts");
     const subBodyParts = bodyParts.map(item => item._id);
+
+    useEffect(() => {
+        setCurrentPage(0); 
+    }, [category]);
+
+    const handlePageClick = (page) => { 
+        setCurrentPage(page);
+    };
+
     
     return (
-        <Ul> 
-            {category === "Muscles" ? <ExercisesSubcategoriesItem filters={subcategories} subcategory={subMuscles} onSelect={onSelect}/>
-            : category === 'Equipment' ? <ExercisesSubcategoriesItem filters={subcategories} subcategory={subEquiment} onSelect={onSelect}/>
-                    : <ExercisesSubcategoriesItem filters={subcategories} subcategory={subBodyParts} onSelect={onSelect}/>}
-        </Ul>
+        <>
+            {category === "Muscles" ?
+                <Container>
+                    <Ul>
+                        <ExercisesSubcategoriesItem filters={subcategories} subcategory={subMuscles} onSelect={onSelect} currentPage={currentPage} />
+                    </Ul>
+                    {subMuscles.length > sliderSizes[viewportSize] && (
+                        <RadioBtns>
+                            {Array.from(Array(Math.ceil(subMuscles.length / sliderSizes[viewportSize])).keys()).map((page) => (
+                                <label key={page}>
+                                    <Input
+                                        type="radio"
+                                        name="page"
+                                        value={page}
+                                        checked={currentPage === page}
+                                        onChange={() => handlePageClick(page)}
+                                    />
+                                </label>
+                            ))}
+                        </RadioBtns>)}
+                </Container> : category === 'Equipment' ?
+                    <Container>
+                        <Ul>
+                            <ExercisesSubcategoriesItem filters={subcategories} subcategory={subEquiment} onSelect={onSelect} currentPage={currentPage} />
+                        </Ul>
+                        {subEquiment.length > sliderSizes[viewportSize] && (
+                    
+                            <RadioBtns>
+                                {Array.from(Array(Math.ceil(subEquiment.length / sliderSizes[viewportSize])).keys()).map((page) => (
+                                    <label key={page}>
+                                        <Input
+                                            type="radio"
+                                            name="page"
+                                            value={page}
+                                            checked={currentPage === page}
+                                            onChange={() => handlePageClick(page)}
+                                        />
+                                    </label>
+                                ))}
+                            </RadioBtns>)}
+                    </Container> :
+                    <Container>
+                        <Ul>
+                            <ExercisesSubcategoriesItem filters={subcategories} subcategory={subBodyParts} onSelect={onSelect} currentPage={currentPage} />
+                        </Ul>
+                            {subBodyParts.length > sliderSizes[viewportSize] && (
+                                <RadioBtns>
+                                    {Array.from(Array(Math.ceil(subBodyParts.length / sliderSizes[viewportSize])).keys()).map((page) => (
+                                        <label key={page}>
+                                            <Input
+                                                type="radio"
+                                                name="page"
+                                                value={page}
+                                                checked={currentPage === page}
+                                                onChange={() => handlePageClick(page)}
+                                            />
+                                        </label>
+                                    ))}
+                                </RadioBtns>)}
+                    </Container>
+            }
+        </>
     )
 }

@@ -1,8 +1,11 @@
-import { lazy } from 'react';
+import { lazy, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { AppLayout } from './AppLayout/AppLayout';
-// import { RestrictedRoute } from './RestrictedRoute';
-// import { PrivateRoute } from './PrivateRoute';
+import { useDispatch } from 'react-redux';
+
+import { refreshing } from '../redux/user/operations';
+import { RestrictedRoute } from './RestrictedRoute';
+import { PrivateRoute } from './PrivateRoute';
 
 const HomePage = lazy(() => import('pages/HomePage'));
 const NotFoundPage = lazy(() => import('pages/NotFoundPage'));
@@ -15,20 +18,59 @@ const ExercisesPage = lazy(() => import('pages/ExercisesPage'));
 const TitlePage = lazy(() => import('pages/TitlePage'));
 
 export const App = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(refreshing());
+  }, [dispatch]);
+
   return (
-    <Routes>
-      <Route path="/" element={<AppLayout />}>
-        <Route index element={<HomePage />} />
-        <Route path="/register" element={<SingUpPage />} />
-        <Route path="/login" element={<SingInPage />} />
-        <Route path="/settings" element={<UserPage />} />
-        <Route path="/diary" element={<DiaryPage />} />
-        <Route path="/product" element={<ProductsPage />} />
-        <Route path="/exercises" element={<ExercisesPage />}>
-          <Route path="title" element={<TitlePage />} />
+    <>
+      <Routes>
+        <Route path="/" element={<AppLayout />}>
+          <Route index element={<HomePage />} />
+          <Route
+            path="/register"
+            element={
+              <RestrictedRoute
+                redirectTo="/settings"
+                component={<SingUpPage />}
+              />
+            }
+          />
+          <Route
+            path="/login"
+            element={
+              <RestrictedRoute
+                redirectTo="/settings"
+                component={<SingInPage />}
+              />
+            }
+          />
+          <Route
+            path="/settings"
+            element={<PrivateRoute redirectTo="/" component={<UserPage />} />}
+          />
+          <Route
+            path="/diary"
+            element={<PrivateRoute redirectTo="/" component={<DiaryPage />} />}
+          />
+          <Route
+            path="/product"
+            element={
+              <PrivateRoute redirectTo="/" component={<ProductsPage />} />
+            }
+          />
+          <Route
+            path="/exercises"
+            element={
+              <PrivateRoute redirectTo="/" component={<ExercisesPage />} />
+            }
+          />
+          <Route path="/exercises/title" component={<TitlePage />} />
         </Route>
-      </Route>
-      <Route path="*" element={<NotFoundPage />} />
-    </Routes>
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
+    </>
   );
 };

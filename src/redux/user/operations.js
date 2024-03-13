@@ -1,3 +1,4 @@
+import { Alert, AlertIcon } from '@chakra-ui/react';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
@@ -48,9 +49,9 @@ export const fetchUserCurrent = createAsyncThunk(
 
 export const fetchUserParams = createAsyncThunk(
   'user/userParams',
-  async (_, thunkAPI) => {
+  async (PersonalData, thunkAPI) => {
     try {
-      const response = await axios.patch(`users/params`);
+      const response = await axios.patch(`users/params`, PersonalData);
       return response.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
@@ -74,10 +75,34 @@ export const fetchUserLogout = createAsyncThunk(
   'user/userLogout',
   async (_, thunkAPI) => {
     try {
-      const response = await axios.patch(`users/logout`);
+      const response = await axios.post(`users/logout`);
       return response.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
+    }
+  }
+);
+
+export const refreshing = createAsyncThunk(
+  'user/refresh',
+  async (_, thunkAPI) => {
+    const state = thunkAPI.getState();
+    const persistedToken = state.user.token;
+    setAuthHeader(persistedToken);
+    if (persistedToken === null) {
+      return thunkAPI.rejectWithValue(
+        <Alert status="error" variant="top-accent">
+          <AlertIcon status="warning" />
+          Unable to fetch user
+        </Alert>
+      );
+    }
+
+    try {
+      const response = await axios.get('users/current');
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
