@@ -1,21 +1,25 @@
-import { forwardRef } from 'react';
-import { useSelector } from 'react-redux';
-import { format, addDays } from 'date-fns';
+import { forwardRef, useState, useRef } from 'react';
 import DatePicker from 'react-datepicker';
 
 import 'react-datepicker/dist/react-datepicker-cssmodules.css';
-import { useAuth } from 'components/hooks/AuthHook';
+// import { useAuth } from 'components/hooks/AuthHook';
 
-import { CalendarGlobalStyles, TitleWrapper } from './StyledDatepicker.styled';
+import {
+  CalendarGlobalStyles,
+  TitleWrapper,
+} from './styles/StyledDatepicker.styled';
+
+// import { format } from 'date-fns';
 
 const StyledDatepicker = () => {
-  const { user } = useAuth();
-  const { selectedDate, setSelectedDate } = useSelector();
+  // const { user } = useAuth();
+  const calRef = useRef();
+  const { selectedDate, setSelectedDate } = useState(new Date());
 
   const CustomInput = forwardRef(({ value, onClick }, ref) => {
     return (
-      <TitleWrapper onClick={onClick} ref={ref}>
-        {format(selectedDate, 'dd-MM-yyyy')}
+      <TitleWrapper type="button" onClick={onClick} ref={ref}>
+        {value}
       </TitleWrapper>
     );
   });
@@ -23,13 +27,10 @@ const StyledDatepicker = () => {
   return (
     <>
       <DatePicker
+        ref={calRef}
         showIcon={false}
         dateFormat={'dd MM yyyy'}
-        selected={user.birthday}
-        calendarStartDay={1}
-        minDate={new Date(user.createdAt)}
-        maxDate={addDays(new Date(), 0)}
-        // formatWeekDay={day => day.substr(0, 1)}
+        selected={selectedDate}
         onChange={date => {
           setSelectedDate(date);
         }}

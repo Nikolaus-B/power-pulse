@@ -22,6 +22,7 @@ import { CheckCircleIcon } from '@chakra-ui/icons';
 import { useDispatch } from 'react-redux';
 import { fetchUserParams } from '../../redux/user/operations';
 import { useAuth } from 'components/hooks/AuthHook';
+import StyledDatepicker from './StyledDatePicker';
 
 //----------------------------------------------------
 const validation = object({
@@ -172,9 +173,9 @@ export const UserForm = () => {
             </Stack>
             <Stack
               direction={{ base: 'column', md: 'row', xl: 'row' }}
-              spacing={['14px']}
+              spacing="14px"
             >
-              <HStack spacing="14px">
+              <HStack spacing="14px" w="100%">
                 <FormControl
                   isInvalid={formik.errors.height && formik.touched.height}
                   alignSelf="baseline"
@@ -256,7 +257,7 @@ export const UserForm = () => {
                     )}
                 </FormControl>
               </HStack>
-              <HStack spacing="14px">
+              <HStack spacing="14px" w="100%">
                 <FormControl
                   isInvalid={
                     formik.errors.desiredWeight && formik.touched.desiredWeight
@@ -308,7 +309,7 @@ export const UserForm = () => {
                     Date of birth
                   </FormLabel>
 
-                  <Input
+                  {/* <Input
                     name="birthday"
                     type="date"
                     {...formik.getFieldProps('birthday')}
@@ -319,7 +320,8 @@ export const UserForm = () => {
                     h={['46px', '52px', '52px']}
                     fontSize={[14, 16, 16]}
                     lineHeight={['129%', '150%', '150%']}
-                  />
+                  /> */}
+                  <StyledDatepicker />
                 </FormControl>
               </HStack>
             </Stack>

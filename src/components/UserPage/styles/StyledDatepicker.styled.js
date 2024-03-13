@@ -1,18 +1,23 @@
 import { createGlobalStyle, styled } from 'styled-components';
 
 export const TitleWrapper = styled.button`
-  width: 195px;
-  color: #ffffff;
-  background: #3e85f3;
-  border-radius: 8px;
-  font-weight: 700;
-  line-height: 18px;
+  width: 100%;
+  height: 52px;
+
+  color: #efede8;
+  background: transparent;
+  border-radius: 12px;
+  border: 1px solid rgba(239, 237, 232, 0.3);
+
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 150%;
   text-align: center;
   text-transform: uppercase;
-  padding: 8px 12px;
-  font-size: 16px;
-  justify-content: space-around;
-  align-items: center;
+  padding: 14px;
+
+  /* justify-content: space-between;
+  align-items: center; */
 `;
 
 export const CalendarGlobalStyles = createGlobalStyle`
@@ -24,7 +29,7 @@ export const CalendarGlobalStyles = createGlobalStyle`
     position: absolute;
     left: 50%;
     top: 50%;
-    transform: translate(-1%, 0%);
+    transform: translate(-70%, 0%);
     display: flex;
     flex-direction: column;
     align-items: center;
