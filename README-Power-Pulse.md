@@ -60,7 +60,7 @@ Developers:
 - [Yuriy Volkov](https://github.com/YVolkov404);
 - [Andrey Maximov](https://github.com/Andrey-hdsh);
 - [Sergey Reznickyy](https://github.com/SergeyReznickyy);
-- [Kateruna Kononihina](https://github.com/Speedkon);
+- [Kateryna Kononikhina](https://github.com/Speedkon);
 - [Olena Kaisym](https://github.com/okaisym);
 - [Danylo Kornitskiy](https://github.com/Danylo2403);
 
