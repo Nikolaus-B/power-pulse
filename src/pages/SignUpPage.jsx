@@ -149,12 +149,18 @@ function SignInPage() {
                   </MessageInput>
                 )}
                 {!showPassword && (
-                  <Icons onClick={() => setShowPassword(!showPassword)}>
+                  <Icons
+                    onClick={() => setShowPassword(!showPassword)}
+                    style={{ left: '420px', bottom: '163px' }}
+                  >
                     <use href={pulseIcon + '#icon-eye'}></use>
                   </Icons>
                 )}
                 {showPassword && (
-                  <Icons onClick={() => setShowPassword(!showPassword)}>
+                  <Icons
+                    onClick={() => setShowPassword(!showPassword)}
+                    style={{ left: '420px', bottom: '163px' }}
+                  >
                     <use href={pulseIcon + '#icon-eye-off'}></use>
                   </Icons>
                 )}
