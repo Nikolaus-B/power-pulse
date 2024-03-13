@@ -1,7 +1,5 @@
 import { Title } from 'components/Title/Title';
 import React, { useEffect } from 'react';
-
-import { DaySwitch } from 'components/DaySwitch/DaySwitch';
 import { DayProducts } from 'components/DayProducts/DayProducts';
 import { DayExercises } from 'components/DayExercises/DayExercises';
 import { DayDashboard } from 'components/DayDashboard/DayDashboard';
@@ -29,7 +27,7 @@ export const Diary = () => {
     <DiaryContainer className="container">
       <TitleContainer>
         <Title title={'Diary'} />
-        <DaySwitch />
+        {/* <DaySwitch /> */}
       </TitleContainer>
       <DashboardContainer>
         <ProductAndExercises>
