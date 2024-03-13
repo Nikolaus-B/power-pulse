@@ -1,24 +1,33 @@
-import React, { useState, useEffect } from "react";
-import { Li, SubTitle, CategoryTitle } from "./ExercisesSubcatigoriesItem.styled";
+import React, { useState, useEffect } from 'react';
+import {
+  Li,
+  SubTitle,
+  CategoryTitle,
+} from './ExercisesSubcatigoriesItem.styled';
+import { Loader } from '../../Loader/Loader';
 
 const sliderSizes = {
-  small: 5,
+  small: 10,
   medium: 9,
-  large: 10
+  large: 10,
 };
 
-export const ExercisesSubcategoriesItem = ({ subcategory, filters, onSelect }) => {
-    
-    const [viewportSize, setViewportSize] = useState('medium');
-  const [currentPage, setCurrentPage] = useState(0);
+export const ExercisesSubcategoriesItem = ({
+  subcategory,
+  filters,
+  onSelect,
+  currentPage,
+}) => {
+  const [viewportSize, setViewportSize] = useState('medium');
   const [categoriesToShow, setCategoriesToShow] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const handleResize = () => {
       const width = window.innerWidth;
-      if (width < 600) {
+      if (width < 768) {
         setViewportSize('small');
-      } else if (width >= 600 && width < 1000) {
+      } else if (width >= 768 && width < 1440) {
         setViewportSize('medium');
       } else {
         setViewportSize('large');
@@ -37,65 +46,36 @@ export const ExercisesSubcategoriesItem = ({ subcategory, filters, onSelect }) =
     const startIndex = currentPage * sliderSizes[viewportSize];
     const endIndex = startIndex + sliderSizes[viewportSize];
     setCategoriesToShow(subcategory.slice(startIndex, endIndex));
+    setLoading(false);
   }, [currentPage, subcategory, viewportSize]);
 
-  const handleClickNext = () => {
-    setCurrentPage(currentPage + 1);
-  };
+  if (loading) {
+    return <Loader />;
+  }
 
-  const handleClickPrev = () => {
-    setCurrentPage(currentPage - 1);
-  };
-
-    
-    return (
-        <>
-            {categoriesToShow.map((category, index) => {
-                const item = filters.find(item => item._id === category);
-                const handleClick = () => {
-                    onSelect(item.name);
-                };
-                return (
-                    <Li key={item._id}
-                        style={{
-                            backgroundImage: `linear-gradient(rgba(4, 4, 4, 0.5), rgba(4, 4, 4, 0.5)), url(${item.imgURL})`,
-                            backgroundSize: 'cover',
-                            backgroundPosition: 'center',
-                            backgroundRepeat: 'no-repeat'
-                        }}
-                        onClick={handleClick}>
-                        <SubTitle>{item.name}</SubTitle>
-                        <CategoryTitle>{item.filter}</CategoryTitle>
-                    </Li>
-                );
-            })}
-      <button onClick={handleClickPrev} disabled={currentPage === 0}>
-        Prev
-      </button>
-      <button onClick={handleClickNext} disabled={currentPage === Math.ceil(subcategory.length / sliderSizes[viewportSize]) - 1}>
-        Next
-      </button>
+  return (
+    <>
+      {categoriesToShow.map((category, index) => {
+        const item = filters.find(item => item._id === category);
+        const handleClick = () => {
+          onSelect(item.name);
+        };
+        return (
+          <Li
+            key={item._id}
+            style={{
+              backgroundImage: `linear-gradient(rgba(4, 4, 4, 0.5), rgba(4, 4, 4, 0.5)), url(${item.imgURL})`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              backgroundRepeat: 'no-repeat',
+            }}
+            onClick={handleClick}
+          >
+            <SubTitle>{item.name}</SubTitle>
+            <CategoryTitle>{item.filter}</CategoryTitle>
+          </Li>
+        );
+      })}
     </>
-        // <>
-        //     {subcategory.map(id => {
-        //         const item = filters.find(item => item._id.$oid === id); 
-        //         const handleClick = () => {
-        //             onSelect(item.name); 
-        //         };
-        //             return (
-        //                 <Li key={item._id.$oid}
-        //                     style={{
-        //                         backgroundImage: `linear-gradient(rgba(4, 4, 4, 0.5), rgba(4, 4, 4, 0.5)), url(${item.imgURL})`,
-        //                         backgroundSize: 'cover', 
-        //                         backgroundPosition: 'center', 
-        //                         backgroundRepeat: 'no-repeat'
-        //                     }}
-        //                     onClick={handleClick}>
-        //                     <SubTitle>{item.name}</SubTitle>
-        //                     <CategoryTitle>{item.filter}</CategoryTitle>
-        //                 </Li>
-        //             );
-        //     })}
-        // </>
-    )
-}
+  );
+};

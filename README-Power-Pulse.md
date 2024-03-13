@@ -1,3 +1,4 @@
+
 ![Image alt](https://github.com/Nikolaus-B/power_pulse/raw/main/src/img/PowerPulseHome.png)
 
 # Project Title
@@ -43,11 +44,14 @@ npm install — install dependencies;
 
 npm start — run the app in production mode;
 
+
 npm run start — run the app in development mode
+
 
 ## Development team :
 
 Team Leader:
+
 
 - [Mykola Baliasevych](https://github.com/Nikolaus-B);
 
@@ -63,6 +67,7 @@ Developers:
 - [Kateryna Kononikhina](https://github.com/Speedkon);
 - [Olena Kaisym](https://github.com/okaisym);
 - [Danylo Kornitskyj](https://github.com/Danylo2403);
+
 
 ## Backend Deployment
 

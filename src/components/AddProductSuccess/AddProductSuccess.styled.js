@@ -10,7 +10,7 @@ const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
 
-  @media screen and (min-width: 768px) and (max-width: 1439px)  {
+  @media screen and (min-width: 768px) {
 padding: 64px 136px 64px 137px;
   }
 `;
@@ -27,7 +27,7 @@ const ImageEl = styled.img`
   width: 123px;
   height: 84px;
 
-  @media screen and (min-width: 768px) and (max-width: 1439px)  {
+  @media screen and (min-width: 768px) {
 margin-bottom: 32px;
   }
 `;
@@ -47,7 +47,7 @@ const Calories = styled.p`
     color: rgba(230, 83, 60, 1);
   }
 
-  @media screen and (min-width: 768px) and (max-width: 1439px)  {
+  @media screen and (min-width: 768px) {
 margin-bottom: 32px;
   }
 `;
@@ -65,10 +65,15 @@ const ProductButton = styled.button`
   background-color: rgba(230, 83, 60, 1);
   padding: 12px 32px;
   margin-bottom: 16px;
+  transition: transform 0.2s;
 
-  @media screen and (min-width: 768px) and (max-width: 1439px)  {
+  @media screen and (min-width: 768px) {
 width: 157px;
 height: 52px;
+
+&:hover{
+      transform: scale(1.02);
+    }
   }
 `;
 
@@ -77,6 +82,12 @@ display: flex;
 align-items : center ;
 text-decoration: none;
 cursor: pointer;
+`
+
+const WrapperIconArrow = styled.div`
+display: flex;
+justify-content: center;
+margin-left: 8px;
 `
 
 const DiaryLink = styled.div`
@@ -88,4 +99,4 @@ const DiaryLink = styled.div`
 `;
 
 
-export { Wrapper, DiaryLink, ImageEl, Heading, Calories, ProductButton , WrapperCloseIcon , WrapperDiaryLink };
+export { Wrapper, DiaryLink, ImageEl, Heading, Calories, ProductButton , WrapperCloseIcon , WrapperDiaryLink , WrapperIconArrow };
