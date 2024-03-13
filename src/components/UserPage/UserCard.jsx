@@ -1,5 +1,5 @@
 import {
-  AvatarIcon,
+  // AvatarIcon,
   AddAvatarIcon,
   FoodIcon,
   DumbBellIcon,
@@ -14,10 +14,13 @@ import {
   CardFooter,
   CardHeader,
   HStack,
+  Image,
   Stack,
   Text,
   VStack,
 } from '@chakra-ui/react';
+import AvatarPlug from '../../img/AvatarPlug.svg';
+import CheckMark from '../../img/CheckMark.svg';
 
 //------------------------------------------------
 import { useDispatch } from 'react-redux';
@@ -45,7 +48,12 @@ export const UserCard = () => {
           <VStack>
             <Avatar
               icon={
-                <AvatarIcon iconid={'avatar'} width={'41px'} height={'41px'} />
+                <Image
+                  src={AvatarPlug}
+                  w={[41, 69, 69]}
+                  h={[41, 69, 69]}
+                  color="rgba(239, 237,232, 0.1)"
+                />
               }
               pos="relative"
               w={[90, 150, 150]}
@@ -55,14 +63,13 @@ export const UserCard = () => {
                 type="submit"
                 onClick={() => dispatch(fetchUserAvatars())}
                 pos="absolute"
-                right={[7, 14, 14]}
-                bottom={[-4]}
+                right={[6, 14, 14]}
+                bottom={[-3, -4, -4]}
                 variant="unstyled"
               >
-                <AddAvatarIcon
-                  iconid={'add-avatar'}
-                  width={'32px'}
-                  height={'32px'}
+                <Image
+                  src={CheckMark}
+                  boxSize={{ base: '24px', md: '32px', xl: '32px' }}
                 />
               </Button>
             </Avatar>
@@ -170,6 +177,7 @@ export const UserCard = () => {
           alignContent="center"
           alignSelf="flex-end"
           iconSpacing="8px"
+          w={[82, 88, 88]}
           fontSize={[14, 16, 16]}
           variant="unstyled"
         >

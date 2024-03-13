@@ -10,16 +10,26 @@ import {
 } from './styles/StyledDatepicker.styled';
 
 import { format } from 'date-fns';
+import { Button } from '@chakra-ui/react';
+import { Icon } from 'components/Icon/Icon';
 
 const StyledDatepicker = () => {
   const { user } = useAuth();
   const calRef = useRef();
-  const [selectedDate, setSelectedDate] = useState(Date.now());
+  const [selectedDate, setSelectedDate] = useState(user.birthday);
 
   const CustomInput = forwardRef(({ value, onClick }, ref) => {
     return (
-      <TitleWrapper type="button" onClick={onClick} ref={ref}>
-        {format(user.birthday, 'dd.MM.yyyy')}
+      <TitleWrapper
+        as={Button}
+        justifyContent="space-between"
+        type="button"
+        onClick={onClick}
+        ref={ref}
+        rightIcon={<Icon iconid={'date-picker'} width={24} height={24} />}
+        variant="outline"
+      >
+        {format(selectedDate, 'dd.MM.yyyy')}
       </TitleWrapper>
     );
   });

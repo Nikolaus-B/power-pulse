@@ -17,6 +17,14 @@ const sizes = defineStyle({
     fontSize: '20px',
     lineHeight: '112%',
   },
+  xl: {
+    minWidth: '32px',
+    px: '50px',
+    py: '16px',
+
+    fontSize: '20px',
+    lineHeight: '112%',
+  },
 });
 
 const variantSolid = defineStyle({
@@ -38,6 +46,33 @@ const variantSolid = defineStyle({
   },
 });
 
+const variantOutline = defineStyle({
+  w: '100%',
+  h: '52px',
+  p: '14px',
+
+  color: '#efede8',
+  // background: 'transparent',
+  borderRadius: '12px',
+  border: '1px solid',
+  borderColor: 'rgba(239, 237, 232, 0.3)',
+  fontSize: '16px',
+
+  fontWeight: 'normal',
+  lineHeight: '150%',
+  textAlign: 'center',
+  textTransform: 'uppercase',
+
+  _hover: {
+    bgColor: 'transparent',
+    borderColor: '#e6533c',
+  },
+  _focus: {
+    bgColor: 'transparent',
+    borderColor: '#e6533c',
+  },
+});
+
 const variantUnstyled = defineStyle({
   color: 'inherit',
   display: 'inline',
@@ -46,12 +81,12 @@ const variantUnstyled = defineStyle({
   w: '32px',
   h: 'auto',
   m: '0',
-  pr: '30px',
 });
 
 const variants = {
   solid: variantSolid,
   unstyled: variantUnstyled,
+  outline: variantOutline,
 };
 
 export const buttonStyles = defineStyleConfig({
