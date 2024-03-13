@@ -33,14 +33,16 @@ export const ExercisesList = ({ selectedCategory, subCategory }) => {
   }, [category, subCategory]);
 
   return (
-    <List>
+    <>
       {loading ? (
         <Loader />
       ) : (
-        exercises.map(exercise => (
-          <ExercisesItem key={exercise._id} exercise={exercise} />
-        ))
+        <List>
+          {exercises.map(exercise => (
+            <ExercisesItem key={exercise._id} exercise={exercise} />
+          ))}
+        </List>
       )}
-    </List>
+    </>
   );
 };
