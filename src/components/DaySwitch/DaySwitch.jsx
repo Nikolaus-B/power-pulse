@@ -44,7 +44,7 @@ export const DaySwitch = ({ media }) => {
         setDisabledPrev(true);
       }
     }
-  }, [user.createdAt]);
+  }, [user.createdAt, startDate]);
 
   const clearStore = () => dispatch(clearData());
 
