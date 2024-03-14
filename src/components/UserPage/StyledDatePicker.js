@@ -9,7 +9,8 @@ import {
   TitleWrapper,
 } from './styles/StyledDatepicker.styled';
 import { Button } from '@chakra-ui/react';
-import { Icon } from 'components/Icon/Icon';
+import { CalendarIcon } from '@chakra-ui/icons';
+// import Cal from '../../img/cal.svg';
 
 const StyledDatepicker = () => {
   const { user } = useAuth();
@@ -24,10 +25,8 @@ const StyledDatepicker = () => {
         type="button"
         onClick={onClick}
         ref={ref}
-        // rightIcon={
-        //   <Icon iconid={'date-picker'} width={'16px'} height={'16px'} />
-        // }
-        h={[46, 52, 52]}
+        rightIcon={<CalendarIcon />}
+        h={{ base: '46px', md: '52px', xl: '52px' }}
         variant="outline"
       >
         {format(selectedDate, 'dd.MM.yyyy')}

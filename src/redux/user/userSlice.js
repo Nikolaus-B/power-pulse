@@ -73,6 +73,7 @@ const userSlice = createSlice({
 
       .addCase(fetchUserCurrent.fulfilled, (state, action) => {
         state.user = action.payload.user;
+        // state.user = action.payload.user.name;
         state.isLoggedIn = true;
         state.bmr = action.payload.bmr;
         state.dailyRateSports = action.payload.dailyRateSports;

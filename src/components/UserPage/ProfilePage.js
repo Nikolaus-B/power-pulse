@@ -16,7 +16,7 @@ export const ProfilePage = () => {
   return (
     <ChakraProvider theme={theme} resetCSS>
       <Container px={[5, 8, 8]} centerContent>
-        <VStack spacing={10} w="100%" align="flex-start">
+        <VStack spacing={10} align="flex-start" justify="center">
           <Title as={Heading} title={'ProfileSettings'} />
           <Stack
             w={{ xl: '100%' }}

@@ -1,6 +1,6 @@
 import {
   // AvatarIcon,
-  AddAvatarIcon,
+  // AddAvatarIcon,
   FoodIcon,
   DumbBellIcon,
   LogOut,
@@ -41,8 +41,13 @@ export const UserCard = () => {
     dispatch(fetchUserCurrent());
   }, [dispatch]);
 
+  const logOut = () => {
+    // dispatch(clearData());
+    dispatch(fetchUserLogout());
+  };
+
   return (
-    <Stack>
+    <Stack paddingRight={[0, 0, 16]}>
       <VStack spacing={[10, 8, 8]}>
         <VStack spacing="32px">
           <VStack>
@@ -169,7 +174,7 @@ export const UserCard = () => {
 
         <Button
           type="button"
-          onClick={() => dispatch(fetchUserLogout())}
+          onClick={logOut}
           rightIcon={
             <LogOut iconid={'log-out'} width={'20px'} height={'20px'} />
           }

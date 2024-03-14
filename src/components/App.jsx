@@ -33,7 +33,7 @@ export const App = () => {
           <Route index element={<HomePage />} />
           <Route path="/register" element={<SingUpPage />} />
           <Route path="/login" element={<SingInPage />} />
-          <Route path="/settings" element={<UserPage />} />
+          <Route path="/params" element={<UserPage />} />
           <Route path="/diary" element={<DiaryPage />} />
           <Route path="/product" element={<ProductsPage />} />
           <Route path="/exercises" element={<ExercisesPage />}>

@@ -147,7 +147,6 @@ export const CalendarGlobalStyles = createGlobalStyle`
     left: -7px;
     transform: rotate(45deg);
   }
-
   .react-datepicker__navigation-icon::before:hover:focus {
     border-color: rgba(239, 237, 232, 0.5);
     opacity: 50%;
@@ -166,8 +165,8 @@ export const CalendarGlobalStyles = createGlobalStyle`
     gap: 11px;
     flex-shrink: 0;
     margin: 0;
-    width: 16px;
-    height: 18px;
+    width: 24px;
+    height: 24px;
     border-radius: 50%;
     color: #efede8;
     font-family: inherit;
@@ -181,7 +180,7 @@ export const CalendarGlobalStyles = createGlobalStyle`
   }
   .react-datepicker__month {
     display: flex;
-    gap: 7px;
+    gap: 4px;
     flex-direction: column;
     justify-content: space-between;
     padding-top: 11px;
