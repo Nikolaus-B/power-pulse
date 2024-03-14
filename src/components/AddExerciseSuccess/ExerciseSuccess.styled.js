@@ -28,6 +28,13 @@ position: fixed;
 top: 18px;
 right: 18px;
 cursor: pointer;
+
+@media screen and (min-width: 768px) {
+    svg {
+      width: 26px;
+      height: 26px;
+    }
+  }
 `
 
 const Wrapper = styled.div`
@@ -36,10 +43,17 @@ const Wrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  @media screen and (min-width: 768px) {
+    padding: 64px 134px;
+    height: 439px; }
 `;
 
 const ImageEl = styled.img`
   margin-bottom: 16px;
+  @media screen and (min-width: 768px) {
+    margin-bottom: 32px;
+  }
 `;
 const Heading = styled.h3`
   font-size: 24px;
@@ -50,12 +64,6 @@ const ExerciseTime = styled.div`
   font-size: 14px;
   color: rgba(239, 237, 232, 0.3);
   margin-bottom: 4px;
-
-  /* span{
-    color: #E6533C;
-    margin-left: 8px;
-    line-height: 1.28;
-  } */
 `
 
 const Span = styled.span`
@@ -70,11 +78,16 @@ const Calories = styled.p`
   color: rgba(239, 237, 232, 0.3);
   margin-bottom: 24px;
 
+
   span {
     color: #E6533C;
     margin-left: 8px;
     line-height: 1.28;
 
+  }
+
+  @media screen and (min-width: 768px) {
+margin-bottom: 32px;
   }
 `;
 
@@ -85,6 +98,14 @@ const ProductButton = styled.button`
   background-color: rgba(230, 83, 60, 1);
   padding: 12px 32px;
   margin-bottom: 16px;
+  border: none;
+  height: 42px;
+
+  @media screen and (min-width: 768px) {
+padding: 14px 32px;
+width: 162px;
+height: 52px;
+  }
 `;
 
 const WrapperDiaryLink = styled(Link)`
@@ -105,7 +126,4 @@ const IconClose = styled(Icon)`
 
 `
 
-const ArrowForwardIcon = styled(Icon)`
-`
-
-export { Wrapper, DiaryLink, ImageEl, Heading, Calories, ProductButton  ,customStyles , WrapperDiaryLink ,ExerciseTime , WrapperCloseIcon, Span , IconClose , ArrowForwardIcon };
+export { Wrapper, DiaryLink, ImageEl, Heading, Calories, ProductButton  ,customStyles , WrapperDiaryLink ,ExerciseTime , WrapperCloseIcon, Span , IconClose};

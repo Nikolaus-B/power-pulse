@@ -21,7 +21,7 @@ import { CheckCircleIcon } from '@chakra-ui/icons';
 //----------------------------------------------------
 import { useDispatch } from 'react-redux';
 import { fetchUserParams } from '../../redux/user/operations';
-import { useAuth } from 'components/hooks/AuthHook';
+import { useAuth } from '../../hooks/AuthHook';
 import StyledDatepicker from './StyledDatePicker';
 
 //----------------------------------------------------

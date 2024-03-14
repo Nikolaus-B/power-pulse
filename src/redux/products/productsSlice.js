@@ -2,15 +2,6 @@ import { createSlice } from '@reduxjs/toolkit';
 
 import { fetchCategories } from './operations';
 
-// const handlePending = state => {
-//   state.isLoading = true;
-// };
-
-// const handleRejected = (state, action) => {
-//   state.isLoading = false;
-//   state.error = action.payload;
-// };
-
 const initialState = {
   categories: [],
   filter: {

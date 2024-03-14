@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { CloseIcon } from '@chakra-ui/icons';
-
+import { Icon } from 'components/Icon/Icon';
+import { Toaster, toast } from 'react-hot-toast';
 import {
   CancelButton,
   AddToDiaryButton,
@@ -25,6 +25,7 @@ export const AddProductForm = ({
   const dispatch = useDispatch();
   const [grams, setGrams] = useState('');
   const [calories, setCalories] = useState(0);
+  const [isSubmitDisabled, setIsSubmitDisabled] = useState(true);
   const { title, calories: productCalories } = product;
 
   const data = {
@@ -50,18 +51,21 @@ export const AddProductForm = ({
     const gramsValue = e.target.value;
 
     setGrams(gramsValue.trim());
-    if (!isNaN(gramsValue)) {
-      const calculatedCalories = (gramsValue * productCalories) / 100;
-      setCalories(calculatedCalories);
-    } else {
+    if (gramsValue === '' || isNaN(gramsValue) || parseFloat(gramsValue) <= 0) {
+      setIsSubmitDisabled(true);
       setCalories(0);
+    } else {
+      setIsSubmitDisabled(false);
+      setGrams(gramsValue);
+      const calculatedCalories = (parseFloat(gramsValue) * productCalories) / 100;
+      setCalories(calculatedCalories);
     }
   };
 
   const handleSubmit = async e => {
     e.preventDefault();
     e.stopPropagation();
-
+    toast.success('Product added to diary!')
     onCloseForm();
     onSuccess(calories);
   };
@@ -69,7 +73,7 @@ export const AddProductForm = ({
   return (
     <>
       <WrapperCloseIcon onClick={onClose}>
-        <CloseIcon w={11} h={11} />
+        <Icon width='22px' height='22px' iconid='x-white'/>
       </WrapperCloseIcon>
       <ModalForm onSubmit={handleSubmit}>
         <WrapperInputForm>
@@ -78,6 +82,7 @@ export const AddProductForm = ({
             <GrammInput
               type="number"
               inputMode="numeric"
+              placeholder='0'
               value={grams}
               onChange={handleGramsChange}
             />
@@ -89,13 +94,40 @@ export const AddProductForm = ({
           Calories:
           <span style={{ color: 'white', marginLeft: '4px' }}>{calories}</span>
         </Text>
-        <AddToDiaryButton type="submit" onClick={() => addProduct({ data })}>
+        <AddToDiaryButton type="submit" disabled={isSubmitDisabled} onClick={() => addProduct({ data })}>
           Add to diary
         </AddToDiaryButton>
         <CancelButton type="button" onClick={onClose}>
           Cancel
         </CancelButton>
       </ModalForm>
+      <Toaster
+        toastOptions={{
+          duration: 5000,
+          style: {
+            background: '#321f0c',
+            color: '#fff',
+          },
+          success: {
+            duration: 3000,
+            style: {
+              border: '2px solid #3CBF61',
+            },
+          },
+          error: {
+            duration: 4000,
+            style: {
+              border: '2px solid #D80027',
+            },
+          },
+          loading: {
+            duration: 2000,
+            style: {
+              border: '2px solid #e6533c',
+            },
+          },
+        }}
+      />
     </>
   );
 };

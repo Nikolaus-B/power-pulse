@@ -42,7 +42,10 @@ export const DayProductTitle = styled.p`
 export const ProductsLink = styled(Link)`
   text-decoration: none;
   color: var(--orange-color);
-
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
   transition: color var(--transition-dur-and-func);
   &:hover,
   &:focus {
@@ -158,6 +161,7 @@ export const DayProductsContainer = styled.div`
 export const Table = styled.table`
   width: 672px;
   border-spacing: 8px;
+  border-collapse: separate;
 
   @media screen and (min-width: 1440px) {
     width: 762px;

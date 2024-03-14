@@ -88,7 +88,7 @@ export const refreshing = createAsyncThunk(
   async (_, thunkAPI) => {
     const state = thunkAPI.getState();
     const persistedToken = state.user.token;
-
+    setAuthHeader(persistedToken);
     if (persistedToken === null) {
       return thunkAPI.rejectWithValue(
         <Alert status="error" variant="top-accent">
@@ -99,8 +99,6 @@ export const refreshing = createAsyncThunk(
     }
 
     try {
-      setAuthHeader(persistedToken);
-
       const response = await axios.get('users/current');
       return response.data;
     } catch (error) {

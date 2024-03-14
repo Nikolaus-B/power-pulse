@@ -1,12 +1,13 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import toast from 'react-hot-toast';
 
 axios.defaults.baseURL = `
  https://power-pulse-back.onrender.com/`;
 
-// const setAuthHeader = token => {
-//   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-// };
+const somethingWrong = () => {
+  toast.loading('Something wrong, try again');
+};
 
 export const fetchDiary = createAsyncThunk(
   'diary/getDiaryByDate',
@@ -16,6 +17,7 @@ export const fetchDiary = createAsyncThunk(
 
       return response.data;
     } catch (e) {
+      toast.error('No data on this day');
       return thunkAPI.rejectWithValue(e.message);
     }
   }
@@ -29,6 +31,7 @@ export const fetchAddProduct = createAsyncThunk(
 
       return response.data;
     } catch (e) {
+      somethingWrong();
       return thunkAPI.rejectWithValue(e.message);
     }
   }
@@ -42,6 +45,7 @@ export const fetchAddExercise = createAsyncThunk(
 
       return response.data;
     } catch (e) {
+      somethingWrong();
       return thunkAPI.rejectWithValue(e.message);
     }
   }
@@ -55,6 +59,7 @@ export const fetchDeleteProduct = createAsyncThunk(
 
       return response.data;
     } catch (e) {
+      somethingWrong();
       return thunkAPI.rejectWithValue(e.message);
     }
   }
@@ -65,9 +70,9 @@ export const fetchDeleteExercise = createAsyncThunk(
   async (id, thunkAPI) => {
     try {
       const response = await axios.delete(`diary/exercises/${id}`);
-      // setAuthHeader(response.data.token);
       return response.data;
     } catch (e) {
+      somethingWrong();
       return thunkAPI.rejectWithValue(e.message);
     }
   }

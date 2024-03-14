@@ -1,10 +1,11 @@
-import { Suspense, lazy, useEffect } from 'react';
+import { lazy, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { AppLayout } from './AppLayout/AppLayout';
 import { useDispatch } from 'react-redux';
-import { useAuth } from './hooks/AuthHook';
+
 import { refreshing } from '../redux/user/operations';
-import { Toaster } from 'react-hot-toast';
+import { RestrictedRoute } from './RestrictedRoute';
+import { PrivateRoute } from './PrivateRoute';
 
 const HomePage = lazy(() => import('pages/HomePage'));
 const NotFoundPage = lazy(() => import('pages/NotFoundPage'));
@@ -18,57 +19,66 @@ const TitlePage = lazy(() => import('pages/TitlePage'));
 
 export const App = () => {
   const dispatch = useDispatch();
-  const { isRefreshing } = useAuth();
 
   useEffect(() => {
     dispatch(refreshing());
   }, [dispatch]);
 
-  return isRefreshing ? (
-    <Suspense fallback />
-  ) : (
+  return (
     <>
       <Routes>
         <Route path="/" element={<AppLayout />}>
-          <Route index element={<HomePage />} />
-          <Route path="/register" element={<SingUpPage />} />
-          <Route path="/login" element={<SingInPage />} />
-          <Route path="/params" element={<UserPage />} />
-          <Route path="/diary" element={<DiaryPage />} />
-          <Route path="/product" element={<ProductsPage />} />
-          <Route path="/exercises" element={<ExercisesPage />}>
-            <Route path="title" element={<TitlePage />} />
-          </Route>
+          <Route
+            index
+            element={
+              <RestrictedRoute
+                redirectTo="/settings"
+                component={<HomePage />}
+              />
+            }
+          />
+          <Route
+            path="/register"
+            element={
+              <RestrictedRoute
+                redirectTo="/settings"
+                component={<SingUpPage />}
+              />
+            }
+          />
+          <Route
+            path="/login"
+            element={
+              <RestrictedRoute
+                redirectTo="/settings"
+                component={<SingInPage />}
+              />
+            }
+          />
+          <Route
+            path="/settings"
+            element={<PrivateRoute redirectTo="/" component={<UserPage />} />}
+          />
+          <Route
+            path="/diary"
+            element={<PrivateRoute redirectTo="/" component={<DiaryPage />} />}
+          />
+          <Route
+            path="/products"
+            element={
+              <PrivateRoute redirectTo="/" component={<ProductsPage />} />
+            }
+          />
+          <Route
+            path="/exercises"
+            element={
+              <PrivateRoute redirectTo="/" component={<ExercisesPage />} />
+            }
+          />
+          <Route path="/exercises/title" component={<TitlePage />} />
         </Route>
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
-      <Toaster
-        toastOptions={{
-          duration: 5000,
-          style: {
-            background: '#321f0c',
-            color: '#fff',
-          },
-          success: {
-            duration: 3000,
-            style: {
-              border: '2px solid #3CBF61',
-            },
-          },
-          error: {
-            duration: 4000,
-            style: {
-              border: '2px solid #D80027',
-            },
-          },
-          loading: {
-            duration: 2000,
-            style: {
-              border: '2px solid #e6533c',
-            },
-          },
-        }}
-      />
     </>
   );
 };

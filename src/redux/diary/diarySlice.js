@@ -7,22 +7,6 @@ import {
   fetchDiary,
 } from './operations';
 
-// const handlePending = state => {
-//   state.isLoading = true;
-// };
-
-// new Date(new Date().setDate(new Date().getDate() + 1))
-//     .toISOString()
-//     .split('T', 1)[0]
-//     .split('-')
-//     .reverse()
-//     .join('-'),
-
-// const handleRejected = (state, action) => {
-//   state.isLoading = false;
-//   state.error = action.payload;
-// };
-
 const initialState = {
   date: new Date()
     .toISOString()
@@ -40,6 +24,10 @@ const diarySlice = createSlice({
   reducers: {
     setDate: (state, action) => {
       state.date = action.payload;
+    },
+    clearData: state => {
+      state.products = [];
+      state.exercises = [];
     },
   },
   extraReducers: builder => {
@@ -65,5 +53,5 @@ const diarySlice = createSlice({
   },
 });
 
-export const { setDate } = diarySlice.actions;
+export const { setDate, clearData } = diarySlice.actions;
 export const diaryReducer = diarySlice.reducer;
