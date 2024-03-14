@@ -1,15 +1,13 @@
 import { forwardRef, useState, useRef } from 'react';
 import DatePicker from 'react-datepicker';
-
+import { format } from 'date-fns';
 import 'react-datepicker/dist/react-datepicker-cssmodules.css';
 import { useAuth } from 'components/hooks/AuthHook';
-
+//----------------------------------------
 import {
   CalendarGlobalStyles,
   TitleWrapper,
 } from './styles/StyledDatepicker.styled';
-
-import { format } from 'date-fns';
 import { Button } from '@chakra-ui/react';
 import { Icon } from 'components/Icon/Icon';
 
@@ -26,7 +24,10 @@ const StyledDatepicker = () => {
         type="button"
         onClick={onClick}
         ref={ref}
-        rightIcon={<Icon iconid={'date-picker'} width={24} height={24} />}
+        // rightIcon={
+        //   <Icon iconid={'date-picker'} width={'16px'} height={'16px'} />
+        // }
+        h={[46, 52, 52]}
         variant="outline"
       >
         {format(selectedDate, 'dd.MM.yyyy')}

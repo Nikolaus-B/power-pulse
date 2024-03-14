@@ -48,7 +48,7 @@ const variantSolid = defineStyle({
 
 const variantOutline = defineStyle({
   w: '100%',
-  h: '52px',
+  h: '46px',
   p: '14px',
 
   color: '#efede8',
