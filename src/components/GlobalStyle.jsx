@@ -62,8 +62,9 @@ div {
 }
 
 input[type="radio"] {
-  display: grid;
-  place-content: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   appearance: none;
   background-color: transparent;
 }

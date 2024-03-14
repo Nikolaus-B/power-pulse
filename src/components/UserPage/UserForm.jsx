@@ -125,7 +125,7 @@ export const UserForm = () => {
                   name="name"
                   type="text"
                   {...formik.getFieldProps('name')}
-                  placeholder={user.name}
+                  placeholder={user ? user.name : 'Name'}
                   value={formik.values.name}
                   onChange={formik.handleChange}
                   aria-label="name"
@@ -161,7 +161,7 @@ export const UserForm = () => {
                 <Input
                   name="email"
                   type="email"
-                  placeholder={user.email}
+                  placeholder={user ? user.email : 'Email'}
                   aria-label="email"
                   isReadOnly={true}
                   w="100%"
@@ -192,7 +192,7 @@ export const UserForm = () => {
                     name="height"
                     type="number"
                     {...formik.getFieldProps('height')}
-                    placeholder={user.height}
+                    placeholder={user ? user.height : 'Height'}
                     value={formik.values.height}
                     onChange={formik.handleChange}
                     aria-label="height"
@@ -233,7 +233,7 @@ export const UserForm = () => {
                     name="currentWeight"
                     type="number"
                     {...formik.getFieldProps('currentWeight')}
-                    placeholder={user.currentWeight}
+                    placeholder={user ? user.currentWeight : 'Current Weight'}
                     value={formik.values.currentWeight}
                     onChange={formik.handleChange}
                     aria-label="currentWeight"
@@ -276,7 +276,7 @@ export const UserForm = () => {
                     name="desiredWeight"
                     type="number"
                     {...formik.getFieldProps('desiredWeight')}
-                    placeholder={user.desiredWeight}
+                    placeholder={user ? user.desiredWeight : 'Desired Weight'}
                     value={formik.values.desiredWeight}
                     onChange={formik.handleChange}
                     aria-label="desiredWeight"
@@ -302,6 +302,7 @@ export const UserForm = () => {
 
                 <FormControl alignSelf="baseline">
                   <FormLabel
+                    as={Text}
                     fontSize={[12, 14, 14]}
                     lineHeight={['150%', '129%', '129%']}
                     mb={[1, 2, 2]}
@@ -337,20 +338,37 @@ export const UserForm = () => {
               </Text>
               <HStack justify="space-between">
                 <RadioGroup
-                  defaultValue={user.blood}
                   size={{ base: 'base', md: 'md', xl: 'md' }}
                   variant="groove"
                 >
                   <VStack>
                     <HStack spacing="8px">
                       <FormLabel>
-                        <Radio type="radio" name="blood" value="1" />1
+                        <Radio
+                          type="radio"
+                          name="blood"
+                          value="1"
+                          checked={user ? user.blood : false}
+                        />
+                        1
                       </FormLabel>
                       <FormLabel>
-                        <Radio type="radio" name="blood" value="2" />2
+                        <Radio
+                          type="radio"
+                          name="blood"
+                          value="2"
+                          checked={user ? user.blood : false}
+                        />
+                        2
                       </FormLabel>
                       <FormLabel>
-                        <Radio type="radio" name="blood" value="3" />3
+                        <Radio
+                          type="radio"
+                          name="blood"
+                          value="3"
+                          checked={user ? user.blood : false}
+                        />
+                        3
                       </FormLabel>
                       <FormLabel>
                         <Radio type="radio" name="blood" value="4" />4
@@ -361,11 +379,21 @@ export const UserForm = () => {
                 <RadioGroup size={{ base: 'base', md: 'md' }} variant="groove">
                   <HStack spacing="8px">
                     <FormLabel>
-                      <Radio type="radio" name="sex" value="male" />
+                      <Radio
+                        type="radio"
+                        name="sex"
+                        value="male"
+                        checked={user ? user.sex : false}
+                      />
                       Male
                     </FormLabel>
                     <FormLabel>
-                      <Radio type="radio" name="sex" value="female" />
+                      <Radio
+                        type="radio"
+                        name="sex"
+                        value="female"
+                        checked={user ? user.sex : false}
+                      />
                       Female
                     </FormLabel>
                   </HStack>
@@ -381,32 +409,57 @@ export const UserForm = () => {
             >
               <VStack spacing="8px" align="flex-start">
                 <FormLabel>
-                  <Radio type="radio" name="levelActivity" value="1" />
+                  <Radio
+                    type="radio"
+                    name="levelActivity"
+                    value="1"
+                    checked={user ? user.levelActivity : false}
+                  />
                   <Text as="span" width={[310, 523, 523]}>
                     Sedentary lifestyle (little or no physical activity)
                   </Text>
                 </FormLabel>
                 <FormLabel>
-                  <Radio type="radio" name="levelActivity" value="2" />
+                  <Radio
+                    type="radio"
+                    name="levelActivity"
+                    value="2"
+                    checked={user ? user.levelActivity : false}
+                  />
                   <Text as="span" width={[310, 523, 523]}>
                     Light activity (light exercises/sports 1-3 days per week)
                   </Text>
                 </FormLabel>
                 <FormLabel>
-                  <Radio type="radio" name="levelActivity" value="3" />
+                  <Radio
+                    type="radio"
+                    name="levelActivity"
+                    value="3"
+                    checked={user ? user.levelActivity : false}
+                  />
                   <Text as="span" width={[310, 523, 523]}>
                     Moderately active (moderate exercises/sports 3-5 days per
                     week)
                   </Text>
                 </FormLabel>
                 <FormLabel>
-                  <Radio type="radio" name="levelActivity" value="4" />
+                  <Radio
+                    type="radio"
+                    name="levelActivity"
+                    value="4"
+                    checked={user ? user.levelActivity : false}
+                  />
                   <Text as="span" width={[310, 523, 523]}>
                     Very active (intense exercises/sports 6-7 days per week)
                   </Text>
                 </FormLabel>
                 <FormLabel>
-                  <Radio type="radio" name="levelActivity" value="5" />
+                  <Radio
+                    type="radio"
+                    name="levelActivity"
+                    value="5"
+                    checked={user ? user.levelActivity : false}
+                  />
                   <Text as="span" width={[310, 523, 523]}>
                     Extremely active (very strenuous exercises/sports and
                     physical work)

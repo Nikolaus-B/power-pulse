@@ -15,7 +15,9 @@ import { CalendarIcon } from '@chakra-ui/icons';
 const StyledDatepicker = () => {
   const { user } = useAuth();
   const calRef = useRef();
-  const [selectedDate, setSelectedDate] = useState(user.birthday);
+  const [selectedDate, setSelectedDate] = useState(
+    user ? user.birthday : new Date()
+  );
 
   const CustomInput = forwardRef(({ value, onClick }, ref) => {
     return (
@@ -26,7 +28,7 @@ const StyledDatepicker = () => {
         onClick={onClick}
         ref={ref}
         rightIcon={<CalendarIcon />}
-        h={{ base: '46px', md: '52px', xl: '52px' }}
+        h={['46px', '52px', '52px']}
         variant="outline"
       >
         {format(selectedDate, 'dd.MM.yyyy')}

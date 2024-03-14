@@ -30,7 +30,7 @@ import { useAuth } from '../../hooks/AuthHook.js';
 import {
   fetchUserLogout,
   fetchUserCurrent,
-  fetchUserAvatars,
+  // fetchUserAvatars,
 } from '../../redux/user/operations.js';
 
 //------------------------------------------------
@@ -53,12 +53,13 @@ export const UserCard = () => {
 
   const handleAvatarChange = e => {
     const avatar = e.target.files[0];
+    console.log(avatar);
     setAvatar(avatar);
   };
 
-  const appendAvatar = avatarURL => {
+  const appendAvatar = avatar => {
     const formData = new FormData();
-    formData.append('avatarURL', selectedAvatar.files[0]);
+    return formData.append('avatar', selectedAvatar);
   };
 
   return (
@@ -83,12 +84,11 @@ export const UserCard = () => {
                 type="file"
                 multiple
                 accept="image/*"
-                id="input_file"
                 onChange={handleAvatarChange}
               />
               <Button
-                type="submit"
-                onClick={() => dispatch(fetchUserAvatars(appendAvatar))}
+                type="button"
+                onClick={() => appendAvatar()}
                 //-----------------------
                 pos="absolute"
                 right={[6, 14, 14]}
@@ -109,7 +109,7 @@ export const UserCard = () => {
               lineHeight={['111%', '117%', '117%']}
               mb={[1, 2, 2]}
             >
-              {user.name}
+              {user ? user.name : 'Name'}
             </Text>
             <Badge display="inline-flex" fontSize="14px" lineHeight="129%">
               User
