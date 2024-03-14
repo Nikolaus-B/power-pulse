@@ -38,16 +38,14 @@ export const ProductsList = () => {
     <>
       {loading ? (
         <Loader />
-      ) : (
+      ) : products && products.length !== 0 ? (
         <List>
-          {products && products.length !== 0 ? (
-            products.map(product => {
-              return <ProductItem product={product} key={product._id} />;
-            })
-          ) : (
-            <NotFoundProduct />
-          )}
+          {products.map(product => {
+            return <ProductItem product={product} key={product._id} />;
+          })}
         </List>
+      ) : (
+        <NotFoundProduct />
       )}
     </>
   );
