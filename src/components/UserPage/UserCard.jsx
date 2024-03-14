@@ -8,6 +8,7 @@ import {
 } from './styles/Icon.styled.js';
 import {
   Avatar,
+  Input,
   Badge,
   Button,
   Card,
@@ -53,13 +54,14 @@ export const UserCard = () => {
 
   const handleAvatarChange = e => {
     const avatar = e.target.files[0];
-    console.log(avatar);
     setAvatar(avatar);
   };
 
   const appendAvatar = avatar => {
     const formData = new FormData();
-    return formData.append('avatar', selectedAvatar);
+    console.log(formData);
+    formData.append('avatar', selectedAvatar);
+    return avatar;
   };
 
   return (
@@ -84,11 +86,11 @@ export const UserCard = () => {
                 type="file"
                 multiple
                 accept="image/*"
-                onChange={handleAvatarChange}
+                onChange={() => dispatch(fetchUserCurrent())}
               />
               <Button
                 type="button"
-                onClick={() => appendAvatar()}
+                onClick={appendAvatar(handleAvatarChange)}
                 //-----------------------
                 pos="absolute"
                 right={[6, 14, 14]}
