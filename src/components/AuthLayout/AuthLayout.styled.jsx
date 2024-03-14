@@ -100,12 +100,10 @@ export const Title = styled.h2`
   line-height: 1.17;
   color: #efede8;
   margin-bottom: 14px;
-  margin-top: 26px;
   @media screen and (min-width: 768px) {
     font-size: 32px;
     line-height: 1.38;
     margin-bottom: 16px;
-    margin-top: 33px;
   }
 `;
 

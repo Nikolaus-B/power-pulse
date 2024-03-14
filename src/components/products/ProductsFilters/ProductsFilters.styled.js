@@ -25,7 +25,7 @@ const Container = styled.div`
     max-width: 100%;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: baseline;
   }
 `;
 
@@ -41,6 +41,9 @@ const Form = styled.form`
     margin: 32px 0px;
     justify-content: flex-start;
     font-size: 16px;
+  }
+  @media screen and (min-width: 1440px) {
+    margin-top: 0;
   }
 `;
 
