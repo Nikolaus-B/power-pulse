@@ -1,7 +1,7 @@
 import React, { forwardRef, useRef, useState } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import { addDays, format } from 'date-fns';
+import { addDays, format, isAfter, isBefore } from 'date-fns';
 
 //------------------------------------------
 import {
@@ -15,37 +15,53 @@ import {
 import { Icon } from 'components/Icon/Icon';
 
 //------------------------------------------
-// import { fetchDiary } from '../../redux/diary/operations';
-import { selectDate } from '../../redux/diary/diarySelectors';
 import { useAuth } from '../hooks/AuthHook';
-import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { setDate } from '../../redux/diary/diarySlice';
 
 export const DaySwitch = () => {
   const { user } = useAuth();
-  const selectedDate = useSelector(selectDate);
+  const dispatch = useDispatch();
+  const tomorrow = new Date().setDate(new Date().getDate() - 1);
   const calRef = useRef();
-
-  // const currentDate = new Date();
-  // const selectedDate = Date.now();
-
-  console.log(selectedDate);
-
+  const registrationDate = new Date(user.createdAt);
   const [startDate, setCurrentDate] = useState(new Date());
 
+  const changeDate = date => {
+    console.log(date);
+    const fotmatedDate = date
+      .toISOString()
+      .split('T', 1)[0]
+      .split('-')
+      .reverse()
+      .join('-');
+    dispatch(setDate(fotmatedDate));
+  };
+
   const goPrevDate = () => {
-    setCurrentDate(prevDate => {
-      const prevDay = new Date(prevDate);
-      prevDay.setDate(prevDate.getDate() - 1);
-      return prevDay;
-    });
+    if (!isBefore(startDate, registrationDate)) {
+      setCurrentDate(prevDate => {
+        const prevDay = new Date(prevDate);
+        prevDay.setDate(prevDate.getDate() - 1);
+        return prevDay;
+      });
+      changeDate(new Date(startDate.setDate(startDate.getDate() - 1)));
+    }
   };
 
   const goNextDate = () => {
-    setCurrentDate(nextDate => {
-      const nextDay = new Date(nextDate);
-      nextDay.setDate(nextDate.getDate() + 1);
-      return nextDay;
-    });
+    if (!isAfter(startDate, tomorrow)) {
+      setCurrentDate(nextDate => {
+        const nextDay = new Date(nextDate);
+        nextDay.setDate(nextDate.getDate() + 1);
+        return nextDay;
+      });
+    }
+  };
+
+  const changeInputDate = date => {
+    setCurrentDate(date);
+    changeDate(date);
   };
 
   //------------------------------------------
@@ -71,17 +87,16 @@ export const DaySwitch = () => {
         shouldCloseOnSelect={true}
         minDate={new Date(user.createdAt)}
         maxDate={addDays(new Date(), 0)}
-        onChange={date => setCurrentDate(date)}
+        onChange={date => changeInputDate(date)}
+        calendarStartDay={1}
+        formatWeekDay={day => day.substring(0, 2)}
+        placeholderText="Weeks start on Monday"
         //------------------------------------
         customInput={<CustomInput />}
       />
       <Wrap>
-        <Button onClick={goPrevDate}>
-          <Icon iconid="arrow-prev" width={24} height={24} />
-        </Button>
-        <Button onClick={goNextDate}>
-          <Icon iconid="arrow-next" width={24} height={24} />
-        </Button>
+        <Button onClick={goPrevDate}>prev</Button>
+        <Button onClick={goNextDate}>next</Button>
       </Wrap>
       <CalendarGlobalStyles />
     </Container>
