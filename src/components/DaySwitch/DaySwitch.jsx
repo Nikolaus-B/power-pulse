@@ -1,7 +1,7 @@
-import React, { forwardRef, useRef, useState } from 'react';
+import React, { forwardRef, useEffect, useRef, useState } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import { addDays, format } from 'date-fns';
+import { addDays, format, isAfter, isBefore } from 'date-fns';
 
 //------------------------------------------
 import {
@@ -15,40 +15,78 @@ import {
 import { Icon } from 'components/Icon/Icon';
 
 //------------------------------------------
-// import { fetchDiary } from '../../redux/diary/operations';
-import { selectDate } from '../../redux/diary/diarySelectors';
-import { useAuth } from '../hooks/AuthHook';
-import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { useAuth } from 'hooks/AuthHook';
+import { clearData, setDate } from '../../redux/diary/diarySlice';
+import { DaySwichIcons } from './DaySwichIcons';
 
-export const DaySwitch = () => {
+export const DaySwitch = ({ media }) => {
+  const dispatch = useDispatch();
   const { user } = useAuth();
-  const selectedDate = useSelector(selectDate);
   const calRef = useRef();
-
-  // const currentDate = new Date();
-  // const selectedDate = Date.now();
-
-  console.log(selectedDate);
-
   const [startDate, setCurrentDate] = useState(new Date());
+  const today = new Date();
+  const [disabledPrev, setDisabledPrev] = useState(false);
+  const [disabledNext, setDisabledNext] = useState(true);
+
+  const formatDate = notFormatedDate => {
+    return notFormatedDate
+      .toISOString()
+      .split('T', 1)[0]
+      .split('-')
+      .reverse()
+      .join('-');
+  };
+
+  useEffect(() => {
+    if (user.createdAt) {
+      if (formatDate(new Date(user.createdAt)) === formatDate(new Date())) {
+        setDisabledPrev(true);
+      }
+    }
+  }, [user.createdAt]);
+
+  const clearStore = () => dispatch(clearData());
 
   const goPrevDate = () => {
-    setCurrentDate(prevDate => {
-      const prevDay = new Date(prevDate);
-      prevDay.setDate(prevDate.getDate() - 1);
-      return prevDay;
-    });
+    const day = new Date(startDate);
+    const prevDay = new Date(day.setDate(day.getDate() - 1));
+    const prevRegistrationDate = new Date(
+      new Date(user.createdAt).setDate(new Date(user.createdAt).getDate() - 1)
+    );
+
+    if (formatDate(new Date(user.createdAt)) === formatDate(prevDay)) {
+      setDisabledPrev(true);
+    }
+
+    if (isBefore(prevRegistrationDate, prevDay)) {
+      clearStore();
+      setCurrentDate(prevDay);
+      dispatch(setDate(formatDate(prevDay)));
+      setDisabledNext(false);
+    }
   };
 
   const goNextDate = () => {
-    setCurrentDate(nextDate => {
-      const nextDay = new Date(nextDate);
-      nextDay.setDate(nextDate.getDate() + 1);
-      return nextDay;
-    });
+    const day = new Date(startDate);
+    const nextDay = new Date(day.setDate(day.getDate() + 1));
+
+    if (formatDate(today) === formatDate(nextDay)) {
+      setDisabledNext(true);
+    }
+    if (isAfter(today, nextDay)) {
+      clearStore();
+      setCurrentDate(nextDay);
+      dispatch(setDate(formatDate(nextDay)));
+      setDisabledPrev(false);
+    }
   };
 
-  //------------------------------------------
+  const selectPickerDate = date => {
+    clearStore();
+    setCurrentDate(date);
+    dispatch(setDate(formatDate(date)));
+  };
 
   const CustomInput = forwardRef(({ value, onClick }, ref) => {
     return (
@@ -56,7 +94,11 @@ export const DaySwitch = () => {
         <TitleWrapper onClick={onClick} ref={ref}>
           {format(startDate, 'dd/MM/yyyy')}
         </TitleWrapper>
-        <Icon iconid="datepicker-orng" width={24} height={24} />
+        <Icon
+          iconid="calendar"
+          width={media ? 24 : 20}
+          height={media ? 24 : 20}
+        />
       </Wrapper>
     );
   });
@@ -71,16 +113,15 @@ export const DaySwitch = () => {
         shouldCloseOnSelect={true}
         minDate={new Date(user.createdAt)}
         maxDate={addDays(new Date(), 0)}
-        onChange={date => setCurrentDate(date)}
-        //------------------------------------
+        onChange={date => selectPickerDate(date)}
         customInput={<CustomInput />}
       />
       <Wrap>
-        <Button onClick={goPrevDate}>
-          <Icon iconid="arrow-prev" width={24} height={24} />
+        <Button disabled={disabledPrev} onClick={() => goPrevDate()}>
+          <DaySwichIcons turn={'next'} disabled={disabledPrev} />
         </Button>
-        <Button onClick={goNextDate}>
-          <Icon iconid="arrow-next" width={24} height={24} />
+        <Button disabled={disabledNext} onClick={() => goNextDate()}>
+          <DaySwichIcons turn={'back'} disabled={disabledNext} />
         </Button>
       </Wrap>
       <CalendarGlobalStyles />

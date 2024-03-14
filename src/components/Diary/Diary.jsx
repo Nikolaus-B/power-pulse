@@ -13,6 +13,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectDate } from '../../redux/diary/diarySelectors';
 import { fetchDiary } from '../../redux/diary/operations';
 import { useMedia } from 'use-media';
+import { DaySwitch } from 'components/DaySwitch/DaySwitch';
 
 export const Diary = () => {
   const dispatch = useDispatch();
@@ -27,7 +28,7 @@ export const Diary = () => {
     <DiaryContainer className="container">
       <TitleContainer>
         <Title title={'Diary'} />
-        {/* <DaySwitch /> */}
+        <DaySwitch media={isWide} />
       </TitleContainer>
       <DashboardContainer>
         <ProductAndExercises>
