@@ -1,4 +1,5 @@
-![Image alt](https://github.com/Nikolaus-B/power_pulse/raw/main/img/PowerPulseHome.png)
+
+![Image alt](https://github.com/Nikolaus-B/power_pulse/raw/main/src/img/PowerPulseHome.png)
 
 # Project Title
 
@@ -43,13 +44,16 @@ npm install — install dependencies;
 
 npm start — run the app in production mode;
 
-npm run dev — run the app in development mode
+
+npm run start — run the app in development mode
+
 
 ## Development team :
 
 Team Leader:
 
-- [MykolaMykola Baliasevych](https://github.com/Nikolaus-B);
+
+- [Mykola Baliasevych](https://github.com/Nikolaus-B);
 
 Developers:
 
@@ -60,9 +64,10 @@ Developers:
 - [Yuriy Volkov](https://github.com/YVolkov404);
 - [Andrey Maximov](https://github.com/Andrey-hdsh);
 - [Sergey Reznickyy](https://github.com/SergeyReznickyy);
-- [Kateruna Kononihina](https://github.com/Speedkon);
+- [Kateryna Kononikhina](https://github.com/Speedkon);
 - [Olena Kaisym](https://github.com/okaisym);
-- [Danylo Kornitskiy](https://github.com/Danylo2403);
+- [Danylo Kornitskyj](https://github.com/Danylo2403);
+
 
 ## Backend Deployment
 
