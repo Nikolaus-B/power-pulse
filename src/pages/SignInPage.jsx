@@ -112,12 +112,44 @@ function SignInPage() {
                 </MessageInput>
               )}
               {!showPassword && (
-                <IconsIn onClick={() => setShowPassword(!showPassword)}>
+                <IconsIn
+                  onClick={() => setShowPassword(!showPassword)}
+                  style={{
+                    left:
+                      window.innerWidth >= 1440
+                        ? '424px'
+                        : window.innerWidth >= 768
+                        ? '360px'
+                        : '320px',
+                    top:
+                      window.innerWidth >= 1440
+                        ? '342px'
+                        : window.innerWidth >= 768
+                        ? '332px'
+                        : '275px',
+                  }}
+                >
                   <use href={pulseIcon + '#icon-eye'}></use>
                 </IconsIn>
               )}
               {showPassword && (
-                <IconsIn onClick={() => setShowPassword(!showPassword)}>
+                <IconsIn
+                  onClick={() => setShowPassword(!showPassword)}
+                  style={{
+                    left:
+                      window.innerWidth >= 1440
+                        ? '424px'
+                        : window.innerWidth >= 768
+                        ? '360px'
+                        : '320px',
+                    top:
+                      window.innerWidth >= 1440
+                        ? '342px'
+                        : window.innerWidth >= 768
+                        ? '332px'
+                        : '275px',
+                  }}
+                >
                   <use href={pulseIcon + '#icon-eye-off'}></use>
                 </IconsIn>
               )}
