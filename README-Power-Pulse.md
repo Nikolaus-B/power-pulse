@@ -79,4 +79,4 @@ Deployment was made via [Render](render.com)
 
 The live page can be accessed through the following link:
 
-https://https://nikolaus-b.github.io/power-pulse/settings
+https://nikolaus-b.github.io/power-pulse/
