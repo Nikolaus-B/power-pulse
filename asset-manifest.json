@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/power-pulse/static/css/main.cd2e038f.css",
-    "main.js": "/power-pulse/static/js/main.3e4c8b5b.js",
+    "main.js": "/power-pulse/static/js/main.fe4aca23.js",
     "static/js/12.82196dc9.chunk.js": "/power-pulse/static/js/12.82196dc9.chunk.js",
     "static/js/870.03751d06.chunk.js": "/power-pulse/static/js/870.03751d06.chunk.js",
     "static/js/235.feadc0be.chunk.js": "/power-pulse/static/js/235.feadc0be.chunk.js",
     "static/js/182.d0009bff.chunk.js": "/power-pulse/static/js/182.d0009bff.chunk.js",
     "static/js/345.896082c6.chunk.js": "/power-pulse/static/js/345.896082c6.chunk.js",
     "static/js/739.ca15976e.chunk.js": "/power-pulse/static/js/739.ca15976e.chunk.js",
-    "static/js/574.c0f4371d.chunk.js": "/power-pulse/static/js/574.c0f4371d.chunk.js",
+    "static/js/574.2f5b56aa.chunk.js": "/power-pulse/static/js/574.2f5b56aa.chunk.js",
     "static/js/190.7aa6bc30.chunk.js": "/power-pulse/static/js/190.7aa6bc30.chunk.js",
     "static/js/317.6ec4fd3e.chunk.js": "/power-pulse/static/js/317.6ec4fd3e.chunk.js",
     "static/js/306.6c0a75af.chunk.js": "/power-pulse/static/js/306.6c0a75af.chunk.js",
@@ -39,14 +39,14 @@
     "static/media/avocado-1x.png": "/power-pulse/static/media/avocado-1x.4b09d53aa12a58ab901f.png",
     "index.html": "/power-pulse/index.html",
     "main.cd2e038f.css.map": "/power-pulse/static/css/main.cd2e038f.css.map",
-    "main.3e4c8b5b.js.map": "/power-pulse/static/js/main.3e4c8b5b.js.map",
+    "main.fe4aca23.js.map": "/power-pulse/static/js/main.fe4aca23.js.map",
     "12.82196dc9.chunk.js.map": "/power-pulse/static/js/12.82196dc9.chunk.js.map",
     "870.03751d06.chunk.js.map": "/power-pulse/static/js/870.03751d06.chunk.js.map",
     "235.feadc0be.chunk.js.map": "/power-pulse/static/js/235.feadc0be.chunk.js.map",
     "182.d0009bff.chunk.js.map": "/power-pulse/static/js/182.d0009bff.chunk.js.map",
     "345.896082c6.chunk.js.map": "/power-pulse/static/js/345.896082c6.chunk.js.map",
     "739.ca15976e.chunk.js.map": "/power-pulse/static/js/739.ca15976e.chunk.js.map",
-    "574.c0f4371d.chunk.js.map": "/power-pulse/static/js/574.c0f4371d.chunk.js.map",
+    "574.2f5b56aa.chunk.js.map": "/power-pulse/static/js/574.2f5b56aa.chunk.js.map",
     "190.7aa6bc30.chunk.js.map": "/power-pulse/static/js/190.7aa6bc30.chunk.js.map",
     "317.6ec4fd3e.chunk.js.map": "/power-pulse/static/js/317.6ec4fd3e.chunk.js.map",
     "306.6c0a75af.chunk.js.map": "/power-pulse/static/js/306.6c0a75af.chunk.js.map",
@@ -60,6 +60,6 @@
   },
   "entrypoints": [
     "static/css/main.cd2e038f.css",
-    "static/js/main.3e4c8b5b.js"
+    "static/js/main.fe4aca23.js"
   ]
 }
