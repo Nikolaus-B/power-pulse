@@ -4,6 +4,10 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   gap: 40px;
+
+  @media screen and (max-width: 767px) {
+    gap: 20px;
+  }
 `;
 
 export const Wrapper = styled.div`
@@ -11,7 +15,11 @@ export const Wrapper = styled.div`
   justify-content: space-between;
   align-content: center;
   align-items: center;
-  gap: 8px;
+  gap: 11px;
+
+  @media screen and (max-width: 767px) {
+    gap: 0px;
+  }
 `;
 
 export const Wrap = styled.div``;
@@ -36,8 +44,12 @@ export const TitleWrapper = styled.button`
   justify-content: space-between;
   align-items: center;
   gap: 8px;
-
   border: none;
+
+  @media screen and (max-width: 767px) {
+    font-size: 18px;
+    line-height: 20px;
+  }
 `;
 
 export const CalendarGlobalStyles = createGlobalStyle`

@@ -1,4 +1,4 @@
-import React, { forwardRef, useRef, useState } from 'react';
+import React, { forwardRef, useEffect, useRef, useState } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { addDays, format, isAfter, isBefore } from 'date-fns';
@@ -20,7 +20,7 @@ import { useAuth } from 'hooks/AuthHook';
 import { clearData, setDate } from '../../redux/diary/diarySlice';
 import { DaySwichIcons } from './DaySwichIcons';
 
-export const DaySwitch = () => {
+export const DaySwitch = ({ media }) => {
   const dispatch = useDispatch();
   const { user } = useAuth();
   const calRef = useRef();
@@ -38,32 +38,47 @@ export const DaySwitch = () => {
       .join('-');
   };
 
+  useEffect(() => {
+    if (user.createdAt) {
+      if (formatDate(new Date(user.createdAt)) === formatDate(new Date())) {
+        setDisabledPrev(true);
+      }
+    }
+  }, [user.createdAt]);
+
   const clearStore = () => dispatch(clearData());
 
   const goPrevDate = () => {
     const day = new Date(startDate);
     const prevDay = new Date(day.setDate(day.getDate() - 1));
+    const prevRegistrationDate = new Date(
+      new Date(user.createdAt).setDate(new Date(user.createdAt).getDate() - 1)
+    );
 
-    if (isBefore(user.createdAt, prevDay)) {
+    if (formatDate(new Date(user.createdAt)) === formatDate(prevDay)) {
+      setDisabledPrev(true);
+    }
+
+    if (isBefore(prevRegistrationDate, prevDay)) {
       clearStore();
       setCurrentDate(prevDay);
       dispatch(setDate(formatDate(prevDay)));
       setDisabledNext(false);
-    } else {
-      setDisabledPrev(true);
     }
   };
 
   const goNextDate = () => {
     const day = new Date(startDate);
     const nextDay = new Date(day.setDate(day.getDate() + 1));
+
+    if (formatDate(today) === formatDate(nextDay)) {
+      setDisabledNext(true);
+    }
     if (isAfter(today, nextDay)) {
       clearStore();
       setCurrentDate(nextDay);
       dispatch(setDate(formatDate(nextDay)));
       setDisabledPrev(false);
-    } else {
-      setDisabledNext(true);
     }
   };
 
@@ -79,7 +94,11 @@ export const DaySwitch = () => {
         <TitleWrapper onClick={onClick} ref={ref}>
           {format(startDate, 'dd/MM/yyyy')}
         </TitleWrapper>
-        <Icon iconid="calendar" width={24} height={24} />
+        <Icon
+          iconid="calendar"
+          width={media ? 24 : 20}
+          height={media ? 24 : 20}
+        />
       </Wrapper>
     );
   });
@@ -98,10 +117,10 @@ export const DaySwitch = () => {
         customInput={<CustomInput />}
       />
       <Wrap>
-        <Button onClick={() => goPrevDate()}>
+        <Button disabled={disabledPrev} onClick={() => goPrevDate()}>
           <DaySwichIcons turn={'next'} disabled={disabledPrev} />
         </Button>
-        <Button onClick={() => goNextDate()}>
+        <Button disabled={disabledNext} onClick={() => goNextDate()}>
           <DaySwichIcons turn={'back'} disabled={disabledNext} />
         </Button>
       </Wrap>

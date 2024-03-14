@@ -28,7 +28,7 @@ export const Diary = () => {
     <DiaryContainer className="container">
       <TitleContainer>
         <Title title={'Diary'} />
-        <DaySwitch />
+        <DaySwitch media={isWide} />
       </TitleContainer>
       <DashboardContainer>
         <ProductAndExercises>
