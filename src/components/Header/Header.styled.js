@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom';
 export const HeaderWrapper = styled.header`
   border-bottom: 1px solid #303030;
   padding: 12px 20px;
+
   @media (min-width: 768px) {
     padding: 19px 32px;
   }
@@ -27,6 +28,12 @@ export const HeaderContainer = styled.div`
 
 export const LogoLink = styled(NavLink)`
   margin-right: auto;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  @media (min-width: 768px) {
+    padding-top: 13px;
+    padding-bottom: 12px;
+  }
   @media (min-width: 768px) {
     svg {
       width: 152px;
