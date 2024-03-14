@@ -24,7 +24,8 @@ import CheckMark from '../../img/CheckMark.svg';
 
 //------------------------------------------------
 import { useDispatch } from 'react-redux';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { clearData } from '../../redux/diary/diarySlice.js';
 import { useAuth } from '../../hooks/AuthHook.js';
 import {
   fetchUserLogout,
@@ -42,8 +43,22 @@ export const UserCard = () => {
   }, [dispatch]);
 
   const logOut = () => {
-    // dispatch(clearData());
+    dispatch(clearData());
     dispatch(fetchUserLogout());
+  };
+
+  //-------setAvatar---------
+
+  const [selectedAvatar, setAvatar] = useState(null);
+
+  const handleAvatarChange = e => {
+    const avatar = e.target.files[0];
+    setAvatar(avatar);
+  };
+
+  const appendAvatar = avatarURL => {
+    const formData = new FormData();
+    formData.append('avatarURL', selectedAvatar.files[0]);
   };
 
   return (
@@ -64,9 +79,17 @@ export const UserCard = () => {
               w={[90, 150, 150]}
               h={[90, 150, 150]}
             >
+              <input
+                type="file"
+                multiple
+                accept="image/*"
+                id="input_file"
+                onChange={handleAvatarChange}
+              />
               <Button
                 type="submit"
-                onClick={() => dispatch(fetchUserAvatars())}
+                onClick={() => dispatch(fetchUserAvatars(appendAvatar))}
+                //-----------------------
                 pos="absolute"
                 right={[6, 14, 14]}
                 bottom={[-3, -4, -4]}

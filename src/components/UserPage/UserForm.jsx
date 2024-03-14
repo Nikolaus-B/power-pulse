@@ -22,7 +22,7 @@ import { CheckCircleIcon } from '@chakra-ui/icons';
 import { useDispatch } from 'react-redux';
 import { fetchUserParams } from '../../redux/user/operations';
 import { useAuth } from '../../hooks/AuthHook';
-import StyledDatepicker from './StyledDatePicker';
+import StyledDatepicker from './StyledDatePicker.js';
 
 //----------------------------------------------------
 const validation = object({
@@ -358,11 +358,7 @@ export const UserForm = () => {
                     </HStack>
                   </VStack>
                 </RadioGroup>
-                <RadioGroup
-                  defaultValue={user.sex}
-                  size={{ base: 'base', md: 'md' }}
-                  variant="groove"
-                >
+                <RadioGroup size={{ base: 'base', md: 'md' }} variant="groove">
                   <HStack spacing="8px">
                     <FormLabel>
                       <Radio type="radio" name="sex" value="male" />
@@ -378,7 +374,6 @@ export const UserForm = () => {
             </Stack>
 
             <RadioGroup
-              defaultValue={user.levelActivity}
               fontSize={[14, 16, 16]}
               lineHeight={['129%', '150%', '150%']}
               size={{ base: 'base', md: 'md', xl: 'md' }}
