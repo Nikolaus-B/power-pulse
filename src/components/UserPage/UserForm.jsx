@@ -309,19 +309,6 @@ export const UserForm = () => {
                   >
                     Date of birth
                   </FormLabel>
-
-                  {/* <Input
-                    name="birthday"
-                    type="date"
-                    {...formik.getFieldProps('birthday')}
-                    placeholder={user.birthday}
-                    value={formik.values.birthday}
-                    onChange={formik.handleChange}
-                    aria-label="birthday"
-                    h={['46px', '52px', '52px']}
-                    fontSize={[14, 16, 16]}
-                    lineHeight={['129%', '150%', '150%']}
-                  /> */}
                   <StyledDatepicker />
                 </FormControl>
               </HStack>
@@ -409,12 +396,7 @@ export const UserForm = () => {
             >
               <VStack spacing="8px" align="flex-start">
                 <FormLabel>
-                  <Radio
-                    type="radio"
-                    name="levelActivity"
-                    value="1"
-                    checked={user ? user.levelActivity : false}
-                  />
+                  <Radio type="radio" name="levelActivity" value="1" />
                   <Text as="span" width={[310, 523, 523]}>
                     Sedentary lifestyle (little or no physical activity)
                   </Text>

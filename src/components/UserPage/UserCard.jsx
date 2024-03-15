@@ -31,7 +31,7 @@ import { useAuth } from '../../hooks/AuthHook.js';
 import {
   fetchUserLogout,
   fetchUserCurrent,
-  // fetchUserAvatars,
+  fetchUserAvatars,
 } from '../../redux/user/operations.js';
 
 //------------------------------------------------
@@ -57,12 +57,15 @@ export const UserCard = () => {
     setAvatar(avatar);
   };
 
+  console.log(handleAvatarChange);
+
   const appendAvatar = avatar => {
     const formData = new FormData();
-    console.log(formData);
     formData.append('avatar', selectedAvatar);
     return avatar;
   };
+
+  console.log(appendAvatar);
 
   return (
     <Stack paddingRight={[0, 0, 16]}>
@@ -86,7 +89,7 @@ export const UserCard = () => {
                 type="file"
                 multiple
                 accept="image/*"
-                onChange={() => dispatch(fetchUserCurrent())}
+                onChange={() => dispatch(fetchUserAvatars())}
               />
               <Button
                 type="button"
