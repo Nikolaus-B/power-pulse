@@ -41,7 +41,7 @@ const userSlice = createSlice({
         state.isLoggedIn = true;
         state.goToParams = true;
         state.isLoading = false;
-
+        state.token = action.payload.token;
         toast.success('Registration successful');
       })
 

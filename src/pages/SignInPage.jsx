@@ -26,7 +26,7 @@ function SignInPage() {
   const SignIn = Yup.object().shape({
     email: Yup.string()
       .min(3, 'The email address must be at least 3 characters long!')
-      .max(20, 'The email address is too long!')
+      .max(35, 'The email address is too long!')
       .email('Error email')
       .required('Required'),
     password: Yup.string().required('Required').min(6).max(20),
@@ -119,14 +119,14 @@ function SignInPage() {
                       window.innerWidth >= 1440
                         ? '424px'
                         : window.innerWidth >= 768
-                        ? '360px'
+                        ? '357px'
                         : '320px',
                     top:
                       window.innerWidth >= 1440
-                        ? '342px'
+                        ? '310px'
                         : window.innerWidth >= 768
-                        ? '332px'
-                        : '275px',
+                        ? '299px'
+                        : '249px',
                   }}
                 >
                   <use href={pulseIcon + '#icon-eye'}></use>

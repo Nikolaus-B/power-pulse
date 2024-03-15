@@ -66,7 +66,7 @@ export const firstSelectStyles = {
   ...customStyles,
   control: (defaultStyles, { isFocused }) => ({
     ...defaultStyles,
-    backgroundColor: 'var(--primary-black-color)',
+    backgroundColor: 'transparent',
     border: '1px solid var(--text-info-color)',
     borderColor: isFocused ? 'var(--orange-color)' : 'var(--text-info-color)',
     '&:hover': {
@@ -93,7 +93,7 @@ export const secondSelectStyles = {
   ...customStyles,
   control: (defaultStyles, { isFocused }) => ({
     ...defaultStyles,
-    backgroundColor: 'var(--primary-black-color)',
+    backgroundColor: 'transparent',
     border: '1px solid var(--text-info-color)',
     borderColor: isFocused ? 'var(--orange-color)' : 'var(--text-info-color)',
     '&:hover': {

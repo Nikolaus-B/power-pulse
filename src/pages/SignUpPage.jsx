@@ -29,7 +29,7 @@ function SignInPage() {
     name: Yup.string().min(2).max(20).required('Required'),
     email: Yup.string()
       .min(6, 'The email address must be at least 6 characters long!')
-      .max(40, 'The email address is too long!')
+      .max(35, 'The email address is too long!')
       .email('Error email')
       .required('Required'),
     password: Yup.string()
