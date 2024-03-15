@@ -14,7 +14,12 @@ export const fetchUserRegister = createAsyncThunk(
   async (PersonalData, thunkAPI) => {
     try {
       const response = await axios.post(`users/register`, PersonalData);
-      setAuthHeader(response.data.token);
+      if (response.status === 201) {
+        const {email, password} = PersonalData;
+        const loginResponse = await axios.post('users/login', {email, password});
+        setAuthHeader(loginResponse.data.token);
+        return loginResponse.data;
+      }
       return response.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
