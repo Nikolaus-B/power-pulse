@@ -13,8 +13,10 @@ import {
   Card,
   CardFooter,
   CardHeader,
+  FormLabel,
   HStack,
   Image,
+  Input,
   Stack,
   Text,
   VStack,
@@ -70,7 +72,7 @@ export const UserCard = () => {
             <Avatar
               icon={
                 <Image
-                  src={AvatarPlug}
+                  src={user ? user.avatarURL : AvatarPlug}
                   w={[41, 69, 69]}
                   h={[41, 69, 69]}
                   color="rgba(239, 237,232, 0.1)"
@@ -80,26 +82,30 @@ export const UserCard = () => {
               w={[90, 150, 150]}
               h={[90, 150, 150]}
             >
-              <input
+              <Input
                 type="file"
+                id="fileEl"
                 multiple
                 accept="image/*"
-                onChange={() => dispatch(fetchUserAvatars())}
+                display="none"
+                onChange={e =>
+                  dispatch(fetchUserAvatars({ avatar: e.target.files[0] }))
+                }
               />
-              <Button
-                type="button"
+              <FormLabel
+                for="fileEl"
                 onClick={appendAvatar(handleAvatarChange)}
                 //-----------------------
                 pos="absolute"
-                right={[6, 14, 14]}
-                bottom={[-3, -4, -4]}
+                right={[8, 14, 14]}
+                bottom={[-5, -6, -6]}
                 variant="unstyled"
               >
                 <Image
                   src={CheckMark}
                   boxSize={{ base: '24px', md: '32px', xl: '32px' }}
                 />
-              </Button>
+              </FormLabel>
             </Avatar>
           </VStack>
 
