@@ -15,8 +15,11 @@ export const fetchUserRegister = createAsyncThunk(
     try {
       const response = await axios.post(`users/register`, PersonalData);
       if (response.status === 201) {
-        const {email, password} = PersonalData;
-        const loginResponse = await axios.post('users/login', {email, password});
+        const { email, password } = PersonalData;
+        const loginResponse = await axios.post('users/login', {
+          email,
+          password,
+        });
         setAuthHeader(loginResponse.data.token);
         return loginResponse.data;
       }
@@ -66,13 +69,17 @@ export const fetchUserParams = createAsyncThunk(
 
 export const fetchUserAvatars = createAsyncThunk(
   'user/userAvatars',
-  async (formData, thunkAPI) => {
+  async (avatarURL, thunkAPI) => {
     try {
-      const response = await axios.patch(`users/avatars`, formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-      });
+      const response = await axios.patch(
+        `users/avatars/${avatarURL}`,
+        avatarURL,
+        {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        }
+      );
       return response.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
