@@ -1,6 +1,6 @@
 import {
-  AvatarIcon,
-  AddAvatarIcon,
+  // AvatarIcon,
+  // AddAvatarIcon,
   FoodIcon,
   DumbBellIcon,
   LogOut,
@@ -13,15 +13,21 @@ import {
   Card,
   CardFooter,
   CardHeader,
+  FormLabel,
   HStack,
+  Image,
+  Input,
   Stack,
   Text,
   VStack,
 } from '@chakra-ui/react';
+import AvatarPlug from '../../img/AvatarPlug.svg';
+import CheckMark from '../../img/CheckMark.svg';
 
 //------------------------------------------------
 import { useDispatch } from 'react-redux';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { clearData } from '../../redux/diary/diarySlice.js';
 import { useAuth } from '../../hooks/AuthHook.js';
 import {
   fetchUserLogout,
@@ -38,45 +44,78 @@ export const UserCard = () => {
     dispatch(fetchUserCurrent());
   }, [dispatch]);
 
+  const logOut = () => {
+    dispatch(clearData());
+    dispatch(fetchUserLogout());
+  };
+
+  //-------setAvatar---------
+
+  const [selectedAvatar, setAvatar] = useState(null);
+
+  const handleAvatarChange = e => {
+    const avatar = e.target.files[0];
+    setAvatar(avatar);
+  };
+
+  const appendAvatar = avatar => {
+    const formData = new FormData();
+    formData.append('avatar', selectedAvatar);
+    return avatar;
+  };
+
   return (
-    <Stack>
-      <VStack spacing={{ base: '40px', md: '32px' }}>
+    <Stack paddingRight={[0, 0, 16]}>
+      <VStack spacing={[10, 8, 8]}>
         <VStack spacing="32px">
           <VStack>
             <Avatar
               icon={
-                <AvatarIcon iconid={'avatar'} width={'38px'} height={'38px'} />
+                <Image
+                  src={AvatarPlug}
+                  w={[41, 69, 69]}
+                  h={[41, 69, 69]}
+                  color="rgba(239, 237,232, 0.1)"
+                />
               }
               pos="relative"
-              w={{ base: '90px', md: '150px' }}
-              h={{ base: '90px', md: '150px' }}
+              w={[90, 150, 150]}
+              h={[90, 150, 150]}
             >
-              <Button
-                type="submit"
-                onClick={() => dispatch(fetchUserAvatars())}
+              <Input
+                type="file"
+                id="fileEl"
+                multiple
+                accept="image/*"
+                display="none"
+                onChange={e =>
+                  dispatch(fetchUserAvatars({ avatar: e.target.files[0] }))
+                }
+              />
+              <FormLabel
+                htmlFor="fileEl"
+                onClick={appendAvatar(handleAvatarChange)}
+                //-----------------------
                 pos="absolute"
-                right={{ base: '18px', md: '50px' }}
-                bottom={{ base: '-14px', md: '-14px' }}
-                h="auto"
-                p="0"
+                right={[8, 14, 14]}
+                bottom={[-5, -6, -6]}
                 variant="unstyled"
               >
-                <AddAvatarIcon
-                  iconid={'add-avatar'}
-                  width={'32px'}
-                  height={'32px'}
+                <Image
+                  src={CheckMark}
+                  boxSize={{ base: '24px', md: '32px', xl: '32px' }}
                 />
-              </Button>
+              </FormLabel>
             </Avatar>
           </VStack>
 
           <VStack>
             <Text
-              fontSize={{ base: '18px', md: '24px' }}
-              lineHeight={{ base: '111%', md: '117%' }}
-              mb={{ base: '4px', mb: '8px' }}
+              fontSize={[18, 24, 24]}
+              lineHeight={['111%', '117%', '117%']}
+              mb={[1, 2, 2]}
             >
-              {user.name}
+              {user ? user.name : 'Name'}
             </Text>
             <Badge display="inline-flex" fontSize="14px" lineHeight="129%">
               User
@@ -84,35 +123,35 @@ export const UserCard = () => {
           </VStack>
         </VStack>
 
-        <HStack spacing={{ base: '12px', md: '16px' }}>
+        <HStack spacing={[3, 4, 4]}>
           <Card
             direction="column"
             justify="space-between"
             align="flex-start"
-            w={{ base: '165px', md: '214px', xl: '209px' }}
-            h={{ base: '96px', md: '108px' }}
+            w={[165, 214, 209]}
+            h={['96px', 108, 108]}
           >
             <CardHeader>
               <HStack>
                 <FoodIcon iconid={'food'} width={'20px'} height={'20px'} />
                 <Text
                   color="rgba(239, 237, 232, 0.8)"
-                  lineHeight={{ base: '133%', md: '150%' }}
+                  lineHeight={['133%', '150%', '150%']}
                 >
                   Daily calorie intake
                 </Text>
               </HStack>
             </CardHeader>
             <CardFooter>
-              <Text lineHeight={{ base: '111%', md: '133%' }}>{bmr}</Text>
+              <Text lineHeight={['111%', '133%', '133%']}>{bmr}</Text>
             </CardFooter>
           </Card>
           <Card
             direction="column"
             justify="space-between"
             align="flex-start"
-            w={{ base: '165px', md: '214px', xl: '209px' }}
-            h={{ base: '96px', md: '108px' }}
+            w={[165, 214, 209]}
+            h={['96px', 108, 108]}
           >
             <CardHeader>
               <HStack>
@@ -123,14 +162,14 @@ export const UserCard = () => {
                 />
                 <Text
                   color="rgba(239, 237, 232, 0.8)"
-                  line-height={{ base: '133%', md: '150%' }}
+                  line-height={['133%', '150%', '150%']}
                 >
                   Daily physical activity
                 </Text>
               </HStack>
             </CardHeader>
             <CardFooter>
-              <Text lineHeight={{ base: '111%', md: '133%' }}>
+              <Text lineHeight={['111%', '133%', '133%']}>
                 {dailyRateSports} min
               </Text>
             </CardFooter>
@@ -152,10 +191,10 @@ export const UserCard = () => {
             />
           </Stack>
           <Text
-            w={{ base: '303px', md: '407px' }}
+            w={[303, 407]}
             h="73px"
-            fontSize={{ base: '14px', md: '16px' }}
-            lineHeight={{ base: '129%', md: '150%' }}
+            fontSize={[14, 16, 16]}
+            lineHeight={['129%', '150%', '150%']}
           >
             We understand that each individual is unique, so the entire approach
             to diet is relative and tailored to your unique body and goals.
@@ -164,7 +203,7 @@ export const UserCard = () => {
 
         <Button
           type="button"
-          onClick={() => dispatch(fetchUserLogout())}
+          onClick={logOut}
           rightIcon={
             <LogOut iconid={'log-out'} width={'20px'} height={'20px'} />
           }
@@ -172,10 +211,8 @@ export const UserCard = () => {
           alignContent="center"
           alignSelf="flex-end"
           iconSpacing="8px"
-          h="auto"
-          p="0"
-          fontSize={{ base: '14px', md: '16px' }}
-          fontWeight="normal"
+          w={[82, 88, 88]}
+          fontSize={[14, 16, 16]}
           variant="unstyled"
         >
           Logout

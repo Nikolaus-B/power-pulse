@@ -7,6 +7,7 @@ const baseStyle = defineStyle({
     borderRadius: '12px',
 
     bgColor: '#e6533c',
+    boxShadow: 'none',
   },
   header: {
     p: 0,

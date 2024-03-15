@@ -1,5 +1,6 @@
 import { extendTheme } from '@chakra-ui/react';
 import { containerStyle } from '../styles/container';
+import { headingStyles } from '../styles/heading';
 import { avatarStyles } from '../styles/avatar';
 import { textStyles } from '../styles/text';
 import { badgeStyles } from '../styles/badge';
@@ -32,14 +33,12 @@ export const theme = extendTheme({
   },
   breakpoints: {
     base: '0px',
-    sm: null,
     md: '768px',
-    lg: null,
     xl: '1281px',
-    '2xl': '1536px',
   },
   components: {
     Container: containerStyle,
+    Heading: headingStyles,
     Avatar: avatarStyles,
     Text: textStyles,
     Badge: badgeStyles,

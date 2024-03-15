@@ -30,6 +30,8 @@ const variantOutline = definePartsStyle(props => {
   return {
     field: {
       bg: 'inherit',
+      border: '1px solid',
+      borderColor: 'rgba(239, 237, 232, 0.3)',
       boxShadow: 'none',
       _hover: {
         borderColor: '#e6533c',

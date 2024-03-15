@@ -66,9 +66,13 @@ export const fetchUserParams = createAsyncThunk(
 
 export const fetchUserAvatars = createAsyncThunk(
   'user/userAvatars',
-  async (_, thunkAPI) => {
+  async (formData, thunkAPI) => {
     try {
-      const response = await axios.patch(`users/avatars`);
+      const response = await axios.patch(`users/avatars`, formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
       return response.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
