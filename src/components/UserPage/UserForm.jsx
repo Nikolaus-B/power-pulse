@@ -313,7 +313,7 @@ export const UserForm = () => {
                     name="birthday"
                     type="date"
                     {...formik.getFieldProps('birthday')}
-                    placeholder={user ? user.birthday : '10/10/2000'}
+                    placeholder={user ? user.birthday : 'Select Date'}
                     value={formik.values.birthday}
                     onChange={formik.handleChange}
                     aria-label="birthday"
@@ -346,7 +346,7 @@ export const UserForm = () => {
                           type="radio"
                           name="blood"
                           value="1"
-                          // defaultChecked={user?.blood === 1 ? true : false}
+                          checked={user?.blood === 1 ? true : false}
                         />
                         1
                       </FormLabel>
@@ -355,7 +355,7 @@ export const UserForm = () => {
                           type="radio"
                           name="blood"
                           value="2"
-                          // defaultChecked={user?.blood === 2 ? true : false}
+                          checked={user?.blood === 2 ? true : false}
                         />
                         2
                       </FormLabel>
@@ -364,7 +364,7 @@ export const UserForm = () => {
                           type="radio"
                           name="blood"
                           value="3"
-                          // defaultChecked={user?.blood === 3 ? true : false}
+                          checked={user?.blood === 3 ? true : false}
                         />
                         3
                       </FormLabel>
@@ -373,7 +373,7 @@ export const UserForm = () => {
                           type="radio"
                           name="blood"
                           value="4"
-                          // defaultChecked={user?.blood === 4 ? true : false}
+                          checked={user?.blood === 4 ? true : false}
                         />
                         4
                       </FormLabel>
@@ -387,7 +387,7 @@ export const UserForm = () => {
                         type="radio"
                         name="sex"
                         value="male"
-                        // defaultChecked={user?.sex === 'male' ? true : false}
+                        checked={user?.sex === 'male' ? true : false}
                       />
                       Male
                     </FormLabel>
@@ -396,7 +396,7 @@ export const UserForm = () => {
                         type="radio"
                         name="sex"
                         value="female"
-                        // defaultChecked={user?.sex === 'female' ? true : false}
+                        checked={user?.sex === 'female' ? true : false}
                       />
                       Female
                     </FormLabel>
@@ -417,7 +417,7 @@ export const UserForm = () => {
                     type="radio"
                     name="levelActivity"
                     value="1"
-                    // defaultChecked={user?.levelActivity === 1 ? true : false}
+                    checked={user?.levelActivity === 1 ? true : false}
                   />
                   <Text as="span" width={[310, 523, 523]}>
                     Sedentary lifestyle (little or no physical activity)
@@ -428,7 +428,7 @@ export const UserForm = () => {
                     type="radio"
                     name="levelActivity"
                     value="2"
-                    // defaultChecked={user?.levelActivity === 2 ? true : false}
+                    checked={user?.levelActivity === 2 ? true : false}
                   />
                   <Text as="span" width={[310, 523, 523]}>
                     Light activity (light exercises/sports 1-3 days per week)
@@ -439,7 +439,7 @@ export const UserForm = () => {
                     type="radio"
                     name="levelActivity"
                     value="3"
-                    // defaultChecked={user?.levelActivity === 3 ? true : false}
+                    checked={user?.levelActivity === 3 ? true : false}
                   />
                   <Text as="span" width={[310, 523, 523]}>
                     Moderately active (moderate exercises/sports 3-5 days per
@@ -451,7 +451,7 @@ export const UserForm = () => {
                     type="radio"
                     name="levelActivity"
                     value="4"
-                    // defaultChecked={user?.levelActivity === 4 ? true : false}
+                    checked={user?.levelActivity === 4 ? true : false}
                   />
                   <Text as="span" width={[310, 523, 523]}>
                     Very active (intense exercises/sports 6-7 days per week)
@@ -462,7 +462,7 @@ export const UserForm = () => {
                     type="radio"
                     name="levelActivity"
                     value="5"
-                    // defaultChecked={user?.levelActivity === 5 ? true : false}
+                    checked={user?.levelActivity === 5 ? true : false}
                   />
                   <Text as="span" width={[310, 523, 523]}>
                     Extremely active (very strenuous exercises/sports and

@@ -85,3 +85,16 @@ export const UserMenu = () => {
     </UserContainer>
   );
 };
+
+{
+  /* <Image
+  src={
+    user
+      ? `https://power-pulse-back.onrender.com/${user.avatarURL}`
+      : 'no-image'
+  }
+  w={[100, 150, 150]}
+  h={[100, 150, 150]}
+  color="rgba(239, 237,232, 0.1)"
+/>; */
+}
