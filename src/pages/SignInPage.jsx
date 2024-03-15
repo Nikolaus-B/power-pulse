@@ -26,7 +26,7 @@ function SignInPage() {
   const SignIn = Yup.object().shape({
     email: Yup.string()
       .min(3, 'The email address must be at least 3 characters long!')
-      .max(20, 'The email address is too long!')
+      .max(35, 'The email address is too long!')
       .email('Error email')
       .required('Required'),
     password: Yup.string().required('Required').min(6).max(20),
