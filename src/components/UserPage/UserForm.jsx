@@ -22,7 +22,7 @@ import { CheckCircleIcon } from '@chakra-ui/icons';
 import { useDispatch } from 'react-redux';
 import { fetchUserParams } from '../../redux/user/operations';
 import { useAuth } from '../../hooks/AuthHook';
-import StyledDatepicker from './StyledDatePicker.js';
+// import StyledDatepicker from './StyledDatePicker.js';
 
 //----------------------------------------------------
 const validation = object({
@@ -302,20 +302,24 @@ export const UserForm = () => {
 
                 <FormControl alignSelf="baseline">
                   <FormLabel
-                    as={Text}
-                    fontSize={[12, 14, 14]}
-                    lineHeight={['150%', '129%', '129%']}
-                    mb={[1, 2, 2]}
+                    fontSize={{ base: '12px', md: '14px' }}
+                    lineHeight={{ base: '150%', md: '129%' }}
+                    mb={{ base: '4px', md: '8px' }}
                   >
                     Date of birth
                   </FormLabel>
 
-                  <StyledDatepicker
+                  <Input
                     name="birthday"
                     type="date"
                     {...formik.getFieldProps('birthday')}
+                    placeholder={user ? user.birthday : '10/10/2000'}
                     value={formik.values.birthday}
                     onChange={formik.handleChange}
+                    aria-label="birthday"
+                    h={{ base: '46px', md: '52px' }}
+                    fontSize={{ base: '14px', md: '16px' }}
+                    lineHeight={{ base: '129%', md: '150%' }}
                   />
                 </FormControl>
               </HStack>
@@ -342,7 +346,7 @@ export const UserForm = () => {
                           type="radio"
                           name="blood"
                           value="1"
-                          defaultChecked={user?.blood === 1 ? true : false}
+                          // defaultChecked={user?.blood === 1 ? true : false}
                         />
                         1
                       </FormLabel>
@@ -351,7 +355,7 @@ export const UserForm = () => {
                           type="radio"
                           name="blood"
                           value="2"
-                          defaultChecked={user?.blood === 2 ? true : false}
+                          // defaultChecked={user?.blood === 2 ? true : false}
                         />
                         2
                       </FormLabel>
@@ -360,12 +364,18 @@ export const UserForm = () => {
                           type="radio"
                           name="blood"
                           value="3"
-                          defaultChecked={user?.blood === 3 ? true : false}
+                          // defaultChecked={user?.blood === 3 ? true : false}
                         />
                         3
                       </FormLabel>
                       <FormLabel>
-                        <Radio type="radio" name="blood" value="4" />4
+                        <Radio
+                          type="radio"
+                          name="blood"
+                          value="4"
+                          // defaultChecked={user?.blood === 4 ? true : false}
+                        />
+                        4
                       </FormLabel>
                     </HStack>
                   </VStack>
@@ -377,7 +387,7 @@ export const UserForm = () => {
                         type="radio"
                         name="sex"
                         value="male"
-                        defaultChecked={user?.sex === 'male' ? true : false}
+                        // defaultChecked={user?.sex === 'male' ? true : false}
                       />
                       Male
                     </FormLabel>
@@ -386,7 +396,7 @@ export const UserForm = () => {
                         type="radio"
                         name="sex"
                         value="female"
-                        defaultChecked={user?.sex === 'female' ? true : false}
+                        // defaultChecked={user?.sex === 'female' ? true : false}
                       />
                       Female
                     </FormLabel>
@@ -407,7 +417,7 @@ export const UserForm = () => {
                     type="radio"
                     name="levelActivity"
                     value="1"
-                    defaultChecked={user?.levelActivity === 1 ? true : false}
+                    // defaultChecked={user?.levelActivity === 1 ? true : false}
                   />
                   <Text as="span" width={[310, 523, 523]}>
                     Sedentary lifestyle (little or no physical activity)
@@ -418,7 +428,7 @@ export const UserForm = () => {
                     type="radio"
                     name="levelActivity"
                     value="2"
-                    defaultChecked={user?.levelActivity === 2 ? true : false}
+                    // defaultChecked={user?.levelActivity === 2 ? true : false}
                   />
                   <Text as="span" width={[310, 523, 523]}>
                     Light activity (light exercises/sports 1-3 days per week)
@@ -429,7 +439,7 @@ export const UserForm = () => {
                     type="radio"
                     name="levelActivity"
                     value="3"
-                    defaultChecked={user?.levelActivity === 3 ? true : false}
+                    // defaultChecked={user?.levelActivity === 3 ? true : false}
                   />
                   <Text as="span" width={[310, 523, 523]}>
                     Moderately active (moderate exercises/sports 3-5 days per
@@ -441,7 +451,7 @@ export const UserForm = () => {
                     type="radio"
                     name="levelActivity"
                     value="4"
-                    defaultChecked={user?.levelActivity === 4 ? true : false}
+                    // defaultChecked={user?.levelActivity === 4 ? true : false}
                   />
                   <Text as="span" width={[310, 523, 523]}>
                     Very active (intense exercises/sports 6-7 days per week)
@@ -452,7 +462,7 @@ export const UserForm = () => {
                     type="radio"
                     name="levelActivity"
                     value="5"
-                    defaultChecked={user?.levelActivity === 5 ? true : false}
+                    // defaultChecked={user?.levelActivity === 5 ? true : false}
                   />
                   <Text as="span" width={[310, 523, 523]}>
                     Extremely active (very strenuous exercises/sports and

@@ -72,7 +72,7 @@ export const UserCard = () => {
             <Avatar
               icon={
                 <Image
-                  src={user ? user.avatarURL : AvatarPlug}
+                  src={AvatarPlug}
                   w={[41, 69, 69]}
                   h={[41, 69, 69]}
                   color="rgba(239, 237,232, 0.1)"
@@ -93,7 +93,7 @@ export const UserCard = () => {
                 }
               />
               <FormLabel
-                for="fileEl"
+                htmlFor="fileEl"
                 onClick={appendAvatar(handleAvatarChange)}
                 //-----------------------
                 pos="absolute"

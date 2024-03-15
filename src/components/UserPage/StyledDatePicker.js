@@ -48,7 +48,6 @@ const StyledDatepicker = () => {
         selected={selectedDate}
         onChange={date => {
           setSelectedDate(date);
-          onchange('birthday', date);
         }}
         calendarStartDay={1}
         formatWeekDay={day => day.substring(0, 2)}
