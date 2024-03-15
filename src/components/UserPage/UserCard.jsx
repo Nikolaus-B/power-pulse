@@ -72,12 +72,17 @@ export const UserCard = () => {
             <Avatar
               icon={
                 <Image
-                  src={AvatarPlug}
-                  w={[41, 69, 69]}
-                  h={[41, 69, 69]}
+                  src={
+                    user
+                      ? `https://power-pulse-back.onrender.com/${user.avatarURL}`
+                      : AvatarPlug
+                  }
+                  w={[100, 150, 150]}
+                  h={[100, 150, 150]}
                   color="rgba(239, 237,232, 0.1)"
                 />
               }
+              overflow="hidden"
               pos="relative"
               w={[90, 150, 150]}
               h={[90, 150, 150]}
@@ -98,8 +103,9 @@ export const UserCard = () => {
                 //-----------------------
                 pos="absolute"
                 right={[8, 14, 14]}
-                bottom={[-5, -6, -6]}
+                bottom={[0, 0, 0]}
                 variant="unstyled"
+                zIndex="1000"
               >
                 <Image
                   src={CheckMark}
