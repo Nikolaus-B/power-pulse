@@ -2,6 +2,7 @@ import { forwardRef, useState, useRef } from 'react';
 import DatePicker from 'react-datepicker';
 import { format } from 'date-fns';
 import 'react-datepicker/dist/react-datepicker-cssmodules.css';
+
 import { useAuth } from '../../hooks/AuthHook';
 //----------------------------------------
 import {
@@ -10,13 +11,15 @@ import {
 } from './styles/StyledDatepicker.styled';
 import { Button } from '@chakra-ui/react';
 import { CalendarIcon } from '@chakra-ui/icons';
+import { useDispatch } from 'react-redux';
 // import Cal from '../../img/cal.svg';
 
 const StyledDatepicker = () => {
   const { user } = useAuth();
+  const dispatch = useDispatch();
   const calRef = useRef();
   const [selectedDate, setSelectedDate] = useState(
-    user ? user.birthday : new Date()
+    user ? user.birthday : Date.now()
   );
 
   const CustomInput = forwardRef(({ value, onClick }, ref) => {
@@ -44,7 +47,7 @@ const StyledDatepicker = () => {
         dateFormat={'dd.MM.yyyy'}
         selected={selectedDate}
         onChange={date => {
-          setSelectedDate(date);
+          dispatch(setSelectedDate(date));
         }}
         calendarStartDay={1}
         formatWeekDay={day => day.substring(0, 2)}

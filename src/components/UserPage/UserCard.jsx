@@ -56,15 +56,11 @@ export const UserCard = () => {
     setAvatar(avatar);
   };
 
-  console.log(handleAvatarChange);
-
   const appendAvatar = avatar => {
     const formData = new FormData();
     formData.append('avatar', selectedAvatar);
     return avatar;
   };
-
-  console.log(appendAvatar);
 
   return (
     <Stack paddingRight={[0, 0, 16]}>

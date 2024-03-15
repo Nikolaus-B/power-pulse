@@ -59,6 +59,8 @@ export const UserForm = () => {
       levelActivity,
     } = values;
 
+    console.log(object);
+
     dispatch(
       fetchUserParams({
         name: name,
@@ -335,7 +337,7 @@ export const UserForm = () => {
                           type="radio"
                           name="blood"
                           value="1"
-                          checked={user ? user.blood : false}
+                          // checked={user ? user.blood : false}
                         />
                         1
                       </FormLabel>
@@ -344,7 +346,7 @@ export const UserForm = () => {
                           type="radio"
                           name="blood"
                           value="2"
-                          checked={user ? user.blood : false}
+                          // checked={user ? user.blood : false}
                         />
                         2
                       </FormLabel>
@@ -353,7 +355,7 @@ export const UserForm = () => {
                           type="radio"
                           name="blood"
                           value="3"
-                          checked={user ? user.blood : false}
+                          // checked={user ? user.blood : false}
                         />
                         3
                       </FormLabel>
@@ -370,7 +372,7 @@ export const UserForm = () => {
                         type="radio"
                         name="sex"
                         value="male"
-                        checked={user ? user.sex : false}
+                        // checked={user ? user.sex : false}
                       />
                       Male
                     </FormLabel>
@@ -379,7 +381,7 @@ export const UserForm = () => {
                         type="radio"
                         name="sex"
                         value="female"
-                        checked={user ? user.sex : false}
+                        // checked={user ? user.sex : false}
                       />
                       Female
                     </FormLabel>
@@ -396,7 +398,12 @@ export const UserForm = () => {
             >
               <VStack spacing="8px" align="flex-start">
                 <FormLabel>
-                  <Radio type="radio" name="levelActivity" value="1" />
+                  <Radio
+                    type="radio"
+                    name="levelActivity"
+                    value="1"
+                    // checked={user ? user.levelActivity : false}
+                  />
                   <Text as="span" width={[310, 523, 523]}>
                     Sedentary lifestyle (little or no physical activity)
                   </Text>
@@ -406,7 +413,7 @@ export const UserForm = () => {
                     type="radio"
                     name="levelActivity"
                     value="2"
-                    checked={user ? user.levelActivity : false}
+                    // checked={user ? user.levelActivity : false}
                   />
                   <Text as="span" width={[310, 523, 523]}>
                     Light activity (light exercises/sports 1-3 days per week)
@@ -417,7 +424,7 @@ export const UserForm = () => {
                     type="radio"
                     name="levelActivity"
                     value="3"
-                    checked={user ? user.levelActivity : false}
+                    // checked={user ? user.levelActivity : false}
                   />
                   <Text as="span" width={[310, 523, 523]}>
                     Moderately active (moderate exercises/sports 3-5 days per
@@ -429,7 +436,7 @@ export const UserForm = () => {
                     type="radio"
                     name="levelActivity"
                     value="4"
-                    checked={user ? user.levelActivity : false}
+                    // checked={user ? user.levelActivity : false}
                   />
                   <Text as="span" width={[310, 523, 523]}>
                     Very active (intense exercises/sports 6-7 days per week)
@@ -440,7 +447,7 @@ export const UserForm = () => {
                     type="radio"
                     name="levelActivity"
                     value="5"
-                    checked={user ? user.levelActivity : false}
+                    // checked={user ? user.levelActivity : false}
                   />
                   <Text as="span" width={[310, 523, 523]}>
                     Extremely active (very strenuous exercises/sports and
