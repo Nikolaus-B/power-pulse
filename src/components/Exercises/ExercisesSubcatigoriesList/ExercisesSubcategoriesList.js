@@ -83,14 +83,14 @@ export const ExercisesSubcategoriesList = ({
         <>
           {category === 'Muscles' ? (
             <Container>
-              <Ul>
-                <ExercisesSubcategoriesItem
-                  filters={subcategories}
-                  subcategory={subMuscles}
-                  onSelect={onSelect}
-                  currentPage={currentPage}
-                />
-              </Ul>
+                <Ul>
+                  <ExercisesSubcategoriesItem
+                    filters={subcategories}
+                    subcategory={subMuscles}
+                    onSelect={onSelect}
+                    currentPage={currentPage}
+                  />
+                </Ul>
               {subMuscles.length > sliderSizes[viewportSize] && (
                 <RadioBtns>
                   {Array.from(
@@ -113,14 +113,14 @@ export const ExercisesSubcategoriesList = ({
             </Container>
           ) : category === 'Equipment' ? (
             <Container>
-              <Ul>
-                <ExercisesSubcategoriesItem
-                  filters={subcategories}
-                  subcategory={subEquiment}
-                  onSelect={onSelect}
-                  currentPage={currentPage}
-                />
-              </Ul>
+                <Ul>
+                  <ExercisesSubcategoriesItem
+                    filters={subcategories}
+                    subcategory={subEquiment}
+                    onSelect={onSelect}
+                    currentPage={currentPage}
+                  />
+                </Ul>
               {subEquiment.length > sliderSizes[viewportSize] && (
                 <RadioBtns>
                   {Array.from(
@@ -143,14 +143,14 @@ export const ExercisesSubcategoriesList = ({
             </Container>
           ) : (
             <Container>
-              <Ul>
-                <ExercisesSubcategoriesItem
-                  filters={subcategories}
-                  subcategory={subBodyParts}
-                  onSelect={onSelect}
-                  currentPage={currentPage}
-                />
-              </Ul>
+                <Ul>
+                  <ExercisesSubcategoriesItem
+                    filters={subcategories}
+                    subcategory={subBodyParts}
+                    onSelect={onSelect}
+                    currentPage={currentPage}
+                  />
+                </Ul>
               {subBodyParts.length > sliderSizes[viewportSize] && (
                 <RadioBtns>
                   {Array.from(
