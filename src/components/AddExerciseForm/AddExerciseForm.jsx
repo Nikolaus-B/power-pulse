@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { CountdownCircleTimer } from 'react-countdown-circle-timer';
+import { toast } from 'react-hot-toast';
 
 import {
   IconWrapper,
@@ -83,6 +84,7 @@ export const AddExerciseForm = ({
   };
 
   const handleAddToDiary = () => {
+    toast.success('Exercise added to diary!')
     onCloseForm();
     caloriesAdded(dynamicBurnCal);
     updateRemainingTime(dynamicTime);
