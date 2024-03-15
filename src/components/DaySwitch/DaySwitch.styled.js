@@ -264,4 +264,17 @@ export const CalendarGlobalStyles = createGlobalStyle`
   .react-datepicker__triangle {
     visibility: hidden;
   }
+
+
+
+  .react-datepicker__day--disabled{
+    color: rgba(239, 237, 232, 0.2) !important;
+
+  }
+
+  .react-datepicker__day--disabled:hover {
+    color: rgba(239, 237, 232, 0.2) !important;
+    background-color: transparent !important;
+  }
+  
 `;
