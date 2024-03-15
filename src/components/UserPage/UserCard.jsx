@@ -8,7 +8,6 @@ import {
 } from './styles/Icon.styled.js';
 import {
   Avatar,
-  Input,
   Badge,
   Button,
   Card,
