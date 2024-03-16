@@ -50,7 +50,10 @@ export const UserMenu = () => {
         <StyledNavLink
           style={
             isActivePage === 'diary' && location.pathname !== '/settings'
-              ? { backgroundColor: 'var(--orange-color)' }
+              ? {
+                  backgroundColor: 'var(--orange-color)',
+                  border: '1px solid transparent',
+                }
               : { backgroundColor: 'transparent' }
           }
           onClick={() => handleActivePage('diary')}
@@ -61,7 +64,10 @@ export const UserMenu = () => {
         <StyledNavLink
           style={
             isActivePage === 'products' && location.pathname !== '/settings'
-              ? { backgroundColor: 'var(--orange-color)' }
+              ? {
+                  backgroundColor: 'var(--orange-color)',
+                  border: '1px solid transparent',
+                }
               : { backgroundColor: 'transparent' }
           }
           onClick={() => handleActivePage('products')}
@@ -72,7 +78,10 @@ export const UserMenu = () => {
         <StyledNavLink
           style={
             isActivePage === 'exercises' && location.pathname !== '/settings'
-              ? { backgroundColor: 'var(--orange-color)' }
+              ? {
+                  backgroundColor: 'var(--orange-color)',
+                  border: '1px solid transparent',
+                }
               : { backgroundColor: 'transparent' }
           }
           onClick={() => handleActivePage('exercises')}
